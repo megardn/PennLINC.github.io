@@ -226,15 +226,15 @@ You should keep track of the ids. For example, you can write out the analysis id
 
 ```python
 
-with open('{}_{}_{}_analysisIDS.txt'.format(fmriprep.gear.name,fmriprep.gear.version,now), 'w') as f: 
+with open('{}_{}_{}_analysisIDS.txt'.format(fmriprep.gear.name,fmriprep.gear.version,now), 'w') as f:
     for id in analysis_ids:
         f.write("%s\n" % id)
 
 with open('{}_{}_{}_failSES.txt'.format(fmriprep.gear.name,fmriprep.gear.version,now), 'w') as a:
     for ses in fails:
-        a.write("%s\n" % ses) 
+        a.write("%s\n" % ses)
 
-``` 
+```
 
 ## Checking gear output files and gear runs
 
@@ -246,7 +246,7 @@ You can check what output files have been created in association with a specific
 aa = fw.get(analysis_ids[0]) #or can simply use fw.get('insert_full_id_here')
 
 #look at what files are associated with this analysis id
-aa.files 
+aa.files
 
 #list files associated with this analysis id
 for file in aa.files:
@@ -264,10 +264,10 @@ You can additionally check whether or not a specific output file of interest (fo
 #define new function
 def run_succeeded(idnum):
     obj = fw.get(idnum)
-    return len([f for f in obj.files if f.name.endswith('html.zip')]) > 0 
+    return len([f for f in obj.files if f.name.endswith('html.zip')]) > 0
 
 #check whether html file has been generated for all ids in analysis_ids
-for aa in analysis_ids: 
+for aa in analysis_ids:
     print(aa, run_succeeded(aa))
 
 ```
@@ -291,13 +291,13 @@ for job in jobs:
 
   # restrict based on other criteria as well
 
-  # This will cancel the job  
+  # This will cancel the job
 
   job.change_state('cancelled')
 ```
 
 ## Launching gears with a single python script
 
-The commands presented above can be intergrated into a script and called collectively in order to run an analysis gear. See an example script [here](https://github.com/PennBBL/pennbbl.github.io/blob/master/code/examples/run_qsiprep-fw-hpc.py).
+The commands presented above can be intergrated into a script and called collectively in order to run an analysis gear. See an example script [here](https://github.com/PennLINC/PennLINC.github.io/blob/master/code/examples/run_qsiprep-fw-hpc.py).
 
 ## Be Mindful of Costs!

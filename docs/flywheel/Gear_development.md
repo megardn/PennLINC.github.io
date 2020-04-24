@@ -226,11 +226,11 @@ The final product, manifest.json, looks like this:
 
 ## Run script
 
-Here's the code you actually want to execute. It could do anything you want, from complex analysis pipelines to printing to `stdout`. In this case, we're just going to look at the config options, list files in the environment, and write a file to output. 
+Here's the code you actually want to execute. It could do anything you want, from complex analysis pipelines to printing to `stdout`. In this case, we're just going to look at the config options, list files in the environment, and write a file to output.
 
 Following is a simple python script; you can learn about programming with the SDK [here](..).
 
-Note here the use of the `GearContext` function. This returns a dictionary that you can manipulate to access object IDs and configuration. The documentation for this is available [here](https://github.com/flywheel-io/core/blob/master/sdk/codegen/src/main/resources/fw-python/gear_context.py); we may want to provide a separate walk through of `GearContext` once we've fully figured it out. 
+Note here the use of the `GearContext` function. This returns a dictionary that you can manipulate to access object IDs and configuration. The documentation for this is available [here](https://github.com/flywheel-io/core/blob/master/sdk/codegen/src/main/resources/fw-python/gear_context.py); we may want to provide a separate walk through of `GearContext` once we've fully figured it out.
 
 The final product, `run.py`, looks like this:
 
@@ -242,10 +242,10 @@ import flywheel
 
 # from the gear context, get the config settings
 context = flywheel.GearContext()
-config = context.config                                   
+config = context.config
 
 # log in to flywheel
-fw = context.client 
+fw = context.client
 
 # find the analysis object this belongs to
 ## THIS DOES NOT WORK WHEN TESTING LOCALLY
@@ -396,7 +396,7 @@ Once you've finished testing, you can upload your gear to Flywheel with `fw gear
 
 # Gear Maintenance
 
-As with all things in life, it's easy to obtain, but much more difficult to maintain. 
+As with all things in life, it's easy to obtain, but much more difficult to maintain.
 
 We strongly recommend version controlling your gear's directory on Github, and committing changes incrementally.
 
@@ -412,7 +412,7 @@ If you need to debug a gear that failed, locally, you can use docker to spin up 
 
 Thank you!
 
-Visit pennbbl.github.io for more documentation.
+Visit PennLINC.github.io for more documentation.
 
 
 ```python

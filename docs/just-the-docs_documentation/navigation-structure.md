@@ -202,7 +202,7 @@ To add a auxiliary navigation item to your site (in the upper right on all pages
 # Aux links for the upper right navigation
 aux_links:
   "Just the Docs on GitHub":
-    - "//github.com/pennbbl/pennbbl.github.io"
+    - "//github.com/PennLINC/PennLINC.github.io"
 ```
 
 ---

@@ -2,9 +2,9 @@
   "name": "just-the-docs",
   "version": "0.2.7",
   "description": "A modern Jekyll theme for documentation",
-  "repository": "pennbbl/pennbbl.github.io",
+  "repository": "PennLINC/PennLINC.github.io",
   "license": "MIT",
-  "bugs": "https://github.com/pennbbl/pennbbl.github.io/issues",
+  "bugs": "https://github.com/PennLINC/PennLINC.github.io/issues",
   "devDependencies": {
     "stylelint": "^10.0.1",
     "stylelint-config-primer": "^8.0.0",

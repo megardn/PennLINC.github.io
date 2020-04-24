@@ -30,11 +30,11 @@ You will need a [Github account](https://github.com) to be able to contribute; t
 
 As a prerequisite to starting new documentation, you should have an idea of where this tutorial may fit in the context of the site. `just-the-docs`' structure allows us to create nested directories (folders) so we can organize our thoughts and documents efficiently. If this documentation fits under another topic, please create a new file in the appropriate folder. Otherwise, create a new folder for the topic.
 
-All folders should fall under `pennbbl.github.io/docs/`, and often a single markdown file is enough for some documentation — it would be the 'homepage' of that topic.
+All folders should fall under `PennLINC.github.io/docs/`, and often a single markdown file is enough for some documentation — it would be the 'homepage' of that topic.
 
 For example, if I had a tutorial for my analysis pipeline named `foo`, I would create a topic directory and a markdown file (with the extension `.md`) in that directory to write the documentation:
 
-`pennbbl.github.io/docs/foo/foo_processing.md`
+`PennLINC.github.io/docs/foo/foo_processing.md`
 
 In this case, you can create a new file right from the Github:
 

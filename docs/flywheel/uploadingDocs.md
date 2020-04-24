@@ -14,37 +14,37 @@ There are several ways to get your data onto flywheel. Which one you should use 
 
 **3. Using the Custom Info Uploader Script:** If you have a csv of data you need to upload to individual subjects, this tool will allow you to do it in one command.
 
-**4. Using the Self-Report Score and Upload Gear:** This is a flywheel gear that takes in a custom scoring code, and a csv of raw scale data, and then applies that scoring code to the raw data and attaches each subject's scores to their custom info on Flywheel. 
+**4. Using the Self-Report Score and Upload Gear:** This is a flywheel gear that takes in a custom scoring code, and a csv of raw scale data, and then applies that scoring code to the raw data and attaches each subject's scores to their custom info on Flywheel.
 
 
 
 ## Way 1: Using the GUI
-### Uploading a file at the project, subject, and session levels: 
+### Uploading a file at the project, subject, and session levels:
 
-The procedure for uploading to these levels is nearly identical, so we'll use the project level as an example. 
+The procedure for uploading to these levels is nearly identical, so we'll use the project level as an example.
 
 **Step 1:** Go to any subject in the project of interest, and navigate to the project tab.
-![alt text](https://pennbbl.github.io/assets/images/project_tab.png "Project Tab")
+![alt text](https://PennLINC.github.io/assets/images/project_tab.png "Project Tab")
 
 
 **Step 2:** Scroll down until you see the Attachments, and click on "Upload Attachment".
-![alt text](https://pennbbl.github.io/assets/images/attachments.png "Attachments")
+![alt text](https://PennLINC.github.io/assets/images/attachments.png "Attachments")
 
 
 **Step 3:** Then, you should see this window prompting you to drag the file to upload. Do so, and the file should upload automatically. Click close when you're done.
-![alt text](https://pennbbl.github.io/assets/images/upload_file.png "Upload File")
+![alt text](https://PennLINC.github.io/assets/images/upload_file.png "Upload File")
 
 
-**This same procedure can be done at the subject and session levels by clicking on the appropriate tab.** 
+**This same procedure can be done at the subject and session levels by clicking on the appropriate tab.**
 
 ### Uploading a file at the acquisition level:
 
 **Step 1:** Navigate to the Acquisitions tab. Then scroll down to the acquisiton you'd like to upload to, and click on the rightmost three vertical buttons as seen below.
-![alt text](https://pennbbl.github.io/assets/images/acquisition_threebuttons.png "Upload File")
+![alt text](https://PennLINC.github.io/assets/images/acquisition_threebuttons.png "Upload File")
 
 
 **Step 2:** Select "Upload Data To Acquisition", and drag the file to the box prompting you to upload.
-![alt text](https://pennbbl.github.io/assets/images/acq_dragdrop.png "Upload File Box")
+![alt text](https://PennLINC.github.io/assets/images/acq_dragdrop.png "Upload File Box")
 
 
 **Step 3:** Click on "Upload" when you're done.
@@ -73,7 +73,7 @@ python customInfoUploader.py -d flavortown.csv -p GUY_FIERI -n recipes
 
 *NOTE: Prior to uploading, please sign into a flywheel session in your environment. See here for instructions: https://flywheel-io.github.io/core/branches/master/python/getting_started.html*
 
-See below for the script. You can also find it here: https://github.com/PennBBL/grmpy/blob/master/miscellaneous/customInfoUploader.py
+See below for the script. You can also find it here: https://github.com/PennLINC/grmpy/blob/master/miscellaneous/customInfoUploader.py
 
 ```
 #####################################################################################
@@ -169,21 +169,20 @@ for i in range(len(subjects)):
 ```
 
 ## Way 4: Using the Self-Report Score and Upload Gear
-This method of uploading has a very specific use case: when you have raw, unscored data, that you want to score and upload to flywheel while keeping track of your scoring code. 
+This method of uploading has a very specific use case: when you have raw, unscored data, that you want to score and upload to flywheel while keeping track of your scoring code.
 
-Two inputs are required: 
-1. Your scoring code, either in R or Python. It should output a CSV with the following characteristics: No Protected Health Information (PHI) in the file, All columns are named, The subject ID column is named "bblid". 
-2. Your raw data csv. 
+Two inputs are required:
+1. Your scoring code, either in R or Python. It should output a CSV with the following characteristics: No Protected Health Information (PHI) in the file, All columns are named, The subject ID column is named "bblid".
+2. Your raw data csv.
 
 These inputs should be attached at the project level. 
 
 Once these inputs are uploaded, you can launch the gear from any subject in your project (any subject will do, it will operate on the entire project).
 
-To launch the gear, navigate to a subject, and click the "run gear" button. Select Analysis gear, and scroll down to find "Self Report Score and Upload". 
+To launch the gear, navigate to a subject, and click the "run gear" button. Select Analysis gear, and scroll down to find "Self Report Score and Upload".
 
-You should then see this screen. Here you select the raw data csv and scoring code from your project attachments. 
-![alt text](https://pennbbl.github.io/assets/images/inputs_setup.png "Inputs Setup")
+You should then see this screen. Here you select the raw data csv and scoring code from your project attachments.
+![alt text](https://PennLINC.github.io/assets/images/inputs_setup.png "Inputs Setup")
 
-Then select the Configuration tab, and you should see this screen. Type in the name of the custom info field, and the project, and you should be good to go. Make sure to select your scoring code's correct language. Simply hit Run Gear when you're done. 
-![alt text](https://pennbbl.github.io/assets/images/config_setup.png "Config Setup")
-
+Then select the Configuration tab, and you should see this screen. Type in the name of the custom info field, and the project, and you should be good to go. Make sure to select your scoring code's correct language. Simply hit Run Gear when you're done.
+![alt text](https://PennLINC.github.io/assets/images/config_setup.png "Config Setup")

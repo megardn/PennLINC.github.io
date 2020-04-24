@@ -21,7 +21,7 @@ Just the Docs has some specific configuration parameters that can be defined in 
 ---
 
 
-View this site's [_config.yml](https://github.com/pennbbl/pennbbl.github.io/tree/master/_config.yml) file as an example.
+View this site's [_config.yml](https://github.com/PennLINC/PennLINC.github.io/tree/master/_config.yml) file as an example.
 
 ## Site logo
 
@@ -48,7 +48,7 @@ search_tokenizer_separator: /[\s/]+/
 # Aux links for the upper right navigation
 aux_links:
   "Just the Docs on GitHub":
-    - "//github.com/pennbbl/pennbbl.github.io"
+    - "//github.com/PennLINC/PennLINC.github.io"
 ```
 
 ## Heading anchor links
@@ -65,7 +65,7 @@ heading_anchors: true
 
 ```yaml
 # Footer content appears at the bottom of every page's main content
-footer_content: "Copyright &copy; 2017-2019 Patrick Marsceill. Distributed by an <a href=\"https://github.com/pennbbl/pennbbl.github.io/tree/master/LICENSE.txt\">MIT license.</a>"
+footer_content: "Copyright &copy; 2017-2019 Patrick Marsceill. Distributed by an <a href=\"https://github.com/PennLINC/PennLINC.github.io/tree/master/LICENSE.txt\">MIT license.</a>"
 ```
 
 ## Color scheme

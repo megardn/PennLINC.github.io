@@ -10,7 +10,7 @@ Just the Docs is &copy; 2017-2019 by [Patrick Marsceill](http://patrickmarsceill
 
 ### License
 
-This content is distributed by an [MIT license](https://github.com/pennbbl/pennbbl.github.io/tree/master/LICENSE.txt).
+This content is distributed by an [MIT license](https://github.com/PennLINC/PennLINC.github.io/tree/master/LICENSE.txt).
 ## License
 
 The theme is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
