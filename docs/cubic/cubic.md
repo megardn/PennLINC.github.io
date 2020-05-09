@@ -374,6 +374,7 @@ $ umount /cbica/projects/my_project
 voilà
 
 ##  Using R/R-studio and Installation of  R packages
+
 1. Currently  R-3.6 is installed on CUBIC. If you are satisfy with R-3.6, go to step 2 below. However, you can install another R version in any directory of your choice, usually home directory `/cbica/home/username`
  To inslall R in your desired directory, follow the following steps
 
