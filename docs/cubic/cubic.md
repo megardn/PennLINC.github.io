@@ -376,34 +376,37 @@ voilà
 ##  Using R/R-studio and Installation of  R packages
 
 1. Currently  R-3.6 is installed on CUBIC. If you are satisfy with R-3.6, go to step 2 below. However, you can install another R version in any directory of your choice, usually home directory `/cbica/home/username`.
- To inslall R in your desired directory, follow the following steps
-```bash
-$ module load curl/7.56.0 # load the libcurl library 
-$ wget http://cran.rstudio.com/src/base/R-3/R-3.4.1.tar.gz #e.g R-3.4.1
-$ tar xvf R-3.4.1.tar.gz
-$ cd R-3.4.1
-$ ./configure --prefix=$HOME/R  --enable-R-shlib #$HOME/R is where R will be installed 
-$ make && make install
+ To inslall R in your desired directory, follow the following steps.
 
-```
+   ```bash
+   $ module load curl/7.56.0 # load the libcurl library 
+   $ wget http://cran.rstudio.com/src/base/R-3/R-3.4.1.tar.gz #e.g R-3.4.1
+   $ tar xvf R-3.4.1.tar.gz
+   $ cd R-3.4.1
+   $ ./configure --prefix=$HOME/R  --enable-R-shlib #$HOME/R is where R will be installed 
+   $ make && make install
+  
+   ```
+
 Then, installation of R is complete.
 To run R, add `$HOME/R/bin` to your PATH. Then, shell commands like R and Rscript will work.
-```bash
-echo export PATH="$HOME/R/bin:$PATH" >> .bash_profile or .bashrc # add R to bash
-```
+   ```bash
+    echo export PATH="$HOME/R/bin:$PATH" >> .bash_profile or .bashrc # add R to bash
+   ```
 
  >You can load higher version of `gcc` compiler if required for some R version. 
  ```bash
 module load gcc/version-number 
 ```
+
 2. You can install any R-packages of your choice. It require setting `.Rprofile` in the home directory. For example.
     ```R
        .libPaths('/cbica/home/username/R`)
     ```
-You can have more than one R-packages directory.
+  You can have more than one R-packages directory.
 3. You can also use r-studio on CUBIC  by simply load rstudio using `module`.
 
-```bash
-$ module load R-studio/1.1.456
-$ rstudio & # enjoy the R and Rstudio, it works
-```
+  ```bash
+  $ module load R-studio/1.1.456
+  $ rstudio & # enjoy the R and Rstudio, it works
+  ```
