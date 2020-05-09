@@ -379,11 +379,8 @@ voilà
  To inslall R in your desired directory, follow the following steps
 
 ```bash
-# load the libcurl library for file transfer through http, it is important
-$ module load curl/7.56.0 
-
-# download the R-version you want, for example R-3.4.1
-$ wget http://cran.rstudio.com/src/base/R-3/R-3.4.1.tar.gz
+$ module load curl/7.56.0 # load the libcurl library 
+$ wget http://cran.rstudio.com/src/base/R-3/R-3.4.1.tar.gz #e.g R-3.4.1
 $ tar xvf R-3.4.1.tar.gz
 $ cd R-3.4.1
 $ ./configure --prefix=$HOME/R  --enable-R-shlib #$HOME/R is where R will be installed 
@@ -396,8 +393,7 @@ Then, installation of R is complete.
 To run R, add `$HOME/R/bin` to your PATH. Then, shell commands like R and Rscript will work
 
 ```bash
-# add R to bash
-echo export PATH="$HOME/R/bin:$PATH" >> .bash_profile or .bashrc
+echo export PATH="$HOME/R/bin:$PATH" >> .bash_profile or .bashrc # add R to bash
 ```
 
  You can load higher version of `gcc` compiler if required for some R version ::
