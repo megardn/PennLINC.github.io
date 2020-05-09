@@ -399,7 +399,7 @@ To inslall R in your desired directory, follow the following steps.
     $ module load gcc/version-number 
    ```
 
-2. You can install any R-packages of your choice. It require setting `.Rprofile` in the home directory. For example.
+2. You can install any R-packages of your choice. It require adding library path in `.Rprofile` . For example.
     ```R
        .libPaths('/cbica/home/username/R`)
     ```
