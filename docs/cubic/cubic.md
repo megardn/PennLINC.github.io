@@ -377,6 +377,7 @@ voilà
 
 1. Currently  R-3.6 is installed on CUBIC. If you are satisfy with R-3.6, go to step 2 below. However, you can install another R version in any directory of your choice, usually home directory `/cbica/home/username`
  To inslall R in your desired directory, follow the following steps
+
 ```bash
 # load the libcurl library for file transfer through http, it is important
 $ module load curl/7.56.0 
@@ -389,6 +390,7 @@ $ ./configure --prefix=$HOME/R  --enable-R-shlib #$HOME/R is where R will be ins
 $ make && make install
 
 ```
+
 Then, installation of R is complete.
 
 To run R, add `$HOME/R/bin` to your PATH. Then, shell commands like R and Rscript will work
@@ -406,7 +408,6 @@ echo export PATH="$HOME/R/bin:$PATH" >> .bash_profile or .bashrc
        .libPaths('/cbica/home/username/R`)
 
    You can have more than one R-packages directory
-
 
 3. You can also use r-studio on CUBIC  by simply load rstudio using `module`
 
