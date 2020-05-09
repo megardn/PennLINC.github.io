@@ -388,25 +388,25 @@ voilà
   
    ```
 
-Then, installation of R is complete.
-To run R, add `$HOME/R/bin` to your PATH. Then, shell commands like R and Rscript will work.
+     Then, installation of R is complete.
+    To run R, add `$HOME/R/bin` to your PATH. Then, shell commands like R and Rscript will work.
    ```bash
     echo export PATH="$HOME/R/bin:$PATH" >> .bash_profile or .bashrc # add R to bash
    ```
 
- >You can load higher version of `gcc` compiler if required for some R version. 
- ```bash
-module load gcc/version-number 
-```
+    >You can load higher version of `gcc` compiler if required for some R version. 
+   ```bash
+    $ module load gcc/version-number 
+   ```
 
 2. You can install any R-packages of your choice. It require setting `.Rprofile` in the home directory. For example.
     ```R
        .libPaths('/cbica/home/username/R`)
     ```
-  You can have more than one R-packages directory.
+    You can have more than one R-packages directory.
 3. You can also use r-studio on CUBIC  by simply load rstudio using `module`.
 
-  ```bash
-  $ module load R-studio/1.1.456
-  $ rstudio & # enjoy the R and Rstudio, it works
-  ```
+     ```bash
+      $ module load R-studio/1.1.456
+      $ rstudio & # enjoy the R and Rstudio, it works
+     ```
