@@ -372,3 +372,43 @@ $ cd   # just to make sure we are not inside the mount dir
 $ umount /cbica/projects/my_project
 ```  
 voilà
+
+###  Using R/R-studio and Installation of  R packages
+1. Currently  R-3.6 is installed on CUBIC. If you are satisfy with R-3.6, go to step 2 below. However, you can install another R version in any directory of your choice, usually home directory `/cbica/home/username`
+ To inslall R in your desired directory, follow the following steps
+
+```bash
+# load the libcurl library for file transfer through http, it is important
+$ module load curl/7.56.0 
+
+# download the R-version you want, for example R-3.4.1
+$ wget http://cran.rstudio.com/src/base/R-3/R-3.4.1.tar.gz
+$ tar xvf R-3.4.1.tar.gz
+$ cd R-3.4.1
+$ ./configure --prefix=$HOME/R  --enable-R-shlib #$HOME/R is where R will be installed 
+$ make && make install
+
+```
+Then, installation of R is complete.
+
+To run R, add `$HOME/R/bin` to your PATH. Then, shell commands like R and Rscript will work::
+```bash
+# add R to bash
+echo export PATH="$HOME/R/bin:$PATH" >> .bash_profile or .bashrc
+```
+You can load higher version of `gcc` compiler if required for some R version ::
+    module load gcc/version-number 
+
+
+2. You can install any R-packages of your choice. It required setting `.Rprofile` in the home directory. For example::
+    
+       .libPaths('/cbica/home/username/R`)
+You can have more than one R-packages directory
+
+
+3. You can also use r-studio on CUBIC  by simply load rstudio using `module`
+
+```bash
+$ module load R-studio/1.1.456
+$ rstudio & # enjoy the R and Rstudio, it works
+```
