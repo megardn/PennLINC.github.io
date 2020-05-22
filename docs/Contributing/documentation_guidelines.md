@@ -95,4 +95,68 @@ You can see this process explained in further detail [here](https://github.com/K
 
 # For Professionals
 
-This section describes how to accomplish the above using `jekyll` at the command line. (Coming Soon).
+This section describes how to accomplish the above workflow on your local machine, and test it there before committing changes.
+
+## Getting Started
+
+One preferred way to add documentation to PennLINC is to spin up and run a webpage on your local machine, which will dynamically and automatically update as you write. You can then test and review changes as they would appear on the website without risk of damaging the public-facing site and without going back and forth with the commit workflow above. Sounds great, huh?
+
+To do this, though, there is a little bit of overhead, mainly:
+
+1. A web browser (duh)
+2. A program called `ruby`
+3. A program called `jekyll`
+
+`ruby` is a popular language for web development and has a multitude of templates available, so it makes sense that this website is built on one of them. `jekyll` on the other hand is what's called a *static site generator*. It takes written documents and parses them into static websites (i.e. ones that don't need interactive features or a database backend). `jekyll` uses `ruby` to create pretty websites, while Github uses `jekyll` to publish websites on the internet for users and projects. Make sense? If not, it's no matter. You will only need to do a few main things to get started with local testing for contributing to this site.
+
+## How To Test Locally
+
+First, clone this repository to your local machine:
+
+```
+git clone https://github.com/PennLINC/PennLINC.github.io.git
+```
+
+Next, make sure you have `Ruby` installed; the best way to check this is to do `which ruby`, and if there is no `ruby` program found, it's recommended you install it with `brew` (most Linux and MacOS machines already use `brew` as a package manager akin to `pip` or `npm`, see [this guide](https://brew.sh/) to find out how to install `brew` first if you don't have it).
+
+To install ruby, just do:
+
+```
+brew install ruby
+
+# YOU SHOULD PROBABLY ALSO ADD IT TO YOUR PATH LIKE SO:
+
+echo 'export PATH="/usr/local/opt/ruby/bin:$PATH"' >> ~/.bash_profile
+```
+
+Now install `jekyll` using a ruby "gem", by doing the following:
+
+```
+# PERMISSIONS MAY BE REQUIRED
+
+gem install --user-install bundler jekyll
+```
+
+In this last step, you instruct `jekyll` to take all of the templates and files in the current directory and spin them up into a webpage, and `ruby` will serve it on your local machine. The instruction for this, from the root directory of the repo:
+```
+cd PennLINC.github.io
+bundle exec jekyll serve
+```
+
+If you see something like this:
+
+```
+Configuration file: /Users/mac/BBL/PennLINC.github.io/_config.yml
+            Source: /Users/mac/BBL/PennLINC.github.io
+       Destination: /Users/mac/BBL/PennLINC.github.io/_site
+ Incremental build: disabled. Enable with --incremental
+      Generating...
+                    done in 4.378 seconds.
+ Auto-regeneration: enabled for '/Users/mac/BBL/PennLINC.github.io'
+    Server address: http://127.0.0.1:4000//
+  Server running... press ctrl-c to stop.
+```
+
+You're in business! Just visit http://127.0.0.1:4000// in your web browser to view the local version of PennLINC.github.io!
+
+Now, you can edit files locally in `docs/`, and whenever you save the file, the local web page will update to reflect those changes! When you're done, hit CTRL-C to stop serving the site, and then commit and push your changes to Github to put them on the internet.
