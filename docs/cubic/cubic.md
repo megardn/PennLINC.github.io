@@ -1,7 +1,7 @@
 ---
 layout: default
 title: CUBIC
-nav_order: 4
+nav_order: 5
 has_children: true
 permalink: docs/cubic
 has_toc: false
@@ -31,15 +31,15 @@ You use your UPHS password to login. On success you will be greeted with their m
                                Welcome to
 
 
-                   #####   ######   ###   #####      #     
-                  #     #  #     #   #   #     #    # #    
-                  #        #     #   #   #         #   #   
-                  #        ######    #   #        #     #  
-                  #        #     #   #   #        #######  
-                  #     #  #     #   #   #     #  #     #  
-                   #####   ######   ###   #####   #     #  
+                   #####   ######   ###   #####      #
+                  #     #  #     #   #   #     #    # #
+                  #        #     #   #   #         #   #
+                  #        ######    #   #        #     #
+                  #        #     #   #   #        #######
+                  #     #  #     #   #   #     #  #     #
+                   #####   ######   ###   #####   #     #
 
-                  =======================================  
+                  =======================================
             Center for Biomedical Image Computing and Analytics
 
 
@@ -270,7 +270,7 @@ project = fw.lookup('bbl/ALPRAZ_805556') # Insert your project name here
 subjects = project.subjects() # This returns the subjects that are in your project
 
 # This is a string that you will use to partial match the name of the analysis output you want.
-analysis_str = 'acompcor'  
+analysis_str = 'acompcor'
 
 for sub in subjects:
     """Loop over subjects and get each session"""
@@ -312,9 +312,9 @@ for sub in subjects:
                 print("Downloading", dest_file)
                 output.download(dest_file)
                 print('Done')
-```   
+```
 
-We can run this script using qsub and the following bash script.  
+We can run this script using qsub and the following bash script.
 Providing the full path to python is important! Your path may be different depending on install location. Obviously the name of your python script may also be different.
 
 ```bash
@@ -326,10 +326,10 @@ unset PYTHONPATH
 ## Mounting CUBIC on your local machine
 A guide for those who want to mount their cbica project folder on their local machine. This guide uses SSHFS. The first part discusses creating a mountpoint on your machine that matches the directory structure of CUBIC. This is useful because all of you scripts that contain filepaths will work on locally and on the server (very convenient!). If you already have a mountpoint, or prefer to mount somewhere else, you can ignore the first part and skip to the section on mounting using `sshfs`.
 
-### Creating a sensible mount point  
+### Creating a sensible mount point
 
-1. Create a mount point on your local machine that matches the file path to your project dir on CUBIC (Catalina users, see the note below). Since you are making a dir on root, you need to use `sudo` . You will need to enter your computer password after entering the command.  
-Replace `my_project` below with you actual project folder name).  
+1. Create a mount point on your local machine that matches the file path to your project dir on CUBIC (Catalina users, see the note below). Since you are making a dir on root, you need to use `sudo` . You will need to enter your computer password after entering the command.
+Replace `my_project` below with you actual project folder name).
 ```bash
 $ sudo mkdir -p /cbica/projects/my_project
 ```
@@ -338,20 +338,20 @@ $ sudo mkdir -p /cbica/projects/my_project
 $ sudo chown -R my_username /cbica
 ```
 
-> Note: For Catalina users, with the update to Catalina, you can longer make directories in `/`. Instead, there is a strange tecnique that was introduced to make symbolic links. Here are the steps:  
-1. Make a directory in you home dir (or elsewhere if you prefer) that will eventually be symbolically linked to `/`.  
+> Note: For Catalina users, with the update to Catalina, you can longer make directories in `/`. Instead, there is a strange tecnique that was introduced to make symbolic links. Here are the steps:
+1. Make a directory in you home dir (or elsewhere if you prefer) that will eventually be symbolically linked to `/`.
   ```bash
   $ cd
   $ mkdir -p cbica/projects/my_project
-  ```  
-2. Using a text editor, create a file called `synthetic.conf` and save it in `/etc`. You will need to use `sudo` to make a file in `/etc`; e.g. `sudo vim /etc/synthetic.conf`.  
-3. Put the following text in the file. You must use a `tab` rather than space.  
-  `cbica	/Users/my_home_folder/cbica`  
-4. Restart the computer.  
-5. You should now see a dir in the root dir, `/cbica`.  
+  ```
+2. Using a text editor, create a file called `synthetic.conf` and save it in `/etc`. You will need to use `sudo` to make a file in `/etc`; e.g. `sudo vim /etc/synthetic.conf`.
+3. Put the following text in the file. You must use a `tab` rather than space.
+  `cbica	/Users/my_home_folder/cbica`
+4. Restart the computer.
+5. You should now see a dir in the root dir, `/cbica`.
 
 ### Mounting CUBIC
-1. Mac users need to download FUSE and SSHFS: https://osxfuse.github.io/ .    
+1. Mac users need to download FUSE and SSHFS: https://osxfuse.github.io/ .
 2. Mount ussing `sshfs`
 ```bash
 $ sshfs -o defer_permissions username@cbica-cluster:<my-folder-on-CUBIC> <my-local-folder>
@@ -359,10 +359,10 @@ $ sshfs -o defer_permissions username@cbica-cluster:<my-folder-on-CUBIC> <my-loc
 For example, if you have set up your mount point according to the above guide, your command will be:
 ```bash
 $ sshfs -o defer_permissions username@cbica-cluster:/cbica/projects/my_project /cbica/projects/my_project/
-```  
-I recommend putting this command into a script or alias if you need to mount often. E.g. in your `.profile` put:   
-`alias mc="sshfs -o defer_permissions username@cbica-cluster:/cbica/projects/my_project /cbica/projects/my_project/"`   
-Now you can simply type `mc` to mount cubic.  
+```
+I recommend putting this command into a script or alias if you need to mount often. E.g. in your `.profile` put:
+`alias mc="sshfs -o defer_permissions username@cbica-cluster:/cbica/projects/my_project /cbica/projects/my_project/"`
+Now you can simply type `mc` to mount cubic.
 Pro-tip: Follow these instructions to no longer need to type your password: http://www.linuxproblem.org/art_9.html
 
 3. When you are done, unmount. This should ideally be done BEFORE you disconnect from the network to avoid confusing your computer for a few minutes and making the mountpoint temporarily unresponsive.
@@ -370,7 +370,7 @@ Pro-tip: Follow these instructions to no longer need to type your password: http
 ```bash
 $ cd   # just to make sure we are not inside the mount dir
 $ umount /cbica/projects/my_project
-```  
+```
 voilà
 
 ##  Using R/R-studio and Installation of  R packages
@@ -379,13 +379,13 @@ voilà
 To inslall R in your desired directory, follow the following steps.
 
    ```bash
-   $ module load curl/7.56.0 # load the libcurl library 
+   $ module load curl/7.56.0 # load the libcurl library
    $ wget http://cran.rstudio.com/src/base/R-3/R-3.4.1.tar.gz #e.g R-3.4.1
    $ tar xvf R-3.4.1.tar.gz
    $ cd R-3.4.1
-   $ ./configure --prefix=$HOME/R  --enable-R-shlib #$HOME/R is where R will be installed 
+   $ ./configure --prefix=$HOME/R  --enable-R-shlib #$HOME/R is where R will be installed
    $ make && make install
-  
+
    ```
 
      Then, installation of R is complete.
@@ -394,9 +394,9 @@ To inslall R in your desired directory, follow the following steps.
     echo export PATH="$HOME/R/bin:$PATH" >> .bash_profile or .bashrc # add R to bash
    ```
 
-    >You can load higher version of `gcc` compiler if required for some R version. 
+    >You can load higher version of `gcc` compiler if required for some R version.
    ```bash
-    $ module load gcc/version-number 
+    $ module load gcc/version-number
    ```
 
 2. You can install any R-packages of your choice. It require adding library path in `.Rprofile` . For example.
