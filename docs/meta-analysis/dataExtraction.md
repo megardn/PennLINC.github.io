@@ -41,7 +41,7 @@ If an article has multiple relevant contrasts for your main analyses, combine al
 #### Sub-analyses Coordinates
 For sub-analyses, these coordinate sets will be separate. The best way to conduct sub-analyses will be to create another spreadsheet for each sub-analyses (e.g., [perceptualData](https://github.com/PennLINC/Xu_fMRIChronicPain/blob/master/ale/perceptualData_2020-01-21.xls)).
 
-The only difference between your sub-analyses spreadsheets and the main CoordinateData spreadsheet is the sub-analyses will include more additional columns at the end called **Tags**. This just refers to how you categorize the experiment (e.g., **patient > control**, **control > patient**).
+The only difference between your sub-analyses spreadsheets and the main **CoordinateData** spreadsheet is the sub-analyses will include more additional columns at the end called **Tags**. This just refers to how you categorize the experiment (e.g., **patient > control**, **control > patient**).
 
 In the past, I’ve used one big spreadsheet for all sub-analyses, but this ended up becoming more of a mess than separate spreadsheets. If you did want to do one big spreadsheet, you can just add other columns like **Tag1**, **Tag2**, etc. to include other pieces of information. Just be careful not to double count experiments from the same paper when you perform certain sub-analyses. For example, if you have an all-female experiment with both a heat and cold pain paradigm, you would create 3 sets of coordinates
 1. Heat pain only coordinates (with nothing in the other Tag columns except **heat**)
