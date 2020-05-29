@@ -1,2 +1,42 @@
-1. Create an `index.md` file in your main folder and write documentation on it.
-2. Go through this guide to create GitHub Pages: https://www.thinkful.com/learn/a-guide-to-using-github-pages/
+---
+layout: default
+title: Project Documentation
+has_children: false
+has_toc: false
+nav_order: 3
+---
+
+# Project Documentation with GitHub Pages
+
+To write documentation for a project using GitHub Pages, begin by going to this tutorial [here](https://www.thinkful.com/learn/a-guide-to-using-github-pages/). The steps outlined here will guide you through the steps at the link.
+
+## GitHub Pages tutorial
+
+1. For projects with a repo already, begin tutorial by choosing the option `Already wrote code`.
+
+2. When prompted on what type of pages to create, choose `Project Pages`.
+
+3. When asked if your code is already on GitHub, click `Yes` if it is. This creates a new branch where you can create the GitHub Page; this will be separate from your GitHub repo containing your code.
+
+4. You will now be shown how to create a branch to your existing repository! The steps are essentially the following:
+  * On your terminal, `cd` to your repository.
+  * Create a branch in your repo for your GitHub Page by typing in `git checkout -b gh-pages` in your terminal.
+  * Create a markdown file called **index.md**. This is your documentation, so edit this with documentation on your project. [Here's](https://www.markdownguide.org/basic-syntax/) a great guide for getting started with Markdown if you haven't used it before.
+  * Push it to GitHub by using `git push origin gh-pages`
+
+Your page is now set and can be found by typing via the url **pennlihnc.github.io/YOUR_PROJECT_NAME_HERE** (replace **YOUR_PROJECT_NAME_HERE** with your GitHub repo name)!
+
+Now, if you want to go back to the branch of your original repository, you can use the command `git checkout master` (and if you ever want to go back to the branch of the GitHub Page, you can use `git checkout gh`). You can always check which branch you're in by using the command `git branch -al`.
+
+## Customizing GitHub Page
+
+If you ever want to see what's going on with your GitHub Pages branch on GitHub, you can simply go to **github.com/PennLINC/YOUR_PROJECT_NAME_HERE/branches** to look at your **master** and **gh-pages** branch.
+
+### Themes
+
+Now, if you want a nice theme, do the following:
+1. Go to **Settings** in your GitHub repository.
+2. Go all the way down to the section **GitHub Pages**.
+3. Click `Change theme` and choose a theme.
+
+You're all set for a pretty project documentation page with GitHub Pages!
