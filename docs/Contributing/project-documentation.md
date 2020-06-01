@@ -42,4 +42,26 @@ Now, if you want a nice theme, do the following:
 2. Go all the way down to the section **GitHub Pages**.
 3. Click `Change theme` and choose a theme.
 
+### Table of Contents
+
+If you'd like to include a table of contents in your project, doing so is simple!
+Just include the lines ```1. TOC
+{:toc}``` at the level you'd like your table to be. Every title and subtitle after those lines should be reflected in your table of contents. You can now jump to each section by clicking on it's respective title in the table! 
+
+Here is an example: 
+1. TOC
+{:toc}
+
+### Title 1
+Foo
+#### Subtitle 1
+Foo2
+### Title 2
+Bar
+#### Subtitle 2
+Bar2
+##### Sub-sub-title 2
+Foobar
+
+
 You're all set for a pretty project documentation page with GitHub Pages!
