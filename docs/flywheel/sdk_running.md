@@ -298,6 +298,217 @@ for job in jobs:
 
 ## Launching gears with a single python script
 
-The commands presented above can be intergrated into a script and called collectively in order to run an analysis gear. See an example script [here](https://github.com/PennLINC/PennLINC.github.io/blob/master/code/examples/run_qsiprep-fw-hpc.py).
+The commands presented above can be integrated into a script and called collectively in order to run an analysis gear. See an example script [here](https://github.com/PennLINC/PennLINC.github.io/blob/master/code/examples/run_qsiprep-fw-hpc.py).
 
 ## Be Mindful of Costs!
+
+## Munging Through a Large List of Jobs
+
+If you ran a large batch of jobs, perhaps many times over,
+it's inevitable that you will need to filter through all
+of the analysis objects to make sure your runs completed.
+These runs could have different labels, inputs, dates, or
+other information that would differentiate them. You can
+use the SDK to look around and enumerate whose jobs ran
+successfully.
+
+To set up, you need to get a list of your session objects
+(and you can filter this list as needed):
+
+```python
+>>> import flywheel
+>>> client = flywheel.Client()
+
+>>> proj_label = "" # INSERT YOUR PROJECT LABEL HERE
+>>> proj = client.projects.find_first('label="{}"'.format(proj_label))
+>>> subs = proj.subjects()
+
+>>> sessions = []
+>>> for x in subs:
+...     sessions.extend(x.sessions())
+```
+Recall that each session object (or whichever object you
+ran an analysis on) has its analysis attached to it. You
+may need to do a deep-retrieve to unpack the object, with
+`session = client.get(<OBJECT_ID>)`.
+
+```python
+>>> sessions = [client.get(x.id) for x in sessions]
+>>> len(sessions[0].analyses)
+23
+>>> [(x.label, x.job.state) for x in sessions[0].analyses]
+[('fmriprep_SDK_002258_2020-01-10_15:27', 'cancelled'),
+ ('fmriprep_SDK_002258_2020-01-10_15:49', 'failed'),
+ ('fmriprep_SDK_002258_2020-01-13_10:31', 'failed'),
+ ('fmriprep_SDK_002258_2020-01-13_11:55', 'cancelled'),
+ ('fmriprep 01/13/2020 13:14:05', 'complete'),
+ ('fmriprep_SDK_002258_2020-01-13_15:56', 'complete'),
+ ('fmriprep-hpc 01/30/2020 10:56:46', 'complete'),
+ ('XCP_task-emotionid_acq-acompcor_GSR_2020-02-06 15:36:15', 'complete'),
+ ('XCP_task-emotionid_acq-acompcor_2020-02-06 15:43:52', 'complete'),
+ ('XCP_SDK_TASK_2020-03-25 12:45:43.779480', 'cancelled'),
+ ('XCP_SDK_TASK_2020-03-25 14:43:08.904064', 'cancelled'),
+ ('XCP_SDK_TASK_2020-03-25 14:43:27.599757', 'cancelled'),
+ ('XCP_SDK_TASK_2020-03-25 14:43:57.121093', 'cancelled'),
+ ('XCP_SDK_TASK_2020-03-25 14:45:23.378621', 'cancelled'),
+ ('XCP_SDK_TASK_2020-03-25 14:49:00.296253', 'complete'),
+ ('XCP_SDK_TASK_GSR2020-03-30 14:20:07.652910', 'complete'),
+ ('XCP_SDK_NO_TASK_REGRESS_GSR2020-04-28 16:44:24.909264', 'complete'),
+ ('xcpengine-fw 04/28/2020 21:36:55', 'complete'),
+ ('XCP_SDK_NO_TASK_REGRESS_GSR2020-04-29 10:14:31.933739', 'complete'),
+ ('XCP_SDK_NO_TASK_REGRESS2020-04-30 14:09:52.702180', 'complete'),
+ ('XCP_SDK_NO_TASK_REGRESS2020-05-01 10:15:13.199642', 'complete'),
+ ('XCP_SDK_NO_TASK_REGRESS2020-05-01 11:49:42.771475', 'complete'),
+ ('XCP_SDK_NO_TASK_REGRESS2020-05-01 13:48:19.794610', 'complete')]
+```
+That's a lot of analyses, and there's no easy way of
+deciding which is the "correct" one. But fortunately it's
+possible to filter them using a little bit of Python
+gymnastics.
+
+So let's say we want to get the output of the most recently
+compete `fMRIPrep`. We can use
+the `analyis.label`, the `analysis.job.state` attribute, and a `datetime` sort to filter that:
+
+```python
+>>> filtered_fmriprep = [x for x in sessions[0].analyses if 'fmriprep' in x.label and x.job.state == 'complete']
+>>> len(filtered_fmriprep)
+3
+```
+
+That's already considerably easier. Now to get the most recent successful run, sort:
+```python
+>>> filtered_fmriprep.sort(key=lambda x: x.created)
+
+>>> most_recent_fmriprep = filtered_fmriprep.pop()
+
+>>> most_recent_fmriprep.label
+ 'fmriprep-hpc 01/30/2020 10:56:46'
+```
+
+Boom! Now you can get outputs and such just as you did above.
+
+You can use any of the analysis object's attributes to
+filter your list of analyses. They're listed here:
+```python
+>>> dir(most_recent_fmriprep)
+...
+'add_note',
+'add_tag',
+'alt_discriminator',
+'attribute_map',
+'child_types',
+'container_type',
+'created',
+'delete_file',
+'delete_file_classification',
+'delete_file_info',
+'delete_info',
+'delete_note',
+'delete_tag',
+'description',
+'discriminator',
+'download_file',
+'download_file_zip_member',
+'download_tar',
+'file_ref',
+'files',
+'gear_info',
+'get',
+'get_file',
+'get_file_download_url',
+'get_file_zip_info',
+'get_files',
+'id',
+'info',
+'inputs',
+'items',
+'job',
+'keys',
+'label',
+'local_created',
+'local_modified',
+'modified',
+'notes',
+'parent',
+'parents',
+'positional_to_model',
+'rattribute_map',
+'read_file',
+'read_file_zip_member',
+'ref',
+'reload',
+'rename_tag',
+'replace_file_classification',
+'replace_file_info',
+'replace_info',
+'return_value',
+'revision',
+'swagger_types',
+'tags',
+'to_dict',
+'to_str',
+'update',
+'update_file',
+'update_file_classification',
+'update_file_info',
+'update_info',
+'upload_file',
+'upload_output',
+'values']
+```
+
+The `job` attribute records more internal affairs:
+```python
+>>> dir(most_recent_fmriprep.job)
+...
+'alt_discriminator',
+'attempt',
+'attribute_map',
+'change_state',
+'child_types',
+'compute_provider_id',
+'config',
+'container_type',
+'created',
+'destination',
+'discriminator',
+'failure_reason',
+'gear_id',
+'gear_info',
+'get',
+'get_logs',
+'group',
+'id',
+'inputs',
+'items',
+'keys',
+'label',
+'local_created',
+'local_modified',
+'modified',
+'origin',
+'positional_to_model',
+'previous_job_id',
+'print_logs',
+'profile',
+'project',
+'rattribute_map',
+'ref',
+'related_container_ids',
+'reload',
+'request',
+'retried',
+'return_value',
+'saved_files',
+'state',
+'swagger_types',
+'tags',
+'to_dict',
+'to_str',
+'transitions',
+'update',
+'values']
+```
+
+Use these attributes to filter strings, integers, datetimes -- whatever you'd like!
