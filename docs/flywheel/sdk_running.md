@@ -367,7 +367,7 @@ possible to filter them using a little bit of Python
 gymnastics.
 
 So let's say we want to get the output of the most recently
-compete `fMRIPrep`. We can use
+completed `fMRIPrep`. We can use
 the `analyis.label`, the `analysis.job.state` attribute, and a `datetime` sort to filter that:
 
 ```python
@@ -386,7 +386,7 @@ That's already considerably easier. Now to get the most recent successful run, s
  'fmriprep-hpc 01/30/2020 10:56:46'
 ```
 
-Boom! Now you can get outputs and such just as you did above.
+Boom! Now you can get outputs and such just as you did in the above sections.
 
 You can use any of the analysis object's attributes to
 filter your list of analyses. They're listed here:
@@ -399,7 +399,7 @@ filter your list of analyses. They're listed here:
 'attribute_map',
 'child_types',
 'container_type',
-'created',
+'created',                       # the best option for datetime sorting
 'delete_file',
 'delete_file_classification',
 'delete_file_info',
@@ -413,7 +413,7 @@ filter your list of analyses. They're listed here:
 'download_tar',
 'file_ref',
 'files',
-'gear_info',
+'gear_info',                    # You can check the gear version number here
 'get',
 'get_file',
 'get_file_download_url',
@@ -423,14 +423,14 @@ filter your list of analyses. They're listed here:
 'info',
 'inputs',
 'items',
-'job',
+'job',                         # more info on the gear run
 'keys',
 'label',
 'local_created',
 'local_modified',
 'modified',
 'notes',
-'parent',
+'parent',                      # You can use this to see what container type this analysis is attached to
 'parents',
 'positional_to_model',
 'rattribute_map',
@@ -475,12 +475,12 @@ The `job` attribute records more internal affairs:
 'discriminator',
 'failure_reason',
 'gear_id',
-'gear_info',
+'gear_info',           # You can use this to check the gear version string
 'get',
 'get_logs',
 'group',
 'id',
-'inputs',
+'inputs',              # You can use this to get a list of your input data
 'items',
 'keys',
 'label',
@@ -500,7 +500,7 @@ The `job` attribute records more internal affairs:
 'request',
 'retried',
 'return_value',
-'saved_files',
+'saved_files',          # you can use this to get a list of output data
 'state',
 'swagger_types',
 'tags',
