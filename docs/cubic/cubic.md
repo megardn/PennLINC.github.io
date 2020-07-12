@@ -354,14 +354,14 @@ $ sudo chown -R my_username /cbica
 1. Mac users need to download FUSE and SSHFS: https://osxfuse.github.io/ .
 2. Mount ussing `sshfs`
 ```bash
-$ sshfs -o defer_permissions username@cbica-cluster:<my-folder-on-CUBIC> <my-local-folder>
+$ sshfs -o defer_permissions username@cubic-login.uphs.upenn.edu:<my-folder-on-CUBIC> <my-local-folder>
 ```
 For example, if you have set up your mount point according to the above guide, your command will be:
 ```bash
-$ sshfs -o defer_permissions username@cbica-cluster:/cbica/projects/my_project /cbica/projects/my_project/
+$ sshfs -o defer_permissions username@cubic-login.uphs.upenn.edu:/cbica/projects/my_project /cbica/projects/my_project/
 ```
 I recommend putting this command into a script or alias if you need to mount often. E.g. in your `.profile` put:
-`alias mc="sshfs -o defer_permissions username@cbica-cluster:/cbica/projects/my_project /cbica/projects/my_project/"`
+`alias mc="sshfs -o defer_permissions username@cubic-login.uphs.upenn.edu:/cbica/projects/my_project /cbica/projects/my_project/"`
 Now you can simply type `mc` to mount cubic.
 Pro-tip: Follow these instructions to no longer need to type your password: http://www.linuxproblem.org/art_9.html
 
