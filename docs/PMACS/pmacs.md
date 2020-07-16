@@ -17,23 +17,23 @@ has_toc: true
 
 This section gives an overview of how to get started on PMACS Limited Performance Computing (LPC) cluster. For additional information, check out the [LPC wiki](https://wiki.pmacs.upenn.edu/pub/LPC).
 
-## Obtaining access to PMACS
-Send your PI your Pennkey, full name, and email, and have them forward this information to pmacs-sys-sci@lists.upenn.edu and request access for you. When access has been granted, you will receive an email with a temporary password through SecureShare. Log in via [this link](https://reset.pmacs.upenn.edu/) with your temporary password and choose a new PMACS password. Your Pennkey and new PMACS password will be used to ssh into the LPC and to access the PMACS help desk/ticketing system.
+## Obtaining PMACS LPC Access
+Send your PI your Pennkey, full name, and Penn email, and have them forward this information to pmacs-sys-sci@lists.upenn.edu and request access for you. When access has been granted, you will receive an email with a temporary password through SecureShare. Log in via [this link](https://reset.pmacs.upenn.edu/) with your temporary password and set a new PMACS password. Your Pennkey and new PMACS password will be used to ssh into the LPC and to access the PMACS help desk/ticketing system.
 
 ## Logging in to PMACS LPC
-Once you've set up your login credentials for PMACS, you can SSH into the LPC from anywhere (even without Penn VPN). You can SSH into PMACS as follows:
+Once you've set up your login credentials for the PMACS LPC, you can SSH into the LPC from anywhere (even without Penn VPN). You can SSH into PMACS as follows:
 
 ```bash
 $ ssh [username]@scisub.pmacs.upenn.edu
 ```
-Enter PMACS password when prompted. You can submit jobs on scisub.
+Enter PMACS password when prompted. 
+You can submit jobs on scisub.
 
 ## Submitting tickets
 Log in to the [PMACS Help Desk](https://helpdesk.pmacs.upenn.edu/) with PMACS credentials. Under “Quick Actions” click “Need help? Report it." Submit ticket under appropriate category.
 
 ## Making a project directory
-To have a new project directory created for you, you need to submit a ticket. Log into the [PMACS Help Desk](https://helpdesk.pmacs.upenn.edu/) with PMACS credentials, and submit a "Systems" ticket specifying the desired project folder name (e.g. `grmpy_diffusion`) and who should have read access and read/write access to the folder (e.g. `bbllpc`). Once made, project directories can be found in `project/`
-(e.g. `/project/grmpy_diffusion`).
+New project directories must be created for you by PMACS LPC admin. To have a new project directory created, you need to submit a ticket. Log into the [PMACS Help Desk](https://helpdesk.pmacs.upenn.edu/) with PMACS credentials, and submit a "Systems" ticket specifying the desired project folder name (e.g. `grmpy_diffusion`) and who should have read access and read/write access to the folder (e.g. `bbllpc`). Once made, project directories can be found in `project/` (e.g. `/project/grmpy_diffusion`).
 
 ## Loading modules and accessing module software 
 Environment modules are used to load and unload available software (e.g. ANTs, mrtrix, R, ITK, dcm2niix, fsl, freesurfer, etc.). Hence, in order to use most software/applications that are available on PMACS, you must first load the appropriate module. To check which modules are available on PMACS, type `module avail`. To load a desired module, use `module load [modulename]`. Finally, to see what modules you have loaded, use `module list`.
@@ -45,7 +45,7 @@ $ python
 $ exit()
 ```
 
-Modules can be loaded and unloaded both in the log in node and in an interactive shell. You can access interactive shells via `ibash` (standard) or `xbash` (used for graphics, X11 forwarding enabled). In order to use some module software, however, you must be in an interactive shell. 
+Modules can be loaded and unloaded both in the log in node and in an interactive shell. You can access interactive shells via `ibash` (standard) or `xbash` (used for graphics, X11 forwarding enabled). In order to use some module software, however, you must be in an interactive shell!
 
 For example:
 ```bash
@@ -70,10 +70,10 @@ In what circumstances do you use `ibash` you ask? From the [LPC wiki](https://wi
 - Browse /project/group directory
 - Prototype code and test apps"
 
-## Software install requests
-Any open source free apps needs to be installed by PMACS admin. Note that you can’t install R, Stata, or Python packages on your own. You can submit a “Systems” ticket at [PMACS Help Desk](https://helpdesk.pmacs.upenn.edu/) with PMACS credentials for software to be installed.
+## Requesting software installations
+Open source free apps and most imaging software needs to be installed by PMACS admin. This means you can’t install R, Stata, or Python packages on your own. You can submit a “Systems” ticket at [PMACS Help Desk](https://helpdesk.pmacs.upenn.edu/) requesting that new software be installed.
 
-## Installing Flywheel locally on PMACS
+## Installing Flywheel on your PMACS account
 You can install the Flywheel command line interface (CLI) locally, which is helpful as the CLI version updates frequently. Follow these steps to install the Flywheel CLI and gain access to `fw` commands. Complete these steps on the log in node, not in an interactive shell.
 
 1. Install miniconda in your home directory (`/home/[pmacs username]`):
@@ -85,7 +85,6 @@ $ bash ./Miniconda3-latest-Linux-x86_64.sh -b -p $HOME/software/pkg/miniconda3
 ```bash
 $ source $HOME/software/pkg/miniconda3/bin/activate # should be whatever folder miniconda3/bin/activate is in
 ```
-
 3. Create flywheel python environment and activate it
 ```bash
 $ conda create -n flywheel anaconda python=3
@@ -100,7 +99,7 @@ $ pip install flywheel-sdk
 $ wget https://storage.googleapis.com/flywheel-dist/cli/12.1.1/fw-linux_amd64.zip
 $ unzip fw-linux_amd64.zip
 ```
-6. The fw executable should be in the linux_amd64 folder. Next, add this directory to your path so that the `fw` command is accessible from all locations
+6. The fw executable should be in the linux_amd64 folder. Add this directory to your path so that the `fw` command is accessible from all locations
 ```bash
 $ echo "export PATH=\$PATH:~/linux_amd64" >> ~/.bashrc
 ```
@@ -121,22 +120,22 @@ $ You are currently logged in as $username to upenn.flywheel.io
 $ mkdir /Users/$username/ImageData/PMACS_remote
 $ chmod 700 /Users/$username/ImageData/PMACS_remote
 ```
-3. Mount the PMACS directory to your local directory using sshfs and sciget 
+3. Mount the desired PMACS directory to your newly created, local mount directory using sshfs and sciget 
 ```bash
 $ sshfs [username]@sciget.pmacs.upenn.edu:<my-folder-on-PMACS> <my-local-mount-folder> -o defer_permissions,volname=project
 ```
-
-## Enable X11 forwarding
-If you're using a Mac, download and open new terminal in [XQuartz](https://www.xquartz.org/). Log into PMACS with X11 forwarding enabled (-Y on Macs):
+4. Unmount when done! You should run this unmount command from outside of the mount point.
 ```bash
-$ ssh -Y [username]@scisub.pmacs.upenn.edu
-$ xbash # interactive job on Galton, but with X11 forwarding enabled
+$ diskutil umount force /Users/$username/ImageData/PMACS_remote
 ```
-> Note: X11 doesn’t work with some commands like `mrview` and `shview` from MRtrix. But you can use X11 forwarding with SAS or other instances when you need graphics.
 
-## Use `scp` to download files from PMACS
-```bash
-$ scp [username]@transfer.pmacs.upenn.edu:/project/project_dir/file /your/local/directory/file
-```
-> Note: make sure to use transfer.pmacs.upenn.edu
+## Enabling X11 forwarding
+To use graphics on PMACS, make sure that you:
+- Have [XQuartz](https://www.xquartz.org/) installed on your local Mac
+- log in to scisub via ssh -Y
+- use xbash for your interactive shell 
 
+
+## Transferring files to and from the LPC
+- You can transfer files to and from MPACS with username@transfer.pmacs.upenn.edu. This can be used with SFTP, rsync, and scp. (You cannot use transfer for ssh).
+- Sciget can be used with scp
