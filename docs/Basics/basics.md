@@ -1,9 +1,9 @@
 ---
 layout: default
-title: Basics
+title: Python and Jupyter
 has_children: false
 has_toc: false
-nav_order: 2
+nav_order: 3
 ---
 
 
