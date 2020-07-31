@@ -47,7 +47,7 @@ When you have enrolled, please keep doing daily check in, and also update the [s
 
 ### 5.  Site log.
 
-_This is critical_.  All trips to work (whether at Richards or 10 Gates) need to be _prospetively logged_ on the location-specific google doc.  The goal of this is to ensure that there is not too much occupancy at any one location. *PLEASE DO NOT COME TO THE WORKPLACE UNLESS THIS HAS BEEN DONE*.
+_This is critical_.  All trips to work (whether at Richards or 10 Gates) need to be _prospectively logged_ on the location-specific google doc. If you need to be in BOTH locations, then you need to sign up on BOTH calendars (not just your "home base"). The goal of this is to ensure that there is not too much occupancy at any one location. *PLEASE DO NOT COME TO THE WORKPLACE UNLESS THIS HAS BEEN DONE*.
 
 There is a separate "tab" for each day, and separate doc for each location.
 
