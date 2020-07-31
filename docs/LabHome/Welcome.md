@@ -1,9 +1,9 @@
 ---
 layout: default
-title: PMACS
+title: LabHome
 has_children: false
 nav_order: 6
-permalink: docs/pmacs
+permalink: docs/LabHome
 has_toc: true
 ---
 # Using Penn Medicine Academic Computing Services (PMACS)
