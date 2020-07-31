@@ -30,9 +30,9 @@ Each team member must be _individually_ approved to work in person.  This requir
 
 All team members need to complete TWO courses on Knowledge Link. PDFs certificates of completion must be sent to Stace Moore.
 
-COVID-19 Training For Penn Essential Employees, Course UP.83015.ITEM.COVID19ESSENTIAL
+COVID-19 Training For Penn Essential Employees: ```Course UP.83015.ITEM.COVID19ESSENTIAL```
 
-Resumption of Research Training at Penn-EHRS,  Course UP.83015.ITEM.ResumeResearch
+Resumption of Research Training at Penn-EHRS:  ```Course UP.83015.ITEM.ResumeResearch```
 
 When these are done and emailed to Stace update the [summary spreadsheet](https://docs.google.com/spreadsheets/d/1urO9Ds-GFc9pHnsircfhkd4RW4TP16opleP_ARyo3gU/edit#gid=0). 
 
