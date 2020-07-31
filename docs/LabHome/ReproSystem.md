@@ -2,7 +2,7 @@
 layout: default
 title: Project Reproducibility Guide 
 parent: Lab Basics
-nav_order: 1
+nav_order: 3
 ---
 
 
