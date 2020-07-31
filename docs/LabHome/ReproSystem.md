@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Project Reproducibility Guide 
-parent: LabHome
+parent: Lab Basics
 nav_order: 1
 ---
 
