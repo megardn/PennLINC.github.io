@@ -14,7 +14,7 @@ Please note that the School of Medicine  takes this _extremely seriously_.  Ulti
 
 Thus: if you are not sure about the right thing to do in a specific situation, *please ask*.
 
-_Please make sure your current information is accurate [summary spreadsheet](https://docs.google.com/spreadsheets/d/1urO9Ds-GFc9pHnsircfhkd4RW4TP16opleP_ARyo3gU/edit#gid=0). 
+*Please make sure your current information is accurate on this [summary spreadsheet](https://docs.google.com/spreadsheets/d/1urO9Ds-GFc9pHnsircfhkd4RW4TP16opleP_ARyo3gU/edit#gid=0). 
 
 ### 1.  Communication re: COVID-19 Q's.
 
