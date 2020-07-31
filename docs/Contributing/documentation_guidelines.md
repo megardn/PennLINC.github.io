@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Writing Your Own Docs
-parent: Contributing
+parent: Contributing to Docs
 nav_order: 1
 has_toc: true
 ---
