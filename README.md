@@ -1,6 +1,6 @@
 # BBL Documentation
 
-This is a site with information on how to do informatics work in the BBL.
+This is a site for  procedures, information, documentation related to PennLINC (www.pennlinc.io). 
 
 
 ## About the theme
