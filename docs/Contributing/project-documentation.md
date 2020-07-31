@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Complete Project Documentation
-parent: Contributing
+parent: Contributing to Docs
 has_children: false
 has_toc: true
 nav_order: 2
