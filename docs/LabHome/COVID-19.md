@@ -1,7 +1,6 @@
-
 ---
 layout: default
-title: COVID-19 
+title: COVID-19 Compliance
 parent: Lab Basics
 nav_order: 2
 ---
@@ -50,4 +49,5 @@ There is a separate "tab" for each day, and separate doc for each location.
 
 Click [here for Ricahrds PodA](https://docs.google.com/spreadsheets/d/1udVy6YoQ0-ZvvA_VcaVh0kjE6KvWBalCHFoum_bYwJU/edit#gid=1436285191)
 
-Click [here for 10 Gates](
+Click [here for 10 Gates](https://docs.google.com/spreadsheets/d/1zBTn5XZSJaW39T-co763ElBRcJpW1tqT09f4NRlX22M/edit#gid=0).
+
