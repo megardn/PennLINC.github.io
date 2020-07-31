@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Python and Jupyter
+title: Software and Environments
 has_children: false
 has_toc: false
 nav_order: 4
