@@ -34,7 +34,7 @@ COVID-19 Training For Penn Essential Employees: ```Course UP.83015.ITEM.COVID19E
 
 Resumption of Research Training at Penn-EHRS:  ```Course UP.83015.ITEM.ResumeResearch```
 
-When these are done and emailed to Stace update the [summary spreadsheet](https://docs.google.com/spreadsheets/d/1urO9Ds-GFc9pHnsircfhkd4RW4TP16opleP_ARyo3gU/edit#gid=0). 
+When these are done and emailed to BOTH Stace and John Hyon update the [summary spreadsheet](https://docs.google.com/spreadsheets/d/1urO9Ds-GFc9pHnsircfhkd4RW4TP16opleP_ARyo3gU/edit#gid=0). 
 
 ### 4.  Penn Open Pass
 
