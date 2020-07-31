@@ -1,7 +1,7 @@
 ---
 layout: default
 title: CUBIC
-nav_order: 5
+nav_order: 7
 has_children: true
 permalink: docs/cubic
 has_toc: false
@@ -16,7 +16,7 @@ has_toc: false
 1. TOC
 {:toc}
 
-The cubic cluster is a very powerful set of servers that we can use for computing. Although they are running Linux, familiarity with Linux does not mean that you will be able to effectively use CUBIC. This section details how to get up and running on the CUBIC cluster.
+The cubic cluster is a very powerful set of servers that we can use for computing. Although they are running Linux, familiarity with Linux does not mean that you will be able to effectively use CUBIC. This section details how to get up and running on the CUBIC cluster. In general we now reccomend using [PMACS](https:https://pennlinc.github.io/docs/pmacs) for specific analysis projects, and reserve CUBIC for use as a high-performance compute engine for large batches of containerized jobs that are launched from Flywheel.  However, for specific projects (esp collaborations with CBICA), it may make sense to have your project live on CUBIC.
 
 ## Setting up your account
 
