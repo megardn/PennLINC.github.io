@@ -1,3 +1,11 @@
+---
+layout: default
+title: Project Reproducibility Guide 
+parent: LabHome
+nav_order: 1
+---
+
+
 # PennLINC Project Reproducibility Guide 
 
 ### 1. Replication buddy. 
