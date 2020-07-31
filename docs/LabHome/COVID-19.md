@@ -6,9 +6,13 @@ nav_order: 2
 ---
 
 
-# Compliance with COVID-19 Regualtions #
+# Compliance with COVID-19 Regulations  #
 
-Compliance with COVID-19 social distancing regulations is critical to both maintain a safe working envirnoment.  Current information (as of Penn Phase II, 7/31/2020) is below.  Please note that the School of Medicne takes this _extremely seriously_.  Ultimately, compliance with these regualtions is up to each individual lab member.  Sadly, failure to comply with these guidelines can result in both HR consequences for the individual as well as our entire organization.  Thus: if you are not sure about the right thing to do in a specific situation, please ask Ted, Dan Wolf (Richards Pod A captian), or Stace Moore on slack.
+Compliance with COVID-19 social distancing regulations is critical to  maintain a safe working environment.  Current information (as of Penn Phase II, 7/31/2020) is below.  
+
+Please note that the School of Medicine  takes this _extremely seriously_.  Ultimately, compliance with these regulations  is up to each individual lab member.  Sadly, failure to comply with these guidelines can result in both HR consequences for the individual as well as our entire organization.  
+
+Thus: if you are not sure about the right thing to do in a specific situation, *please ask*.
 
 _Please make sure your current information is accurate [summary spreadsheet](https://docs.google.com/spreadsheets/d/1urO9Ds-GFc9pHnsircfhkd4RW4TP16opleP_ARyo3gU/edit#gid=0). 
 
@@ -20,7 +24,7 @@ This should all occur on the #poda_resurgence channel on slack.  Please flag @Da
 
 ### 2. Permission to do in-person work at Penn.  
 
-Each team member must be _individually_ approved to work in person.  This requires several levels of sign-off, including at the lab level (Ted), at the section level (coordianted by Stace), and at the Departmental level. Regardless of any other compliance activities, unless you have recieved explicit approval from Stace that you can come to work during Phase 2, you are _NOT_ approved to come to work.  
+Each team member must be _individually_ approved to work in person.  This requires several levels of sign-off, including at the lab level (Ted), at the section level (coordinated  by Stace), and at the Departmental level. Regardless of any other compliance activities, unless you have received  explicit approval from Stace that you can come to work during Phase 2, you are _NOT_ approved to come to work.  
 
 ### 3. Knowledgelink Training
 
@@ -47,7 +51,8 @@ _This is critical_.  All trips to work (whether at Richards or 10 Gates) need to
 
 There is a separate "tab" for each day, and separate doc for each location.
 
-Click [here for Ricahrds PodA](https://docs.google.com/spreadsheets/d/1udVy6YoQ0-ZvvA_VcaVh0kjE6KvWBalCHFoum_bYwJU/edit#gid=1436285191)
+Click [here for Richards  PodA](https://docs.google.com/spreadsheets/d/1udVy6YoQ0-ZvvA_VcaVh0kjE6KvWBalCHFoum_bYwJU/edit#gid=1436285191)
 
 Click [here for 10 Gates](https://docs.google.com/spreadsheets/d/1zBTn5XZSJaW39T-co763ElBRcJpW1tqT09f4NRlX22M/edit#gid=0).
+
 
