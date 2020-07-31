@@ -24,10 +24,20 @@ Send your PI your Pennkey, full name, and Penn email, and have them forward this
 Once you've set up your login credentials for the PMACS LPC, you can SSH into the LPC from anywhere (even without Penn VPN). You can SSH into PMACS as follows:
 
 ```bash
-$ ssh [username]@scisub.pmacs.upenn.edu
+$ ssh -Y [username]@scisub.pmacs.upenn.edu
 ```
+
 Enter PMACS password when prompted. 
 You can submit jobs on scisub.
+
+In general, there is a set of software libraries and tools we expect you'll need, such as `R`, `conda`, and `FSL`; we've made these available for you in a module. To load this module, simply type the following:
+
+```
+$ xbash
+$ source /project/bbl_projects/apps/default_modules.sh
+```
+
+You can also add the `source` line to your bash profile (add the line in the file `~/.bash_profile`) so that it loads automatically every time you sign in.
 
 ## Submitting tickets
 Log in to the [PMACS Help Desk](https://helpdesk.pmacs.upenn.edu/) with PMACS credentials. Under “Quick Actions” click “Need help? Report it." Submit ticket under appropriate category.
