@@ -3,7 +3,7 @@ layout: default
 title: Python and Jupyter
 has_children: false
 has_toc: false
-nav_order: 3
+nav_order: 4
 ---
 
 
