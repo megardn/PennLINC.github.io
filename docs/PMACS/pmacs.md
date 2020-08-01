@@ -122,6 +122,39 @@ $ You are currently logged in as $username to upenn.flywheel.io
 
 > Note: Sometimes `fw status` gets you this error message: `'Connection to upenn.flywheel.io timed out. (connect timeout=10)')': /api/auth/status`. In this case, logging out of PMACS and logging in again should fix the issue.
 
+## Cloning and Updating GitHub Repos on PMACS 
+If you have already created an ssh private key for your PMACS account and have added it to both the ssh-agent on PMACS (~/.ssh/id_rsa and id_rsa.pub files) and to your GitHub account, you can clone, pull, and push git repositories using sciget and an available github module on PMACS. 
+
+Specifically, to clone and update repos you should first ssh in via sciget (rather than via scisub). Sciget allows connections to outbound networks.
+```bash
+$ ssh -Y [username]@sciget.pmacs.upenn.edu
+```
+Next, load a git-related module.
+```bash
+$ module load git/2.5.0 #or git-lfs/2.2.1 
+```
+You can now use github as you normally would.
+
+If you have not yet set up your PMACS ssh key, follow these instructions. You will only need to do this once.
+1. Generate a new ssh key using your github-associated email.
+```bash
+$ ssh-keygen -t rsa -b 4096 -C "{YOUREMAIL@example.com}"
+```
+- When promted to "Enter a file in which to save the key," press Enter. This accepts the default file location.
+- When promted, enter a secure passphrase.
+
+2. Add your ssh key to the ssh-agent
+```bash
+$ eval "$(ssh-agent -s)"
+$ ssh-add ~/.ssh/id_rsa
+```
+
+3. Add your ssh key to your GitHub account. 
+- Sign in to GitHub 
+- Click on your profile photo and click Settings
+- Click SSH and GPG keys in the Settings sidebar
+- Click New SSH Key. "Title": enter a relevant title for the new key (e.g. PMACS account). "Key": copy the text in your ~/.ssh/id_rsa.pub file (which should start with ssh-rsa and end with your email) and paste it into the Key text box. Cick Add SSH Key.
+
 ## Mounting a PMACS project directory on your local machine
 1. If you are using a Mac, first install [OSXFuse and SSHFS](https://osxfuse.github.io/).
 
