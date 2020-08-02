@@ -153,7 +153,7 @@ $ ssh-add ~/.ssh/id_rsa
 - Sign in to GitHub 
 - Click on your profile photo and click Settings
 - Click SSH and GPG keys in the Settings sidebar
-- Click New SSH Key. "Title": enter a relevant title for the new key (e.g. PMACS account). "Key": copy the text in your ~/.ssh/id_rsa.pub file (which should start with ssh-rsa and end with your email) and paste it into the Key text box. Cick Add SSH Key.
+- Click New SSH Key. "Title": enter a relevant title for the new key (e.g. PMACS account). "Key": copy the text in your ~/.ssh/id_rsa.pub file (which should start with ssh-rsa and end with your email) and paste it into the Key text box. Click Add SSH Key.
 
 ## Mounting a PMACS project directory on your local machine
 1. If you are using a Mac, first install [OSXFuse and SSHFS](https://osxfuse.github.io/).
