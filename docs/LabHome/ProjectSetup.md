@@ -12,7 +12,7 @@ Each project at PennLINC has several key elements to facilitate collaboration an
 
 ### Github repository
 
-All code, from the beginning of the project, should be in a github repository.  This is a prerequisite for reproducible neuroscience -- please start your project  out on the right foot!
+All code, from the beginning of the project, should be in a github repository.  This is a prerequisite for reproducible neuroscience -- please start your project  out on the right foot!  These repos should reside in the [PennLINC org](www.github.com/PennLINC), not your personal github.
 
 
 ### Github pages wiki
