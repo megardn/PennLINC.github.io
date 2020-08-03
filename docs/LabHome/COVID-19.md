@@ -2,7 +2,7 @@
 layout: default
 title: COVID-19 Compliance
 parent: Lab Basics
-nav_order: 4
+nav_order: 7
 ---
 
 
