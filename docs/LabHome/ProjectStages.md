@@ -1,3 +1,11 @@
+---
+layout: default
+title: Lab Meetings
+parent: Lab Basics
+nav_order: 3
+---
+
+
 
 ### 1)	Setup the infrastructure:
 
