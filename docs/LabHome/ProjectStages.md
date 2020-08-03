@@ -14,7 +14,7 @@ There is no such thing as a "quick" scientific project. All projects take carefu
 
 Each project in the lab has a well-defined infrastructure.  See relevant pages including
 
-a) [Project setup overview](
+a) [Project setup overview](https://pennlinc.github.io/docs/LabHome/ProjectSetup/)
 
 b) Project setup on PMACS (coming soon)
 
