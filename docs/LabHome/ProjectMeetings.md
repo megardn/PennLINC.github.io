@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Project Meetnigs
+title: Project Meetings
 parent: Lab Basics
 nav_order: 2
 ---
@@ -20,5 +20,18 @@ For projects led by junior trainees (i.e., CRCs, new data analysts, and rotating
 ### Preparation
 
 For these meetings, please update the trello board ahead of the meeting so project progress can be clearly tracked. My preference is that data at these meetings is presented in the form of RMarkdown or Juypter notebooks to enhance reproducibility, although images attached to trello or power point slide decks are acceptable as well.  Please keep all markdown/notebook PDFs and slide decks reviewed in the weekly meeting in a clearly labeled folder in the shared google drive.  
+
+
+### See also
+
+[Project setup guide]
+
+[Stages of a Project]
+
+[Project setup on PMACS]
+
+[project reproducibility guide]( https://pennlinc.github.io/docs/LabHome/ReproSystem/)
+
+
 
 
