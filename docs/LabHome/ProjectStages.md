@@ -1,19 +1,25 @@
 ---
 layout: default
-title: Lab Meetings
+title: Stages of a Project
 parent: Lab Basics
 nav_order: 3
 ---
 
+# Stages of a Project at PennLINC
+
+There is no such thing as a "quick" scientific project. All projects take careful planning and follow a stereotyped process.  Understanding the life cycle of a project is critical for ensuring feasibility, avoiding suprises, and maximizing fun.  Given how long any project takes (approx ~1y minimum) it is essential that every project be carefully thought-out to justify the investment.  As ever, the most important question is "What is the question?" 
 
 
-### 1)	Setup the infrastructure:
+### 1)	Setup the infrastructure
 
 Each project in the lab has a well-defined infrastructure.  See relevant pages including
 
-a) Project setup overview
-b) Project setup on PMACS
+a) [Project setup overview](
+
+b) Project setup on PMACS (coming soon)
+
 c) [Project reproducabiltiy guide](https://pennlinc.github.io/docs/LabHome/ReproSystem/)
+
 d) [Guide to weekly project meetings](https://pennlinc.github.io/docs/LabHome/ProjectMeetings/)
 
 
