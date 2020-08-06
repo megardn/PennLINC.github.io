@@ -46,7 +46,7 @@ At this point, the paper is approaching final form.  The project lead should hav
 
 _Verify input data stability._  It is obvious that replication won't work unless nothing has changed in code used for subject selection or subject-level data processing.  This of course would invalidate the steps taken above.  It is *critical* for project lead and buddy to jointly verify this, as this is a common source of error.
 
-_True replication of major findings._  Often, true/complete replication of all findings using de novo code is difficult.  Thus, the project lead and faculty supervisor should identify a handful of key results to be replicated with new code.  This may be the same analyses as for the initial results (above) but often things small changes have occurred—so it is good to check.
+_True replication of major findings._  Often, true/complete replication of all findings using de novo code is difficult.  Thus, the project lead and faculty supervisor should identify a handful of key results to be replicated with new code.  This may be the same analyses as for the initial results (above) but often things small changes to the analyses have occurred since the initial findings—so it is good to check.
 
 _Technical replication and review of all findings._ This should be as comprehensive as possible.  Given that an error in figure 7B still leads to an errata (esp if broadcast on twitter), it is in all of our interest to make sure that all results are fully reproducible.  
 
