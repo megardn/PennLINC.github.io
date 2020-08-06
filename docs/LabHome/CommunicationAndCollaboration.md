@@ -7,12 +7,15 @@ nav_order: 7
 
 # A Note on Communication and Collaboration
 
-All of our work is highly collaborative, and collaboration is oftentimes what makes science fun.  Several basic notes follow below, which of course cannot even scratch the surface of what can both right and wrong in a scientific collaboration.   Please reach out to Ted anytime and suggest updates to this pages as other important situations arise.
-
+All of our work is highly collaborative, and collaboration is oftentimes what makes science fun.  Several basic notes follow below, which of course cannot even scratch the surface of what can both right and wrong in a scientific collaboration.     In general, we strive for clear and constructive communication that helps us all do better science and enjoy our work.  While the lab is a relatively  informal environment, mutual respect, professionalism, and supporting each other (broadly, as humans) is essential. Please reach out to Ted anytime and suggest updates to this pages as other important situations arise.
 
 ### Modes of correspondence
 
-When 
+In general, open project channels on Slack are preferred.  However, note that faculty and senior staff are often a member of dozens of channels and threads can get lost. For specific tasks that take time & consideration -- like manuscript review, grant feedback, career development quesetions, and letters of reccomendation -- email is greatly preferred.  Please try to avoid direct messages to Ted except for really quick ("one-off") queries.
+
+Protected health information (PHI; identifying information including participant names, addresses, etc) should only be transmitted using health-system approved means.  PHI should *never* be placed on slack.
+
+Finally, it is good to remember that all electronic written correspondence (including email and slack) have a poor record of privacy.  If the content of your correspondence is not something you'd want a lot of people to see, please strongly consider a phone call rather than a written message.
 
 
 ### Slack best practices
@@ -29,7 +32,6 @@ For faculty review of manuscripts, grants, or other documents, send to Ted via e
 
 In general, try to avoid the slack direct message channels for project correspondence, as they are lost and not searchable.   
 
-Finally, remember: if the content of your correspondence is not something you'd want a lot of people to see, strongly consider a phone call rather than a written message.
 
 
 ### Setting priorities & expectations
