@@ -12,11 +12,11 @@ Lab meetings occur every Monday from 2P-3P, with exceptions for holiday and trav
 
 The current lab meeting schedule can be found [here](https://docs.google.com/spreadsheets/d/1BDtJWv49Z7BVIKIHcFms4NalxAnssX8Psl-PvlW6ZPM/edit#gid=1932655502). 
 
-All members of the image analysis team (regardless of faculty mentor) are welcome to attend, but trainees supervised by Satterthwaite are expected to attend-- and let me know directly if you cannot attend; also please make every effort to be promptly on time.  Clinical research coordinators are encouraged to attend as well, excepting conflicts with participant visits.  The meeting rotates among the following formats.  
+All members of the image analysis team (regardless of faculty mentor) are welcome to attend, but trainees supervised by Satterthwaite are expected to attend-- and let me know directly if you cannot attend; also please make every effort to be promptly on time.  Clinical research coordinators are encouraged to attend as well, excepting conflicts with participant visits.  The meeting rotates among the following formats.    Note that if you sign up for a slot on the schedule please **mark it in your calendar clearly**-- we definitely want to avoid last second schedule conflicts / content vacancies. 
 
 ### Work in progress
 
-These occur typically twice a month.  In general, each lab member presents their current project in a typical scientific format, with a focus on explaining new methods, exciting results, and current obstacles.   It should be emphasized that the goal is that these presentations are both accessible and interesting to lab members of all skill levels. This is an informal format where questions, discussion, and interruptions are _highly_ encouraged. However, as scientific presentations is an important skill at all career stages, it is good to take this opportunity to prepare for this well in advance.  Note that if you sign up for a slot on the schedule please **mark it in your calendar clearly**-- we definitely want to avoid last second schedule conflicts / content vacancies. 
+These occur typically twice a month.  In general, each lab member presents their current project in a typical scientific format, with a focus on explaining new methods, exciting results, and current obstacles.   It should be emphasized that the goal is that these presentations are both accessible and interesting to lab members of all skill levels. This is an informal format where questions, discussion, and interruptions are _highly_ encouraged. However, as scientific presentations is an important skill at all career stages, it is good to take this opportunity to prepare for this well in advance.
 
 ### Informatics and pipeline updates
 
