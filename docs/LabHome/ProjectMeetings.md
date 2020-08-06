@@ -24,13 +24,13 @@ For these meetings, please update the trello board ahead of the meeting so proje
 
 ### See also
 
-[Project setup guide]
+[Project setup guide](https://pennlinc.github.io/docs/LabHome/ProjectSetup/)
 
-[Stages of a Project]
+[Stages of a Project](https://pennlinc.github.io/docs/LabHome/ProjectStages/)
 
-[Project setup on PMACS]
+[Project setup on PMACS](coming soon)
 
-[project reproducibility guide]( https://pennlinc.github.io/docs/LabHome/ReproSystem/)
+[project reproducibility guide](https://pennlinc.github.io/docs/LabHome/ReproSystem/)
 
 
 
