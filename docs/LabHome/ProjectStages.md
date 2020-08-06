@@ -97,12 +97,12 @@ In general, it tends to make sense to write the methods, results, and figure leg
 
 ### 16)	Polish text with faculty mentor
 
-Experience suggests that the number of draft iterations is one of the dominant factors in how good the final text of a paper is.  Expect 3-5 rounds of revision of the text with your faculty mentor prior to sending the paper to co-authors.  Tracking changes and careful version control at this phase is of course key.  Saving paper versions with a date suffix (in format YYYYMMDD) tends to help. Although Latex is often desirable, most journals require manuscripts to be submitted in Word, so it is usually just easier to use that from the beginning. One alternative option (which has not been tested extensively) is to write using a google doc to allow all authors to use the same version (see below), and then export to word prior to submission.
+Experience suggests that the number of draft iterations is one of the dominant factors in how good the final text of a paper is.  Expect 3-5 rounds of revision of the text with your faculty mentor prior to sending the paper to co-authors.  Tracking changes and careful version control at this phase is of course key.  Saving paper versions with a date suffix (in format YYYYMMDD) tends to help. Although Latex is often desirable, most journals require manuscripts to be submitted in Word, so it is usually just easier to use that from the beginning. One alternative option is to write using a google doc to allow all authors to use the same version , and then export to word prior to submission. This saves a LOT of time when integrating comments from papers with many co-authors (see next)
 
 
 ### 17)	Integrate co-author feedback
 
-We usually allow ~1-2 weeks for co-authors to provide feedback on a paper.  For those who do not reply in the specified window, usually the faculty lead will send a reminder email.
+We usually allow ~1-2 weeks for co-authors to provide feedback on a paper.  For those who do not reply in the specified window, usually the faculty lead will send a reminder email.  For papers with many authors, consider distributing the paper as a google doc; this will make the process of integrating co-author changes much less painful.  When sending co-authors the paper as a google doc, just be explicit that they are to track chagnes using the "suggesting" mode (screenshots are helpful to include).
  
 
 ### 18)	Submit paper, code, & post on a preprint server
