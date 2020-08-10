@@ -18,11 +18,11 @@ PennLINC sits within the [Neurodevelopment and Psychosis Section](https://www.me
 
 Once general section-level onboarding is complete (especially  CITI/HIPPA training), several systems are needed to function effectively.  Tinashe Tapera, our senior data analyst, can provide access to some of these systems, including:
 
-[Slack](pennbbl.slack.com): Our primary means of communication as a team.  However, also read the page on [communication and collaboration](https://pennlinc.github.io/docs/LabHome/CommunicationAndCollaboration/) 
+[Slack](pennbbl.slack.com): Our primary means of communication as a team.  However, also read the page on [communication and collaboration](https://pennlinc.github.io/docs/LabHome/CommunicationAndCollaboration/).
 
 [Github](https://github.com/PennLINC/): all code belongs in our github code repository; our [github pages webpage](https://pennlinc.github.io/) associated with this organization also houses growing knowledge base of tutorials. 
 
-[Trello](https://trello.com/pennlinc): a  web app for tracking tasks and work as a team
+[Trello](https://trello.com/pennlinc): a  web app for tracking tasks and work as a team.
 
 [Flywheel](https://pennlinc.github.io/docs/flywheel): Our main imaging database and analytics platform.
 
