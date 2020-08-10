@@ -30,7 +30,7 @@ Once general section-level onboarding is complete (especialyl CITI/HIPPA trainin
 
 Additionally, we use two compute platforms that you will need access to.
 
-[PMACS](https://pennlinc.github.io/docs/pmacs):  We use the PMACS low performance cluster (LPC) for project-specific analyses.  See the (PMACS page)(https://pennlinc.github.io/docs/pmacs) for details on how get access and create a project.
+[PMACS](https://pennlinc.github.io/docs/pmacs):  We use the PMACS low performance cluster (LPC) for project-specific analyses.  See the PennLINC [PMACS page](https://pennlinc.github.io/docs/pmacs) for details on how get access and create a project.
 
 [CUBIC](https://pennlinc.github.io/docs/cubic):  We use the large high performance cluser (HPC) named CUBIC for large volumes of parallelizable subject-specific processing jobs. Additionally, specific projects may use CUBIC due to specific computational or software requirements.   See the [CUBIC page](https://www.med.upenn.edu/cbica/cubic.html) for more information; it is a large compute resources created by our collaborators in the [Center for Biomedical Image Computing and Analytics (CBICA)](https://www.med.upenn.edu/cbica/).  See the PennLINC [CUBIC page](https://pennlinc.github.io/docs/cubic) for details on how to gain access, create projects, and other tips.
 
