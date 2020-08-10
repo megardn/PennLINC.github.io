@@ -8,8 +8,9 @@ nav_order: 1
 
 # Tutorial Template: Key elements of a tutorial wiki 
 
-Author: Ted Satterthwiate
-Update: 8/10/2020
+##Author: Ted Satterthwiate
+
+##Updated: 8/10/2020
 
 *Author*: who made this tutorial? 
 
