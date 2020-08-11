@@ -186,6 +186,21 @@ This shows which index each file is located at. So if we wanted to use `license.
 
 Analysis gears store their results in a Flywheel data container. This container could be a Acquisition, Subject, Session or Project. If the gear was run using the SDK, there was a keyword argument `destination=`, which specified a data container object. Suppose the analysis used a session container as its `destination`.
 
+## Specifying a VM size for a gear
+
+Different analysis pipelines will require different computing resources. Some of these are queued on the Penn *High Performance Computing (HPC)* system. These will typically have a gear name that ends with `-hpc`. All other gears run on the *Google Cloud Platform (GCP)*. GCP can send your job to a custom-sized virtual machine to run. The size of the VM (i.e. number of CPUs, memory and hard disk size) can be specified using the `tags` keyword argument:
+
+```python
+>>> fmriprep.run(analysis_label=analysis_label, tags=['vm-n1-highmem-4_disk-300GB_swap-30G'],
+...              config=config, inputs=inputs, destination=ses)
+```
+
+Here the `'vm-n1-highmem-4_disk-300GB_swap-30G'` tag is telling the FlyWheel gear executor to use a specific gear. A list of the available gears is:
+
+ * `'vm-n1-highmem-4_disk-300GB_swap-30G'` a.k.a. `'large'`
+ * `'vm-n1-highmem-8_disk-1500G_swap-60G'` a.k.a. `'extra-large'`
+ * '`vm-n1-standard-1_disk-300G_swap-30G`' a.k.a.  `'small'`
+
 
 ## Launching gears on sessions
 
