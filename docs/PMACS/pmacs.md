@@ -181,4 +181,9 @@ To use graphics on PMACS, make sure that you:
 
 ## Transferring files to and from the LPC
 - You can transfer files to and from MPACS with username@transfer.pmacs.upenn.edu. This can be used with SFTP, rsync, and scp. (You cannot use transfer for ssh).
-- Sciget can be used with scp
+- Sciget can be used with scp, but transfer is reccomended. As in:
+```bash
+$ [apines@chead ~]$ scp /data/jux/BBL/projects/multishell_diffusion/processedData/multishellPipelineFall2017/*/*/prestats/eddy/*_msRD.nii.gz pinesa@transfer.pmacs.upenn.edu:/project/grmpy_diffusion/chead_diffusion_metrics/
+```
+- Transferring from cluster-to-cluster instead of through your local machine will run orders of magnitude faster. This is particularly true if you happen to be in the midst of a global pandemic and are relying on your home wifi.
+- Make sure you have full permissions for the destination you are writing to.
