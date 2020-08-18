@@ -8,11 +8,11 @@ nav_order: 2
 
 # Lab Meetings at PennLINC
 
-Lab meetings occur every Monday from 2P-3P, with exceptions for holiday and travel schedule. 
+Lab meetings occur every Monday from 2P-3P, with exceptions for holiday and travel schedule.
 
-The current lab meeting schedule can be found [here](https://docs.google.com/spreadsheets/d/1BDtJWv49Z7BVIKIHcFms4NalxAnssX8Psl-PvlW6ZPM/edit#gid=1932655502). 
+The current lab meeting schedule can be found [here](https://docs.google.com/spreadsheets/d/1BDtJWv49Z7BVIKIHcFms4NalxAnssX8Psl-PvlW6ZPM/edit#gid=1932655502).
 
-All members of the image analysis team (regardless of faculty mentor) are welcome to attend, but trainees supervised by Satterthwaite are expected to attend-- and let me know directly if you cannot attend; also please make every effort to be promptly on time.  Clinical research coordinators are encouraged to attend as well, excepting conflicts with participant visits.  The meeting rotates among the following formats.    Note that if you sign up for a slot on the schedule please **mark it in your calendar clearly**-- we definitely want to avoid last second schedule conflicts / content vacancies. 
+All members of the image analysis team (regardless of faculty mentor) are welcome to attend, but trainees supervised by Satterthwaite are expected to attend-- and let me know directly if you cannot attend; also please make every effort to be promptly on time.  Clinical research coordinators are encouraged to attend as well, excepting conflicts with participant visits.  The meeting rotates among the following formats.    Note that if you sign up for a slot on the schedule please **mark it in your calendar clearly**-- we definitely want to avoid last second schedule conflicts / content vacancies.
 
 ### Work in progress
 
@@ -20,7 +20,7 @@ These occur typically twice a month.  In general, each lab member presents their
 
 ### Informatics and pipeline updates
 
-These occur 1-2 times a semester, and typically are focused on new initiatives regarding neuroinformatics initiatives. 
+These occur 1-2 times a semester, and typically are focused on new initiatives regarding neuroinformatics initiatives.
 
 ### Journal club
 
@@ -39,6 +39,6 @@ The quarterly update may be more likely to be accessible if the following elemen
 
 2. Study stage: Be explict about where you are in a project.  Stages of a project are outlined in the [Stages of a Project Wiki]().
 
-3.  Current progress.  This should be the meat of the update.  Place current work in the context of study phase and hypotheses.  Emphasize progress, but also challenges / obstacles so we can rapidly problem solve as a group. Again, focus on making the challenges and results accessible to lab members of all backgrounds.
+3.  Current progress:  This should be the meat of the update.  Place current work in the context of study phase and hypotheses.  Emphasize progress, but also challenges / obstacles so we can rapidly problem solve as a group. Again, focus on making the challenges and results accessible to lab members of all backgrounds.
 
-4.  Reproducibility: Who is your "buddy" for this project, and how will reproducibility be ensured?  Be explicit regarding where you are in terms of project reproducability checkpoints outlined in the [Reproducability Guide](https://pennlinc.github.io/docs/LabHome/ReproSystem/).
+4.  Reproducibility: Who is your "buddy" for this project, and how will reproducibility be ensured?  Be explicit regarding where you are in terms of project reproducibility checkpoints outlined in the [Reproducibility Guide](https://pennlinc.github.io/docs/LabHome/ReproSystem/).
