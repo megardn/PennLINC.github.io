@@ -3,7 +3,7 @@ layout: default
 title: Using Containers
 nav_order: 10
 has_children: true
-permalink: docs/cubic
+permalink: docs/containers
 has_toc: false
 ---
 
