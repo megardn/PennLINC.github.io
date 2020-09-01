@@ -18,7 +18,9 @@ PennLINC sits within the [Neurodevelopment and Psychosis Section](https://www.me
 
 Once general section-level onboarding is complete (especially  CITI/HIPPA training), several systems are needed to function effectively.  Tinashe Tapera, our senior data analyst, can provide access to some of these systems, including:
 
-[Slack](pennbbl.slack.com): Our primary means of communication as a team.  However, also read the page on [communication and collaboration](https://pennlinc.github.io/docs/LabHome/CommunicationAndCollaboration/).
+[Slack](pennbbl.slack.com): Our primary means of communication as a team.  However, also read the page on [communication and collaboration](https://pennlinc.github.io/docs/LabHome/CommunicationAndCollaboration/). 
+
+[Google Calendars](https://calendar.google.com/calendar/r): Ted maintains an open/public [calendar](https://pennlinc.github.io/docs/LabHome/ProjectMeetings/) to facilitate scheudling of project meetings. You will need to be given persmissions to make events on this calendar. There is also a PennLINC calendar that integrates events and talks that we will add you to; it is mirrored on the front page of pennlinc.io.
 
 [Github](https://github.com/PennLINC/): all code belongs in our github code repository; our [github pages webpage](https://pennlinc.github.io/) associated with this organization also houses growing knowledge base of tutorials. 
 
