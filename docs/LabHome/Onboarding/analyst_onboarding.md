@@ -97,13 +97,15 @@ Other resources:
 
 ### Git & Github
 
-Version control with Git and Github is essential for managing reproducible science. The Informatics team handles all of their projects using git, so fluency with basic git commands and familiarity with a Github-based workflow are daily requirements.
+Version control with Git and Github is essential for managing reproducible science. The Informatics team handles all of their projects using git, and collaboration on large projects is accomplished primarily through Github Pull Requests, so fluency with basic git commands and familiarity with a Github-based workflow are daily requirements.
 
 > Q: What is version control? What kinds of files are appropriate for version controlling software?
 
 > Q: What is the difference between a `commit` and a `push`?
 
 > Q: What is a `branch`? How could one use a `branch` to manage different ideas/experiments in code/analysis?
+
+> Q: What is a Pull Request? Why is it useful for collaboration?
 
 While git is essential, it doesn't take very long to learn, and the basics quickly become second nature. We recommend [this](https://www.youtube.com/watch?v=SWYqp7iY_Tc) Github crash course (1 hour).
 
@@ -157,7 +159,7 @@ Brain Imaging Data Structure is a data storage standard for neuroimaging. It des
 
 > Q: What modalities are currently covered in BIDS? What happens if the data you have isn't covered in BIDS?
 
-We recommend learning about BIDS straight from the source: the [official BIDS specification](https://bids-specification.readthedocs.io/en/stable/) (< 1 hour).
+We recommend learning about BIDS straight from the source: the [official BIDS specification](https://bids-specification.readthedocs.io/en/stable/) (< 1 hour). It's not necessary to learn the BIDS specification for each imaging modality by rote, though.
 
 Other resources:
 
