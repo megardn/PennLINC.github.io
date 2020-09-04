@@ -9,7 +9,7 @@ has_toc: true
 # Informatics Onboarding
 {: .no_toc}
 
-The Informatics team plays a significant role in PennLINC's scientific engine. This page outlines the onboarding process for informatics work, including data curation, analysis, and software development, and is particularly geared towards new data analysts. The goal of this section is to provide the resources necessary to develop the **core competencies** for informatics at PennLINC. Note that there is no expectation that you master of *all* of the competencies below in one sitting - just that you are familiar with how to go about accomplishing these tasks (or at least google your way through it).
+The Informatics team plays a significant role in PennLINC's scientific engine. This page outlines the onboarding process for informatics work, including data curation, analysis, and software development, and is particularly geared towards new data analysts. The goal of this section is to provide the resources necessary to develop the **core competencies** for informatics at PennLINC. Note that there is no expectation that you master *all* of the competencies below in one sitting - just that you are familiar with how to go about accomplishing these tasks (or at least google your way through it).
 
 [Jump to the Epilogue](#epilogue)
 
@@ -32,7 +32,7 @@ The core competencies of informatics are split into 3 major units:
 
 The units are designed around the day-to-day tasks of Informatics team members, with different tasks utilizing a number of competencies from each of these units. In a perfect world, Informatics team members are experts in all 3 units, but in practice, your eventual expertise will depend on your assigned projects within the lab, along with past experience, interests, and desire to learn.
 
-In the sections below, we outline each major competency by asking simple, task-based questions, and provide our best recommended resource for learning each of the competencies, as well as a glossary of secondary resources. There is an estimated time to complete these, but don't feel locked into these time-frames. If you have previously developed one of these skills before, and can confidently answer a question already, feel free to briefly skim the resource.
+In the sections below, we outline each major competency by asking simple, task-based questions, and provide our best recommended resource for learning each of the competencies, as well as a glossary of (optional) secondary resources. There is an estimated time to complete these, but don't feel locked into these time-frames. If you have previously developed one of these skills before, and can confidently answer a question already, feel free to briefly skim the resource.
 
 ---
 
@@ -59,7 +59,7 @@ Other resources:
 
 ### Python
 
-Python is a powerful all-purpose language for data science. It is particularly popular in neuroimaging due to its low skill floor and high skill ceiling/extensibility — you can do anything from adding two numbers together, including build deep learning neuroimaging pipelines.
+Python is a powerful all-purpose language for data science. It is particularly popular in neuroimaging due to its low skill floor and high skill ceiling/extensibility — you can do anything from simply adding two numbers together, to building deep learning neuroimaging pipelines.
 
 > Q: What are the basic data structures in Python programming? How do they differ? What scenarios are appropriate for using one particular data structure in comparison to others?
 
@@ -84,7 +84,7 @@ R is a similarly popular data science language, but tends to favor a slightly na
 
 > Q: What is a Dataframe? How would you create one from a CSV file?
 
-> Q: What "tidy" data? The Tidyverse? What are "verbs" in tidy R parlance?
+> Q: What is "tidy" data? The Tidyverse? What are "verbs" in tidy R parlance?
 
 > Bonus: [Why is R so weird?](https://twitter.com/WhyDoesR)
 
@@ -119,6 +119,7 @@ This section mentions a few other technologies that are not essential for gettin
 
 - [Containerization with Docker](https://ropenscilabs.github.io/r-docker-tutorial/01-what-and-why.html) is used frequently to share reproducible software
 - [Jupyter](https://realpython.com/jupyter-notebook-introduction/) and [Rmarkdown](https://rmarkdown.rstudio.com/lesson-1.html) for creating reproducible notebooks
+- [Python environment management with Conda](https://towardsdatascience.com/devops-for-data-science-making-your-python-project-reproducible-f55646e110fa)
 
 [Jump to top](#informatics-onboarding)
 
@@ -126,7 +127,7 @@ This section mentions a few other technologies that are not essential for gettin
 
 ## Unit 2: Data Management, Curation, & Pipelines
 
-This section introduces the basic data types in neuroimaging, how they are stored, and what software pipelines are frequently used for preprocessing. These competencies are particularly important Informatics team members.
+This section introduces the basic data types in neuroimaging, how they are stored, and what software pipelines are frequently used for preprocessing. These competencies are particularly important for Informatics team members.
 
 ---
 NOTE: Many resources in this unit walk through hands-on tasks that won't be possible until you've been assigned a project. Once you've been assigned a project, you can revisit these interactive portions. Until then, just watch/read along to develop some familiarity with the software and workflows being demonstrated.
@@ -153,7 +154,7 @@ Other resources:
 
 ### BIDS
 
-Brain Imaging Data Structure is a data storage standard for neuroimaging. It describes how best to format and store neuroimaging data (and why it's important to do so). PennLINC expects all of its data, both internal and publicly shared, to be in BIDS format — much of the work of the Informatics team is making sure this goal is being met.
+Brain Imaging Data Structure is a data storage standard for neuroimaging. It describes how best to format and store neuroimaging data (and why it's important to do so). PennLINC expects all of its data, both internal and publicly shared, to be in BIDS format — much of the work of the Informatics team is making sure this goal is being met across different projects.
 
 > Q: What are the benefits of using BIDS?
 
