@@ -61,14 +61,14 @@ Python is a powerful all-purpose language for data science. It is particularly p
 
 > Q: How would you read in a table in Python? How would you loop over the rows in a table?
 
-> Q: What is a class? How would you list all of the available methods of a class? What's the difference between a class' method and a class' attribute?
+> Q: What is a `class`? How would you list all of the available methods of a `class`? What's the difference between a `class`' method and a `class`' attribute?
 
-> Q: How would you run a Python program? How would you check for errors? What is a "traceback"?
+> Q: How would you run a Python program? How would you check for errors? What is a `traceback`?
 
-We recommend [Coursera](https://www.coursera.org/learn/python-crash-course#syllabus) for this part (> 8 hours), although Python is a *very* common language with loads of resources available:
+We recommend [Coursera](https://www.coursera.org/learn/python-crash-course#syllabus) for this part (> 8 hours), although Python is a *very* common language with loads of open resources available:
 
-- [Codecademy](https://www.codecademy.com/learn/learn-python-3)
 - [RealPython](https://realpython.com/start-here/)
+- [Codecademy](https://www.codecademy.com/learn/learn-python-3)
 - [A handy lookup repo](https://github.com/rasbt/python_reference)
 
 
@@ -84,7 +84,7 @@ R is a similarly popular data science language, but tends to favour a slightly n
 
 > Bonus: [Why is R so weird?](https://twitter.com/WhyDoesR)
 
-We recommend Roger Peng's [R Programming for Data Science](https://bookdown.org/rdpeng/rprogdatascience/). It is long, so for the sake of time, focus on sections 1 through 15 (> 8 hours). Getting through the whole book, however, will be to your benefit. The same can be said of [R4DS](https://r4ds.had.co.nz/) by Hadley Wickham — a long read, but well worth your while if you want to be very familiar with R.
+We recommend *either* Roger Peng's [R Programming for Data Science](https://bookdown.org/rdpeng/rprogdatascience/), *or* [R4DS](https://r4ds.had.co.nz/) by Hadley Wickham. Both are long, so for the sake of time, focus on sections 1 through 15 of Peng, and sections 1 through 21 of Wickham (> 8 hours). Getting through the entirety of either book, however, will be well worth your while if you want to be very familiar with R.
 
 Other resources:
 
@@ -93,7 +93,7 @@ Other resources:
 
 ### Git & Github
 
-Version control with Git and Github is essential for managing reproducible science. The Informatics team handles all of their projects using git, and so fluency with basic git commands and familiarity with a Github-based workflow are daily requirements.
+Version control with Git and Github is essential for managing reproducible science. The Informatics team handles all projects using git, and so fluency with basic git commands and familiarity with a Github-based workflow are daily requirements.
 
 > Q: What is version control? What kinds of files are appropriate for version controlling software?
 
@@ -118,3 +118,45 @@ This section mentions just a few other technologies that are not essential for g
 ## Unit 2: Data Management, Curation, & Pipelines
 
 This section introduces the basic data types in neuroimaging, how they are stored, and what software pipelines are frequently used for preprocessing. These competencies are particularly important for for the data analyst role.
+
+### Introduction to MRI Modalities
+
+A good foundation in the basic physics of MRI, and how the physics extends to different *modalities* of MRI, is essential:
+
+> Q: What is magnetic resonance imaging? What is the BOLD signal?
+
+> Q: What is the difference between a structural & a functional image?
+
+> Q: What is diffusion in MRI? What is ASL?
+
+We recommend [MRI physics with Dylan Tisdal](https://www.youtube.com/watch?v=SwsH64PBBZE) (< 1 hour).
+
+Other resources:
+
+- MRI Physics series with [Geoff Aguirre](https://www.youtube.com/channel/UCQ6zwRPkmDrZj9N6Inl8UZw)
+- Diffusion imaging from [Albert Einstein College of Medicine](https://www.youtube.com/watch?v=dW8Yh-c2xVY&ab_channel=AlbertEinsteinCollegeofMedicine)
+- [AndysBrainBook](https://andysbrainbook.readthedocs.io/en/latest/index.html)
+
+### BIDS
+
+Brain Imaging Data Structure is a data storage standard for neuroimaging. It describes how best to format and store neuroimaging data (and why it's important to do so). PennLINC expects all of its data, both internal and publicly shared, to be in BIDS format — much of the work of the Informatics team is making sure this goal is being met.
+
+> Q: What are the benefits of using BIDS?
+
+> Q: What modalities are currently covered in BIDS? What happens if the data you have isn't covered in BIDS?
+
+We recommend learning about BIDS straight from the source: the [official BIDS specification](https://bids-specification.readthedocs.io/en/stable/).
+
+Other resources:
+
+- [AndysBrainBook](https://andysbrainbook.readthedocs.io/en/latest/OpenScience/OS/BIDS_Overview.html)
+
+### Data Warehousing with Flywheel
+
+Neuroimaging produces vast amounts of data. It's not practical to expect large projects to store and access data off of one hard disk drive, or even one cluster. At a certain point, it becomes necessary to leverage cloud computing to store and access data, and much of the engineering of this method can be outsourced to professional engineering companies. PennLINC houses much of its data on the Flywheel platform. Familiarity with Flywheel is essential for data analysts' work.
+
+> Q: How is data in Flywheel structured? What are the relationships between different `containers`?
+
+> Q: How would you view a particular scan, given the session and subject labels?
+
+> Q:
