@@ -9,7 +9,7 @@ has_toc: true
 # Informatics Onboarding
 {: .no_toc}
 
-The Informatics team plays a significant role in PennLINC's scientific engine. This page outlines the onboarding process for informatics work, which includes data curation, analysis, and software development, and is particularly geared towards new data analysts. The goal of this section is to provide the resources necessary to develop the **core competencies** for informatics at PennLINC. Note that there is no expectation that you master of *all* of the competencies below in one sitting - just that you are familiar with how to go about accomplishing these tasks (or at least google your way through it).
+The Informatics team plays a significant role in PennLINC's scientific engine. This page outlines the onboarding process for informatics work, including data curation, analysis, and software development, and is particularly geared towards new data analysts. The goal of this section is to provide the resources necessary to develop the **core competencies** for informatics at PennLINC. Note that there is no expectation that you master of *all* of the competencies below in one sitting - just that you are familiar with how to go about accomplishing these tasks (or at least google your way through it).
 
 [Jump to the Epilogue](#epilogue)
 
@@ -127,7 +127,7 @@ This section mentions a few other technologies that are not essential for gettin
 This section introduces the basic data types in neuroimaging, how they are stored, and what software pipelines are frequently used for preprocessing. These competencies are particularly important Informatics team members.
 
 ---
-NOTE: Many resources in this unit walk through hands-on tasks that won't be possible before you've been assigned a project. Once you've been assigned a project, you can revisit these interactive portions. Until then, just watch/read along to develop some familiarity with the software and workflows being demonstrated.
+NOTE: Many resources in this unit walk through hands-on tasks that won't be possible until you've been assigned a project. Once you've been assigned a project, you can revisit these interactive portions. Until then, just watch/read along to develop some familiarity with the software and workflows being demonstrated.
 
 ---
 
@@ -141,7 +141,7 @@ A good foundation in the basic physics of MRI, and how the physics extends to di
 
 > Q: What is diffusion in MRI? What is ASL?
 
-We recommend [MRI physics with Dylan Tisdal](https://www.youtube.com/watch?v=SwsH64PBBZE) (< 1 hour).
+We recommend [MRI physics with Dylan Tisdall](https://www.youtube.com/watch?v=SwsH64PBBZE) (< 1 hour).
 
 Other resources:
 
@@ -157,7 +157,7 @@ Brain Imaging Data Structure is a data storage standard for neuroimaging. It des
 
 > Q: What modalities are currently covered in BIDS? What happens if the data you have isn't covered in BIDS?
 
-We recommend learning about BIDS straight from the source: the [official BIDS specification](https://bids-specification.readthedocs.io/en/stable/). (< 1 hour)
+We recommend learning about BIDS straight from the source: the [official BIDS specification](https://bids-specification.readthedocs.io/en/stable/) (< 1 hour).
 
 Other resources:
 
@@ -175,7 +175,7 @@ Neuroimaging produces vast amounts of data. It's not practical to expect large p
 
 > Q: What is a `gear`? How would you run `gears` (both on the website and programmatically)?
 
-There are admittedly a large number of Flywheel resources that are not organized optimally. It's recommended that you follow the order below:
+There are admittedly a large number of Flywheel resources that are not (yet) organized optimally. It's recommended that you follow the order below:
 
 - [General overview](https://docs.flywheel.io/hc/en-us/sections/360001703554-Flywheel-Overview) and the [Overview Webinar](https://docs.flywheel.io/hc/en-us/articles/360044328514-Webinar-series-Intro-to-Flywheel) (1 hour)
 - [SDK Webinar](https://docs.flywheel.io/hc/en-us/articles/360044853993-Webinar-series-Intro-to-the-Flywheel-SDK) (1 hour)
@@ -202,7 +202,7 @@ As mentioned, a major task for the Informatics team is the curation of data into
 
 ### Preprocessing Pipelines
 
-Before hypotheses can be tested, neuroimaging data needs to be preprocessed. There are a number of tools for preprocessing — each is appropriate for a particular modality or scan type, and each has its own set of features and limitations. You'll get to work very closely with one or many of these once assigned a project, so basic familiarity with the tools suffices for now.
+Before hypotheses can be tested, neuroimaging data needs to be preprocessed. There are a number of tools for preprocessing — each is appropriate for a particular modality or scan type, and each has its own set of features and limitations. You'll get to work very closely with one (or many) of these pipelines once assigned a project, so basic familiarity with the tools suffices for now.
 
 #### fMRI Data
 
@@ -212,32 +212,32 @@ Additionally, check out the [Nature Methods paper](https://www.nature.com/articl
 
 #### Diffusion Data
 
-For diffusion imaging, we recommend `QSIPrep`, developed primarily by Dr. Matt Cieslak (Manuscript in preparation). Learn about `QSIPrep` at its official [readthedocs site](https://qsiprep.readthedocs.io/en/latest/).
+For diffusion imaging, we recommend `QSIPrep`, developed primarily by Dr. Matt Cieslak (manuscript in preparation). Learn about `QSIPrep` at its official [readthedocs site](https://qsiprep.readthedocs.io/en/latest/).
 
 #### ASL Data
 
-For diffusion imaging, we recommend `ASLPrep`<sup>[1](#myfootnote1)</sup>, developed primarily by Dr. Azeez Adebimpe (Manuscript in preparation). Learn about `ASLPrep` at its official [readthedocs site](https://aslprep.readthedocs.io/en/latest/).
+For diffusion imaging, we recommend `ASLPrep`<sup>[1](#myfootnote1)</sup>, developed primarily by Dr. Azeez Adebimpe (manuscript in preparation). Learn about `ASLPrep` at its official [readthedocs site](https://aslprep.readthedocs.io/en/latest/).
 
 #### Functional Connectivity & More
 
-Even after having run `fMRIPrep`, there may be more artefact (non-useful noise or poor signal) that can be removed, and more interesting derivates (new variables calculated from the signal) that can be computed — our in house tool for accomplishing this is `XCPEngine`, developed primarily by Rastko Ciric (an alumni data analyst). Learn more about `XCPEngine` at its official [readthedocs site](https://xcpengine.readthedocs.io/), or by reading the [benchmarking paper](https://pubmed.ncbi.nlm.nih.gov/28302591/).
+Even after having run `fMRIPrep`, there may be more artifact (non-useful noise or poor signal) that can be removed, and more interesting derivates (new variables calculated from the signal) that can be computed — our in house tool for accomplishing this is `XCPEngine`, developed primarily by Rastko Ciric (an alumni data analyst). Learn more about `XCPEngine` at its official [readthedocs site](https://xcpengine.readthedocs.io/), or by reading the [benchmarking paper](https://pubmed.ncbi.nlm.nih.gov/28302591/).
 
 [Jump to top](#informatics-onboarding)
 
 ---
 # Epilogue
 
-The *core competencies* we expect above may seem overwhelming. There is a lot of information and readers may be coming from different levels of experience. Some of the terminologies used in neuroimaging can feel like jargon, and it doesn't help that PennLINC, and the University itself, may have their own unending lists of foreign words, phrases, tools, softwares...
+These *core competencies* detailed above may seem overwhelming. There is a lot of information and readers may be coming from different scientific backgrounds, with different levels of experience. Some of the terminologies used in neuroimaging can feel like jargon, and it doesn't help that PennLINC, and the University itself, may have their own unending lists of foreign words, phrases, tools, softwares...
 
 *Don't panic*.
 
-These resources are here for *everyone's* reference, and always will be. It's not expected that, in addition to everything else onboarding-related, one can breeze through all of the above in one sitting. Instead, remember:
+These resources are here for *everyone's* reference, and always will be. It's not expected that you will breeze through all of the above in one sitting, especially in addition to other lab-wide onboarding tasks. Instead, remember:
 
-- **Work at a comfortable pace**: fast enough to get through the material but not so fast that you don't get to appreciate the competency
-- **Reach out for help**: don't spend so long on a problem that it consumes your entire day. It sometimes happens that this is not a perfect resource for learning, and more assistance is necessary
+- **Work at a comfortable pace**: fast enough to get through the material, but not so fast that you don't get to appreciate the material.
+- **Reach out for help**: don't spend so long on a problem that it consumes your entire day. The sites listed may not always be perfect resources for learning, and sometimes more assistance is necessary.
 - **Google is your friend**: don't hesitate to go outside of our recommended list/glossary of resources
 - **You'll get your hands dirty eventually**: it's normal to feel like you haven't developed a competency when you haven't yet actually *run* some of these tools and programs.
-- **Contribute**: science gets better when we do it together. If you find a superior/additional resource for learning these competencies, don't hesitate to [contribute](/docs/Contributing/documentation_guidelines/) to this document
+- **Contribute**: science gets better when we do it together. If you find a superior/additional resource for learning these competencies, don't hesitate to [contribute](/docs/Contributing/documentation_guidelines/) to this document.
 
 # *Good luck!*
 {: .no_toc}
