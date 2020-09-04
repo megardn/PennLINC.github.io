@@ -9,7 +9,7 @@ has_toc: true
 # Informatics Onboarding
 {: .no_toc}
 
-The Informatics team plays a significant role in the scientific engine. This page outlines the onboarding process for informatics work, and is particularly geared towards new data analysts. The goal of this section is to provide you with resources necessary to develop the **core competencies** for informatics at PennLINC. Note that there is no expectation that one develops *mastery* of *all* of the competencies below — just that one is familiar with how to go about accomplishing these tasks (or at least one can google one's way through it).
+The Informatics team plays a significant role in PennLINC's scientific engine. This page outlines the onboarding process for informatics work, which includes data curation, analysis, and software development, and is particularly geared towards new data analysts. The goal of this section is to provide the resources necessary to develop the **core competencies** for informatics at PennLINC. Note that there is no expectation that you master of *all* of the competencies below - just that you are familiar with how to go about accomplishing these tasks (or at least google your way through it).
 
 ## Table of contents
 {: .no_toc .text-delta }
@@ -28,17 +28,17 @@ The core competencies of informatics are split into 3 major units:
 
 3. Hypothesis Testing & Analysis (Coming Soon!)
 
-The units are designed around the day-to-day tasks of Informatics team members, with different tasks employing a number of competencies from each of these units. In a perfect world, Informatics team members are experts in all 3 units, but in practice, your eventual expertise will depend on your assigned duties, past experience, interests, and desire to learn.
+The units are designed around the day-to-day tasks of Informatics team members, with different tasks utilizing a number of competencies from each of these units. In a perfect world, Informatics team members are experts in all 3 units, but in practice, your eventual expertise will depend on your assigned projects within the lab, along with past experience, interests, and desire to learn.
 
-In the sections below, we outline each major competency by asking simple, task-based questions, and provide our best recommended resource for learning each of the competencies, as well as a glossary of secondary resources. There is an estimated time to complete these, but don't feel locked into these time frames. If you can confidently answer the questions yourself, you likely have developed that competancy before — feel free to briefly skim the resource.
+In the sections below, we outline each major competency by asking simple, task-based questions, and provide our best recommended resource for learning each of the competencies, as well as a glossary of secondary resources. There is an estimated time to complete these, but don't feel locked into these time-frames. If you have previously developed one of these skills before, and can confidently answer a question already, feel free to briefly skim the resource.
 
 ## Unit 1: Programming & Software Tools
 
-Being a competent programmer is fundamental to good neuroscience. It's important to remember that languages come and go — understanding the principles of programming is more important than spending hours memorising one language's idiosyncrasies.
+Being a competent programmer is fundamental to good neuroscience. It's important to remember that languages come and go — understanding the principles of programming is more important than spending hours memorizing one language's idiosyncrasies.
 
 ### The Command Line
 
-Working from the command line is a **must**, due in no small part to the fact that we spend a large amount of time on computing clusters like [PMACS](/docs/pmacs) and [CUBIC](/docs/cubic). Working on the command line is one of those skills that benefits you more the better you get at it -- don't feel discouraged if it feels slow at first.
+Working from the command line is a **must**, as we spend a large amount of time on computing clusters like [PMACS](/docs/pmacs) and [CUBIC](/docs/cubic). Using  the command line is a skill with increasing returns, and benefits you more the better you get at it - don't get discouraged if it feels slow at first.
 
 > Q: How would you create a directory from the command line, move files into it, and loop over its contents?
 
@@ -55,7 +55,7 @@ Other resources:
 
 ### Python
 
-Python is a powerful all-purpose language for data science. It is particularly popular in neuroimaging due to its low skill floor and high skill ceiling/extensibility — you can do anything from adding two numbers together, to building deep learning neuroimaging pipelines.
+Python is a powerful all-purpose language for data science. It is particularly popular in neuroimaging due to its low skill floor and high skill ceiling/extensibility — you can do anything from adding two numbers together, including build deep learning neuroimaging pipelines.
 
 > Q: What are the basic data structures in Python programming? How do they differ? What scenarios are appropriate for using one particular data structure in comparison to others?
 
@@ -65,7 +65,7 @@ Python is a powerful all-purpose language for data science. It is particularly p
 
 > Q: How would you run a Python program? How would you check for errors? What is a "traceback"?
 
-We recommend [Coursera](https://www.coursera.org/learn/python-crash-course#syllabus) for this part (> 8 hours), although Python is a *very* common language with loads of resources available:
+We recommend [Coursera](https://www.coursera.org/learn/python-crash-course#syllabus) for this part (> 8 hours), although Python is a *very* common language with many resources available:
 
 - [Codecademy](https://www.codecademy.com/learn/learn-python-3)
 - [RealPython](https://realpython.com/start-here/)
@@ -74,7 +74,7 @@ We recommend [Coursera](https://www.coursera.org/learn/python-crash-course#sylla
 
 ### R
 
-R is a similarly popular data science language, but tends to favour a slightly narrower use case: statistical and numerical analysis. While it is well-equipped to handle myriad programming tasks, R really shines once you want to work on tabular data, run statistics on experiments, plot beautiful graphs and figures, and produce high-quality reports. R is the go-to language for the statistics portion of any scientific endeavour.
+R is a similarly popular data science language, but tends to favor a slightly narrower use case: statistical and numerical analysis. While it is well-equipped to handle myriad programming tasks, R really shines once you are ready to work on tabular data, run statistical anaylsis on experiments, plot beautiful graphs and figures, and produce high-quality reports. R is the go-to language for the statistics portion of any scientific endeavour.
 
 > Q: How would you simulate a random sampling of numbers? How would you plot that sample in a histogram?
 
@@ -84,7 +84,7 @@ R is a similarly popular data science language, but tends to favour a slightly n
 
 > Bonus: [Why is R so weird?](https://twitter.com/WhyDoesR)
 
-We recommend Roger Peng's [R Programming for Data Science](https://bookdown.org/rdpeng/rprogdatascience/). It is long, so for the sake of time, focus on sections 1 through 15 (> 8 hours). Getting through the whole book, however, will be to your benefit. The same can be said of [R4DS](https://r4ds.had.co.nz/) by Hadley Wickham — a long read, but well worth your while if you want to be very familiar with R.
+We recommend Roger Peng's [R Programming for Data Science](https://bookdown.org/rdpeng/rprogdatascience/). It is long, so for the sake of time, focus on sections 1 through 15 (> 8 hours). Getting through the whole book, however, will be to your benefit. The same can be said of [R4DS](https://r4ds.had.co.nz/) by Hadley Wickham — a long read, but well worth the time if you want to be very familiar with R.
 
 Other resources:
 
@@ -93,7 +93,7 @@ Other resources:
 
 ### Git & Github
 
-Version control with Git and Github is essential for managing reproducible science. The Informatics team handles all of their projects using git, and so fluency with basic git commands and familiarity with a Github-based workflow are daily requirements.
+Version control with Git and Github is essential for managing reproducible science. The Informatics team handles all of their projects using git, and fluency with basic git commands and familiarity with a Github-based workflow are daily requirements.
 
 > Q: What is version control? What kinds of files are appropriate for version controlling software?
 
@@ -109,10 +109,10 @@ Other resources:
 
 ### Miscellaneous
 
-This section mentions just a few other technologies that are not essential for getting started, but will become necessary as you work on more complex projects. Google these or skim the links to learn more.
+This section mentions a few other technologies that are not essential for getting started, but will become necessary as you work on more complex projects. Skim the links (or Google these) to learn more.
 
 - [Containerization with Docker](https://ropenscilabs.github.io/r-docker-tutorial/01-what-and-why.html) is used frequently to share reproducible software
-- [Jupyter](https://realpython.com/jupyter-notebook-introduction/) and [Rmarkdown]() for creating reproducible notebooks
+- [Jupyter](https://realpython.com/jupyter-notebook-introduction/) and [Rmarkdown](https://rmarkdown.rstudio.com/lesson-1.html) for creating reproducible notebooks
 
 
 ## Unit 2: Data Management, Curation, & Pipelines
