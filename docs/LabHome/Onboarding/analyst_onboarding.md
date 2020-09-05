@@ -135,7 +135,7 @@ We rely on several tools that are essential for reproducible science.
 - [Containerization with Docker](https://ropenscilabs.github.io/r-docker-tutorial/01-what-and-why.html) is essential for building reproducible software that can be deployed in any environment.  We try to have all subject-level data processing tasks executed by containerized software to ensure reproducability.
 
 
-[Jump to top](#informatics-onboarding)
+[Jump to top](#informatics-training)
 
 ---
 
@@ -220,7 +220,7 @@ As mentioned, a major task for the Informatics team is the curation of data into
 
 (< 1 hour)
 
-[Jump to top](#informatics-onboarding)
+[Jump to top](#informatics-training)
 
 ---
 
@@ -246,7 +246,7 @@ For diffusion imaging, we recommend `ASLPrep`<sup>[1](#myfootnote1)</sup>, devel
 
 After having run `fMRIPrep`, your BOLD data is successfully pre-processed.  However, several steps are still required to produce the derived data that we analyze. For task fMRI, for example, one post-processing step is running a general linear model that represents the task being done by the participant in the scanner. For analysis of intrinsic functional connectivity (assessing which brain regions are working together over time), additional denoising (cleaning) of the data is necessary, as well as calculating these *functional connectivity* measures themselves.  These tasks (and MANY others!) are accomplished by the eXtensible Connectivity Pipelines (`XCPEngine`).   `XCPEngine` was initially deveoped by lab alumni data analyst Rastko Ciric (now a bioengineering graduate student at Stanford), and has been revised, expanded, and maintained by Dr. Azeez Adebimpe.  Because it was one of the primary utilities developed to be compatible with fMRIPREP, it is currently widely used in labs around the world (with tens of thousands of executions per month). Learn more about `XCPEngine` at its official [readthedocs site](https://xcpengine.readthedocs.io/), or by reading the [benchmarking](https://pubmed.ncbi.nlm.nih.gov/28302591/) or [Nature Methods](https://www.nature.com/articles/s41596-018-0065-y)  papers.
 
-[Jump to top](#informatics-onboarding)
+[Jump to top](#informatics-training)
 
 ---
 
@@ -254,7 +254,7 @@ After having run `fMRIPrep`, your BOLD data is successfully pre-processed.  Howe
 
 This section is currently still in development.
 
-[Jump to top](#informatics-onboarding)
+[Jump to top](#informatics-training)
 
 ---
 
