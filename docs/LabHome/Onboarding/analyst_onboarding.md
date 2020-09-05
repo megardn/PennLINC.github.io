@@ -21,7 +21,7 @@ The Informatics team plays a significant role in PennLINC's scientific engine. T
 # Core Competencies
 {: .no_toc}
 
-The core competencies of informatics are split into 3 major units:
+The core competencies of informatics are split into 4 major units:
 
 1. [Programming & Software Tools](#unit-1-programming--software-tools)
 
@@ -29,9 +29,9 @@ The core competencies of informatics are split into 3 major units:
 
 3. [Processing pipelines](#unit-3-processing-pipelines)
 
-4. [Hypothesis Testing & Analysis](Coming Soon!)
+4. [Hypothesis Testing & Analysis]() (Coming Soon!)
 
-The units are designed around the day-to-day tasks of Informatics team members, with different tasks utilizing a number of competencies from each of these units. In a perfect world, Informatics team members are experts in all 3 units, but in practice, your eventual expertise will depend on your assigned projects within the lab, along with past experience, interests, and desire to learn. All team members should be quite familiar with the skills described in units 1 & 2; because of the large knowledge base, team members tend to specialize in specific analytic pipelines (unit 3) and analytic techniques (unit 4).
+The units are designed around the day-to-day tasks of Informatics team members, with different tasks utilizing a number of competencies from each of these units. In a perfect world, Informatics team members are experts in all 3 units, but in practice, your eventual expertise will depend on your assigned projects within the lab, along with past experience, interests, and desire to learn. All team members should be quite familiar with the skills described in units 1 & 2, and because of the large knowledge base, team members tend to specialize in specific analytic pipelines (unit 3) and analytic techniques (unit 4).
 
 In the sections below, we outline each major competency by asking simple, task-based questions, and provide our best recommended resource for learning each of the competencies, as well as a glossary of (optional) secondary resources. There is an estimated time to complete these, but don't feel locked into these time-frames. If you have previously developed one of these skills before, and can confidently answer a question already, feel free to briefly skim the resource.
 
@@ -39,7 +39,7 @@ In the sections below, we outline each major competency by asking simple, task-b
 
 ## Unit 1: Programming & Software Tools
 
-Being a competent programmer is fundamental to computational neuroscience. It's important to remember that languages come and go — understanding the principles of programming is more important than spending hours memorizing one language's idiosyncrasies.
+Being a competent programmer is fundamental to computational neuroscience. While we outline our most frequently used programming languages below, it's important to remember that languages come and go — understanding the principles of programming is more important than spending hours memorizing one language's idiosyncrasies.
 
 ### The Command Line
 
@@ -47,9 +47,9 @@ Working from the command line is a **must**, as we spend a large amount of time 
 
 > Q: How would you create a directory from the command line, move files into it, and loop over its contents?
 
-> Q: How would you check whether a set of directories all have specific file?
+> Q: How would you check that a set of directories all have a specific type of file, even though all the files are named differently?
 
-> Q: How would you record the visual text output of a program in a file?
+> Q: How would you record the text output of a program in a file?
 
 > Q: How would you make sure your shell always loads with the correct paths to programs set automatically?
 
@@ -78,7 +78,7 @@ We recommend [Coursera](https://www.coursera.org/learn/python-crash-course#sylla
 - [Codecademy](https://www.codecademy.com/learn/learn-python-3)
 - [A handy lookup repo](https://github.com/rasbt/python_reference)
 
-Also, it is useful to learn about the [Python environment management with Conda](https://towardsdatascience.com/devops-for-data-science-making-your-python-project-reproducible-f55646e110fa).
+> Bonus: [Python environments can get complicated fast](https://xkcd.com/1987/); learn about Python environment management with Conda [here](https://towardsdatascience.com/devops-for-data-science-making-your-python-project-reproducible-f55646e110fa).
 
 
 ### R
@@ -87,7 +87,7 @@ R is a similarly popular data science language, but tends to favor a slightly na
 
 > Q: How would you simulate a random sampling of numbers? How would you plot that sample in a histogram?
 
-> Q: What is a Dataframe? How would you create one from a CSV file?
+> Q: What is a `Dataframe`? How would you create one from a CSV file?
 
 > Q: What is "tidy" data? The Tidyverse? What are "verbs" in tidy R parlance?
 
@@ -121,7 +121,7 @@ Other resources:
 
 - [HappyGitWithR](https://happygitwithr.com/)
 
-- An additoina [tutorial](https://zenodo.org/record/3369466#.X1OTrGdKjJ-) that people have found useful in the past
+- An additional [tutorial](https://zenodo.org/record/3369466#.X1OTrGdKjJ-) that people have found useful in the past
 
 - More resources from github about git can be found [here](https://docs.github.com/en/github/getting-started-with-github/git-and-github-learning-resources)
 
@@ -144,7 +144,7 @@ We rely on several tools that are essential for reproducible science.
 This section introduces the basic data types in neuroimaging, how they are stored, and what software pipelines are frequently used for preprocessing. These competencies are particularly important for Informatics team members.
 
 ---
-NOTE: Many resources in this unit walk through hands-on tasks that won't be possible until you've been assigned a project. Once you've been assigned a project, you can revisit these interactive portions. Until then, just watch/read along to develop some familiarity with the software and workflows being demonstrated.
+NOTE: Some resources in this section, such as AndysBrainBook, provide you with sample data to work through. On the other hand, others in this unit walk through hands-on tasks that won't be possible until you've been assigned a project in the lab. If this is the case, you can revisit these interactive portions later. Until then, please still watch/read along to develop some familiarity with the software and workflows being demonstrated.
 
 ---
 
@@ -164,7 +164,8 @@ Other resources:
 
 - MRI Physics series with [Geoff Aguirre](https://www.youtube.com/channel/UCQ6zwRPkmDrZj9N6Inl8UZw)
 - Diffusion imaging from [Albert Einstein College of Medicine](https://www.youtube.com/watch?v=dW8Yh-c2xVY&ab_channel=AlbertEinsteinCollegeofMedicine)
-- Various sections of [AndysBrainBook](https://andysbrainbook.readthedocs.io/en/latest/index.html)
+- Various sections of [AndysBrainBook](https://andysbrainbook.readthedocs.io/en/latest/index.html) (using the search bar for keywords)
+- [MRIQuestions]() (using the search bar for keywords)
 
 
 ### BIDS
@@ -219,6 +220,9 @@ As mentioned, a major task for the Informatics team is the curation of data into
 
 (< 1 hour)
 
+[Jump to top](#informatics-onboarding)
+
+---
 
 ## Unit 3: Processing Pipelines
 
@@ -240,11 +244,20 @@ For diffusion imaging, we recommend `ASLPrep`<sup>[1](#myfootnote1)</sup>, devel
 
 #### BOLD post-processing: Functional Connectivity & Task fMRI
 
-Even after having run `fMRIPrep`, your BOLD data is pre-processed.  However, several steps are still required to produce the derived data that we analyze. For task fMRI, this includes running a general linear model that reflects that task completed by the participant in the scanner.  For analysis of intrinsic functional connectivity, one needs to perform additional denoising, and also calculate the functional connectivity measures themselves.  These tasks (and MANY others!) are accomplished by the eXtensible Connectivity Pipelines (`XCP`).   `XCP` was initially deveoped by lab alumni data analyst Rastko Ciric (now a bioengineering graduate student at Stanford), and has been revised, expanded, and maintained by Dr. Azeez Adebimpe.  As one of the primary utilities that is compatible with fMRIPREP, is widely used worldwide (tens of thousands of executions per month). Learn more about `XCPEngine` at its official [readthedocs site](https://xcpengine.readthedocs.io/),  by reading the [benchmarking paper](https://pubmed.ncbi.nlm.nih.gov/28302591/), or the [Nature Methods paper](https://www.nature.com/articles/s41596-018-0065-y).  
+After having run `fMRIPrep`, your BOLD data is successfully pre-processed.  However, several steps are still required to produce the derived data that we analyze. For task fMRI, for example, one post-processing step is running a general linear model that represents the task being done by the participant in the scanner. For analysis of intrinsic functional connectivity (assessing which brain regions are working together over time), additional denoising (cleaning) of the data is necessary, as well as calculating these *functional connectivity* measures themselves.  These tasks (and MANY others!) are accomplished by the eXtensible Connectivity Pipelines (`XCPEngine`).   `XCPEngine` was initially deveoped by lab alumni data analyst Rastko Ciric (now a bioengineering graduate student at Stanford), and has been revised, expanded, and maintained by Dr. Azeez Adebimpe.  Because it was one of the primary utilities developed to be compatible with fMRIPREP, it is currently widely used in labs around the world (with tens of thousands of executions per month). Learn more about `XCPEngine` at its official [readthedocs site](https://xcpengine.readthedocs.io/), or by reading the [benchmarking](https://pubmed.ncbi.nlm.nih.gov/28302591/) or [Nature Methods](https://www.nature.com/articles/s41596-018-0065-y)  papers.
 
 [Jump to top](#informatics-onboarding)
 
 ---
+
+# Hypothesis Testing & Analysis
+
+This section is currently still in development.
+
+[Jump to top](#informatics-onboarding)
+
+---
+
 # Epilogue
 
 These *core competencies* detailed above may seem overwhelming. There is a lot of information and readers may be coming from different scientific backgrounds, with different levels of experience. Some of the terminologies used in neuroimaging can feel like jargon, and it doesn't help that PennLINC, and the University itself, may have their own unending lists of foreign words, phrases, tools, softwares...
@@ -255,9 +268,9 @@ These resources are here for *everyone's* reference, and always will be. It's no
 
 - **Work at a comfortable pace**: fast enough to get through the material, but not so fast that you don't get to appreciate the material.
 - **Reach out for help**: don't spend so long on a problem that it consumes your entire day. The sites listed may not always be perfect resources for learning, and sometimes more assistance is necessary.
-- **Google is your friend**: don't hesitate to go outside of our recommended list/glossary of resources
+- **Google is your friend**: don't hesitate to go outside of our recommended list/glossary of resources when you come across a word you don't recognize or can't make sense of (see [MRIQuestions](https://www.evernote.com/l/APXfgfX6AkZJ6Z1JWNCaox45GeTW2ke7mDU))
 - **You'll get your hands dirty eventually**: it's normal to feel like you haven't developed a competency when you haven't yet actually *run* some of these tools and programs.
-- **Contribute**: science gets better when we do it together. If you find a superior/additional resource for learning these competencies, don't hesitate to [contribute](/docs/Contributing/documentation_guidelines/) to this document.
+- **Contribute**: science gets better when we do it together. If you find a superior/additional resource for learning these competencies, or simply find errors that need to be fixed, don't hesitate to [contribute](/docs/Contributing/documentation_guidelines/) to this document.
 
 # *Good luck!*
 {: .no_toc}
