@@ -2,10 +2,11 @@
 layout: default
 title: Informatics Training
 parent: Lab Basics
+nav_order: 2
 has_toc: true
 ---
 
-# Informatics Onboarding
+# Informatics Training
 {: .no_toc}
 
 The Informatics team plays a significant role in PennLINC's scientific engine. This page outlines the onboarding process for informatics work, including data curation, analysis, and software development, and is particularly geared towards new data analysts. The goal of this section is to provide the resources necessary to develop the **core competencies** for informatics at PennLINC. Note that there is no expectation that you master *all* of the competencies below in one sitting - just that you are familiar with how to go about accomplishing these tasks (or at least google your way through it).
