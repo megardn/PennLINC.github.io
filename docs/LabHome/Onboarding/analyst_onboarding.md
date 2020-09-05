@@ -268,7 +268,7 @@ These resources are here for *everyone's* reference, and always will be. It's no
 
 - **Work at a comfortable pace**: fast enough to get through the material, but not so fast that you don't get to appreciate the material.
 - **Reach out for help**: don't spend so long on a problem that it consumes your entire day. The sites listed may not always be perfect resources for learning, and sometimes more assistance is necessary.
-- **Google is your friend**: don't hesitate to go outside of our recommended list/glossary of resources when you come across a word you don't recognize or can't make sense of (see [MRIQuestions](https://www.evernote.com/l/APXfgfX6AkZJ6Z1JWNCaox45GeTW2ke7mDU))
+- **Google is your friend**: don't hesitate to go outside of our recommended list/glossary of resources when you come across a word you don't recognize or can't make sense of (see [MRIQuestions](http://mriquestions.com/index.html))
 - **You'll get your hands dirty eventually**: it's normal to feel like you haven't developed a competency when you haven't yet actually *run* some of these tools and programs.
 - **Contribute**: science gets better when we do it together. If you find a superior/additional resource for learning these competencies, or simply find errors that need to be fixed, don't hesitate to [contribute](/docs/Contributing/documentation_guidelines/) to this document.
 
