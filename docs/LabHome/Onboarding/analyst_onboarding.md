@@ -1,8 +1,7 @@
 ---
 layout: default
-title: Informatics Onboarding
-parent: Onboarding
-grand_parent: Lab Basics
+title: Informatics Training
+parent: Lab Basics
 has_toc: true
 ---
 
@@ -11,7 +10,6 @@ has_toc: true
 
 The Informatics team plays a significant role in PennLINC's scientific engine. This page outlines the onboarding process for informatics work, including data curation, analysis, and software development, and is particularly geared towards new data analysts. The goal of this section is to provide the resources necessary to develop the **core competencies** for informatics at PennLINC. Note that there is no expectation that you master *all* of the competencies below in one sitting - just that you are familiar with how to go about accomplishing these tasks (or at least google your way through it).
 
-[Jump to the Epilogue](#epilogue)
 
 ## Table of contents
 {: .no_toc .text-delta }
@@ -26,11 +24,13 @@ The core competencies of informatics are split into 3 major units:
 
 1. [Programming & Software Tools](#unit-1-programming--software-tools)
 
-2. [Data Management, Curation, & Pipelines](#unit-2-data-management-curation--pipelines)
+2. [Data Management, Curation](#unit-2-data-management-curation)
 
-3. [Hypothesis Testing & Analysis]() (Coming Soon!)
+3. [Processing pipelines](#unit-3-processing-pipelines)
 
-The units are designed around the day-to-day tasks of Informatics team members, with different tasks utilizing a number of competencies from each of these units. In a perfect world, Informatics team members are experts in all 3 units, but in practice, your eventual expertise will depend on your assigned projects within the lab, along with past experience, interests, and desire to learn.
+4. [Hypothesis Testing & Analysis](Coming Soon!)
+
+The units are designed around the day-to-day tasks of Informatics team members, with different tasks utilizing a number of competencies from each of these units. In a perfect world, Informatics team members are experts in all 3 units, but in practice, your eventual expertise will depend on your assigned projects within the lab, along with past experience, interests, and desire to learn. All team members should be quite familiar with the skills described in units 1 & 2; because of the large knowledge base, team members tend to specialize in specific analytic pipelines (unit 3) and analytic techniques (unit 4).
 
 In the sections below, we outline each major competency by asking simple, task-based questions, and provide our best recommended resource for learning each of the competencies, as well as a glossary of (optional) secondary resources. There is an estimated time to complete these, but don't feel locked into these time-frames. If you have previously developed one of these skills before, and can confidently answer a question already, feel free to briefly skim the resource.
 
@@ -38,13 +38,15 @@ In the sections below, we outline each major competency by asking simple, task-b
 
 ## Unit 1: Programming & Software Tools
 
-Being a competent programmer is fundamental to good neuroscience. It's important to remember that languages come and go — understanding the principles of programming is more important than spending hours memorizing one language's idiosyncrasies.
+Being a competent programmer is fundamental to computational neuroscience. It's important to remember that languages come and go — understanding the principles of programming is more important than spending hours memorizing one language's idiosyncrasies.
 
 ### The Command Line
 
 Working from the command line is a **must**, as we spend a large amount of time on computing clusters like [PMACS](/docs/pmacs) and [CUBIC](/docs/cubic). Using  the command line is a skill with increasing returns, and benefits you more the better you get at it - don't get discouraged if it feels slow at first.
 
 > Q: How would you create a directory from the command line, move files into it, and loop over its contents?
+
+> Q: How would you check whether a set of directories all have specific file?
 
 > Q: How would you record the visual text output of a program in a file?
 
@@ -75,10 +77,12 @@ We recommend [Coursera](https://www.coursera.org/learn/python-crash-course#sylla
 - [Codecademy](https://www.codecademy.com/learn/learn-python-3)
 - [A handy lookup repo](https://github.com/rasbt/python_reference)
 
+Also, it is useful to learn about the [Python environment management with Conda](https://towardsdatascience.com/devops-for-data-science-making-your-python-project-reproducible-f55646e110fa).
+
 
 ### R
 
-R is a similarly popular data science language, but tends to favor a slightly narrower use case: statistical and numerical analysis. While it is well-equipped to handle myriad programming tasks, R really shines once you are ready to work on tabular data, run statistical anaylsis on experiments, plot beautiful graphs and figures, and produce high-quality reports. R is the go-to language for the statistics portion of any scientific endeavour.
+R is a similarly popular data science language, but tends to favor a slightly narrower use case: statistical analysis. While it is well-equipped to handle myriad programming tasks, R really shines once you are ready to work on tabular data, run statistical anaylsis on experiments, plot beautiful graphs and figures, and produce high-quality reports. R is the go-to language for the statistics portion of any scientific endeavour.
 
 > Q: How would you simulate a random sampling of numbers? How would you plot that sample in a histogram?
 
@@ -86,13 +90,16 @@ R is a similarly popular data science language, but tends to favor a slightly na
 
 > Q: What is "tidy" data? The Tidyverse? What are "verbs" in tidy R parlance?
 
+> Q: How do you run a multiple regression model, interpret its output, and graph the results?
+
 > Bonus: [Why is R so weird?](https://twitter.com/WhyDoesR)
 
 We recommend *either* Roger Peng's [R Programming for Data Science](https://bookdown.org/rdpeng/rprogdatascience/), *or* [R4DS](https://r4ds.had.co.nz/) by Hadley Wickham. Both are long, so for the sake of time, focus on sections 1 through 15 of Peng, and sections 1 through 21 of Wickham (> 8 hours). Getting through the entirety of either book, however, is well worth the time if you want to be very familiar with R.
 
 Other resources:
 
-- [Swirl](https://swirlstats.com/students.html), an interactive prompt-based learning package
+- [Swirl](https://swirlstats.com/students.html), an interactive prompt-based learning package. The intermediate courses including regression and data cleaning are particularly useful.
+
 - [learnR4free](https://www.learnr4free.com/index.html) and [this blog](https://livefreeordichotomize.com/2020/07/02/so-you-want-to-learn-r/) collate a number of external resources
 
 ### Git & Github
@@ -113,19 +120,25 @@ Other resources:
 
 - [HappyGitWithR](https://happygitwithr.com/)
 
-### Miscellaneous
+- An additoina [tutorial](https://zenodo.org/record/3369466#.X1OTrGdKjJ-) that people have found useful in the past
 
-This section mentions a few other technologies that are not essential for getting started, but will become necessary as you work on more complex projects. Skim the links (or Google these) to learn more.
+- More resources from github about git can be found [here](https://docs.github.com/en/github/getting-started-with-github/git-and-github-learning-resources)
 
-- [Containerization with Docker](https://ropenscilabs.github.io/r-docker-tutorial/01-what-and-why.html) is used frequently to share reproducible software
-- [Jupyter](https://realpython.com/jupyter-notebook-introduction/) and [Rmarkdown](https://rmarkdown.rstudio.com/lesson-1.html) for creating reproducible notebooks
-- [Python environment management with Conda](https://towardsdatascience.com/devops-for-data-science-making-your-python-project-reproducible-f55646e110fa)
+
+### Reproducible science
+
+We rely on several tools that are essential for reproducible science. 
+
+-  Analytic notebooks.  All analyses should be conducted within reproducible analytic notebooks, without exception.  The two most widely used are [Jupyter](https://realpython.com/jupyter-notebook-introduction/) and [Rmarkdown](https://rmarkdown.rstudio.com/lesson-1.html). 
+
+- [Containerization with Docker](https://ropenscilabs.github.io/r-docker-tutorial/01-what-and-why.html) is essential for building reproducible software that can be deployed in any environment.  We try to have all subject-level data processing tasks executed by containerized software to ensure reproducability.
+
 
 [Jump to top](#informatics-onboarding)
 
 ---
 
-## Unit 2: Data Management, Curation, & Pipelines
+## Unit 2: Data Management & Curation
 
 This section introduces the basic data types in neuroimaging, how they are stored, and what software pipelines are frequently used for preprocessing. These competencies are particularly important for Informatics team members.
 
@@ -152,9 +165,10 @@ Other resources:
 - Diffusion imaging from [Albert Einstein College of Medicine](https://www.youtube.com/watch?v=dW8Yh-c2xVY&ab_channel=AlbertEinsteinCollegeofMedicine)
 - Various sections of [AndysBrainBook](https://andysbrainbook.readthedocs.io/en/latest/index.html)
 
+
 ### BIDS
 
-Brain Imaging Data Structure is a data storage standard for neuroimaging. It describes how best to format and store neuroimaging data (and why it's important to do so). PennLINC expects all of its data, both internal and publicly shared, to be in BIDS format — much of the work of the Informatics team is making sure this goal is being met across different projects.
+Brain Imaging Data Structure is a data storage standard for neuroimaging. It describes how best to format and store neuroimaging data (and why it's important to do so). PennLINC expects nearly all of its data, both internal and publicly shared, to be in BIDS format — much of the work of the Informatics team is making sure this goal is being met across different projects.
 
 > Q: What are the benefits of using BIDS?
 
@@ -166,9 +180,10 @@ Other resources:
 
 - [AndysBrainBook](https://andysbrainbook.readthedocs.io/en/latest/OpenScience/OS/BIDS_Overview.html)
 
-### Data Warehousing with Flywheel
 
-Neuroimaging produces vast amounts of data. It's not practical to expect large projects to store and access data on one hard disk drive, or even one cluster. At a certain point, it becomes necessary to leverage cloud computing to store and access data, and much of the engineering involved in this method has be outsourced to professional engineering companies. PennLINC houses much of its data on the Flywheel platform, so familiarity with Flywheel is essential for informatics work.
+### The Flywheel Imaging Database
+
+Neuroimaging produces vast amounts of data.  Traditionally, this data was dumped onto a unmanaged file system, which created obvious problems for searchability, reproducibility, and scalability.  UPenn now uses the Flywheel platform, which allows data to be "reaped" directly from the scanner to a managed database environment.  Imaging data is stored in "projects", curated to BIDS specifications (see above), allowing containerized analytic pipelines to analyze the data in a fully reproducible manner.   
 
 > Q: How is data in Flywheel structured? What are the relationships between different `containers`?
 
@@ -203,7 +218,8 @@ As mentioned, a major task for the Informatics team is the curation of data into
 
 (< 1 hour)
 
-### Preprocessing Pipelines
+
+## Unit 3: Processing Pipelines
 
 Before hypotheses can be tested, neuroimaging data needs to be preprocessed. There are a number of tools for preprocessing — each is appropriate for a particular modality or scan type, and each has its own set of features and limitations. You'll get to work very closely with one (or many) of these pipelines once assigned a project, so basic familiarity with the tools suffices for now.
 
@@ -221,7 +237,7 @@ For diffusion imaging, we recommend `QSIPrep`, developed primarily by Dr. Matt C
 
 For diffusion imaging, we recommend `ASLPrep`<sup>[1](#myfootnote1)</sup>, developed primarily by Dr. Azeez Adebimpe (manuscript in preparation). Learn about `ASLPrep` at its official [readthedocs site](https://aslprep.readthedocs.io/en/latest/).
 
-#### Functional Connectivity & More
+#### BOLD post-processing: Functional Connectivity & Task fMRI
 
 Even after having run `fMRIPrep`, there may be more artifact (non-useful noise or poor signal) that can be removed, and more interesting derivates (new variables calculated from the signal) that can be computed — our in house tool for accomplishing this is `XCPEngine`, developed primarily by Rastko Ciric (an alumni data analyst). Learn more about `XCPEngine` at its official [readthedocs site](https://xcpengine.readthedocs.io/), or by reading the [benchmarking paper](https://pubmed.ncbi.nlm.nih.gov/28302591/).
 
