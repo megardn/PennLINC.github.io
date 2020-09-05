@@ -78,7 +78,7 @@ We recommend [Coursera](https://www.coursera.org/learn/python-crash-course#sylla
 - [Codecademy](https://www.codecademy.com/learn/learn-python-3)
 - [A handy lookup repo](https://github.com/rasbt/python_reference)
 
-> Bonus: [Python environments can get complicated fast](https://xkcd.com/1987/); learn about Python environment management with Conda [here](https://towardsdatascience.com/devops-for-data-science-making-your-python-project-reproducible-f55646e110fa).
+> Bonus: Python environments can get complicated fast ([relevant xkcd](https://xkcd.com/1987/)); learn about Python environment management with Conda [here](https://towardsdatascience.com/devops-for-data-science-making-your-python-project-reproducible-f55646e110fa).
 
 
 ### R
@@ -228,21 +228,21 @@ As mentioned, a major task for the Informatics team is the curation of data into
 
 Before hypotheses can be tested, neuroimaging data needs to be preprocessed. There are a number of tools for preprocessing — each is appropriate for a particular modality or scan type, and each has its own set of features and limitations. You'll get to work very closely with one (or many) of these pipelines once assigned a project, so basic familiarity with the tools suffices for now.
 
-#### fMRI Data
+### fMRI Data
 
 For fMRI, we recommend `fMRIPrep`. Start with [this primer on fMRI Preprocessing](https://andysbrainbook.readthedocs.io/en/latest/fMRI_Short_Course/fMRI_04_Preprocessing.html), explaining what the different steps for preprocessing are and why they're necessary; then, take a look at the official [fMRIPrep readthedocs](https://fmriprep.org/en/stable/) (or jump to [this section of AndysBrainBook](https://andysbrainbook.readthedocs.io/en/latest/OpenScience/OS/fMRIPrep.html)) to see how `fMRIPrep` is run.
 
 Additionally, check out the [Nature Methods paper](https://www.nature.com/articles/s41592-018-0235-4) written for the software.
 
-#### Diffusion Data
+### Diffusion Data
 
 For diffusion imaging, we recommend `QSIPrep`, developed primarily by Dr. Matt Cieslak (manuscript in preparation). Learn about `QSIPrep` at its official [readthedocs site](https://qsiprep.readthedocs.io/en/latest/).
 
-#### ASL Data
+### ASL Data
 
 For diffusion imaging, we recommend `ASLPrep`<sup>[1](#myfootnote1)</sup>, developed primarily by Dr. Azeez Adebimpe (manuscript in preparation). Learn about `ASLPrep` at its official [readthedocs site](https://aslprep.readthedocs.io/en/latest/).
 
-#### BOLD post-processing: Functional Connectivity & Task fMRI
+### BOLD post-processing: Functional Connectivity & Task fMRI
 
 After having run `fMRIPrep`, your BOLD data is successfully pre-processed.  However, several steps are still required to produce the derived data that we analyze. For task fMRI, for example, one post-processing step is running a general linear model that represents the task being done by the participant in the scanner. For analysis of intrinsic functional connectivity (assessing which brain regions are working together over time), additional denoising (cleaning) of the data is necessary, as well as calculating these *functional connectivity* measures themselves.  These tasks (and MANY others!) are accomplished by the eXtensible Connectivity Pipelines (`XCPEngine`).   `XCPEngine` was initially deveoped by lab alumni data analyst Rastko Ciric (now a bioengineering graduate student at Stanford), and has been revised, expanded, and maintained by Dr. Azeez Adebimpe.  Because it was one of the primary utilities developed to be compatible with fMRIPREP, it is currently widely used in labs around the world (with tens of thousands of executions per month). Learn more about `XCPEngine` at its official [readthedocs site](https://xcpengine.readthedocs.io/), or by reading the [benchmarking](https://pubmed.ncbi.nlm.nih.gov/28302591/) or [Nature Methods](https://www.nature.com/articles/s41596-018-0065-y)  papers.
 
