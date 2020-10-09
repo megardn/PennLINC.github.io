@@ -37,7 +37,7 @@ The quarterly update may be more likely to be accessible if the following elemen
 
 2. Dataset: including study (PNC, reward, ABCD, HBN, etc), modality (t1, DTI, etc), and data type (cortical thickness, FA, etc).
 
-2. Study stage: Be explict about where you are in a project.  Stages of a project are outlined in the [Stages of a Project Wiki]().
+2. Study stage: Be explict about where you are in a project.  Stages of a project are outlined in the [Stages of a Project Wiki](https://pennlinc.github.io/docs/LabHome/ProjectStages/).
 
 3.  Current progress:  This should be the meat of the update.  Place current work in the context of study phase and hypotheses.  Emphasize progress, but also challenges / obstacles so we can rapidly problem solve as a group. Again, focus on making the challenges and results accessible to lab members of all backgrounds.
 
