@@ -203,3 +203,19 @@ very different from SGE used on CUBIC. The biggest differences are you will use
 submit jobs and ``qstat`` to monitor jobs.
 
 The documentation for LSF can be found [here](https://www.ibm.com/support/knowledgecenter/SSWRJV_10.1.0/lsf_welcome/lsf_welcome.html).
+
+## Stop receiving e-mails for each job you submit via ``bsub``
+
+By default, every time you submit a job on PMACS using ``bsub``, you will get an
+e-mail with what would normally be in a log file. To suppress this behavior,
+use the ``-o`` flag to specify the path to the log file.
+
+```console
+$ bsub -o ~/jobinfo.log ~/launch_freeqc.sh
+```
+
+Alternatively, or in addition, you can add the following line to your .bashrc.
+
+```console
+$ echo LSB_JOB_REPORT_MAIL=N >> ~/.bashrc
+```

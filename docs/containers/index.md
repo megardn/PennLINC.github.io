@@ -116,7 +116,7 @@ $ singularity run -B /data:/home/mcieslak/data $ANTSCT \
 
 PMACS requires a couple extra steps to run singularity. First, only one host
 can run `singularity` *and* connect to the internet. You have to ssh into this
-host from `scisub.pmacs.upenn.edu` like so:
+host from `sciget.pmacs.upenn.edu` like so:
 
 ```
 $ ssh singularity01
@@ -124,12 +124,25 @@ $ module load singularity
 ```
 
 Now you can build a singularity image from any image on DockerHub. Be sure
-to save your `.sif` file in your project directory, as the home directories
-on `singularity01` do not sync with the rest of PMACS.
+to save your `.sif` file in your project directory (ideally in a subdirectory named
+`images`), as the home directories on `singularity01` do not sync with the rest of PMACS.
 
 ```console
-$ cd /project/my_project
+$ cd /project/my_project/images
 $ singularity build fmriprep-20.0.5.sif dockerhub://poldracklab/fmriprep:20.0.5
+```
+
+In the event that you do not have access to your project directory on singularity01,
+you can pull the image in your home directory. After the image is in your home directory,
+move the image over to your project directory while you are on sciget, but have
+exited from singularity01.
+
+```console
+$ ssh singularity01
+$ cd
+$ singularity pull docker://antsx/ants
+$ exit
+$ mv ~/ants_latest.sif /project/my_project/images
 ```
 
 ### Note for images that use `templateflow`
