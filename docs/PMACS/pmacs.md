@@ -27,7 +27,7 @@ Once you've set up your login credentials for the PMACS LPC, you can SSH into th
 $ ssh -Y [username]@scisub.pmacs.upenn.edu
 ```
 
-Enter PMACS password when prompted. 
+Enter PMACS password when prompted.
 You can submit jobs on scisub.
 
 In general, there is a set of software libraries and tools we expect you'll need, such as `R`, `conda`, and `FSL`; we've made these available for you in a module. To load this module, simply type the following:
@@ -45,7 +45,7 @@ Log in to the [PMACS Help Desk](https://helpdesk.pmacs.upenn.edu/) with PMACS cr
 ## Making a project directory
 New project directories must be created for you by PMACS LPC admin. To have a new project directory created, you need to submit a ticket. Log into the [PMACS Help Desk](https://helpdesk.pmacs.upenn.edu/) with PMACS credentials, and submit a "Systems" ticket specifying the desired project folder name (e.g. `grmpy_diffusion`) and who should have read access and read/write access to the folder (e.g. `bbllpc`). Once made, project directories can be found in `project/` (e.g. `/project/grmpy_diffusion`).
 
-## Loading modules and accessing module software 
+## Loading modules and accessing module software
 Environment modules are used to load and unload available software (e.g. ANTs, mrtrix, R, ITK, dcm2niix, fsl, freesurfer, etc.). Hence, in order to use most software/applications that are available on PMACS, you must first load the appropriate module. To check which modules are available on PMACS, type `module avail`. To load a desired module, use `module load [modulename]`. Finally, to see what modules you have loaded, use `module list`.
 
 For example, if I want to load python:
@@ -60,7 +60,7 @@ Modules can be loaded and unloaded both in the log in node and in an interactive
 For example:
 ```bash
 $ module load mrtrix3/current
-$ mrstats 
+$ mrstats
 ```
 will return -bash: mrstats: command not found
 
@@ -122,8 +122,8 @@ $ You are currently logged in as $username to upenn.flywheel.io
 
 > Note: Sometimes `fw status` gets you this error message: `'Connection to upenn.flywheel.io timed out. (connect timeout=10)')': /api/auth/status`. In this case, logging out of PMACS and logging in again should fix the issue.
 
-## Cloning and Updating GitHub Repos on PMACS 
-If you have already created an ssh private key for your PMACS account and have added it to both the ssh-agent on PMACS (~/.ssh/id_rsa and id_rsa.pub files) and to your GitHub account, you can clone, pull, and push git repositories using sciget and an available github module on PMACS. 
+## Cloning and Updating GitHub Repos on PMACS
+If you have already created an ssh private key for your PMACS account and have added it to both the ssh-agent on PMACS (~/.ssh/id_rsa and id_rsa.pub files) and to your GitHub account, you can clone, pull, and push git repositories using sciget and an available github module on PMACS.
 
 Specifically, to clone and update repos you should first ssh in via sciget (rather than via scisub). Sciget allows connections to outbound networks.
 ```bash
@@ -131,7 +131,7 @@ $ ssh -Y [username]@sciget.pmacs.upenn.edu
 ```
 Next, load a git-related module.
 ```bash
-$ module load git/2.5.0 #or git-lfs/2.2.1 
+$ module load git/2.5.0 #or git-lfs/2.2.1
 ```
 You can now use github as you normally would.
 
@@ -149,8 +149,8 @@ $ eval "$(ssh-agent -s)"
 $ ssh-add ~/.ssh/id_rsa
 ```
 
-3. Add your ssh key to your GitHub account. 
-- Sign in to GitHub 
+3. Add your ssh key to your GitHub account.
+- Sign in to GitHub
 - Click on your profile photo and click Settings
 - Click SSH and GPG keys in the Settings sidebar
 - Click New SSH Key. "Title": enter a relevant title for the new key (e.g. PMACS account). "Key": copy the text in your ~/.ssh/id_rsa.pub file (which should start with ssh-rsa and end with your email) and paste it into the Key text box. Click Add SSH Key.
@@ -163,7 +163,7 @@ $ ssh-add ~/.ssh/id_rsa
 $ mkdir /Users/$username/ImageData/PMACS_remote
 $ chmod 700 /Users/$username/ImageData/PMACS_remote
 ```
-3. Mount the desired PMACS directory to your newly created, local mount directory using sshfs and sciget 
+3. Mount the desired PMACS directory to your newly created, local mount directory using sshfs and sciget
 ```bash
 $ sshfs [username]@sciget.pmacs.upenn.edu:<my-folder-on-PMACS> <my-local-mount-folder> -o defer_permissions,volname=project
 ```
@@ -176,14 +176,30 @@ $ diskutil umount force /Users/$username/ImageData/PMACS_remote
 To use graphics on PMACS, make sure that you:
 - Have [XQuartz](https://www.xquartz.org/) installed on your local Mac
 - log in to scisub via ssh -Y
-- use xbash for your interactive shell 
+- use xbash for your interactive shell
 
 
 ## Transferring files to and from the LPC
-- You can transfer files to and from MPACS with username@transfer.pmacs.upenn.edu. This can be used with SFTP, rsync, and scp. (You cannot use transfer for ssh).
+- You can transfer files to and from PMACS with username@transfer.pmacs.upenn.edu. This can be used with SFTP, rsync, and scp. (You cannot use transfer for ssh).
 - Sciget can be used with scp, but transfer is reccomended. As in:
 ```bash
 $ [apines@chead ~]$ scp /data/jux/BBL/projects/multishell_diffusion/processedData/multishellPipelineFall2017/*/*/prestats/eddy/*_msRD.nii.gz pinesa@transfer.pmacs.upenn.edu:/project/grmpy_diffusion/chead_diffusion_metrics/
 ```
 - Transferring from cluster-to-cluster instead of through your local machine will run orders of magnitude faster. This is particularly true if you happen to be in the midst of a global pandemic and are relying on your home wifi.
 - Make sure you have full permissions for the destination you are writing to.
+
+## Viewing niftis
+- In order to use flseyes or afni to view images on a mac, in your local terminal, type:
+```bash
+$ defaults write org.macosforge.xquartz.X11 enable_iglx -bool true
+```
+- Restart your mac and then ssh onto PMACS, you should now be able to view images
+
+## Using the batch system
+
+PMACS uses IBM's Load Sharing Facility (LSF) to submit and monitor jobs. This is
+very different from SGE used on CUBIC. The biggest differences are you will use
+``bsub`` to submit jobs and ``bjobs`` to monitor jobs instead of SGE's ``qsub`` to
+submit jobs and ``qstat`` to monitor jobs.
+
+The documentation for LSF can be found [here](https://www.ibm.com/support/knowledgecenter/SSWRJV_10.1.0/lsf_welcome/lsf_welcome.html).
