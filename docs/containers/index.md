@@ -162,7 +162,7 @@ $ python -m pip install -U templateflow  # Install the client
 $ python
 >>> import templateflow.api
 >>> templateflow.api.TF_S3_ROOT = 'http://templateflow.s3.amazonaws.com'
->>> api.get(‘MNI152NLin6Asym’)
+>>> templateflow.api.get(‘MNI152NLin6Asym’)
 ```
 
 And run the singularity image binding the appropriate folder:
