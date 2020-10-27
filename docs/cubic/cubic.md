@@ -150,7 +150,7 @@ and we can see that the file is now writable.
 
 ### Quick fixes for annoying behavior
 
-By default, CUBIC replaces some basic shell programs with aliases. In you `.bashrc` file you can remove these by deleting the following lines:
+By default, CUBIC replaces some basic shell programs with aliases. In your `.bashrc` file you can remove these by deleting the following lines:
 
 ```bash
 alias mv="mv -i"
@@ -158,10 +158,19 @@ alias rm="rm -i"
 alias cp="cp -i"
 ```
 
-additionally, you will want to add the following line to the end of `.bashrc`
+Additionally, you will want to add the following line to the end of `.bashrc`:
 
 ```bash
 unset PYTHONPATH
+```
+
+In order to ensure that the compute nodes source your `.bashrc`, you can use the
+`-V` flag with `qsub`. To change the default installation for a given software
+package, prepend the path to your `$PATH` and source your `.bashrc`:
+
+```bash
+echo PATH=/directory/where/your/installation/lives:${PATH} >> ~/.bashrc
+source ~/.bashrc
 ```
 
 ## Installing miniconda in your project
