@@ -154,21 +154,33 @@ the templateflow data and link this directory into the container at run time.
 
 Here is fmriprep's documentation on [this problem](https://fmriprep.org/en/stable/singularity.html#templateflow-and-singularity) with [more details here](https://neurostars.org/t/problems-using-pediatric-template-from-templateflow/4566/15).
 
-Ultimately, you'll need to do something like this:
+Ultimately, you'll need to do something like this (templates listed are the ones that are typically needed to run fMRIPrep):
 
 ```console
 $ export TEMPLATEFLOW_HOME=/path/to/keep/templateflow
 $ python -m pip install -U templateflow  # Install the client
 $ python
->>> import templateflow.api
->>> templateflow.api.TF_S3_ROOT = 'http://templateflow.s3.amazonaws.com'
->>> templateflow.api.get(‘MNI152NLin6Asym’)
+>>> from templateflow import api as tfapi
+>>> tfapi.TF_S3_ROOT = 'http://templateflow.s3.amazonaws.com'
+>>> tfapi.get('MNI152NLin6Asym', atlas=None, resolution=[1, 2], desc=None, extension=['.nii', '.nii.gz'])
+>>> tfapi.get('MNI152NLin6Asym', atlas=None, resolution=[1, 2], desc='brain', extension=['.nii', '.nii.gz'])
+>>> tfapi.get('MNI152NLin2009cAsym', atlas=None, extension=['.nii', '.nii.gz'])
+>>> tfapi.get('OASIS30ANTs', extension=['.nii', '.nii.gz'])
+>>> tfapi.get('fsaverage', density='164k', desc='std', suffix='sphere')
+>>> tfapi.get('fsaverage', density='164k', desc='vaavg', suffix='midthickness')
+>>> tfapi.get('fsLR', density='32k')
+>>> tfapi.get('MNI152NLin6Asym', resolution=2, atlas='HCP', suffix='dseg')
 ```
 
 And run the singularity image binding the appropriate folder:
 
 ```console
-$ export SINGULARITYENV_TEMPLATEFLOW_HOME=/templateflow
-$ singularity run -B ${TEMPLATEFLOW_HOME:-$HOME/.cache/templateflow}:/templateflow \
+$ singularity run -B ${TEMPLATEFLOW_HOME}:/templateflow \
       --cleanenv fmriprep.sif <fmriprep arguments>
+```
+
+Here is an example of a call to singularity on PMACS:
+
+```console
+$ singularity run --writable-tmpfs --cleanenv -B /project/ExtraLong/data/templateflow:/templateflow -B /project/ExtraLong/data/license.txt:/opt/freesurfer/license.txt -B /project/ExtraLong/data/ /project/ExtraLong/images/fmriprep_20.0.5.sif /project/ExtraLong/data/bids_directory/sub-117595/ses-PNC1 /project/ExtraLong/data/freesurferCrossSectional/fmriprep/sub-117595/ses-PNC1 participant --skip_bids_validation --anat-only --fs-license-file /opt/freesurfer/license.txt --output-spaces MNI152NLin2009cAsym --skull-strip-template OASIS30ANTs --nthreads 7
 ```
