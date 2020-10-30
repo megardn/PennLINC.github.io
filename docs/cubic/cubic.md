@@ -20,7 +20,9 @@ The cubic cluster is a very powerful set of servers that we can use for computin
 
 ## Setting up your account
 
-Once you are granted login credentials for the cubic cluster, you will be able to connect to from inside the Penn Medicine network using SSH. The login looks like this:
+To get login credentials for CUBIC, you must have already a Penn Medicine account (i.e. an @pennmedicine.upenn.edu email). Once you do, ask the lab's PMACS/CUBIC manager to create a ticket asking for a new CUBIC account. You will receive an email with your login credentials and other instructions. Once you are granted login credentials for CUBIC, you will be able to connect from inside the Penn Medicine network using SSH. To access the network remotely, follow [instructions to install the client](http://www.uphs.upenn.edu/network/index_vpn.html). If you can successfully authenticate but are blocked from access, you may need to contact someone to put you on an exceptions list.
+
+Once inside the Penn network, the login to CUBIC looks like this:
 
 ```python
 $ ssh -Y username@cbica-cluster.uphs.upenn.edu
@@ -86,10 +88,10 @@ The process for accessing an existing project is similar, but fortunately you wi
 
 Unlike many shared computing environments, read and write permissions are *not* configured using groups. Instead, individual users are granted access to data on a project-by-project basis. For example, if you are a member of the project `pnc_fixel_cs` you will not be able to read or write directly to that project's directory (which will be something like `/cbica/projects/pnc_fixel_cs`).
 
-To access a project's files you have to log in as a *project user*. This is done using the `sudo` command after you have logged in as your individual user. In this example you would need to use `sudo` to log in as the `pncfixelcs` user and run a shell. By running
+To access a project's files you have to log in as a *project user*. This is done using the `sudo` command after you have logged in as your individual user. In this example you would need to use `sudo` to log in as the `pncfixelcs` user and run a shell. Note that underscores in the project directory are removed when logging in as the project user. By running
 
 ```bash
-$ sudo -u pncfixelcs bash
+$ sudo -u pncfixelcs sudosh
 ```
 
 and entering the same UPHS password you used to log in to your individual user account. You can see that the project user has their own environment:
@@ -183,7 +185,9 @@ $ chmod +x Miniconda3-latest-Linux-x86_64.sh
 $ ./Miniconda3-latest-Linux-x86_64.
 ```
 
-You will need to hit Enter to continue and type `yes` to accept the license terms. The default installation location is fine (it will be `$HOME/miniconda3`). When prompted if you want to initialize miniconda3, respond again with `yes`
+You will need to hit Enter to continue and type `yes` to accept the license terms. The default installation location is fine (it will be `$HOME/miniconda3`). Sometimes you will run into a memory error at this step. If this happens, just log out and log back in and the issue should be remediated. This can be avoided in the first place by, when sshing into cubic, logging into `*login4`. 
+
+When prompted if you want to initialize miniconda3, respond again with `yes`
 
 ```bash
 Do you wish the installer to initialize Miniconda3
@@ -381,6 +385,14 @@ $ cd   # just to make sure we are not inside the mount dir
 $ umount /cbica/projects/my_project
 ```
 voilà
+
+If you forget to do this and are on a Mac, you may encounter an issue where you cannot mount or unmount and are prompted with the `Input/output error`. In this case you will need to identify and kill the sshfs process that is stuck. Then you should me able to unmount and remount.
+
+```bash
+$ pgrep -lf sshfs
+$ kill -9 <pid_of_sshfs_process>
+$ sudo umount -f <mounted_dir>
+```
 
 ##  Using R/R-studio and Installation of  R packages
 
