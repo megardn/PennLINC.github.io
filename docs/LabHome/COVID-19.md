@@ -8,7 +8,7 @@ nav_order: 9
 
 # Compliance with COVID-19 Regulations  #
 
-Compliance with COVID-19 social distancing regulations is critical to  maintain a safe working environment.  Current information (as of Penn Phase II, 7/31/2020) is below.  
+Compliance with COVID-19 social distancing regulations is critical to  maintain a safe working environment.  Current information (as of Penn Phase III, 11/10/2020) is below.  
 
 Please note that the School of Medicine  takes this _extremely seriously_.  Ultimately, compliance with these regulations  is up to each individual lab member.  Sadly, failure to comply with these guidelines can result in both HR consequences for the individual as well as our entire organization.  
 
@@ -21,12 +21,7 @@ Thus: if you are not sure about the right thing to do in a specific situation, *
 This should all occur on the #poda_resurgence channel on slack.  Please flag @DanWolf with q's.
 
 
-
-### 2. Permission to do in-person work at Penn.  
-
-Each team member must be _individually_ approved to work in person.  This requires several levels of sign-off, including at the lab level (Ted), at the section level (coordinated  by Stace), and at the Departmental level. Regardless of any other compliance activities, unless you have received  explicit approval from Stace that you can come to work during Phase 2, you are _NOT_ approved to come to work.  
-
-### 3. Knowledgelink Training
+### 2. Knowledgelink Training
 
 All team members need to complete TWO courses on Knowledge Link. PDFs certificates of completion must be sent to Stace Moore.
 
@@ -36,7 +31,7 @@ Resumption of Research Training at Penn-EHRS:  ```Course UP.83015.ITEM.ResumeRes
 
 When these are done and emailed to BOTH Stace and John Hyon update the [summary spreadsheet](https://docs.google.com/spreadsheets/d/1urO9Ds-GFc9pHnsircfhkd4RW4TP16opleP_ARyo3gU/edit#gid=0). 
 
-### 4.  Penn Open Pass
+### 3.  Penn Open Pass
 
 All team members who come to work need to enroll in Penn Open Pass, a daily text based symptom screening service.
 
@@ -45,7 +40,7 @@ https://pennopen.med.upenn.edu/users/sign_in
 When you have enrolled, please keep doing daily check in, and also update the [summary spreadsheet](https://docs.google.com/spreadsheets/d/1urO9Ds-GFc9pHnsircfhkd4RW4TP16opleP_ARyo3gU/edit#gid=0). 
 
 
-### 5.  Site log.
+### 4.  Site log.
 
 _This is critical_.  All trips to work (whether at Richards or 10 Gates) need to be _prospectively logged_ on the location-specific google doc. If you need to be in BOTH locations, then you need to sign up on BOTH calendars (not just your "home base"). The goal of this is to ensure that there is not too much occupancy at any one location. *PLEASE DO NOT COME TO THE WORKPLACE UNLESS THIS HAS BEEN DONE*.
 
