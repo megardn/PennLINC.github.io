@@ -50,7 +50,7 @@ Click [here for Richards  PodA](https://docs.google.com/spreadsheets/d/1udVy6YoQ
 
 Click [here for 10 Gates](https://docs.google.com/spreadsheets/d/1zBTn5XZSJaW39T-co763ElBRcJpW1tqT09f4NRlX22M/edit#gid=0).
 
-### 6.  Follow the Rules.
+### 5.  Follow the Rules.
 
 When at the workplace, please make sure to follow rules re: social distancing, mask wearing, and hand hygine as stipualted in the KnowledgeLink training.  For Standard Operating Procedures for participant-facing roles, please see Sage's excellent document [here](https://wiki.pmacs.upenn.edu/neuropsych//images/4/4a/Resurgence_SOPs_Phase_II_V5_7-29-2020.pdf).
 
