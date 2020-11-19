@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Seminar Series
+title: Talks and Seminars
 parent: Lab Basics
 nav_order: 3
 ---
