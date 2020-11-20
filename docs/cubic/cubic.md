@@ -200,7 +200,7 @@ For the changes to take place, log out of your sudo bash session and your second
 ```bash
 $ exit
 $ exit
-$ sudo -u xcpdev bash
+$ sudo -u xcpdev sudosh
 $ bash
 (base) $ which conda
 ~/miniconda3/bin/conda
@@ -214,6 +214,11 @@ There will be a permission issue with your conda installation. You will need to 
 $ chown -R `whoami` ~/miniconda3
 ```
 
+When you launch jobs on cubic, they will autmoatically use cubic's base conda environment instead of your project user's miniconda installation. To fix this, you will need to initialize miniconda for a bash script submitted to qsub by running
+ 
+ ```bash
+$ source ~/miniconda3/etc/profile.d/conda.sh
+```
 
 Let's create an environment we will use for interacting with flywheel.
 
