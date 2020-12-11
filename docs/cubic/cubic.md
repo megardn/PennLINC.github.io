@@ -436,7 +436,19 @@ To inslall R in your desired directory, follow the following steps.
       $ module load R-studio/1.1.456
       $ rstudio & # enjoy the R and Rstudio, it works
      ```
-## Specifying CPUs on a node 
+## CPUs, Nodes, & Memory
+
+CUBIC has: 
+
+- 168 compute nodes 
+
+- 4840 CPUs
+
+- 58 TB of RAM
+
+It is suggested to use 20 CPUs per core, with the RAM depending on the size of the jobs. 20 CPUs is suggested as a safe estimate because there are approximately 20 CPUs per node. 
+
+### Specifying CPUs on a node 
 
 In order to prevent your jobs from dying without the cluster giving errors or warnings, there are several steps that can be taken: 
 
@@ -451,21 +463,8 @@ In order to prevent your jobs from dying without the cluster giving errors or wa
 	
 	b. 	`qsub -pe threaded N-M`
 	where `N-M` speicify a range of CPUs and `M>N`
-	
-## CPUs and Nodes on CUBIC 
 
-CUBIC has: 
-
-- 168 compute nodes 
-
-- 4840 CPUs
-
-- 58 TB of RAM
-
-It is suggested to use 20 CPUs per core, with the RAM depending on the size of the jobs. 20 CPUs is suggested as a safe estimate because there are approximately 20 CPUs per node. 
-
-
-## Errors with Allocating Memory/Memory Overflow 
+### Errors with Allocating Memory/Memory Overflow 
 
 Here is an example of a memory allocation error message:
 
