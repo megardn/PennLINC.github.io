@@ -436,3 +436,50 @@ To inslall R in your desired directory, follow the following steps.
       $ module load R-studio/1.1.456
       $ rstudio & # enjoy the R and Rstudio, it works
      ```
+## Specifying CPUs on a node 
+
+In order to prevent your jobs from dying without the cluster giving errors or warnings, there are several steps that can be taken: 
+
+1. Include `-e` in the code to make sure that the environment is clean. It will also be important to check the `.e` log for the environment to spot potential warning that will specify whether or not the environment is corrupted. 
+2. Check for a core dump to identify whether there are certain jobs that did not go through: 
+	If there is a `core.XXX` file then the job definitely exited unusually. 
+3. Some jobs may be killed on cubic if the job is allocated to nodes where the number of CPUs specified in the code is less than the total available CPUs on that node. While it is not possible to select a particular node on CUBIC, it is possible to specify the requirement for submission so that it matches the nodes themselves. It is possible to specify the number of CPUs to be used during submission with the following code: 
+
+	a. `qsub -pe threaded N -l h_vmem=XG,s_vmem=YG`
+	where `X` and `Y` represent numbers and `N` is the number of CPUs. 
+	`h_vmem` is the hard limit of the memory up to which the job can consume, and `s_vmem` is the soft virtual memory that is the minimum requested to run the job. 
+	
+	b. 	`qsub -pe threaded N-M`
+	where `N-M` speicify a range of CPUs and `M>N`
+	
+## CPUs and Nodes on CUBIC 
+
+CUBIC has: 
+
+- 168 compute nodes 
+
+- 4840 CPUs
+
+- 58 TB of RAM
+
+It is suggested to use 20 CPUs per core, with the RAM depending on the size of the jobs. 20 CPUs is suggested as a safe estimate because there are approximately 20 CPUs per node. 
+
+
+## Errors with Allocating Memory/Memory Overflow 
+
+Here is an example of a memory allocation error message:
+
+`mmap cannot allocate memory failed (/gpfs/fs001/cbica/projects/RBC/Pipeline_Timing/cpac_1.7.1.simg), reading buffer sequentially…`
+
+If you see this:
+
+- Make sure in this case that everything is in the right directory.
+
+- Make sure that the allocation of memory is specified. Example: `mem_gb 20` 
+
+- Make sure that the memory is being requested in the cluster itself and not just specified in the code: 
+`qsub -l h_vmem=22.5 , s_vmem=22G testrun.sh`
+
+Note that the use of `h_vmem` adds 2.5 GBs to the original `mem_gb` specification. This is to remain on the safe side of memory specification to the cluster as the cluster will kill any job that uses more than the requested memory space when requesting hard memory (`h_vmem`). This function is used to save space on the cluster such that several jobs can be run simultaneously but is only advised to be used when the user is sure about the memory specification needed. 
+
+Note that `s_vmem` adds only 2 GBs to the original `mem_gb` specification. This is because soft memory has more flexibility than hard memory specifications. This is recommended to be used when the exact memory required by each subject is not concretely known so as to diminish the risk of the job being killed by accident. 
