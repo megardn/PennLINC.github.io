@@ -219,3 +219,26 @@ Alternatively, or in addition, you can add the following line to your .bashrc.
 ```console
 $ echo LSB_JOB_REPORT_MAIL=N >> ~/.bashrc
 ```
+
+## Running MATLAB on PMACS
+
+To run a MATLAB script on PMACS, simply do the following:
+
+1. Compose your script, for example:
+```matlab
+addpath('/path/to/matlab/functions/')
+runALE # main command to be executed
+```
+and save it, for instance as `runexperimental1.m`
+
+2. Compose a bash script to launch MATLAB, like so:
+
+```bash
+  module load matlab/2018b # load matlab
+  matlab  -nodisplay -nosplash  -r /path/to/scripts/runexperimental1 # note, there's no file extension (.m) 
+```
+and save it too: `experiment1.sh`
+     
+3. Submit the bash script as a job with `bsub`
+
+`bsub -q matlab_normal  /path/to/scripts/experiment1.sh`
