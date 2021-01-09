@@ -7,7 +7,10 @@ has_toc: false
 nav_order: 3
 ---
 
-When you begin your project, use this template to fill out some critical information in the initial headers. 
+
+# Project Page Template
+
+When you begin your project, use this template to fill out some critical information in the initial headers of your GitHub Pages site. 
 
 
 ### Project Title
