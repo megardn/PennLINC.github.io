@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Project Documentation with GitHub Pages
-parent: Contributing to Docs
+parent: Documentation
 has_children: false
 has_toc: true
 nav_order: 2
