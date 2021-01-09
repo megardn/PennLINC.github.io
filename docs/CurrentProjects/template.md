@@ -7,7 +7,7 @@ has_toc: false
 ---
 
 
-### Current Project Template
+# Current Project Template
 
 When you setup your project, use this template.  Just remember to also update the `title` and `nav_order` above
 
