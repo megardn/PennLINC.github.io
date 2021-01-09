@@ -11,11 +11,11 @@ nav_order: 9
 
 These pages provide an overview of the current projects occurring in the lab.    
 
-To make a new page for your current project, see the tutorial for GitHub Pages [here](https://pennlinc.github.io/docs/Contributing/project-documentation/). Please remember to include the essential information provided in the template fields.
+Each project shoudl have a GitHub Pages site, see the tutorial [here](https://pennlinc.github.io/docs/Contributing/project-documentation/). Please remember to include the essential information provided in the template fields.
 
 For additional information see the [Project Setup Page](https://pennlinc.github.io/docs/LabHome/ProjectSetup/).  
 
-Links to projects can be added according to the following template:
+Projects are  listed below  according to the following template:
 
 ### Project Title
 Project Lead(s):
