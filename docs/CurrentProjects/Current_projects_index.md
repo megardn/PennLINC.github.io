@@ -1,4 +1,4 @@
-﻿---
+---
 layout: default
 title: Projects
 has_children: false
