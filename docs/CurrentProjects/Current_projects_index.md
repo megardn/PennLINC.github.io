@@ -17,10 +17,17 @@ For additional information see the [Project Setup Page](https://pennlinc.github.
 
 Projects are  listed below  according to the following template:
 
-### Project Title
-Project Lead(s):
-Brief Project Description: One-three readable sentneces that desribe the goals of the project
-Project Site: Link to GitHub pages site
+## Project Title
+Brief and informative title
+
+###Project Lead(s):
+First author(s)
+
+###Brief Project Description: 
+One-three readable sentneces that desribe the goals of the project
+
+###Project Site: 
+Link to GitHub pages site
 
 
 
