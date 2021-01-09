@@ -26,7 +26,7 @@ Try to make this no more than three highly accessible sentences.
 
 Anticipated First Author(s)
 
-### Faculty Lead(s):
+### Faculty Lead(s)
 
 Anticipated Last Author(s)
 
