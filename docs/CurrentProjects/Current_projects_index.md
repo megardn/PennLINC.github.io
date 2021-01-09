@@ -11,9 +11,12 @@ nav_order: 9
 
 These pages provide an overview of the current projects occurring in the lab.  Below is a template that specifies fields each active project should provide. As projects become  more mature they should transition to a GitHub Pages site, as described [here](https://pennlinc.github.io/docs/Contributing/project-documentation/), but this information should be listed on the GitHub pages site as well. For additional information see the [Project Setup Page](https://pennlinc.github.io/docs/LabHome/ProjectSetup/).
 
-## Current Project template
+
+### Current Project Template
 
 ### Project Title
+
+Brief and informative title; not always the same as the manuscript title
 
 ### Brief Project Description
 
@@ -71,10 +74,9 @@ A good place to aggregate and share articles, manuscript drafts, etc; provide li
 
 Shared library name for references
 
+## Current work products
 
-
-
-
+I.e., citations to poster presentations, links to preprints, final publication citation
 
 
 
