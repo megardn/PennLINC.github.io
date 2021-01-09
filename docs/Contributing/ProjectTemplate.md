@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Project Template
-parent: Contributing to Docs
+parent: Documentation
 has_children: false
 has_toc: false
 nav_order: 3
