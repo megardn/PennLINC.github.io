@@ -7,12 +7,8 @@ has_toc: false
 nav_order: 3
 ---
 
-This is a template of the organization one should use for each project's GitHub Pages site. 
-
-
-# Project Header Template
-
 When you begin your project, use this template to fill out some critical information in the initial headers. 
+
 
 ### Project Title
 
