@@ -5,7 +5,7 @@ parent: Lab Basics
 nav_order: 4
 ---
 
-# PennLINC project setup guide
+# PennLINC Project Setup Guide
 
 Each project at PennLINC has several key elements to facilitate collaboration and ensure reproducbility.  For clarity in naming, all elements should be named similarly-- often ```Lastname_ProjectName``` with CamelCasing, where "Lastname" is the last name of the first author / trainee leading the project.  Links to much of the relevant software can be found in the lab [Software and Environments](https://pennlinc.github.io/docs/Basics/basics/) page.
 
@@ -32,6 +32,11 @@ The main execption to this are documents (e.g., manuscripts) that need  review; 
 ### Trello board
 
 Trello is a simple webapp that we use for project tracking.  There is a "board" for each project (Ted will create); all boards are part of the [Trello PennLINC organization](https://trello.com/pennlinc). Get a trello username and send it to Ted so he can add you.
+
+
+### Google drive folder
+
+It is often useful to have a shared directory on google drive to share relevant articles and manuscript drafts. 
 
 
 ### Zotero library
