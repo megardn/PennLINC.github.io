@@ -29,7 +29,7 @@ First author(s)
 
 ### Brief Project Description: 
 
-One-three readable sentneces that desribe the goals of the project
+One to three readable sentneces that desribe the goals of the project
 
 
 ### Project Site: 
