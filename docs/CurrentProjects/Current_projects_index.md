@@ -22,17 +22,17 @@ Projects are  listed below  according to the following template:
 Brief and informative title
 
 
-###Project Lead(s):
+### Project Lead(s):
 
 First author(s)
 
 
-###Brief Project Description: 
+### Brief Project Description: 
 
 One-three readable sentneces that desribe the goals of the project
 
 
-###Project Site: 
+### Project Site: 
 Link to GitHub pages site
 
 
