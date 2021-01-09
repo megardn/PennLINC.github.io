@@ -42,9 +42,10 @@ Now, if you want a nice theme, do the following:
 2. Go all the way down to the section **GitHub Pages**.
 3. Click `Change theme` and choose a theme.
 
-## Project Header Template
 
-When you setup your project, use this template to fill out some critical information in the initial headers.
+# Project Header Template
+
+When you begin your  project, use this template to fill out some critical information in the initial headers. 
 
 ### Project Title
 
@@ -110,9 +111,14 @@ Shared library name for references
 
 I.e., citations to poster presentations, links to preprints, final publication citation
 
-## Table of Contents Example
+### Code documentation
 
-If you'd like to include a table of contents in your project, doing so is simple!
+This section is the bulk of the project page, and can be broken up as best fits the project.  Remember that this should be acessible prose that allows your replicator, reviewer, or interested reader to step through your code and understand how the code corresponds to the findings described in the paper. At a minimum, there should be clear documentation regarding sample selection (e.g., inclusion/exclusion), preprocessing (e.g., container version, data freeze), and hypothesis testing (usually in the form of an analytic notebook).   See the [Project Reproducibility  Guide](https://pennlinc.github.io/docs/LabHome/ReproSystem/) for more information.   
+
+
+### Table of Contents Example
+
+Note that if you'd like to include a table of contents in your project page, doing so is simple!
 Just include the lines ```1. TOC
 {:toc}``` at the level you'd like your table to be. Every title and subtitle after those lines should be reflected in your table of contents. You can now jump to each section by clicking on it's respective title in the table! 
 
