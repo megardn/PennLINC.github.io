@@ -39,6 +39,6 @@ Trello is a simple webapp that we use for project tracking.  There is a "board" 
 Right at the start of a project, when people on the team start sending you relevant papers, download zotero and create a reference library for the project.  Definately do this before you start doing a literature review.
 
 
-### Project folder on PMACS
+### Project folder 
 
-While some projects can be done locally on your laptop, many require more computing resources.  In general, we now reccomend projects use the PMACS LPC; see the [PMACS pages](https://pennlinc.github.io/docs/pmacs) for details.  Furthermore, each project on PMACS should use a common directory structure to ensure reproducability, see the [PMACS project setup guide](coming soon) for further details.
+While some projects can be done locally on your laptop, many require more computing resources.  In general, we now reccomend projects use the PMACS LPC; see the [PMACS pages](https://pennlinc.github.io/docs/pmacs) for details.  However, some projects may be best served by using the computational resources of CUBIC; see the [CUBIC pages](https://pennlinc.github.io/docs/cubic) for more details.   Regardless, each project should use a common directory structure to ensure reproducability.
