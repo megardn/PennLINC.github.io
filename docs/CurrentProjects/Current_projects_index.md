@@ -15,5 +15,14 @@ To make a new page for your current project, see the tutorial for GitHub Pages [
 
 For additional information see the [Project Setup Page](https://pennlinc.github.io/docs/LabHome/ProjectSetup/).  
 
+Links to projects can be added according to the following template:
+
+### Project Title
+Project Lead(s):
+Brief Project Description: One-three readable sentneces that desribe the goals of the project
+Project Site: Link to GitHub pages site
+
+
+
 
 
