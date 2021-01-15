@@ -36,6 +36,26 @@ One to three readable sentneces that desribe the goals of the project
 
 Link to GitHub pages site
 
+---
+
+## Project Title
+
+GPS
+
+
+### Project Lead(s):
+
+Cedric
+
+
+### Brief Project Description: 
+
+One to three readable sentneces that desribe the goals of the project
+
+
+### Project Site: 
+
+https://cedricx.github.io/SmartphoneSensorPipeline/
 
 
 
