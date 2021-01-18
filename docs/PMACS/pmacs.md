@@ -241,4 +241,35 @@ and save it too: `experiment1.sh`
      
 3. Submit the bash script as a job with `bsub`
 
-`bsub -q matlab_normal  /path/to/scripts/experiment1.sh`
+  ```sh
+   bsub -q matlab_normal  /path/to/scripts/experiment1.sh
+  ```
+
+## Running rstudio on PMACS
+Rstudio is not installed on PMACS at the moment, so we manage to installed one for BBL users. 
+Follow the following steps to use rstudio:
+
+1. Temporarily source the central default modules if it is not in your bash profile
+     ```bash
+      $ source  /project/bbl_projects/apps/default_modules.sh
+     ```
+
+2. Activate rstudio enviroment
+   ```sh
+   $ conda activate rstudio 
+   ```
+3. Get into interactive mode. 
+   ```sh 
+   $  xbash 
+   ```
+4. Lunch the rstudio
+   ```
+   $ rstudio 
+   ```
+5. Optional. if you want to use other version of R , for instance `R/3.6.3`. 
+   Load the module of that R and set rstudio to use that R before lunching the rstudio. 
+   ```sh 
+   $  module load R/3.6.3
+   $  export RSTUDIO_WHICH_R=/appl/R-3.6.3/bin/R
+
+   ```
