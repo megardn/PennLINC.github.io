@@ -43,7 +43,7 @@ We support [Atom](https://atom.io), as it allows you to code interactively using
 
 Once you have downloaded and installed Atom, install the atom-hydrogen package. You can install this and any other package you want here:
 
-![atom](.atom-hydrogen.png)
+![atom](./atom-hydrogen.png)
 
 atom-hydrogen.png
 
