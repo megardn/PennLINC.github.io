@@ -68,13 +68,18 @@ Type this in the box:
 We are going to ssh into a cluster, start a jupyter kernal, and then find that kernal via Atom. This is actually pretty easy.
 
 ```bash
-#local terminal 
+#local terminal, get into pmacs
 ssh -Y mb3152@scisub.pmacs.upenn.edu
-#cluster
+#cluster, start a jupyter instance
 jupyter notebook --no-browser --NotebookApp.token='' --port=9999
-#local terminal
+#local terminal, this connects you to the jupyter instance
 ssh -N -f -L localhost:9998:localhost:9999  mb3152@scisub.pmacs.upenn.edu
 ```
 
+Now, in Atom, go to Packages > Hydrogen > Connect to Remote Kernal. Since you updated your settings, it will automatically connect to the one you have running.
 
+Click Remote Server, then [New Session], then Python 3.
+
+Now you can code interactively, using the python on pmacs.
+![interactive](./interactive.png)
 
