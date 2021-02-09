@@ -84,7 +84,7 @@ We follow the same process as above: ssh into a cluster, start a jupyter kernal,
 #local terminal, get into pmacs
 ssh -Y mb3152@scisub.pmacs.upenn.edu
 #cluster, start a jupyter instance
-jupyter notebook --no-browser --NotebookApp.token='' --port=9999
+jupyter notebook --no-browser --NotebookApp.token='' --NotebookApp.disable_check_xsrf=True --port=9999
 #local terminal, this connects you to the jupyter instance
 ssh -N -f -L localhost:9998:localhost:9999  mb3152@scisub.pmacs.upenn.edu
 ```
