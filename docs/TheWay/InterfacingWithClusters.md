@@ -15,7 +15,7 @@ has_toc: true
 1. TOC
 {:toc}
 
-# Connecting to the clusters
+## Connecting to the clusters
 
 This is covered in the cluster specific documentation, but for completeness:
 
