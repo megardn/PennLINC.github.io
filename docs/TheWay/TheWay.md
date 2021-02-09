@@ -1,7 +1,8 @@
 ---
 layout: default
 title: The Way
-parent: docs
+has_children: false
+nav_order: 6
+permalink: docs/TheWay
 has_toc: true
-nav_order: 2
 ---
