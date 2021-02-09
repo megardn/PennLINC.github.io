@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Documentation
+title: The Way
 has_children: true
 has_toc: true
 nav_order: 3
