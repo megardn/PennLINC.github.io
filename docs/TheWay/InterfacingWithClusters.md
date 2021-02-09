@@ -30,7 +30,7 @@ ssh -Y mb3152@scisub.pmacs.upenn.edu
 #mount to your home directory on pmacs, using a local directory called "/Users/maxwell/upenn/"
 sshfs mb3152@sciget.pmacs.upenn.edu:/home/mb3152 /Users/maxwell/upenn/ -o follow_symlinks
 ```
-CUBIC 
+CUBIC
 ```bash
 #my username is bertolem
 #login
@@ -43,11 +43,28 @@ sshfs bertolem@cubic-login.uphs.upenn.edu://cbica/home/bertolem/ /Users/maxwell/
 
 We support [Atom](https://atom.io), as it allows you to code interactively using a kernal you start on the cluster. What does this mean? It means you have a nice shiny IDE, but you are using the software and data on the cluster. Best of all worlds. VSCode has the same capabilities, but we only document The Way for Atom.
 
-Once you have downloaded and installed Atom, install the atom-hydrogen package. You can install this and any other package you want here:
+Once you have downloaded and installed Atom, install the atom-hydrogen package. You can install this and any other package you want from the Atom toolbar:
+
+Packages > Settings View > Install Packages / Themes
+
+Type hydrogen into the search:
 
 ![atom](./atom-hydrogen.png)
 
-atom-hydrogen.png
+Go into the Preferences for Atom: File > Preferences.
+Select Packages on the left, and then click on the Settings button for Hydrogen.
+
+![atom2](./atom-hydrogen2.png)
+
+Scroll down to the Kernal Gateways Section
+![atom2](./atom-hydrogen2.png)
+Type this in the box:
+[{
+  "name": "Remote server",
+  "options": {
+    "baseUrl": "http://localhost:9998"
+  }
+}]
 
 #local terminal 
 ssh -Y mb3152@scisub.pmacs.upenn.edu
@@ -55,14 +72,7 @@ ssh -Y mb3152@scisub.pmacs.upenn.edu
 jupyter notebook --no-browser --NotebookApp.token='' --port=9999
 #local terminal
 ssh -N -f -L localhost:9998:localhost:9999  mb3152@scisub.pmacs.upenn.edu
-#atom-hydrogen settings for Kernal Gateways
 
-[{
-  "name": "Remote server",
-  "options": {
-    "baseUrl": "http://localhost:9998"
-  }
-}]
 
 ##
 
