@@ -57,7 +57,7 @@ Select Packages on the left, and then click on the Settings button for Hydrogen.
 ![atom2](./atom-hydrogen2.png)
 
 Scroll down to the Kernal Gateways Section
-![atom2](./atom-hydrogen2.png)
+![atom3](./atom-hydrogen3.png)
 Type this in the box:
 [{
   "name": "Remote server",
@@ -66,6 +66,7 @@ Type this in the box:
   }
 }]
 
+## Writing Code
 #local terminal 
 ssh -Y mb3152@scisub.pmacs.upenn.edu
 #cluster
@@ -73,8 +74,6 @@ jupyter notebook --no-browser --NotebookApp.token='' --port=9999
 #local terminal
 ssh -N -f -L localhost:9998:localhost:9999  mb3152@scisub.pmacs.upenn.edu
 
-
-##
 
 
 
