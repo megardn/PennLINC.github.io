@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Interfacing with the clusters
-parent: TheWay
+parent: The Way
 nav_order: 1
 has_toc: true
 ---
