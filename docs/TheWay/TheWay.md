@@ -1,8 +1,9 @@
 ---
 layout: default
-title: The Way
-has_children: false
-nav_order: 6
-permalink: docs/TheWay
+title: Documentation
+has_children: true
 has_toc: true
+nav_order: 3
 ---
+
+Here is The Way to do science
