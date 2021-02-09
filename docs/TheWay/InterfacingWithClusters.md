@@ -63,14 +63,18 @@ Type this in the box:
   }
 }]
 
-## Writing Code
+## Writing Code Interactively 
+
+We are going to ssh into a cluster, start a jupyter kernal, and then find that kernal via Atom. This is actually pretty easy.
+
+```bash
 #local terminal 
 ssh -Y mb3152@scisub.pmacs.upenn.edu
 #cluster
 jupyter notebook --no-browser --NotebookApp.token='' --port=9999
 #local terminal
 ssh -N -f -L localhost:9998:localhost:9999  mb3152@scisub.pmacs.upenn.edu
-
+```
 
 
 
