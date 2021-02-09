@@ -36,9 +36,24 @@ ssh -Y bertolem@cubic-login.uphs.upenn.edu
 sshfs bertolem@cubic-login.uphs.upenn.edu://cbica/home/bertolem/ /Users/maxwell/CUBIC/ -o follow_symlinks
 ```
 
+## Writing Code Interactively in a Jupyter Notebook
+
+We are going to ssh into a cluster, start a jupyter kernal, and then find that kernal via Atom. This is actually pretty easy.
+
+```bash
+#local terminal, get into pmacs
+ssh -Y mb3152@scisub.pmacs.upenn.edu
+#cluster, start a jupyter instance
+jupyter notebook --no-browser --NotebookApp.token='' --port=9999
+#local terminal, this connects you to the jupyter instance
+ssh -N -f -L localhost:9998:localhost:9999  mb3152@scisub.pmacs.upenn.edu
+```
+
+Now, in your local web-browser, go to: localhost:9998. You can now start a python kernal and get to coding! 
+
 ## Text Editor
 
-We support [Atom](https://atom.io), as it allows you to code interactively using a kernal you start on the cluster. What does this mean? It means you have a nice shiny IDE, but you are using the software and data on the cluster. Best of all worlds. VSCode has the same capabilities, but we only document The Way for Atom.
+If you want a bit more power and, in our opinion, a prettier editor, We support [Atom](https://atom.io), as it allows you to code interactively using a kernal you start on the cluster. What does this mean? It means you have a nice shiny IDE, but you are using the software and data on the cluster. Best of all worlds. VSCode has the same capabilities, but we only document The Way for Atom.
 
 Once you have downloaded and installed Atom, install the atom-hydrogen package. You can install this and any other package you want from the Atom toolbar:
 
@@ -62,19 +77,6 @@ Type this in the box:
     "baseUrl": "http://localhost:9998"
   }
 }]
-
-## Writing Code Interactively 
-
-We are going to ssh into a cluster, start a jupyter kernal, and then find that kernal via Atom. This is actually pretty easy.
-
-```bash
-#local terminal, get into pmacs
-ssh -Y mb3152@scisub.pmacs.upenn.edu
-#cluster, start a jupyter instance
-jupyter notebook --no-browser --NotebookApp.token='' --port=9999
-#local terminal, this connects you to the jupyter instance
-ssh -N -f -L localhost:9998:localhost:9999  mb3152@scisub.pmacs.upenn.edu
-```
 
 Now, in Atom, go to Packages > Hydrogen > Connect to Remote Kernal. Since you updated your settings, it will automatically connect to the one you have running.
 
