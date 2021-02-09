@@ -19,6 +19,8 @@ has_toc: true
 
 This is covered in the cluster specific documentation, but for completeness:
 
+If you are using a Mac, first install [OSXFuse](https://github.com/osxfuse/osxfuse/releases/download/macfuse-4.0.5/macfuse-4.0.5.dmg) and [SSHFS](https://github.com/osxfuse/sshfs/releases/download/osxfuse-sshfs-2.5.0/sshfs-2.5.0.pkg). You should not need it for this, but you should, in general, have [X11](https://www.xquartz.org/).
+
 PMACS
 
 ```bash
