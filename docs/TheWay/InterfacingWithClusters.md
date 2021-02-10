@@ -74,7 +74,7 @@ Select Packages on the left, and then click on the Settings button for Hydrogen.
 ![atom2](./atom-hydrogen2.png)
 
 Scroll down to the Kernal Gateways Section
-![atom3](./atom-hydrogen3.png)
+![atom3](./hydrogen-port.png)
 Type this in the box:
 [{
   "name": "Remote server",
