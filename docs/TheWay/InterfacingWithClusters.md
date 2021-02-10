@@ -23,7 +23,7 @@ PMACS
 ```bash
 #my username is mb3152
 #login
-ssh -Y mb3152@scisub.pmacs.upenn.edu
+ssh -Y mb3152@sciget.pmacs.upenn.edu
 #mount to your home directory on pmacs, using a local directory called "/Users/maxwell/upenn/"
 sshfs mb3152@sciget.pmacs.upenn.edu:/home/mb3152 /Users/maxwell/upenn/ -o follow_symlinks
 ```
@@ -42,28 +42,32 @@ We are going to ssh into a cluster, start a jupyter kernal, and then find that k
 
 ```bash
 #local terminal, get into pmacs
-ssh -Y mb3152@scisub.pmacs.upenn.edu
+ssh -Y mb3152@sciget.pmacs.upenn.edu
 #cluster, start a jupyter instance
 jupyter notebook --no-browser --NotebookApp.token='' --NotebookApp.disable_check_xsrf=True --port=6666
 #local terminal, this connects you to the jupyter instance
 ssh -N -f -L localhost:6666:localhost:6666  mb3152@scisub.pmacs.upenn.edu
 ```
 
-Now, in your local web-browser, go to: localhost:6666. You can now start a python kernal and get to coding! 
+Now, in your local web-browser, go to: localhost:6666. You can now start a python or R kernal or a terminal and get to coding! 
 
 ## Writing Code Interactively in Atom
 
 If you want a bit more power and, in our opinion, a prettier editor, We support [Atom](https://atom.io), as it allows you to code interactively using a kernal you start on the cluster. What does this mean? It means you have a nice shiny IDE, but you are using the software and data on the cluster. Best of all worlds.
 
-Once you have downloaded and installed Atom, install the atom-hydrogen package. You can install this and any other package you want from the Atom toolbar:
+Once you have downloaded and installed Atom, install some packages. It is easiest to do this on the command line. To activate this, go to Atom > Install Shell Commands. 
 
-Packages > Settings View > Install Packages / Themes
+Then copy and paste this into your terminal:
+```bash
+apm install hydrogen
+apm install script
+apm install autocomplete-python
+apm install ide-r
+apm install language-r
+apm install platformio-ide-terminal
+```
 
-Type hydrogen into the search:
-
-![atom](./atom-hydrogen.png)
-
-Go into the Preferences for Atom: File > Preferences.
+Okay, one more thing! Go into the Preferences for Atom: File > Preferences.
 Select Packages on the left, and then click on the Settings button for Hydrogen.
 
 ![atom2](./atom-hydrogen2.png)
@@ -74,7 +78,7 @@ Type this in the box:
 [{
   "name": "Remote server",
   "options": {
-    "baseUrl": "http://localhost:9998"
+    "baseUrl": "http://localhost:6666"
   }
 }]
 
