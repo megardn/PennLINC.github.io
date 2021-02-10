@@ -55,9 +55,9 @@ Now, in your local web-browser, go to: localhost:6666. You can now start a pytho
 
 If you want a bit more power and, in our opinion, a prettier editor, We support [Atom](https://atom.io), as it allows you to code interactively using a kernal you start on the cluster. What does this mean? It means you have a nice shiny IDE, but you are using the software and data on the cluster. Best of all worlds.
 
-Once you have downloaded and installed Atom, install some packages. It is easiest to do this on the command line. To activate this, go to Atom > Install Shell Commands. 
+Once you have downloaded and installed Atom, install some packages. It is easiest to do this on the command line. To activate command line tools, open Atom, go to the menu bar up in the top-left: Atom > Install Shell Commands. 
 
-Then copy and paste this into your terminal:
+Then copy and paste this into your Terminal (outside of Atom for now!):
 ```bash
 apm install hydrogen
 apm install script
@@ -67,7 +67,8 @@ apm install language-r
 apm install platformio-ide-terminal
 ```
 
-Okay, one more thing! Go into the Preferences for Atom: File > Preferences.
+Okay, one more thing. We need to tell Atom what port to expect the jupyter session on.
+Go into the Preferences for Atom: File > Preferences.
 Select Packages on the left, and then click on the Settings button for Hydrogen.
 
 ![atom2](./atom-hydrogen2.png)
@@ -95,8 +96,8 @@ ssh -N -f -L localhost:9998:localhost:9999  mb3152@scisub.pmacs.upenn.edu
 
 Now, in Atom, go to Packages > Hydrogen > Connect to Remote Kernal. Since you updated your settings, it will automatically connect to the one you have running.
 
-Click Remote Server, then [New Session], then Python 3.
+Click Remote Server, then [New Session], then Python 3 or R.
 
-Now you can code interactively, using the python on pmacs.
+Now you can code interactively, using the python or R on pmacs.
 ![interactive](./interactive.png)
 
