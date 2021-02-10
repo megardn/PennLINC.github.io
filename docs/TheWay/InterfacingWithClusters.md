@@ -23,9 +23,9 @@ PMACS
 ```bash
 #my username is mb3152
 #login
-ssh -Y mb3152@sciget.pmacs.upenn.edu
+ssh -Y mb3152@scisub.pmacs.upenn.edu
 #mount to your home directory on pmacs, using a local directory called "/Users/maxwell/upenn/"
-sshfs mb3152@sciget.pmacs.upenn.edu:/home/mb3152 /Users/maxwell/upenn/ -o follow_symlinks
+sshfs mb3152@scisub.pmacs.upenn.edu:/home/mb3152 /Users/maxwell/upenn/ -o follow_symlinks
 ```
 CUBIC
 ```bash
@@ -42,7 +42,7 @@ We are going to ssh into a cluster, start a jupyter kernal, and then find that k
 
 ```bash
 #local terminal, get into pmacs
-ssh -Y mb3152@sciget.pmacs.upenn.edu
+ssh -Y mb3152@scisub.pmacs.upenn.edu
 #cluster, start a jupyter instance
 jupyter notebook --no-browser --NotebookApp.token='' --NotebookApp.disable_check_xsrf=True --port=6666
 #local terminal, this connects you to the jupyter instance
