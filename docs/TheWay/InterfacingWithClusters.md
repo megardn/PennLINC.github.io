@@ -44,12 +44,12 @@ We are going to ssh into a cluster, start a jupyter kernal, and then find that k
 #local terminal, get into pmacs
 ssh -Y mb3152@scisub.pmacs.upenn.edu
 #cluster, start a jupyter instance
-jupyter notebook --no-browser --NotebookApp.token='' --NotebookApp.disable_check_xsrf=True --port=9999
+jupyter notebook --no-browser --NotebookApp.token='' --NotebookApp.disable_check_xsrf=True --port=6666
 #local terminal, this connects you to the jupyter instance
-ssh -N -f -L localhost:9998:localhost:9999  mb3152@scisub.pmacs.upenn.edu
+ssh -N -f -L localhost:6666:localhost:6666  mb3152@scisub.pmacs.upenn.edu
 ```
 
-Now, in your local web-browser, go to: localhost:9998. You can now start a python kernal and get to coding! 
+Now, in your local web-browser, go to: localhost:6666. You can now start a python kernal and get to coding! 
 
 ## Writing Code Interactively in Atom
 
