@@ -21,14 +21,16 @@ This section gives an overview of how to get started on PMACS Limited Performanc
 Send your PI your Pennkey, full name, and Penn email, and have them forward this information to pmacs-sys-sci@lists.upenn.edu and request access for you. When access has been granted, you will receive an email with a temporary password through SecureShare. Log in via [this link](https://reset.pmacs.upenn.edu/) with your temporary password and set a new PMACS password. Your Pennkey and new PMACS password will be used to ssh into the LPC and to access the PMACS help desk/ticketing system.
 
 ## Logging in to PMACS LPC
-Once you've set up your login credentials for the PMACS LPC, you can SSH into the LPC from anywhere (even without Penn VPN). You can SSH into PMACS as follows:
+Once you've set up your login credentials for the PMACS LPC, you can SSH into the LPC from anywhere (even without Penn VPN). You can SSH into PMACS in two different ways, depending on what tasks you want to execute:
 
 ```bash
-$ ssh -Y [username]@scisub.pmacs.upenn.edu
+$ ssh -Y [username]@scisub.pmacs.upenn.edu #SSH only. No sftp. No outbound access. Can submit or check jobs.
+$ ssh -Y [username]@sciget.pmacs.upenn.edu #SSH, but has outbound access to use git, svn, wget, et cetera to download data. Can *not* submit or check jobs.
 ```
 
 Enter PMACS password when prompted.
-You can submit jobs on scisub.
+
+Again, you can submit jobs on scisub, you get interface with the outside world (e.g., using conda / pip install, wget) on sciget.
 
 In general, there is a set of software libraries and tools we expect you'll need, such as `R`, `conda`, and `FSL`; we've made these available for you in a module. To load this module, simply type the following:
 
