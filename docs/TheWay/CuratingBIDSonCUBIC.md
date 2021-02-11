@@ -2,7 +2,7 @@
 layout: default
 title: Curating BIDS Datasets on CUBIC 
 parent: The Way
-nav_order: 1
+nav_order: 2
 has_toc: true
 ---
 
