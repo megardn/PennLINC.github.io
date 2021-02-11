@@ -6,7 +6,7 @@ nav_order: 1
 has_toc: true
 ---
 
-# Our Workflow for currating and running preprocessing pipelines on BIDS datasets on CUBIC using CuBIDS DataLad
+# Curating BIDS Datasets on CUBIC
 {: .no_toc }
 
 ## Table of contents
@@ -16,3 +16,4 @@ has_toc: true
 1. We wanted to create a generalizable workflow for curating BIDS datasets on CUBIC.
 2. This workflow includes running a BIDS dataset through CuBIDS (validation and grouping), and using Datalad to run preprocesssing pipelines. 
 
+# Our Workflow for currating and running preprocessing pipelines on BIDS datasets on CUBIC using CuBIDS DataLad
