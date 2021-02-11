@@ -17,3 +17,4 @@ has_toc: true
 2. This workflow includes running a BIDS dataset through CuBIDS (validation and grouping), and using Datalad to run preprocesssing pipelines. 
 
 ## Our Workflow for currating and running preprocessing pipelines on BIDS datasets on CUBIC using CuBIDS DataLad
+First 
