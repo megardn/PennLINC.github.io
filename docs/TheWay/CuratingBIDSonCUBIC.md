@@ -1,12 +1,12 @@
 ---
 layout: default
-title: The PennLINC Informatics Team's Workflow for currating and running *prep pipelines on BIDS datasets on CUBIC using CuBIDS DataLad
+title: Curating BIDS Datasets on CUBIC 
 parent: The Way
 nav_order: 1
 has_toc: true
 ---
 
-# Curating BIDS Datasets on CUBIC 
+# The PennLINC Informatics Team's Workflow for currating and running *prep pipelines on BIDS datasets on CUBIC using CuBIDS DataLad
 {: .no_toc }
 
 ## Table of contents
