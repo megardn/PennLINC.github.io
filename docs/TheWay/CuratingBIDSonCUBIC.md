@@ -6,7 +6,7 @@ nav_order: 1
 has_toc: true
 ---
 
-# The PennLINC Informatics Team's Workflow for currating and running *prep pipelines on BIDS datasets on CUBIC using CuBIDS DataLad
+# Our Workflow for currating and running preprocessing pipelines on BIDS datasets on CUBIC using CuBIDS DataLad
 {: .no_toc }
 
 ## Table of contents
