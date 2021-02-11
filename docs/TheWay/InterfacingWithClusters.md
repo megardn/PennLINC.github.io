@@ -12,11 +12,20 @@ has_toc: true
 ## Table of contents
 {: .no_toc .text-delta }
 
+## General princples & motivation
+
+1. We want to code interactively in a shiny text editor or integrated development environment (IDE) with zero lag
+2. We want the software and data we are using to be on the cluster, preventing version issues or having to download a test set to your local machine
+3. We want to be able to view brains easily
+4. We want it to be easy! 
+
+This means we are going to not use X11 at all. Why? Because running graphics on the cluster, and then having them sent to your local screen, is very laggy and not dependable.
+
 ## Connecting to the clusters
 
 This is covered in the cluster specific documentation, but for completeness:
 
-If you are using a Mac, first install [OSXFuse](https://github.com/osxfuse/osxfuse/releases/download/macfuse-4.0.5/macfuse-4.0.5.dmg) and [SSHFS](https://github.com/osxfuse/sshfs/releases/download/osxfuse-sshfs-2.5.0/sshfs-2.5.0.pkg). You should not need it for this, but you should, in general, have [X11](https://www.xquartz.org/).
+If you are using a Mac, first install [OSXFuse](https://github.com/osxfuse/osxfuse/releases/download/macfuse-4.0.5/macfuse-4.0.5.dmg) and [SSHFS](https://github.com/osxfuse/sshfs/releases/download/osxfuse-sshfs-2.5.0/sshfs-2.5.0.pkg). 
 
 PMACS
 
@@ -100,4 +109,23 @@ Click Remote Server, then [New Session], then Python 3 or R.
 
 Now you can code interactively, using the python or R on pmacs.
 ![interactive](./interactive.png)
+
+## Viewing brains
+
+We going to break princple 2 here, but for good reason. Whatever you use to look at brains, download it locally. I prefer wb_view, but this applies to any viewer. Once you have it set up, mount your local disk on the cluster:
+
+PMACS
+
+```bash
+#my username is mb3152
+#mount to your home directory on pmacs, using a local directory called "/Users/maxwell/upenn/"
+sshfs mb3152@scisub.pmacs.upenn.edu:/home/mb3152 /Users/maxwell/upenn/ -o follow_symlinks
+```
+CUBIC
+```bash
+#my username is bertolem
+#mount to your home directory on pmacs, using a local directory called "/Users/maxwell/CUBIC/"
+sshfs bertolem@cubic-login.uphs.upenn.edu://cbica/home/bertolem/ /Users/maxwell/CUBIC/ -o follow_symlinks
+```
+Now, you can use Finder, and you can just navigate to the brain you want to look at.
 
