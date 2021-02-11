@@ -19,5 +19,5 @@ has_toc: true
 ## Curration with CuBIDS
 First 
 
-# Preprocessing Pipelines with Datalad 
+## Preprocessing Pipelines with Datalad 
 Second
