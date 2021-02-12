@@ -88,7 +88,7 @@ has_toc: true
         * This directory should look empty but isn't (each subject's output directory is just in it's own branch)
     * **git branch -v**
         * To see all branches 
-    * **git checkout sub-'subjectID'
+    * **git checkout sub-'subjectID'**
         * To switch to one subject's branch
     * **git checkout master**
         * To return to the main branch
