@@ -84,7 +84,7 @@ has_toc: true
         * The submit script will call the run script for each subject in the acquisition group csv. 
 * This might take a few days to run, and make sure you run **qstat** periodically to check on the status of the jobs.
 * Once your jobs have all finished, each subject's output will be in it's own git branch. To view an output, run the following commands: 
-    * **cd superds/fmriprep/ 
+    * **cd superds/fmriprep/** 
         * This directory should look empty but isn't (each subject's output directory is just in it's own branch)
     * **git branch -v**
         * To see all branches 
