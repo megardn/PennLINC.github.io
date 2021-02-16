@@ -56,7 +56,7 @@ ssh -Y mb3152@scisub.pmacs.upenn.edu
 #cluster, start a jupyter instance
 jupyter notebook --no-browser --NotebookApp.token='' --NotebookApp.disable_check_xsrf=True --port=PORT
 #local terminal, this connects you to the jupyter instance
-ssh -N -f -L localhost:PORT:localhost:PORT  mb3152@scisub.pmacs.upenn.edu
+ssh -N -L localhost:PORT:localhost:PORT  mb3152@scisub.pmacs.upenn.edu
 ```
 
 Now, in your local web-browser, go to: localhost:6666. You can now start a python or R kernal or a terminal and get to coding! 
@@ -93,18 +93,9 @@ Type this in the box:
   }
 }]
 
-We follow the same process as above: ssh into a cluster, start a jupyter kernal, and then find that kernal via Atom:
+We follow the same process as above: ssh into a cluster, start a jupyter kernal, connect to that port. However, instead of opening up in a browser, we find that kernal via Atom:
 
-```bash
-#local terminal, get into pmacs
-ssh -Y mb3152@scisub.pmacs.upenn.edu
-#cluster, start a jupyter instance
-jupyter notebook --no-browser --NotebookApp.token='' --NotebookApp.disable_check_xsrf=True --port=9999
-#local terminal, this connects you to the jupyter instance
-ssh -N -f -L localhost:9998:localhost:9999  mb3152@scisub.pmacs.upenn.edu
-```
-
-Now, in Atom, go to Packages > Hydrogen > Connect to Remote Kernal. Since you updated your settings, it will automatically connect to the one you have running.
+in Atom, go to Packages > Hydrogen > Connect to Remote Kernal. Since you updated your settings, it will automatically connect to the one you have running.
 
 Click Remote Server, then [New Session], then Python 3 or R.
 
@@ -120,7 +111,7 @@ PMACS
 ```bash
 #my username is mb3152
 #mount to your home directory on pmacs, using a local directory called "/Users/maxwell/upenn/"
-sshfs mb3152@scisub.pmacs.upenn.edu:/home/mb3152 /Users/maxwell/upenn/ -o follow_symlinks
+sshfs mb3152@sciget.pmacs.upenn.edu:/home/mb3152 /Users/maxwell/upenn/ -o follow_symlinks
 ```
 CUBIC
 ```bash
@@ -130,3 +121,8 @@ sshfs bertolem@cubic-login.uphs.upenn.edu://cbica/home/bertolem/ /Users/maxwell/
 ```
 Now, you can use Finder, and you can just navigate to the brain you want to look at.
 
+## MATLAB
+
+Okay, we get it, sometimes you want to write in matlab. We apply the same princple here as with viewing brains. Mount your local directory to PMACS or CUBIC, and then run a local version of matlab. This way, you can edit code in your local matlab GUI, you won't have graphics lag, and you will be working with the data on the cluster. Big data files will load slow. 
+
+What we actually recommend is learing python and treating your current matlab code as legacy code and wrapping it using oct2py. With oct2py, you can run any matlab code in python using octave, which is an open source version of matlab. 
