@@ -275,3 +275,47 @@ Follow the following steps to use rstudio:
    $  export RSTUDIO_WHICH_R=/appl/R-3.6.3/bin/R
 
    ```
+## Running data processing pipelines on PMACS
+
+Data processing pipelines, such as [fmriprep](https://fmriprep.org/en/stable/) and [qsiprep](https://qsiprep.readthedocs.io/en/latest/), can be run easily by creating singularity images on PMACS. Below steps use qsiprep as an example, but they can be applied to other pipelines as well.
+
+### Creating singularity images from dockerhub on PMACS
+
+1. Log onto **sciget**
+   ```bash
+   $ ssh -Y <user>@sciget.pmacs.upenn.edu
+   ```
+2. Connect to singularity
+   ```bash
+   $ ssh singularity01
+   ```
+3. Pull the singularity image to PMACS and exit
+   ```bash
+   $ singularity pull docker://pennbbl/qsiprep:0.12.2
+   $ exit
+   ```
+4. Move the qsiprep image (in this case *qsiprep_0.12.2.sif*) to an *images* directory in your project directory
+
+### Running the container on PMACS
+
+Before running the qsiprep container on PMACS, first [get a freesurfer license](https://surfer.nmr.mgh.harvard.edu/registration.html). The license is necessary to run qsiprep without any error. Save the license also in the *images* directory and run the following command:
+
+```bash
+$ singularity run --cleanenv -B </path/to/project/directory>/data:/home/<user>/data,\
+$ </path/to/project/directory>/images/license.txt:/appl/freesurfer-6.0.0/license.txt,\
+$ </path/to/output/directory>:/home/<user>/<output directory name> \
+$ </path/to/project/directory>/images/qsiprep_0.12.2.sif \
+$ --fs-license-file /appl/freesurfer-6.0.0/license.txt \
+$ --work-dir </path/to/working/directory> \
+$ --output-resolution <value> \
+$ </path/to/project/directory>/data \
+$ </path/to/output/directory> \
+$ participant
+```
+There are several parts to this command:
+
+* *--cleanenv* option means that we don't want to pass the host environment to the container (visit [Environment and Metadata](https://singularity.lbl.gov/docs-environment-metadata) for more)
+* *-B* is an argument to bind paths; simply put, *</path/to/project/directory>/data* will be called as */home/<user>/data* in the container (visit [Bind Paths](https://singularity.lbl.gov/docs-mount#specifying-bind-paths) for more)
+* *--output-resolution* specifies the isotropic voxel size in mm the data will be resample to after preprocessing (for more information on the arguments [see qsiprep documentation](https://qsiprep.readthedocs.io/en/latest/usage.html#command-line-arguments))
+
+
