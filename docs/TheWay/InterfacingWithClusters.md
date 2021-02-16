@@ -31,18 +31,18 @@ PMACS
 
 ```bash
 #my username is mb3152
+#mount to your home directory on pmacs, using a local directory called "/Users/maxwell/upenn/"
+sshfs mb3152@sciget.pmacs.upenn.edu:/home/mb3152 /Users/maxwell/upenn/ -o follow_symlinks
 #login
 ssh -Y mb3152@scisub.pmacs.upenn.edu
-#mount to your home directory on pmacs, using a local directory called "/Users/maxwell/upenn/"
-sshfs mb3152@scisub.pmacs.upenn.edu:/home/mb3152 /Users/maxwell/upenn/ -o follow_symlinks
 ```
 CUBIC
 ```bash
 #my username is bertolem
-#login
-ssh -Y bertolem@cubic-login.uphs.upenn.edu
 #mount to your home directory on pmacs, using a local directory called "/Users/maxwell/CUBIC/"
 sshfs bertolem@cubic-login.uphs.upenn.edu://cbica/home/bertolem/ /Users/maxwell/CUBIC/ -o follow_symlinks
+#login
+ssh -Y bertolem@cubic-login.uphs.upenn.edu
 ```
 
 ## Writing Code Interactively in a Jupyter Notebook
@@ -53,12 +53,12 @@ We are going to ssh into a cluster, start a jupyter kernal, and then find that k
 #local terminal, get into pmacs
 ssh -Y mb3152@scisub.pmacs.upenn.edu
 #cluster, start a jupyter instance
-jupyter notebook --no-browser --NotebookApp.token='' --NotebookApp.disable_check_xsrf=True --port=6666
+jupyter notebook --no-browser --NotebookApp.token='' --NotebookApp.disable_check_xsrf=True --port=8888
 #local terminal, this connects you to the jupyter instance
-ssh -N -f -L localhost:6666:localhost:6666  mb3152@scisub.pmacs.upenn.edu
+ssh -N -f -L localhost:8888:localhost:8888  mb3152@scisub.pmacs.upenn.edu
 ```
 
-Now, in your local web-browser, go to: localhost:6666. You can now start a python or R kernal or a terminal and get to coding! 
+Now, in your local web-browser, go to: localhost:8888. You can now start a python or R kernal or a terminal and get to coding! 
 
 ## Writing Code Interactively in Atom
 
