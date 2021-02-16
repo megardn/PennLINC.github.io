@@ -50,15 +50,16 @@ ssh -Y bertolem@cubic-login.uphs.upenn.edu
 We are going to ssh into a cluster, start a jupyter kernal, and then find that kernal via Atom. This is actually pretty easy.
 
 ```bash
+PORT=6666 #DO NOT USE THIS ONE. We have to have different ones. This one is satan. If you can't connect, you and someone else probably, somehow, picked the same port
 #local terminal, get into pmacs
 ssh -Y mb3152@scisub.pmacs.upenn.edu
 #cluster, start a jupyter instance
-jupyter notebook --no-browser --NotebookApp.token='' --NotebookApp.disable_check_xsrf=True --port=8888
+jupyter notebook --no-browser --NotebookApp.token='' --NotebookApp.disable_check_xsrf=True --port=PORT
 #local terminal, this connects you to the jupyter instance
-ssh -N -f -L localhost:8888:localhost:8888  mb3152@scisub.pmacs.upenn.edu
+ssh -N -f -L localhost:PORT:localhost:PORT  mb3152@scisub.pmacs.upenn.edu
 ```
 
-Now, in your local web-browser, go to: localhost:8888. You can now start a python or R kernal or a terminal and get to coding! 
+Now, in your local web-browser, go to: localhost:6666. You can now start a python or R kernal or a terminal and get to coding! 
 
 ## Writing Code Interactively in Atom
 
