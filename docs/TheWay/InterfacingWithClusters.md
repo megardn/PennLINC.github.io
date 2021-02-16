@@ -34,7 +34,7 @@ PMACS
 #mount to your home directory on pmacs, using a local directory called "/Users/maxwell/upenn/"
 sshfs mb3152@sciget.pmacs.upenn.edu:/home/mb3152 /Users/maxwell/upenn/ -o follow_symlinks
 #login
-ssh -Y mb3152@scisub.pmacs.upenn.edu
+ssh -Y mb3152@sciget.pmacs.upenn.edu
 ```
 CUBIC
 ```bash
@@ -52,11 +52,11 @@ We are going to ssh into a cluster, start a jupyter kernal, and then find that k
 ```bash
 PORT=6666 #DO NOT USE THIS ONE. We have to have different ones. This one is satan. If you can't connect, you and someone else probably, somehow, picked the same port
 #local terminal, get into pmacs
-ssh -Y mb3152@scisub.pmacs.upenn.edu
+ssh -Y mb3152@sciget.pmacs.upenn.edu
 #cluster, start a jupyter instance
 jupyter notebook --no-browser --NotebookApp.token='' --NotebookApp.disable_check_xsrf=True --port=PORT
 #local terminal, this connects you to the jupyter instance
-ssh -N -L localhost:PORT:localhost:PORT  mb3152@scisub.pmacs.upenn.edu
+ssh -N -L localhost:PORT:localhost:PORT  mb3152@sciget.pmacs.upenn.edu
 ```
 
 Now, in your local web-browser, go to: localhost:6666. You can now start a python or R kernal or a terminal and get to coding! 
@@ -101,6 +101,15 @@ Click Remote Server, then [New Session], then Python 3 or R.
 
 Now you can code interactively, using the python or R on pmacs.
 ![interactive](./interactive.png)
+
+## Common issues
+
+Sometimes your port connection got disconnection. But the port is still "running", so you need to kill it
+
+```bash
+lsof -ti:PORT | xargs kill -9
+```
+You should be able to reconnect after this.
 
 ## Viewing brains
 
