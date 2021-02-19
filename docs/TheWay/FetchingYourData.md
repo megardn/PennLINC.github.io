@@ -60,6 +60,7 @@ On PMACs:
 0. Make sure you have access to the PULSE Secure VPN -- [remote.pmacs.upenn.edu](remote.pmacs.upenn.edu)
 
 1. Log in to PMACs' dedicated node for Globus functionality:
+
 ```
 # first ssh into sciget for network access
 ssh -y ttapera@sciget.pmacs.upenn.edu
@@ -69,6 +70,7 @@ ssh -y ttapera@sciglobus.pmacs.upenn.edu
 ```
 
 2. Globus Connect Personal should be available. As above, use it to initialize an endpoint on a directory of your choice on PMACs. Specifically, you should run it as below so that it opens a GUI for logging in with an auto-generated token:
+
 ```
 # this command will return a URL you can open in any browser and a token you can use to sign in
 globusconnect -start &
