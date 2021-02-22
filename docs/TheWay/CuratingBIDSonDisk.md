@@ -52,6 +52,39 @@ changes we might make to it. The person in charge of organizing a data set
 should document any changes they make in a *Data Narrative* along with any
 relevant scripts used to a git-tracked repository.
 
+Create a project root directory. Initially we suggest keeping one copy of your
+initial data that will remain untouched as a backup during early stages of
+the workflow. This is not necessary if your data is archived elsewhere online.
+In the project root consider something like
+
+```
+project
+├── RAW
+│   ├── sub-1
+│   ├── sub-2
+│   ├── ...
+│   └── sub-N
+└── working
+    ├── curation_code
+    │   ├── DataNarrative.md
+    │   ├── Fix1.sh
+    │   └── Fix2.sh
+    └── BIDS
+        ├── dataset_description.json
+        ├── README.txt
+        ├── sub-1
+        ├── sub-2
+        ├── ...
+        └── sub-N
+```
+
+The `RAW` directory should be an unchanged copy of the original data. If this
+is impossible, you can [remove sensitive
+metadata](#removing-sensitive-metadata) before initializing your `working/`
+directory as a datalad dataset. Datalad will then provide the ability to
+undo mistakes made during this stage.
+
+
 ### Documenting data provenance
 
 The *Data Narrative* should begin with a section describing where the data
@@ -84,7 +117,7 @@ documented in the *Data Narrative* like so:
 # Initial Steps
 
 The initial data contained localizer scans that will not be used. These files
-were removed using [scripts/delete_localizers.sh](link_to_script_on_github).
+were removed using [curation_code/delete_localizers.sh](link_to_script_on_github).
 ```
 
 Any other scripts applied at this stage should be noted here, including both
@@ -142,9 +175,12 @@ For example, this might look like:
 ```markdown
 Code 39 (Inconsistent Parameters): 15 subjects
 Code 86 (Suspiciously Short Event Design): 136 subjects
-Commit: https://github.com/PennLINC/RBC/blob/3dd4e931cc96f7f74512c57b86ede30735ef9252/PennLINC/Validation/Merging.ipynb
+Commit:
+https://github.com/PennLINC/RBC/blob/3dd4e931cc96f7f74512c57b86ede30735ef9252/PennLINC/Validation/Merging.ipynb
 
-We attempted to iteratively remove each of these errors in [GITHUB URL TO NOTEBOOK/SCRIPT]. Specifically, [SCRIPT URL] was used to solve code [ERROR CODEn].
+We attempted to iteratively remove each of these errors in [GITHUB URL TO
+NOTEBOOK/SCRIPT]. Specifically, [SCRIPT URL] was used to solve code [ERROR
+CODEn].
 
 ```
 
@@ -174,6 +210,32 @@ DATE OF COMMIT], after which data was checked into datalad and backed up to
 
 ## Stage 2: BIDS Optimization
 
+> BIDS is a file naming and metadata specification - what's there to optimize?
+
+We found that it's difficult to come up with BIDS file names that accurately
+represent both what a file contains and how its acquisition is different
+from similar images.
+
+Consider the case where someone created a BIDS data set using heudiconv.
+It's common for a heudiconv heuristic to rely on a simple field like
+`ProtocolName`, which is defined by the scanner technician. The technician
+can use the same protocol name (eg "task1BOLD") because a scan was a
+BOLD acquisition during which the subject performed "task1". Suppose
+a scanner upgrade occurred or a fancy new sequence became available
+that changed the `MultibandAccelerationFactor` from 1 to 4. The
+`ProtocolName` may still be "task1BOLD" since the image will still
+contain BOLD collected as the participant performed task1, but the
+signal will be very different. Without changes to the heuristic,
+both acquisitions would result in `sub-X_task-1_bold` as the
+BIDS name.
+
+CuBIDS provides a utility that finds variations in important imaging
+parameters within each BIDS *name group*. In our example there might
+be two unique *parameter groups* that map to the same *name group* of
+`sub-X_task-1_bold`: one with `MultibandAccelerationFactor` 1 and
+the other 4. A complete description of name and parameter groups
+can be found on the [CuBIDS documentation](https://bids-bond.readthedocs.io/en/latest/usage.html#definitions).
+
 ### Add NIfTI information to the sidecars
 
 Image files (NIfTI) are large binary files that contain information about
@@ -182,45 +244,146 @@ in this, but don't necessarily want to always be reading it from NIfTI files.
 For example, the nifti files may be checked in to git annex or stored on
 a remote server. These are somewhat common use cases, so we recommend
 adding the information you would normally get from NIfTI files directly
-to the JSON files. CuBIDS comes with a utility for this, which can be run
-with
+to the JSON files. CuBIDS comes with a NIfTI metadata extractor, which
+can be run with
 
 ```bash
 $ cubids-add-nifti-info dataset_path
 ```
 
+Once run, you will find volume information in the JSON sidecars.
+
 ### Find unique acquisition groups
 
+CuBIDS reads and writes CSV files during the grouping process. You should create an
+`iterations/` directory in `working/code` to store these CSVs and so they can be
+tracked in git. Your project should look like
+
+```
+project
+├── RAW
+└── working
+    ├── curation_code
+    │   ├── DataNarrative.md
+    │   ├── iterations
+    │   ├── Fix1.sh
+    │   └── Fix2.sh
+    └── BIDS
+```
+
+To detect acquisition groups in your data set, change into `working/` and run
+
+```shell
+$ cubids-group BIDS code/iterations/iter0
+```
+
+This command will write four CuBIDS files delineating name/param groups and
+acquisition groups.
+
+### Rename, merge or delete parameter groups
+
+Relevant parties will then edit the summary csv
+requesting new names for parameter groups as well as merging or deleting them
+where appropriate. A description of how this process works can be found on
+the [CuBIDS documentation](https://bids-bond.readthedocs.io/en/latest/usage.html#modifying-key-and-parameter-group-assignments)
+[//]: # (Sydney, could you add the actual csv names in a tree printout?)
+
+Once the edited CSV is ready, the merges, renamings and deletions can be
+applied to your BIDS data. Again from `working/`, if you're not using
+datalad at this point, run
+
+```shell
+$ cubids-apply \
+    BIDS \
+    code/iterations/iter0_summary.csv \
+    code/iterations/iter0_files.csv \
+    code/iterations/iter1
+```
+
+If using datalad, be sure to include `--use-datalad` as the first argument to
+`cubids-apply`. If not using Datalad, be sure to add to your *Data Narrative*
+so you know that CuBIDS was used to change your data. Describe any major
+renaming, deleting or merging of parameter groups.
+
+New parameter groups will be described in `code/iterations/iter1*.csv` and you
+should make sure your data was changed as intended.
+
+Once you are satisfied with your name/parameter groups, be sure to re-run
+`cubids-validate` to make sure you haven't introduced any BIDS-incompatible
+names.
 
 
+## Stage 3: Preprocessing Pipelines with Datalad
 
-## General princples & motivation
-1. We wanted to create a generalizable workflow for curating BIDS datasets on CUBIC.
-2. This workflow includes running a BIDS dataset through CuBIDS (validation and grouping), and using Datalad to run preprocesssing pipelines.
+This stage includes two distinct parts. The first is a final check that your
+BIDS curation is sufficient for correctly running BIDS Apps on your data. The
+second stage is running those BIDS Apps for real. The exemplar subject test
+and the full cohort run follow the exact same steps, just using different
+data as inputs.
 
-## Curration with CuBIDS
-* Create a conda environment for CuBIDS/Datalad (you should have miniconda installed and git set up on your project user)
+### Testing pipelines on example subjects
 
-* Install CuBIDS in your conda environment
-    * **git clone [git@github.com:PennLINC/BOnD.git](git@github.com:PennLINC/BOnD.git) ./cubids**
-    * **cd cubids**
-    * **pip install -e .**
+Each subject belongs to one Acquisition group. Since all subjects in an
+acquisition group will be processed the same way in the \*preps, you only
+need to test one subject per acquisition group. We will need to add some
+directories to our project for the outputs of each test.
 
-* Now that you have CuBIDS installed, you're ready to go through the CuBIDS workflow.
+To add a testing directory and copy example subjects into its BIDS
+subdataset, use the CuBIDS program (again from `working/`)
 
-    * **cubids-group dataset_path output_path**
-        * This command outputs your four CuBIDS files delineating key/param groups and acquisition groups
-        * Relevant parties will then edit the summary csv requesting new names for parameter groups as well as merging or deleting them where appropriate.
-    * **cubids-apply dataset_path old_summary_csv old_files_csv new_output_path**
-        * This command applies changes (renames, merges, and deletions of parameter groups) requrested in the summary csv CuBIDs output and produces the four new CuBIDS files at the output path.
-* Once there are no more validation errors from cubids-validate, you can move on to cubids-group/cubids-apply. Once all parties are satisfied with the parameter groups in the summary csv and have no more changes to request, congratulations, you have finished the CuBIDS workflow!
+```shell
+$ cubids-copy-exemplars BIDS testing
+```
+[//]: # (this CLI program needs to be written, but will be super useful)
 
+You should then see the following changes in your project:
 
+```
+project/
+├── RAW
+└── working
+    ├── BIDS
+    ├── code
+    │   ├── DataNarrative.md
+    │   ├── Fix1.sh
+    │   └── Fix2.sh
+    └── testing             # (This is a superdataset)
+        ├── bidsdatasets    # subdataset
+        │   ├── sub-2
+        │   ├── ...
+        │   └── sub-N
+        ├── code
+        ├── fmriprep        # subdataset
+        ├── freesurfer      # subdataset
+        └── qsiprep         # subdataset
+```
 
-## Preprocessing Pipelines with Datalad
-* NOW you're ready to run preprocessing pipelines on one subject from each acquisition group (see cubids-group acq_groups.csv for list)
-* Activate a conda environment that contains CuBIDS
-    * **conda activate cubids**
+In the `working/testing/code` directory, download the example scripts for
+each pipeline to be run on whichever cluster you're using from
+[TheWay](https://github.com/PennLINC/TheWay/tree/main/scripts).
+Then submit each of the test subjects to the queuing system using
+
+```shell
+$ bash submit_[pipeline]_jobs.sh
+```
+
+where `[pipeline]` is replaced by `fmriprep` or `qsiprep`.
+
+### Checking outputs from your exemplar subjects
+
+The `fmriprep` or `qsiprep` directory in your `working/testing` directory
+will have branches for each of your test subjects. To see if pipelines worked
+as you anticipated, run a completeness check from `working/`:
+
+```shell
+$ cubids-completeness-check testing code/iterations
+```
+
+If you found that some Acquisition groups need to have their BIDS data
+changed to work properly in the pipelines, return to [Stage 2](#stage-2-bids-optimization)
+
+### Running pipelines on ALL your subjects
+
 * Create the empty superdataset
     * **datalad create -c text2git /cbica/projects/RBC/testing/superds**
         * **-c text2git** Ensures scripts are checked into git not git annex
@@ -235,6 +398,7 @@ $ cubids-add-nifti-info dataset_path
         * you should see all the data you copied into **superds/bidsdatasets** as untracked
     * **datalad save -m "created superds, added BIDS data**
         * you should always include a DETAILD commit message when saving!
+
 * We have created three scripts that cover setting up the superds for pipeline runs, submittnig jobs to cubic, and running fmriprep. **cp** these to your **superds/code** directory. They are located at the following paths:
     * **/cbica/projects/RBC/testing/CCNP/code/setup_datalad_pre_pipelines.sh**
     * **/cbica/projects/RBC/testing/CCNP/code/datalad-fmriprep-run.sh**
