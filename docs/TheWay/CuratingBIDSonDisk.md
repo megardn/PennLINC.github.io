@@ -59,7 +59,7 @@ In the project root consider something like
 
 ```
 project
-├── RAW
+├── original_data
 │   ├── sub-1
 │   ├── sub-2
 │   ├── ...
@@ -78,7 +78,7 @@ project
         └── sub-N
 ```
 
-The `RAW` directory should be an unchanged copy of the original data. If this
+The `original_data` directory should be an unchanged copy of the original data. If this
 is impossible, you can [remove sensitive
 metadata](#removing-sensitive-metadata) before initializing your `working/`
 directory as a datalad dataset. Datalad will then provide the ability to
@@ -261,7 +261,7 @@ tracked in git. Your project should look like
 
 ```
 project
-├── RAW
+├── original_data
 └── working
     ├── curation_code
     │   ├── DataNarrative.md
@@ -340,7 +340,7 @@ You should then see the following changes in your project:
 
 ```
 project/
-├── RAW
+├── original_data
 └── working
     ├── BIDS
     ├── code
@@ -373,17 +373,20 @@ where `[pipeline]` is replaced by `fmriprep` or `qsiprep`.
 
 The `fmriprep` or `qsiprep` directory in your `working/testing` directory
 will have branches for each of your test subjects. To see if pipelines worked
-as you anticipated, run a completeness check from `working/`:
+as you anticipated, run a completeness check on the derivatives from
+`working/`:
 
 ```shell
-$ cubids-completeness-check testing code/iterations
+$ cubids-derivatives-check testing code/iterations
 ```
 
 If you found that some Acquisition groups need to have their BIDS data
 changed to work properly in the pipelines, return to [Stage 2](#stage-2-bids-optimization)
 
+
 ### Running pipelines on ALL your subjects
 
+Once your
 * Create the empty superdataset
     * **datalad create -c text2git /cbica/projects/RBC/testing/superds**
         * **-c text2git** Ensures scripts are checked into git not git annex
