@@ -75,3 +75,7 @@ CUBIC
 sshfs bertolem@cubic-login.uphs.upenn.edu://cbica/home/bertolem/ /Users/maxwell/CUBIC/ -o follow_symlinks
 ```
 Now, you can use Finder, and you can just navigate to the brain you want to look at.
+
+## Bonus for Pros: Jupyter Lab
+
+JupyterLab is an extension of Jupyter Notebooks (which itself is an extension of IPython). With JupyterLab, you can actually turn the Jupyter Notebooks environment currently sitting in your browser into a pretty powerful IDE, including panels and tabsets, Git and Github integration, linting, and more. Just like any IDE, it's up to you what you'd like set up in there. Visit [JupyterLab](https://jupyterlab.readthedocs.io/en/stable/) to get started, and read about a bunch of cool extensions [here](https://github.com/mauhai/awesome-jupyterlab).
