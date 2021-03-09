@@ -7,7 +7,6 @@ has_toc: true
 ---
 
 # Interfacing with the clusters
-{: .no_toc }
 
 ## Writing Code Interactively in Atom
 
