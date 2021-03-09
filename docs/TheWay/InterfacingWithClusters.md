@@ -57,6 +57,15 @@ ssh -N -L localhost:$PORT:localhost:$PORT  mb3152@sciget.pmacs.upenn.edu
 
 Now, in your local web-browser, go to: localhost:6666. You can now start a python or R kernel or a terminal and get to coding!
 
+## Common issues
+
+Sometimes your port connection got disconnection. But the port is still "running", so you need to kill it. You can do this for your notebook on the cluster and your connection from the cluster to your local machine:
+
+```bash
+lsof -ti:$PORT | xargs kill -9
+```
+You should be able to reconnect after this.
+
 ## Viewing brains
 
 We going to break principle 2 here, but for good reason. Whatever you use to look at brains, download it locally. I prefer wb_view, but this applies to any viewer. Once you have it set up, mount your local disk on the cluster:
