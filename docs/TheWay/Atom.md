@@ -70,6 +70,13 @@ ssh -Y bertolem@cubic-login.uphs.upenn.edu
 
 ### Start a kernal on the cluster, connect to it from your local machine
 ```bash
+PORT=$6666
+#local terminal, this connects you to the jupyter instance
+ssh -N -L localhost:$PORT:localhost:$PORT  mb3152@sciget.pmacs.upenn.edu
+```
+
+### All the steps in one place:
+```bash
 PORT=$6666 #DO NOT USE THIS ONE. We have to have different ones. This one is satan. If you can't connect, you and someone else probably, somehow, picked the same port
 #local terminal, get into pmacs
 ssh -Y mb3152@sciget.pmacs.upenn.edu
@@ -80,7 +87,9 @@ jupyter notebook --no-browser --NotebookApp.token='' --NotebookApp.disable_check
 PORT=$6666
 ssh -N -L localhost:$PORT:localhost:$PORT  mb3152@sciget.pmacs.upenn.edu
 ```
-in Atom, go to Packages > Hydrogen > Connect to Remote Kernal. Since you updated your settings, it will automatically connect to the one you have running.
+
+### Connect to kernal in Atom
+In Atom, once you have a python or R script open, go to Packages > Hydrogen > Connect to Remote Kernal. Since you updated your settings, it will automatically connect to the one you have running.
 
 Click Remote Server, then [New Session], then Python 3 or R.
 
@@ -89,10 +98,10 @@ Now you can code interactively, using the python or R on pmacs.
 
 ## Common issues
 
-Sometimes your port connection got disconnection. But the port is still "running", so you need to kill it
+Sometimes your port connection got disconnection. But the port is still "running", so you need to kill it. This can be done both on the cluster and locally:
 
 ```bash
-lsof -ti:PORT | xargs kill -9
+lsof -ti:$PORT | xargs kill -9
 ```
 You should be able to reconnect after this.
 
