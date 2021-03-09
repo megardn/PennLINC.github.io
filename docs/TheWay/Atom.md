@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Interfacing with the clusters via Jupyter
+title: Atom on PMACS (with github)
 parent: The Way
 nav_order: 5
 has_toc: true
