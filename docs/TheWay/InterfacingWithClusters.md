@@ -33,12 +33,10 @@ ssh -Y bertolem@cubic-login.uphs.upenn.edu
 
 ## Writing Code Interactively in a Jupyter Notebook
 
-We are going to ssh into a cluster, start a Jupyter kernel, and then find that kernel via a browser. This is actually pretty easy.
+Now start a Jupyter kernel, and then find that kernel via a browser. This is actually pretty easy.
 
 ```bash
 PORT=$6666 #DO NOT USE THIS ONE. We have to have different ones. This one is satan. If you can't connect, you and someone else probably, somehow, picked the same port
-#local terminal, get into pmacs
-ssh -Y mb3152@sciget.pmacs.upenn.edu
 #cluster, start a jupyter instance
 PORT=$6666
 jupyter notebook --no-browser --NotebookApp.token='' --NotebookApp.disable_check_xsrf=True --port=$PORT
@@ -47,7 +45,7 @@ PORT=$6666
 ssh -N -L localhost:$PORT:localhost:$PORT  mb3152@sciget.pmacs.upenn.edu
 ```
 
-Now, in your local web-browser, go to: localhost:6666. You can now start a python or R kernel or a terminal and get to coding!
+Now, in your local web-browser, go to: localhost:PORT (e.g., 6666). You can now start a python or R kernel or a terminal and get to coding! You can work in a notebook for a while, but you can also save it out as a script.
 
 ## Common issues
 
