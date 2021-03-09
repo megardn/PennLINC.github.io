@@ -1,12 +1,12 @@
 ---
 layout: default
-title: Atom on PMACS (with GitBub)
+title: Atom on the clusters (with GitHub)
 parent: The Way
 nav_order: 3
 has_toc: true
 ---
 
-# Interfacing with the clusters
+# Atom on the cluster (with GitHub)
 
 ## Writing Code Interactively in Atom
 
