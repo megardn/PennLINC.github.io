@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Atom on PMACS (with github)
+title: Atom on PMACS (with GitBub)
 parent: The Way
 nav_order: 3
 has_toc: true
@@ -9,18 +9,9 @@ has_toc: true
 # Interfacing with the clusters
 {: .no_toc }
 
-## Table of contents
-{: .no_toc .text-delta }
+## Writing Code Interactively in Atom
 
-## General Principles & Motivation
-
-## Bonus for Pros: Jupyter Lab
-
-JupyterLab is an extension of Jupyter Notebooks (which itself is an extension of IPython). With JupyterLab, you can actually turn the Jupyter Notebooks environment currently sitting in your browser into a pretty powerful IDE, including panels and tabsets, Git and Github integration, linting, and more. Just like any IDE, it's up to you what you'd like set up in there. Visit [JupyterLab](https://jupyterlab.readthedocs.io/en/stable/) to get started, and read about a bunch of cool extensions [here](https://github.com/mauhai/awesome-jupyterlab).
-
-## Bonus for Pros: Writing Code Interactively in Atom
-
-If you want a bit more power and, in our opinion, a prettier editor, We support [Atom](https://atom.io), as it allows you to code interactively using the kernel you started on the cluster. What does this mean? It means you have a nice shiny IDE, but you are using the software and data on the cluster. Best of all worlds.
+[Atom](https://atom.io) allows you to code interactively using the kernel you started on the cluster. What does this mean? It means you have a nice shiny IDE, but you are using the software and data on the cluster. Best of all worlds.
 
 Once you have downloaded and installed Atom, install some packages. It is easiest to do this on the command line. To activate command line tools, open Atom, go to the menu bar up in the top-left: Atom > Install Shell Commands.
 
@@ -67,3 +58,7 @@ Sometimes your port connection got disconnection. But the port is still "running
 lsof -ti:PORT | xargs kill -9
 ```
 You should be able to reconnect after this.
+
+## GitHub Integration
+
+You can track your work using github.com. In Atom, 
