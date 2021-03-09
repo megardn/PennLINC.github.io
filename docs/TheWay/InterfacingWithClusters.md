@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Interfacing with the clusters via Jupyter
+title: Interfacing with the clusters via Jupyter and MacFuse
 parent: The Way
 nav_order: 2
 has_toc: true
@@ -30,18 +30,12 @@ If you are using a Mac, first install [OSXFuse](https://github.com/osxfuse/osxfu
 PMACS
 
 ```bash
-#my username is mb3152
-#mount to your home directory on pmacs, using a local directory called "/Users/maxwell/upenn/"
-sshfs mb3152@sciget.pmacs.upenn.edu:/home/mb3152 /Users/maxwell/upenn/ -o follow_symlinks
-#login
+#login (my username is mb3152)
 ssh -Y mb3152@sciget.pmacs.upenn.edu
 ```
 CUBIC
 ```bash
-#my username is bertolem
-#mount to your home directory on pmacs, using a local directory called "/Users/maxwell/CUBIC/"
-sshfs bertolem@cubic-login.uphs.upenn.edu://cbica/home/bertolem/ /Users/maxwell/CUBIC/ -o follow_symlinks
-#login
+#login (my username is bertolem)
 ssh -Y bertolem@cubic-login.uphs.upenn.edu
 ```
 
@@ -81,9 +75,3 @@ CUBIC
 sshfs bertolem@cubic-login.uphs.upenn.edu://cbica/home/bertolem/ /Users/maxwell/CUBIC/ -o follow_symlinks
 ```
 Now, you can use Finder, and you can just navigate to the brain you want to look at.
-
-## MATLAB
-
-Okay, we get it, sometimes you want to write in matlab. We apply the same princple here as with viewing brains. Mount your local directory to PMACS or CUBIC, and then run a local version of matlab. This way, you can edit code in your local matlab GUI, you won't have graphics lag, and you will be working with the data on the cluster. Big data files will load slow.
-
-What we actually recommend is learing python and treating your current matlab code as legacy code and wrapping it using oct2py. With oct2py, you can run any matlab code in python using octave, which is an open source version of matlab.
