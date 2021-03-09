@@ -60,10 +60,9 @@ You should be able to reconnect after this.
 
 ## Viewing brains
 
-We going to break principle 2 here, but for good reason. Whatever you use to look at brains, download it locally. I prefer wb_view, but this applies to any viewer. Once you have it set up, mount your local disk on the cluster:
+Whatever you use to look at brains, download it locally. I prefer wb_view, but this applies to any viewer. Once you have it set up, mount your local disk on the cluster. To do this, if you are using a Mac, first install [OSXFuse](https://github.com/osxfuse/osxfuse/releases/download/macfuse-4.0.5/macfuse-4.0.5.dmg) and [SSHFS](https://github.com/osxfuse/sshfs/releases/download/osxfuse-sshfs-2.5.0/sshfs-2.5.0.pkg).
 
 PMACS
-
 ```bash
 #my username is mb3152
 #mount to your home directory on pmacs, using a local directory called "/Users/maxwell/upenn/"
@@ -75,7 +74,7 @@ CUBIC
 #mount to your home directory on pmacs, using a local directory called "/Users/maxwell/CUBIC/"
 sshfs bertolem@cubic-login.uphs.upenn.edu://cbica/home/bertolem/ /Users/maxwell/CUBIC/ -o follow_symlinks
 ```
-Now, you can use Finder, and you can just navigate to the brain you want to look at.
+Now, you can use Finder, and you can just navigate to the brain you want to look at in whatever software you like.
 
 ## Bonus for Pros: Jupyter Lab
 
