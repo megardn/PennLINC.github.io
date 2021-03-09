@@ -2,7 +2,7 @@
 layout: default
 title: Atom on PMACS (with github)
 parent: The Way
-nav_order: 5
+nav_order: 3
 has_toc: true
 ---
 
