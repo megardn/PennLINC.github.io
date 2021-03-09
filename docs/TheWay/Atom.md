@@ -40,8 +40,46 @@ Type this in the box:
   }
 }]
 
-We follow the same process as above: ssh into a cluster, start a Jupyter kernel, connect to that port. However, instead of opening up in a browser, we find that kernel via Atom:
+If you are using a Mac, first install [OSXFuse](https://github.com/osxfuse/osxfuse/releases/download/macfuse-4.0.5/macfuse-4.0.5.dmg) and [SSHFS](https://github.com/osxfuse/sshfs/releases/download/osxfuse-sshfs-2.5.0/sshfs-2.5.0.pkg).
 
+### Make sure you have access to your code on the cluster:
+
+PMACS
+```bash
+#mount (my username is mb3152)
+sshfs mb3152@sciget.pmacs.upenn.edu:/home/mb3152 /Users/maxwell/upenn/ -o follow_symlinks
+```
+CUBIC
+```bash
+#mount (my username is bertolem)
+sshfs -o follow_symlinks bertolem@cubic-login.uphs.upenn.edu://cbica/home/bertolem/ /Users/maxwell/CUBIC/
+```
+
+### Now we ssh into a cluster, start a Jupyter kernel, connect to that port.
+
+PMACS
+```bash
+#login (my username is mb3152)
+ssh -Y mb3152@sciget.pmacs.upenn.edu
+```
+CUBIC
+```bash
+#login (my username is bertolem)
+ssh -Y bertolem@cubic-login.uphs.upenn.edu
+```
+
+### Start a kernal on the cluster, connect to it from your local machine
+```bash
+PORT=$6666 #DO NOT USE THIS ONE. We have to have different ones. This one is satan. If you can't connect, you and someone else probably, somehow, picked the same port
+#local terminal, get into pmacs
+ssh -Y mb3152@sciget.pmacs.upenn.edu
+#cluster, start a jupyter instance
+PORT=$6666
+jupyter notebook --no-browser --NotebookApp.token='' --NotebookApp.disable_check_xsrf=True --port=$PORT
+#local terminal, this connects you to the jupyter instance
+PORT=$6666
+ssh -N -L localhost:$PORT:localhost:$PORT  mb3152@sciget.pmacs.upenn.edu
+```
 in Atom, go to Packages > Hydrogen > Connect to Remote Kernal. Since you updated your settings, it will automatically connect to the one you have running.
 
 Click Remote Server, then [New Session], then Python 3 or R.
@@ -60,4 +98,8 @@ You should be able to reconnect after this.
 
 ## GitHub Integration
 
-You can track your work using github.com. In Atom, 
+You can track your work using github.com. Both Git and GitHub can be found in Atom under Pacakges -> GitHub.
+
+If you have a github repo directory open, Atom will detect this. If it's not a repo yet, you can initialize it in Atom in the Git panel. 
+
+Next, in Atom, you "stage" your changed and commit them in Git, and the push using GitHub (tiny "push" button in the bottom right corner).
