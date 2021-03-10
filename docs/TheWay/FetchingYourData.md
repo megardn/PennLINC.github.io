@@ -11,9 +11,6 @@ has_toc: true
 
 There are a number of places you may have to fetch data from to get them onto a cluster filesystem. We will briefly cover best practices for the methods we've used before. Additions will be made as we gain more experience.
 
-## Table of contents
-{: .no_toc .text-delta }
-
 
 ## Between Clusters Or Local Disks
 
