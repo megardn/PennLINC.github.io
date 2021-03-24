@@ -236,7 +236,12 @@ To install the Flywheel CLI tool on CUBIC, you will again need to be logged in a
 $ cd
 $ mkdir -p software/flywheel
 $ cd software/flywheel
-$ wget https://storage.googleapis.com/flywheel-dist/cli/10.7.3/fw-linux_amd64.zip
+```
+
+Flywheel will complain if your version is out of date, so best to find the latest version and download that. You can find the latest version by [logging into flywheel](Upenn.flywheel.io). Once you've logged in, in the upper-right corner, select your account menu, and select Profile. Scroll down to the Download Flywheel CLI section, and you should see the latest version (e.g. 10.7.3). In the first line below, replace `<version>` with the version number you just found (e.g. `https://storage.googleapis.com/flywheel-dist/cli/10.7.3/fw-linux_amd64.zip`).
+
+```bash
+$ wget https://storage.googleapis.com/flywheel-dist/cli/<version>/fw-linux_amd64.zip
 $ unzip fw-linux_amd64.zip
 $ echo "export PATH=\$PATH:~/software/flywheel/linux_amd64" >> ~/.bashrc
 $ exit
@@ -246,7 +251,7 @@ $ bash
 $ fw login $APIKEY
 ```
 
-where `$APIKEY` is replaced with your flywheel api key.
+where `$APIKEY` is replaced with your flywheel api key. You can find your personal api key in your account profile (same place you went for the version #) by scrolling all the way to the bottom.
 
 ## Checking that your python SDK works
 
