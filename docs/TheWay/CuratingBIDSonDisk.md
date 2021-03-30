@@ -25,17 +25,15 @@ environment for your project. For information on how to set up conda
 on each clustess [instructions for CUBIC]() and
 [instructions for PMACS](). You will need to install datalad and CuBIDS
 for the rest of the steps in this workflow. To do so, create a conda
-environment:
+environment.
+
+The easiest way to get your CUBIC project user started is to download
+the project initialization script. Immediately upon getting access to
+your project, log in as the project user and run:
 
 ```shell
-$ conda create cubids
-$ conda activate cubids
-```
-
-Git annex is required for Datalad, and is not installed by default.
-
-```shell
-$ conda install -c conda-forge git-annex datalad
+$ wget https://raw.githubusercontent.com/PennLINC/TheWay/cubic-setup-project-user.sh
+$ bash cubic-setup-project-user.sh ${HOME}
 ```
 
 Finally, [download and install CuBIDS](linktocubids.html). Note that
@@ -64,8 +62,8 @@ project
 │   ├── sub-2
 │   ├── ...
 │   └── sub-N
-└── working
-    ├── curation_code
+└── curation
+    ├── code
     │   ├── DataNarrative.md
     │   ├── Fix1.sh
     │   └── Fix2.sh
@@ -78,11 +76,75 @@ project
         └── sub-N
 ```
 
-The `original_data` directory should be an unchanged copy of the original data. If this
-is impossible, you can [remove sensitive
-metadata](#removing-sensitive-metadata) before initializing your `working/`
-directory as a datalad dataset. Datalad will then provide the ability to
-undo mistakes made during this stage.
+The `original_data` directory should be an unchanged copy of the original data.
+
+Next, create a curation dataset that will track the changes made to your original
+data. From the same directory as your `original_data/` directory, you can setup a
+datalad bids curation dataset like so
+
+```bash
+$ datalad create -c yoda curation
+```
+
+If there is potentially sensitive metadata in your `original_data
+is impossible, you can [remove sensitive metadata](#removing-sensitive-metadata)
+before copying the contents of your `original_data/` directory into your
+`curation/BIDS/` directory. **Once you are certain `original_data/` is anonymized**
+you can copy it into `curation/BIDS/` and save it as a datalad dataset.
+
+```bash
+$ cp -r original_data/* curation/BIDS
+$ datalad save -m "add initial data" curation
+```
+
+This could take some time depending on how big your input data is.
+
+### OPTIONAL: set up a remote backup
+
+At this point you may want to back up this data on a separate server for
+safe-keeping. One great option is to use the `sciget.pmacs.upenn.edu` server
+as a RIA store. You can push a copy of your original data to this store, then
+push again when curation is complete. To create a RIA store on pmacs, be sure
+you can log in using ssh key pairs from CUBIC.
+
+```bash
+(base) [yourname@cubic-login2 testing]$ ssh sciget.pmacs.upenn.edu
+Last login: Wed Mar 24 14:27:30 2021 from 170.212.0.164
+[yourname@sciget ~]$
+```
+
+If the above does not work, set up SSH keys and edit `~/.ssh/config` until it does.
+Once working, create a directory on `sciget` that will hold your RIA store.
+
+```bash
+[yourname@sciget ~]$ mkdir /project/myproject/datalad_ria
+[yourname@sciget ~]$ logout
+```
+
+and back on `CUBIC` add the store to your dataset
+
+```bash
+$ cd curation/
+$ bids_remote=ria+ssh://sciget.pmacs.upenn.edu:/project/myproject/datalad_ria
+$ ds_id=$(datalad -f '{infos[dataset][id]}' wtf -S dataset)
+$ bids_ria_url="${bids_remote}#${dsi_id}"
+$ datalad create-sibling-ria -s pmacs-ria ${bids_ria_url}
+$ datalad push --to pmacs-ria
+
+```
+
+If these succeed, you will have a completely backed-up copy of your original
+data and scripts that you can push to and pull from as you work. If you want
+to work on a temporary copy of the data, you can clone it anywhere:
+
+```bash
+$ cd /tmp
+$ datalad clone ${bids_ria_url} curation
+$ cd curation
+$ git annex dead here
+```
+
+And `/tmp/curation` will have all files on demand from the original repository.
 
 
 ### Documenting data provenance
