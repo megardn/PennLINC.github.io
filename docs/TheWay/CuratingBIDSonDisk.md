@@ -325,7 +325,7 @@ tracked in git. Your project should look like
 project
 ├── original_data
 └── working
-    ├── curation_code
+    ├── code
     │   ├── DataNarrative.md
     │   ├── iterations
     │   ├── Fix1.sh
@@ -390,46 +390,14 @@ acquisition group will be processed the same way in the \*preps, you only
 need to test one subject per acquisition group. We will need to add some
 directories to our project for the outputs of each test.
 
-To add a testing directory and copy example subjects into its BIDS
-subdataset, use the CuBIDS program (again from `working/`)
+The process of testing exemplar subjects is identical to the process of
+running pipelines on entire BIDS datasets. Instead of passing the entire
+BIDS dataset, we extract a single subject from each acquisition group
+into a smaller, representative BIDS dataset. This directory then serves as input to
+[the pipeline](/docs/TheWay/RunningDataLadPipelines#preparing-the-analysis-dataset).
 
-```shell
-$ cubids-copy-exemplars BIDS testing
-```
-[//]: # (this CLI program needs to be written, but will be super useful)
-
-You should then see the following changes in your project:
-
-```
-project/
-├── original_data
-└── working
-    ├── BIDS
-    ├── code
-    │   ├── DataNarrative.md
-    │   ├── Fix1.sh
-    │   └── Fix2.sh
-    └── testing             # (This is a superdataset)
-        ├── bidsdatasets    # subdataset
-        │   ├── sub-2
-        │   ├── ...
-        │   └── sub-N
-        ├── code
-        ├── fmriprep        # subdataset
-        ├── freesurfer      # subdataset
-        └── qsiprep         # subdataset
-```
-
-In the `working/testing/code` directory, download the example scripts for
-each pipeline to be run on whichever cluster you're using from
-[TheWay](https://github.com/PennLINC/TheWay/tree/main/scripts).
-Then submit each of the test subjects to the queuing system using
-
-```shell
-$ bash submit_[pipeline]_jobs.sh
-```
-
-where `[pipeline]` is replaced by `fmriprep` or `qsiprep`.
+To create a testing directory of only exemplar subjects into its BIDS
+subdataset, use the CuBIDS program `cubids-copy-exemplars`
 
 ### Checking outputs from your exemplar subjects
 
@@ -444,64 +412,3 @@ $ cubids-derivatives-check testing code/iterations
 
 If you found that some Acquisition groups need to have their BIDS data
 changed to work properly in the pipelines, return to [Stage 2](#stage-2-bids-optimization)
-
-
-### Running pipelines on ALL your subjects
-
-Once your
-* Create the empty superdataset
-    * **datalad create -c text2git /cbica/projects/RBC/testing/superds**
-        * **-c text2git** Ensures scripts are checked into git not git annex
-        * We suggest calling your superds the name of your BIDs dataset (e.g. PNC)
-* cd into the superdataset and run the following commands:
-    * **datalad create -c text2git -d . bidsdatasets**
-    * **mkdir code**
-* copy the entirety of your BIDS dataset into the **superds/bidsdatasets** subdataset
-    * The root of your BIDS dataset should now be **superds/bidsdatasets**
-* run the following from the root of the superdataset
-    * **datalad status**
-        * you should see all the data you copied into **superds/bidsdatasets** as untracked
-    * **datalad save -m "created superds, added BIDS data**
-        * you should always include a DETAILD commit message when saving!
-
-* We have created three scripts that cover setting up the superds for pipeline runs, submittnig jobs to cubic, and running fmriprep. **cp** these to your **superds/code** directory. They are located at the following paths:
-    * **/cbica/projects/RBC/testing/CCNP/code/setup_datalad_pre_pipelines.sh**
-    * **/cbica/projects/RBC/testing/CCNP/code/datalad-fmriprep-run.sh**
-    * **/cbica/projects/RBC/testing/CCNP/code/submit-fmriprep-jobs.sh**
-* Make sure to change the dataset and csv paths in these scripts to reflect your superds!
-* Run the following from the superds:
-    * **bash code/setup_datalad_pre_pipelines.sh**
-        * Running the setup script will create subdatasets fmriprep/, freesurfer/, and code/pipelines/ and will add license.txt to code/
-    * **datalad status**
-        * Should show you the new directories that have been added.
-    * **datalad containers-list**
-        * Should show the new fmriprep image you added
-    * **datalad save -m "populated code subds and ran setup scripts"**
-* To see fmriprep image added
-    * **datalad save** from the root dir!
-    * **datalad status**
-* To make sure you have a clean environment, logout from rbc and log back in and cd into **SBIA_TMPDIR** and ls to see if there is space.
-* Now you're ready to submit your fmriprep jobs! To do this, run the following from the superds root:
-    * **bash submit_fmriprep_jobs.sh**
-        * The submit script will call the run script for each subject in the acquisition group csv.
-* This might take a few days to run, and make sure you run **qstat** periodically to check on the status of the jobs.
-* Once your jobs have all finished, each subject's output will be in it's own git branch. To view an output, run the following commands:
-    * **cd superds/fmriprep/**
-        * This directory should look empty but isn't (each subject's output directory is just in it's own branch)
-    * **git branch -v**
-        * To see all branches
-    * **git checkout sub-'subjectID'**
-        * To switch to one subject's branch
-    * **git checkout master**
-        * To return to the main branch
-* Now we want to merge all the subjects into the master branch. This is called an "Octopus Merge." To implement it, you are going to need to add two scripts to the **superds/code** directory:  A submit script that loops through your list of acquisition group subjects and calls the run script for each one. The run script should include the following Octopus Merge command:
-    * **for b in $(git branch -l | grep 'sub-' | tr -d ' ');
-     do ( git checkout -b m$b $b && git rm logs/CITATION.* && git commit --amend --no-edit ) ;
-done**
-* Once you are done creating your submit and run scripts, bash the submit script to submit each subject directory's merge as a job.
-* Once your jobs finish, all subjects' fmriprep output directories should be on the main branch.
-* Go through the same set of steps with the **superds/fressurfer/** fmriprep output directory.
-* Run the audit script on your outputs to see if there are any issues in the data that need to be fixed.
-* If you need to make changes to your BIDS dataset, make sure to re-run **cubids-group** and **cubids-apply** if necessary.
-* Finally, repeat the entire fmriprep process, starting with setting up a superdataset but this time with the entire BIDS dataset.
-
