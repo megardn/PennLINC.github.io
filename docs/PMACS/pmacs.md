@@ -246,6 +246,11 @@ and save it too: `experiment1.sh`
   ```sh
    bsub -q matlab_normal  /path/to/scripts/experiment1.sh
   ```
+To  run an interactive session: 
+
+1. Run `bsub -Is -XF -q matlab_interactive 'bash'` from the initial login node. 
+
+2. Type `matlab` to open Matlab using X11, or `matlab -nodisplay` to run the session in the terminal.
 
 ## Running rstudio on PMACS
 Rstudio is not installed on PMACS at the moment, so we manage to installed one for BBL users. 
