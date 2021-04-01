@@ -399,6 +399,44 @@ into a smaller, representative BIDS dataset. This directory then serves as input
 To create a testing directory of only exemplar subjects into its BIDS
 subdataset, use the CuBIDS program `cubids-copy-exemplars`
 
+```bash
+$ cubids-copy-exemplars \
+    BIDS \
+    exemplars_dir \
+    code/iterations/iter1_AcqGrouping.csv
+```
+
+this will create `exemplars_dir`, which is a new BIDS-valid dataset containing one
+subject per acquisition group. You will want to test each of these subjects with
+each pipeline to ensure that they are processed correctly.
+
+Before using the `exemplars_dir` as input to the pipelines, initialize it
+as a Datalad dataset.
+
+```bash
+$ cd exemplars_dir
+$ datalad create -d . --force -D "Exemplars BIDS dataset"
+$ datalad save -m "add input data"
+$ cd ..
+```
+
+Now you can bootstrap a pipeline run with these as your inputs. Supposing fmriprep
+is the pipeline we want to test:
+
+```bash
+$ mkdir exemplar_test && cd exemplar_test
+$ wget https://raw.githubusercontent.com/PennLINC/TheWay/cubic/cubic-bootstrap-fmriprep.sh
+$ bash cubic-bootstrap-fmriprep.sh ../exemplars_dir
+$ bash fmriprep/anaysis/code/qsub_calls.sh
+```
+
+This will link the exemplars BIDS dataset into an fmriprep analysis dataset and
+launch jobs for each exemplar subject. Follow the instructions in
+[here](/docs/TheWay/RunningDataLadPipelines#preparing-the-analysis-dataset)
+for aggregating and checking the results. Note that a nearly identical
+workflow will be used for running the entire BIDS dataset through pipelines.
+
+
 ### Checking outputs from your exemplar subjects
 
 The `fmriprep` or `qsiprep` directory in your `working/testing` directory
