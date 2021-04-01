@@ -405,15 +405,15 @@ Because of CUBIC's unique "project user" design, the protocol for moving files t
 Note that you will need to be within the UPenn infrastructure (i.e. on VPN or on campus) to move files to and from CUBIC.
 
 ### Moving files to CUBIC
-All project directories will include a folder called `dropbox/` in the project home directory. Depositing files into this folder will automatically make the project user the owner of the file. Please note, however, that this ownership conversion is not always instantaneous and can take a few minutes, so be patient. Note also that anyone in the project group can move files into this folder. Finally, keep in mind that the dropbox can only contain 1GB or 1000 files at any given time. 
+All project directories will include a folder called `dropbox/` in the project home directory. Depositing files into this folder will automatically make the project user the owner of the file. Please note, however, that this ownership conversion is not always instantaneous and can take a few minutes, so be patient. Note also that anyone in the project group can move files into this folder. Finally, keep in mind that the dropbox can only contain 1GB or 1000 files at any given time.
 
 `scp` is the recommended command-line transfer software for moving files onto and off of CUBIC. One need only specify the file(s) to move and the CUBIC destination. See the example below, where `<...>` indicates user input:
 
-`scp </path/to/files*.nii.gz> <username>@cubic-login.uphs.upenn.edu:/cbica/projects/<project_dir>/dropbox/` 
+`scp </path/to/files*.nii.gz> <username>@cubic-login.uphs.upenn.edu:/cbica/projects/<project_dir>/dropbox/`
 
 This command would copy all `nii.gz` files from `/path/to/` into the `dropbox/` folder of your project directory. Note that you are entering your CUBIC username in the destination, not your project username (confusing, I know).
 
-Moving files directly to a non `dropbox/` folder on CUBIC with scp or your mount point *is* possible for a user with project directory write permissions, though is not recommended. Such files will retain the ownership of the CUBIC user who transferred the files, and permissions can only be changed by that user or a user with sudo priveleges. 
+Moving files directly to a non `dropbox/` folder on CUBIC with scp or your mount point *is* possible for a user with project directory write permissions, though is not recommended. Such files will retain the ownership of the CUBIC user who transferred the files, and permissions can only be changed by that user or a user with sudo priveleges.
 
 ### Moving files from CUBIC
 This is much simpler. One can simply use scp (or rsync, or whatever) to copy files from a source on cubic to their local destination. E.g.
