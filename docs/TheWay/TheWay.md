@@ -6,4 +6,6 @@ has_toc: true
 nav_order: 14
 ---
 
-Here is The Way to do science
+Here we document standard practices we've developed while working with
+lots of messy data. The goal is to have a accurately-curated,
+provenance-tracked, usable data set as a basis for studies.
