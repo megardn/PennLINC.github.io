@@ -55,7 +55,9 @@ Mapping individual differences in behavior is fundamental to personalized neuros
 
 ### Project Site: 
 
-https://pennlinc.github.io/footprinting/
+[https://pennlinc.github.io/footprinting/](https://pennlinc.github.io/footprinting/)
+
+
 
 
 
