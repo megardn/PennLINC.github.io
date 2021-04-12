@@ -47,7 +47,7 @@ Mobile Footprinting: Linking Individual Distinctiveness in Mobility Patterns to 
 
 Cedric Huchuan Xia
 
-<img src="https://github.com/PennLINC/footprinting/blob/main/figures/Brief-Figure-1.png" alt="">
+<img src="/assets/images/IMG_9423.JPG" alt="">
 
 ### Brief Project Description: 
 
