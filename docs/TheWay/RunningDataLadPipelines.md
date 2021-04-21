@@ -35,13 +35,13 @@ The only argument for the boostrap script is the location of the BIDS input
 data. This can be any datalad-accepted clone source (e.g. ria+ssh://,
 ria+file://, https://) or a path to a local directory containing BIDS data.
 If a local path, it should be the directory that containse the `sub-`
-directories. here we bootstrap an fmriprep analysis:
+directories and **must** be a datalad dataset. here we bootstrap an fmriprep analysis:
 
 ```bash
 $ BIDSAPP=fmriprep
 $ BIDSINPUT=/path/to/my/BIDS
-$ wget https://raw.githubusercontent.com/PennLINC/TheWay/cubic/cubic-bootstrap-${BIDSAPP}.sh
-$ bash cubic-boostrap-${BIDSAPP}.sh ${BIDSINPUT}
+$ wget https://raw.githubusercontent.com/PennLINC/TheWay/main/scripts/cubic/bootstrap-${BIDSAPP}.sh
+$ bash boostrap-${BIDSAPP}.sh ${BIDSINPUT}
 ```
 
 This will create a `fmriprep` directory that contains numerous other
@@ -78,7 +78,7 @@ below the area labeled `# EDIT HERE #` to change arguments for the prep.
 Once satisfied with the parameters for your pipeline run, launch the jobs with
 
 ```bash
-$ bash fmriprep/analysis/code/submit_sge_jobs.sh
+$ bash fmriprep/analysis/code/qsub_calls.sh
 ```
 
 This will create one job per subject, which will generate a lot of text printed
