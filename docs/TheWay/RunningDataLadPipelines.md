@@ -13,7 +13,7 @@ In general, we will need to apply an image processing workflow to the raw
 data we've
 [curated in BIDS](/docs/TheWay/CuratingBIDSonDisk#curating-bids-datasets).
 This workflow is essentially the same for any of the preps, including
-fmriprep, qsiprep and aslprep. In this section we show how to create an
+fmriprep, qsiprep, CPAC and aslprep. In this section we show how to create an
 *analysis dataset* that contains the prep containers, the provenance of the
 prep runs, and the prep outputs.
 
@@ -44,22 +44,22 @@ $ wget https://raw.githubusercontent.com/PennLINC/TheWay/main/scripts/cubic/boot
 $ bash boostrap-${BIDSAPP}.sh ${BIDSINPUT}
 ```
 
-This will create a `fmriprep` directory that contains numerous other
-directories needed to run fmriprep at scale. Most relevant for you is the
-`fmriprep/analysis` directory. This is a regular datalad dataset that
+This will create a `${BIDSAPP}` directory that contains numerous other
+directories needed to run the app at scale. Most relevant for you is the
+`${BIDSAPP}/analysis` directory. This is a regular datalad dataset that
 contains the code, input data, and remote configuration needed to run the
-fmriprep jobs on the cluster.
+jobs on the cluster.
 
 ```bash
-$ cd fmriprep
+$ cd ${BIDSAPP}
 $ ls
 analysis	input_ria	output_ria
-$ cd fmriprep/analysis
+$ cd analysis
 $ datalad siblings
 .: here(+) [git]
-.: input(-) [/Users/mcieslak/projects/tmp/fmriprep/input_ria/9d1/e46ef-27a2-400c-84da-7ea466afd3e7 (git)]
+.: input(-) [/Users/mcieslak/projects/tmp/BIDSAPP/input_ria/9d1/e46ef-27a2-400c-84da-7ea466afd3e7 (git)]
 .: output-storage(+) [ora]
-.: output(-) [/Users/mcieslak/projects/tmp/fmriprep/output_ria/9d1/e46ef-27a2-400c-84da-7ea466afd3e7 (git)]
+.: output(-) [/Users/mcieslak/projects/tmp/BIDSAPP/output_ria/9d1/e46ef-27a2-400c-84da-7ea466afd3e7 (git)]
 ```
 
 We can see that in addition to the `analysis` dataset there are two remotes
@@ -70,15 +70,15 @@ know exactly how this all works as an end user.
 ## Editing the executable code
 
 The bootstrapping script will also create some scripts in
-`fmriprep/analysis/code` that will be used to run your job. You will want to
+`${BIDSAPP}/analysis/code` that will be used to run your job. You will want to
 edit these to tailor the call to your prep in case there are any specific
-options for this particular run. In `fmriprep/analysis/participant_job` edit
+options for this particular run. In `${BIDSAPP}/analysis/participant_job` edit
 below the area labeled `# EDIT HERE #` to change arguments for the prep.
 
 Once satisfied with the parameters for your pipeline run, launch the jobs with
 
 ```bash
-$ bash fmriprep/analysis/code/qsub_calls.sh
+$ bash ${BIDSAPP}/analysis/code/qsub_calls.sh
 ```
 
 This will create one job per subject, which will generate a lot of text printed
@@ -95,13 +95,13 @@ be merged into a single branch to create a complete results dataset.
 A script to do this was created during the bootstrapping, to run the merge:
 
 ```bash
-$ bash fmriprep/analysis/code/merge_outputs.sh
+$ bash ${BIDSAPP}/analysis/code/merge_outputs.sh
 ```
 
 To view all the results files together (not recommended) you can
 
 ```bash
-$ cd fmriprep/analysis
+$ cd ${BIDSAPP}/analysis
 $ datalad get -r .
 ```
 
