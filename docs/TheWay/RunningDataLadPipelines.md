@@ -27,7 +27,7 @@ prep runs, and the prep outputs.
 We assume your BIDS data is curated and available either on your local file system
 or a remote datalad source.
 
-You can download and run one or more of our "bootstrap" scripts that set up an
+You can [download](https://github.com/PennLINC/TheWay/tree/main/scripts/cubic) and run one or more of our "bootstrap" scripts that set up an
 working directory for the running of your pipeline. Set the `BIDSAPP` variable
 to the lowercase version of the pipeline you'd like to run.
 
