@@ -22,6 +22,31 @@ prep runs, and the prep outputs.
 * TOC
 {:toc}
 
+## Preparing your containers
+
+First, you want to clone the containers dataset. You should build containers in /cbica/projects/RBC/dropbox.
+rbc user, for some reason, cannot do this, so do this as your user.
+
+for example, for xcp-abcd-0.0.1:
+```bash
+singularity build xcp-abcd-0.0.1.sif docker://pennlinc/xcp_abcd:0.0.1
+```
+
+Hop back on rbc, then copy to /cbica/projects/RBC/your_container_name
+for example:
+```bash 
+datalad create -D "xcp-abcd container".
+```
+do that actual copy:
+```bash 
+datalad containers-add --url ~/dropbox/xcp-abcd-0.0.1.sif xcp-abcd-0-0-1
+```
+
+delete original:
+```bash
+#rm /cbica/projects/RBC/dropbox/dropbox/xcp-abcd-0.0.1.sif
+```
+
 ## Preparing the analysis dataset
 
 We assume your BIDS data is curated and available either on your local file system
