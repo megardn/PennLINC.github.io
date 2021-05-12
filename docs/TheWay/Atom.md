@@ -32,7 +32,7 @@ Select Packages on the left, and then click on the Settings button for Hydrogen.
 
 Scroll down to the Kernal Gateways Section
 ![atom3](./hydrogen-port.png)
-Type this in the box:
+Type this in the box but replace 6666 with what PORT number you want to use (anything but 6666):
 [{
   "name": "Remote server",
   "options": {
@@ -55,37 +55,13 @@ CUBIC
 sshfs -o follow_symlinks bertolem@cubic-login.uphs.upenn.edu://cbica/home/bertolem/ /Users/maxwell/CUBIC/
 ```
 
-### Now we ssh into a cluster, start a Jupyter kernel, connect to that port.
-
-PMACS
-```bash
-#login (my username is mb3152)
-ssh -Y mb3152@sciget.pmacs.upenn.edu
-```
-CUBIC
-```bash
-#login (my username is bertolem)
-ssh -Y bertolem@cubic-login.uphs.upenn.edu
-```
-
 ### Start a kernal on the cluster, connect to it from your local machine
 ```bash
-PORT=$6666
-#local terminal, this connects you to the jupyter instance
-ssh -N -L localhost:$PORT:localhost:$PORT  mb3152@sciget.pmacs.upenn.edu
-```
-
-### All the steps in one place:
-```bash
 PORT=$6666 #DO NOT USE THIS ONE. We have to have different ones. This one is satan. If you can't connect, you and someone else probably, somehow, picked the same port
-#local terminal, get into pmacs
-ssh -Y mb3152@sciget.pmacs.upenn.edu
-#cluster, start a jupyter instance
-PORT=$6666
-jupyter notebook --no-browser --NotebookApp.token='' --NotebookApp.disable_check_xsrf=True --port=$PORT
 #local terminal, this connects you to the jupyter instance
-PORT=$6666
-ssh -N -L localhost:$PORT:localhost:$PORT  mb3152@sciget.pmacs.upenn.edu
+ssh -L localhost:$PORT:localhost:$PORT bertolem@cubic-login.uphs.upenn.edu
+#once logged in:
+jupyter notebook --no-browser --NotebookApp.token='' --NotebookApp.disable_check_xsrf=True --port=$PORT
 ```
 
 ### Connect to kernal in Atom

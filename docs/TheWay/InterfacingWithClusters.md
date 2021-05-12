@@ -18,31 +18,30 @@ This means we are going to not use X11 at all. Why? Because running graphics on 
 
 ## Connecting to the Clusters
 
-This is covered in each cluster's specific documentation, but for completeness:
+We actually, do use these commends, but just incase you need to search around, here are the basic login commands:
 
-PMACS
-```bash
-#login (my username is mb3152)
-ssh -Y mb3152@sciget.pmacs.upenn.edu
-```
+
 CUBIC
 ```bash
 #login (my username is bertolem)
 ssh -Y bertolem@cubic-login.uphs.upenn.edu
 ```
+PMACS
+```bash
+#login (my username is mb3152)
+ssh -Y mb3152@scisub.pmacs.upenn.edu
+```
 
 ## Writing Code Interactively in a Jupyter Notebook
 
-Now start a Jupyter kernel, and then find that kernel via a browser. This is actually pretty easy.
+We want to login to the cluster such that we have a "port" to it.Now start a Jupyter kernel, and then find that kernel via a browser. This is actually pretty easy.
 
 ```bash
 PORT=$6666 #DO NOT USE THIS ONE. We have to have different ones. This one is satan. If you can't connect, you and someone else probably, somehow, picked the same port
 #cluster, start a jupyter instance
 PORT=$6666
+ssh -L localhost:$PORT:localhost:$PORT  bertolem@cubic-login.uphs.upenn.edu
 jupyter notebook --no-browser --NotebookApp.token='' --NotebookApp.disable_check_xsrf=True --port=$PORT
-#local terminal, this connects you to the jupyter instance
-PORT=$6666
-ssh -N -L localhost:$PORT:localhost:$PORT  mb3152@sciget.pmacs.upenn.edu
 ```
 
 Now, in your local web-browser, go to: localhost:PORT (e.g., 6666). You can now start a python or R kernel or a terminal and get to coding! You can work in a notebook for a while, but you can also save it out as a script.
