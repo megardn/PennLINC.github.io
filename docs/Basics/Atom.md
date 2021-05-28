@@ -1,8 +1,9 @@
 ---
 layout: default
 title: Atom on the clusters (with GitHub)
-parent: The Way
-nav_order: 3
+parent: Computation Basics
+has_children: false
+nav_order: 2
 has_toc: true
 ---
 
@@ -28,10 +29,11 @@ Okay, one more thing. We need to tell Atom what port to expect the Jupyter sessi
 Go into the Preferences for Atom: File > Preferences.
 Select Packages on the left, and then click on the Settings button for Hydrogen.
 
-![atom2](./atom-hydrogen2.png)
+<img src="/docs/Basics/atom-hydrogen2.png" alt="">
 
 Scroll down to the Kernal Gateways Section
-![atom3](./hydrogen-port.png)
+<img src="/docs/Basics/hydrogen-port.png" alt="">
+
 Type this in the box but replace 6666 with what PORT number you want to use (anything but 6666):
 [{
   "name": "Remote server",
@@ -70,7 +72,7 @@ In Atom, once you have a python or R script open, go to Packages > Hydrogen > Co
 Click Remote Server, then [New Session], then Python 3 or R.
 
 Now you can code interactively, using the python or R on pmacs.
-![interactive](./interactive.png)
+<img src="/docs/Basics/interactive.png" alt="">
 
 ## Common issues
 
@@ -85,6 +87,6 @@ You should be able to reconnect after this.
 
 You can track your work using github.com. Both Git and GitHub can be found in Atom under Pacakges -> GitHub.
 
-If you have a github repo directory open, Atom will detect this. If it's not a repo yet, you can initialize it in Atom in the Git panel. 
+If you have a github repo directory open, Atom will detect this. If it's not a repo yet, you can initialize it in Atom in the Git panel.
 
 Next, in Atom, you "stage" your changed and commit them in Git, and the push using GitHub (tiny "push" button in the bottom right corner).

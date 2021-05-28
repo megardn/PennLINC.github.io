@@ -3,7 +3,7 @@ layout: default
 title: The Way
 has_children: true
 has_toc: true
-nav_order: 14
+nav_order: 12
 ---
 
 Here we document standard practices we've developed while working with

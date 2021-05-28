@@ -1,8 +1,8 @@
 ---
 layout: default
 title: Interfacing with the clusters via Jupyter and MacFuse
-parent: The Way
-nav_order: 2
+parent: Computation Basics
+nav_order: 3
 has_toc: true
 ---
 
