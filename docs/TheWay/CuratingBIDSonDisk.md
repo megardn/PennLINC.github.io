@@ -20,7 +20,7 @@ stages.
 
 ## Preparing your environment
 
-If curating data on a Penn cluster, you will need to set up a conda
+If you are curating data on a Penn cluster, you will need to set up a conda
 environment for your project. For information on how to set up conda
 on each clustess [instructions for CUBIC]() and
 [instructions for PMACS](). You will need to install datalad and CuBIDS
