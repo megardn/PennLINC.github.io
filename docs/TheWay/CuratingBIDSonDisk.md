@@ -32,7 +32,7 @@ the project initialization script. Immediately upon getting access to
 your project, log in as the project user and run:
 
 ```shell
-$ wget https://raw.githubusercontent.com/PennLINC/TheWay/cubic-setup-project-user.sh
+$ wget https://raw.githubusercontent.com/PennLINC/TheWay/main/scripts/cubic/cubic-setup-project-user.sh
 $ bash cubic-setup-project-user.sh ${HOME}
 ```
 
