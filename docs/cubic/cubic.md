@@ -165,7 +165,9 @@ unset PYTHONPATH
 ```
 
 In order to ensure that the compute nodes source your `.bashrc`, you can use the
-`-V` flag with `qsub`. To change the default installation for a given software
+`-V` flag with `qsub`. We also recommend that when you launch a script requiring
+your `conda` environment and packages, you add `source activate <env>` to the top
+of your script. To change the default installation for a given software
 package, prepend the path to your `$PATH` and source your `.bashrc`:
 
 ```bash
