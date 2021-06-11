@@ -7,7 +7,7 @@ parent: Current Projects
 
 # Project Title
 
-Mobile Footprinting: Association between Neighborhood Socioeconomic Status and Executive System Activation in Youth
+N-back Adversity: Association between Neighborhood Socioeconomic Status and Executive System Activation in Youth
 
 
 ## Project Lead(s):
