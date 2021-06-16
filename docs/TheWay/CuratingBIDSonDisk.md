@@ -208,15 +208,34 @@ AccessionNumber were removed from all metadata files using
 You can check your data into datalad any time after you've removed all
 sensitive metadata fields.
 
+### Add NIfTI information to the sidecars
+
+Image files (NIfTI) are large binary files that contain information about
+the spatial coverage of MRI images. We want to be able to detect variability
+in this, but don't necessarily want to always be reading it from NIfTI files.
+For example, the nifti files may be checked in to git annex or stored on
+a remote server. These are somewhat common use cases, so we recommend
+adding the information you would normally get from NIfTI files directly
+to the JSON files. CuBIDS comes with a NIfTI metadata extractor, which
+can be run with
+
+```bash
+$ cubids-add-nifti-info dataset_path
+```
+
+Once run, you will find volume, dimension, and obliquity information in the JSON sidecars.
+
 
 ## Stage 1: BIDS Validation
 
 At the end of Step 0 you should have a BIDS-like data set containing NIfTI
 and JSON files. The goal of this stage is to get your data passing the
-BIDS Validator without any errors. This is an iterative process - fixing
+BIDS Validator without any errors and to ensure all scans in your dataset
+appear as expected and are usable. This is an iterative process - fixing
 one error may introduce new errors. Expect this step to take a number of
-iterations and be sure to describe each step in your *Data Narrative*.
-
+iterations and be sure to describe each step in your *Data Narrative*. In
+order to do this, we recommend running cubids-group and cubids-validate
+siumltaneously, via a qsub (if the dataset is large) after every change.
 Suppose you ran `cubids-validate` on your BIDS data. This will create
 a file containing all the errors present in your data. Add this file
 to your git repository and describe it in the *Data Narrative*:
@@ -246,7 +265,7 @@ CODEn].
 
 ```
 
-After re-running the validator you may find new errors. In this case, write more scripts
+After re-running cubids-group and cubids-validate, you may find new errors. In this case, write more scripts
 that fix the errors and describe them in the *Data Narrative*
 
 ```markdown
@@ -292,28 +311,12 @@ both acquisitions would result in `sub-X_task-1_bold` as the
 BIDS name.
 
 CuBIDS provides a utility that finds variations in important imaging
-parameters within each BIDS *name group*. In our example there might
-be two unique *parameter groups* that map to the same *name group* of
+parameters within each BIDS *key group*. In our example there might
+be two unique *parameter groups* that map to the same *key group* of
 `sub-X_task-1_bold`: one with `MultibandAccelerationFactor` 1 and
-the other 4. A complete description of name and parameter groups
+the other 4. A complete description of key and parameter groups
 can be found on the [CuBIDS documentation](https://bids-bond.readthedocs.io/en/latest/usage.html#definitions).
 
-### Add NIfTI information to the sidecars
-
-Image files (NIfTI) are large binary files that contain information about
-the spatial coverage of MRI images. We want to be able to detect variability
-in this, but don't necessarily want to always be reading it from NIfTI files.
-For example, the nifti files may be checked in to git annex or stored on
-a remote server. These are somewhat common use cases, so we recommend
-adding the information you would normally get from NIfTI files directly
-to the JSON files. CuBIDS comes with a NIfTI metadata extractor, which
-can be run with
-
-```bash
-$ cubids-add-nifti-info dataset_path
-```
-
-Once run, you will find volume information in the JSON sidecars.
 
 ### Find unique acquisition groups
 
@@ -339,7 +342,7 @@ To detect acquisition groups in your data set, change into `working/` and run
 $ cubids-group BIDS code/iterations/iter0
 ```
 
-This command will write four CuBIDS files delineating name/param groups and
+This command will write four CuBIDS files delineating key/param groups and
 acquisition groups.
 
 ### Rename, merge or delete parameter groups
@@ -348,7 +351,12 @@ Relevant parties will then edit the summary csv
 requesting new names for parameter groups as well as merging or deleting them
 where appropriate. A description of how this process works can be found on
 the [CuBIDS documentation](https://bids-bond.readthedocs.io/en/latest/usage.html#modifying-key-and-parameter-group-assignments)
-[//]: # (Sydney, could you add the actual csv names in a tree printout?)
+[//]: #
+
+See below for examples of cross sections of a cubids-group csv:
+
+[Pre-apply](https://github.com/PennLINC/RBC/tree/master/PennLINC/HRC_BIDS_Fix/HRC_pre_apply)
+[Post-apply](https://github.com/PennLINC/RBC/tree/master/PennLINC/HRC_BIDS_Fix/HRC_post_apply)
 
 Once the edited CSV is ready, the merges, renamings and deletions can be
 applied to your BIDS data. Again from `working/`, if you're not using
@@ -359,7 +367,7 @@ $ cubids-apply \
     BIDS \
     code/iterations/iter0_summary.csv \
     code/iterations/iter0_files.csv \
-    code/iterations/iter1
+    code/iterations/apply1
 ```
 
 If using datalad, be sure to include `--use-datalad` as the first argument to
@@ -367,10 +375,10 @@ If using datalad, be sure to include `--use-datalad` as the first argument to
 so you know that CuBIDS was used to change your data. Describe any major
 renaming, deleting or merging of parameter groups.
 
-New parameter groups will be described in `code/iterations/iter1*.csv` and you
+New parameter groups will be described in `code/iterations/apply1*.csv` and you
 should make sure your data was changed as intended.
 
-Once you are satisfied with your name/parameter groups, be sure to re-run
+Once you are satisfied with your key/parameter groups, be sure to re-run
 `cubids-validate` to make sure you haven't introduced any BIDS-incompatible
 names.
 
