@@ -425,10 +425,10 @@ This is much simpler. One can simply use scp (or rsync, or whatever) to copy fil
 It is also possible to copy files through the mount point, but this would be quite slow and is not really the purpose of the mount point.
 
 
-##  Using R/R-studio and Installation of  R packages
+##  Using R/R-studio and Installation of R packages
 
 1. Currently  R-3.6 is installed on CUBIC. If you are satisfy with R-3.6, go to step 2 below. However, you can install another R version in any directory of your choice, usually home directory `/cbica/home/username`.
-To inslall R in your desired directory, follow the following steps.
+To install R in your desired directory, follow the following steps.
 
    ```bash
    $ module load curl/7.56.0 # load the libcurl library
@@ -462,6 +462,27 @@ To inslall R in your desired directory, follow the following steps.
       $ module load R-studio/1.1.456
       $ rstudio & # enjoy the R and Rstudio, it works
      ```
+
+Alternatively, you can use containers:
+
+the neuroR container on [docker hub](https://hub.docker.com/r/pennsive/neuror) has R and many neuroimaging packages installed, which is also available as an environment module on CUBIC:
+```sh
+module load neuroR/0.2.0 # will load R 4.1
+```
+2. R Studio (with the same neuroimaging packages as neuroR) is also available on docker hub, but not as an environment module, so you need to pull it yourself before running it:
+```sh
+singularity pull docker://pennsive/rstudio:4.1
+# see https://sylabs.io/guides/3.0/user-guide/running_services.html for more on running services in singularity
+# command follows format:
+# [command]                                                     [image]           [name of instance]
+singularity instance start -e -B $TMPDIR:/var -B $HOME:/root    rstudio_4.1.sif   my-running-rstudio
+# $PORT must be the number you used to create the ssh tunnel, e.g. ssh -q -L${PORT}:127.0.0.1:${PORT} user@cubic-login
+SINGULARITYENV_PORT=$PORT singularity run instance://my-running-rstudio
+# other singularity service commands:
+singularity instance list
+singularity instance stop --all
+```
+
 ## CPUs, Nodes, & Memory
 
 CUBIC has:
