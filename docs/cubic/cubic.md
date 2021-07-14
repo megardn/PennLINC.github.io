@@ -474,8 +474,8 @@ module load neuroR/0.2.0 # will load R 4.1
 singularity pull docker://pennsive/rstudio:4.1
 # see https://sylabs.io/guides/3.0/user-guide/running_services.html for more on running services in singularity
 # command follows format:
-# [command]                                                         [image]           [name of instance]
-singularity instance start -e -B $TMPDIR:/var/run/rstudio-server    rstudio_4.1.sif   my-running-rstudio
+# [command]                                                     [image]           [name of instance]
+singularity instance start -e -B $TMPDIR:/var -B $HOME:/root    rstudio_4.1.sif   my-running-rstudio
 # $PORT must be the number you used to create the ssh tunnel, e.g. ssh -q -L${PORT}:127.0.0.1:${PORT} user@cubic-login
 SINGULARITYENV_PORT=$PORT singularity run instance://my-running-rstudio
 # other singularity service commands:
