@@ -8,8 +8,6 @@ Generating an SSH key pair creates two long strings of characters: a public and 
 
 When the public and private keys match up, the SSH server grants access without the need for a password. You can increase the security of your key pair even more by protecting the private key with an optional (but highly encouraged) passphrase.
 
-Note: If you are looking for information about setting up SSH keys in your DigitalOcean account, please refer to our [DigitalOcean product documentation on SSH Keys](https://docs.digitalocean.com/products/accounts/security/#ssh-keys)
-
 Step 1 --- Creating the Key Pair
 ------------------------------
 
@@ -28,17 +26,6 @@ OutputGenerating public/private ed25519 key pair.
 ```
 
 You will see a confirmation that the key generation process has begun, and you will be prompted for some information, which we will discuss in the next step.
-
-Note: if you are on an older system that does not support creating `ed25519` key pairs, or the server you're connecting to does not support them, you should create a strong `rsa` keypair instead:
-
-```
-ssh-keygen -t rsa -b 4096
-
-```
-
-Copy
-
-This changes the `-t` "type" flag to `rsa`, and adds the `-b 4096` "bits" flag to create a 4096 bit key.
 
 Step 2 --- Specifying Where to Save the Keys
 ------------------------------------------
