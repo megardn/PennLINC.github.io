@@ -22,16 +22,15 @@ Step 1 --- Creating the Key Pair
 
 The first step is to create a key pair on the client machine. This will likely be your local computer. Type the following command into your local command line:
 
-```
+```bashe
 ssh-keygen -t ed25519
-
 ```
 
 You should see
 
-```
-OutputGenerating public/private ed25519 key pair.
-
+```bash
+Generating public/private ed25519 key pair.
+Enter file in which to save the key (/Users/max/.ssh/id_ed25519):
 ```
 
 You will see a confirmation that the key generation process has begun, and you will be prompted for some information, which we will discuss in the next step.
@@ -41,79 +40,42 @@ Step 2 --- Specifying Where to Save the Keys
 
 The first prompt from the `ssh-keygen` command will ask you where to save the keys:
 
+```bash
+Enter file in which to save the key (/Users/max/.ssh/id_ed25519):
 ```
-OutputEnter file in which to save the key (/home/sammy/.ssh/id_ed25519):
 
-```
-
-You can press `ENTER` here to save the files to the default location in the `.ssh` directory of your home directory.
+Press `ENTER` here to save the files to the default location in the `.ssh` directory of your home directory.
 
 Alternately, you can choose another file name or location by typing it after the prompt and hitting `ENTER`.
 
 Step 3 --- Creating a Passphrase
 ------------------------------
 
-The second and final prompt from `ssh-keygen` will ask you to enter a passphrase:
+The second and final prompt from `ssh-keygen` will ask you to enter a passphrase. Hit `ENTER` twice.
 
-```
-OutputEnter passphrase (empty for no passphrase):
-
-```
-
-It's up to you whether you want to use a passphrase, but it is strongly encouraged: the security of a key pair, no matter the encryption scheme, still depends on the fact that it is not accessible to anyone else.
-
-Should a private key with no passphrase fall into an unauthorized user's possession, they will be able to log in to any server you've configured with the associated public key.
-
-The main downside to having a passphrase --- typing it in --- can be mitigated by using an `ssh-agent` service, which will temporarily store your unlocked key and make it accessible to the SSH client. Many of these agents are integrated with your operating system's native keychain, making the unlocking process even more seamless.
-
-To recap, the entire key generation process looks like this:
-
-```
-ssh-keygen -t ed25519
-
+```bash
+Enter passphrase (empty for no passphrase): 
+Enter same passphrase again: 
+Your identification has been saved in /Users/maxwell/.ssh/id_ed25519.
 ```
 
-Copy
-
-```
-OutputGenerating public/private ed25519 key pair.
-Enter file in which to save the key (/home/sammy/.ssh/id_ed25519):
-Enter passphrase (empty for no passphrase):
-Enter same passphrase again:
-Your identification has been saved in /home/sammy/.ssh/id_ed25519
-Your public key has been saved in /home/sammy/.ssh/id_ed25519.pub
+Finally, it will give you some pretty art under this:
+```bash
 The key fingerprint is:
-SHA256:EGx5HEXz7EqKigIxHHWKpCZItSj1Dy9Dqc5cYae+1zc sammy@hostname
-The key's randomart image is:
-+--[ED25519 256]--+
-| o+o o.o.++      |
-|=oo.+.+.o  +     |
-|*+.oB.o.    o    |
-|*. + B .   .     |
-| o. = o S . .    |
-|.+ o o . o .     |
-|. + . ... .      |
-|.  . o. . E      |
-| .. o.   . .     |
-+----[SHA256]-----+
-
 ```
 
-The public key is now located in `/home/sammy/.ssh/id_ed25519.pub`. The private key is now located in `/home/sammy/.ssh/id_ed25519`.
+The public key is now located in `/Users/maxwell/.ssh/id_ed25519.pub`. The private key is now located in `/Users/maxwell/.ssh/id_ed25519`.
 
 Step 4 --- Copying the Public Key to Your Server
 ----------------------------------------------
 
 Once the key pair is generated, it's time to place the public key on the server that you want to connect to.
 
-You can copy the public key into the server's `authorized_keys` file with the `ssh-copy-id`command. Make sure to replace the example username and address:
+You can copy the public key into the server's `authorized_keys` file with the `ssh-copy-id`command. Make sure to replace the example username and address (which are mine!)
 
 ```
-ssh-copy-id sammy@your_server_address
-
+ssh-copy-id bertolem@cubic-login.uphs.upenn.edu
 ```
-
-Copy
 
 Once the command completes, you will be able to log into the server via SSH without being prompted for a password. However, if you set a passphrase when creating your SSH key, you will be asked to enter the passphrase at that time. This is your local `ssh` client asking you to decrypt the private key, it *is not* the remote server asking for a password.
 
