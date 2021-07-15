@@ -27,7 +27,7 @@ ssh-keygen -t ed25519
 
 ```
 
-Copy
+You should see
 
 ```
 OutputGenerating public/private ed25519 key pair.
