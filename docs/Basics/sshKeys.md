@@ -1,6 +1,6 @@
 ---
 layout: default
-title: sshkeys
+title: SSH Keys
 parent: Computation Basics
 has_children: false
 nav_order: 5
