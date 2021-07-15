@@ -1,3 +1,12 @@
+---
+layout: default
+title: sshkeys
+parent: Computation Basics
+has_children: false
+nav_order: 5
+has_toc: true
+---
+
 ### Introduction
 
 The Secure Shell Protocol (or SSH) is a cryptographic network protocol that allows users to securely access a remote computer over an unsecured network.
