@@ -7,7 +7,7 @@ nav_order: 5
 
 # Stages of a Project at PennLINC
 
-There is no such thing as a "quick" scientific project. All projects take careful planning and follow a stereotyped process.  Understanding the life cycle of a project is critical for ensuring feasibility, avoiding suprises, and maximizing fun.  Given how long any project takes (approx ~1y minimum) it is essential that every project be carefully thought-out to justify the investment.  As ever, the most important question is "What is the question?" 
+There is no such thing as a "quick" scientific project. All projects take careful planning and follow a stereotyped process.  Understanding the life cycle of a project is critical for ensuring feasibility, avoiding suprises, and maximizing fun.  Given how long any project takes (approx ~1y minimum) it is essential that every project be carefully thought-out to justify the investment.  As ever, the most important question is "What is the question?"
 
 
 ### 1)	Setup the infrastructure
@@ -35,7 +35,7 @@ This step is skipped at one’s peril.   Nothing is worse than sitting down to w
 
 ### 4)	Sharpen hypotheses and outline testable predictions in an analysis plan
 
-As noted above, the “what is the question?” is always the most important question.  At this stage, the over-arching hypothesis should be able to be concisely stated.  It is a good idea to literally write this down, as it will appear in the last paragraph of your introduction.   Next, one needs to operationalize how this hypothesis will be tested according to specific predictions that are linked to a defined analytic plan.   It is useful to imagine that everything in the study “works” and you get your dreamt-of results.  What tests do you need to do to generate these results? 
+As noted above, the “what is the question?” is always the most important question.  At this stage, the over-arching hypothesis should be able to be concisely stated.  It is a good idea to literally write this down, as it will appear in the last paragraph of your introduction.   Next, one needs to operationalize how this hypothesis will be tested according to specific predictions that are linked to a defined analytic plan.   It is useful to imagine that everything in the study “works” and you get your dreamt-of results.  What tests do you need to do to generate these results?
 
 
 ### 5)	Prospectively identify collaborators & co-authors
@@ -60,7 +60,7 @@ If data has not already been processed, this is an important and sometimes time-
 
 ### 9)	Clearly define inclusion criteria and construct sample in a reproducible manner
 
-It cannot be over-emphasized how critical this step is, as changes in the inclusion criteria will inevitably require re-doing all analyses as the sample changes.  Similarly, the reproducibility of results depends on the reproducibility of the sample selection procedure. Thus, this step should use code to pull in data from the data freeze folder, and arrive at the final sample by filtering the data using clear QA codes.   It is a good idea to explicitly go over this step—and the code—with both your replication buddy and the faculty mentor. 
+It cannot be over-emphasized how critical this step is, as changes in the inclusion criteria will inevitably require re-doing all analyses as the sample changes.  Similarly, the reproducibility of results depends on the reproducibility of the sample selection procedure. Thus, this step should use code to pull in data from the data freeze folder, and arrive at the final sample by filtering the data using clear QA codes.   It is a good idea to explicitly go over this step—and the code—with both your replication buddy and the faculty mentor.
 
 
 ### 10)	Data analysis and documentation
@@ -75,7 +75,7 @@ As detailed in the [Project Reproducibility Guide](https://github.com/PennBBL/la
 
 ### 12)	 Paper first steps: abstract & figure outline
 
-The scientific narrative of a paper should be readily apparent from the abstract and figures.  Before deciding that analyses are “done” it is good to write the abstract and make an outline (in text) of what the figures will show.  Often times this step reveals that something is missing, and one or two more analyses need to be done. 
+The scientific narrative of a paper should be readily apparent from the abstract and figures.  Before deciding that analyses are “done” it is good to write the abstract and make an outline (in text) of what the figures will show.  Often times this step reveals that something is missing, and one or two more analyses need to be done.
 
 
 ### 13)	 Create draft figures
@@ -83,9 +83,9 @@ The scientific narrative of a paper should be readily apparent from the abstract
 It is often good to create draft figure panels for the entire paper before polishing them to high gloss for publication.  These figures should be made reproducibly so they can be replicated (in the next step).  Making beautiful final figures before replication often is not efficient.
 
 
-### 14)	 Final reproducibility check: Clean code, make github repo, companion wiki, and replicate final results
+### 14)	 Final reproducibility check: Clean code, make GitHub repo, companion wiki, and replicate final results
 
-At this step, one has all the code and results in hand.  Before writing (or as it begins), it is important to make a clean github repo that will be submitted with the paper, along with a companion wiki that patiently steps interested readers through this code and allows them to reproduce your work.  Once this is complete, send the wiki and repo to your replication buddy, who will check your work (see [Project Reproducibility Guide](https://github.com/PennBBL/labhome/wiki/Project-Reproducibility-Guide)).   Note that it is imperative to repeat this process if results change in the writing process below; analyses added at a late stage when one is trying to get the paper out the door tend to be more likely to be problematic.
+At this step, one has all the code and results in hand.  Before writing (or as it begins), it is important to make a clean GitHub repo that will be submitted with the paper, along with a companion wiki that patiently steps interested readers through this code and allows them to reproduce your work.  Once this is complete, send the wiki and repo to your replication buddy, who will check your work (see [Project Reproducibility Guide](https://github.com/PennBBL/labhome/wiki/Project-Reproducibility-Guide)).   Note that it is imperative to repeat this process if results change in the writing process below; analyses added at a late stage when one is trying to get the paper out the door tend to be more likely to be problematic.
 
 
 ### 15)	Make final figures & write text
@@ -102,21 +102,21 @@ Experience suggests that the number of draft iterations is one of the dominant f
 
 ### 17)	Integrate co-author feedback
 
-We usually allow ~1-2 weeks for co-authors to provide feedback on a paper.  For those who do not reply in the specified window, usually the faculty lead will send a reminder email.  For papers with many authors, consider distributing the paper as a google doc; this will make the process of integrating co-author changes much less painful.  When sending co-authors the paper as a google doc, just be explicit that they are to track chagnes using the "suggesting" mode (screenshots are helpful to include).
- 
+We usually allow ~1-2 weeks for co-authors to provide feedback on a paper.  For those who do not reply in the specified window, usually the faculty lead will send a reminder email.  For papers with many authors, consider distributing the paper as a google doc; this will make the process of integrating co-author changes much less painful.  When sending co-authors the paper as a google doc, just be explicit that they are to track changes using the "suggesting" mode (screenshots are helpful to include).
+
 
 ### 18)	Submit paper, code, & post on a preprint server
 
-After months-years of work, you are now ready to submit the paper.   One reminder is that the final built PDF should be proof-read several times—many times, egregious formatting errors or typos are caught at this stage.   Furthermore, pay careful attention to the quality of the figures in the built PDF.  Note that if figures are large, the journal will downsample these considerably when making the PDF.  Note that many reviewers will not click on the “high resolution figure” link available to them—they will just use what is in the built PDF.  It is a bummer when we work hard to make gorgeous figures, and then what the reviewers see are poorly rendered due to downsampling.  While this depends in part on the Figure type that the journal accepts, one way around this is to submit figures as compressed PDFs—there is free software available for this.  Once the paper is submitted to the journal, it is a good idea to put it on a preprint server as well (arxiv, bioarxiv, etc; NB: bioarxiv does NOT allow you to remove preprints—only update them).  Use of preprints will help generate enthusiasm for the work even while it is stuck in peer review, prevent others from “scooping” you (esp w/ public datasets like the PNC), and also increases transparency.   Feel free to tweet the link when it is up.   
+After months-years of work, you are now ready to submit the paper.   One reminder is that the final built PDF should be proof-read many times. Egregious formatting errors or typos are caught at this stage.   Furthermore, pay careful attention to the quality of the figures in the built PDF.  Note that if figures are large, the journal will downsample these considerably when making the PDF.  Note that many reviewers will not click on the “high resolution figure” link available to them—they will just use what is in the built PDF.  It is a bummer when we work hard to make gorgeous figures, and then what the reviewers see are poorly rendered due to downsampling.  While this depends in part on the figure type that the journal accepts, one way around this is to submit figures as compressed PDFs—there is free software available for this.  Once the paper is submitted to the journal, it is a good idea to put it on a preprint server as well (arxiv, biorxiv, etc; NB: biorxiv does NOT allow you to remove preprints—only update them).  Use of preprints will help generate enthusiasm for the work even while it is stuck in peer review, prevent others from “scooping” you (esp w/ public datasets like the PNC), and also increases transparency.   Feel free to tweet the link when it is up.   
 
-As noted above, it is the lab standard to submit all analysis code (in the form of a github repo) along with the paper.   Please make sure the repo submitted with the paper is cleaned, and does not include old code for parts of the project that did not pan out / were not included in the final manuscript. Including old code is a good way to confuse reviewers and others interested in reproducing your work. One way to do this is to make a new public repo that only uses a subset of code from the original working repo.
+As noted above, it is the lab standard to submit all analysis code (in the form of a GitHub repo) along with the paper.   Please make sure the repo submitted with the paper is cleaned, and does not include old code for parts of the project that did not pan out / were not included in the final manuscript. Including old code is a good way to confuse reviewers and others interested in reproducing your work. One way to do this is to make a new public repo that only uses a subset of code from the original working repo.
 
-We advertise new preprints once posted via twitter, and post them on the main pennlinc.io publications page.
+Please advertise new preprints on Twitter, and post them on the main pennlinc.io publications page.
 
 
 ### 19)	Revise & resubmit / Repeat as needed
 
-Peer review is a slog: there is no way to spin it otherwise.  To use a football analogy, the first submission is like being on the 20-yard line—certainly not the 1-yard line.   Dogged persistence and a thick skin is critical for navigating peer review.   In general, it is almost always better to “show them with data” and perform any additional analyses requested.   Even if rejected, it is generally useful to try to address the reviewers’ comments in the subsequent (new) submission, as it is quite possible you will get the same reviewer at the next journal.   This stage is often the part of the project that requires the most intense work in order to meet revision deadlines.  Quick turn-around for revision and resubmissions is very important to prevent the project from stalling. 
+Peer review is a slog: there is no way to spin it otherwise.  To use a football analogy, the first submission is like being on the 20-yard line—certainly not the 1-yard line.   Dogged persistence and a thick skin is critical for navigating peer review.   In general, it is almost always better to “show them with data” and perform any additional analyses requested.   Even if rejected, it is generally useful to try to address the reviewers’ comments in the subsequent (new) submission, as it is quite possible you will get the same reviewer at the next journal.   This stage is often the part of the project that requires the most intense work in order to meet revision deadlines.  Quick turn-around for revision and resubmissions is very important to prevent the project from stalling.
 
 
 ### 20)	Celebrate and disseminate
