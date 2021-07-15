@@ -3,6 +3,7 @@ layout: default
 title: Visual Studio Code
 parent: Computation Basics
 has_children: false
+nav_order: 4
 has_toc: true
 ---
 
