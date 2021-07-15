@@ -11,7 +11,7 @@ All PennLINC team members are expected to lead a scientific project.
 
 ## Scheduling
 
-For each of these projects, members typically meet weekly with Ted. However, if there has been limited progress due to other competing demands, meetings can be spaced to every other week (send Ted a brief note). In general, we try to avoid scheduling meetings without a clear agenda. These are scheduled by the trainee on a google calendar, which Ted will give you access to, and permissions to make new meetings.  Weekly Ted will open up slots marked “OPEN FOR MEETINGS” on this calendar; a note will be posted to the #WhereAmI channel on Slack when these meeting times are posted.  Typically, meetings are 30 minutes, except in specific cases when a 45-minute or 60-minute meeting is necessary (pls discuss prospectively).
+For each of these projects, members typically meet weekly with Ted. However, if there has been limited progress due to other competing demands, meetings can be spaced to every other week (send Ted a brief note). In general, we try to avoid scheduling meetings without a clear agenda. These are scheduled by the trainee on a google calendar, which Ted will give you access to, and permissions to make new meetings.  Weekly Ted will open up slots marked “OPEN FOR MEETINGS” on this calendar; a note will be posted to the #WhereAmI channel on Slack when these meeting times are posted.  Typically, meetings are 30 minutes, except in specific cases when a 45-minute or 60-minute meeting is necessary (pls discuss prospectively).  To allow for a brief reprieve within long meeting blocks, meetings begin  5 minutes after the selected slot begins, and will end promptly on time. 
 
 ### Secondary mentor
 

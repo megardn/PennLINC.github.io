@@ -1,15 +1,17 @@
 ---
 layout: default
-title: Software and Environments
+title:  Basic Computational Software
+parent: Computation Basics
 has_children: false
 has_toc: false
-nav_order: 4
+nav_order: 1
 ---
 
 
 # Background
 
-The following sections describe the initial actions that are needed before the more useful tutorials in other sections can be run. Each tutorial lists the prerequisites.
+The following sections describe the initial actions that are needed before the more useful tutorials in other sections can be run. Each tutorial lists the prerequisites separately, but this will get you started for
+general purpose computational work.
 
 # Installing python
 
@@ -79,7 +81,7 @@ IPython 7.2.0 -- An enhanced Interactive Python. Type '?' for help.
 
 
 
-In [1]:  
+In [1]:
 
 ```
 
@@ -91,3 +93,37 @@ You can now directly paste the Python code (`>>>` included) into the console and
 Writing easily-readable code is very important. A good editor will help you check your code's syntax and can provide hints as you write. One great way to get started is to use the [Atom](https://atom.io/) text editor. A version should be available for your operating system.
 
 Atom lets you install packages that add functionality to the editor. If you go to `Preferences > Packages`, you can search for and install a package called `ide-python` that will help with python development.
+
+
+## FSL and FSLeyes
+[FSLeyes](https://users.fmrib.ox.ac.uk/~paulmc/fsleyes/userdoc/latest/) may not work properly on a personal desktop, PMACS or CUBIC. This is because python27  is  always used to [install FSL](https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FslInstallation) including (FSLeyes). However, FSLeyes requires python3 to work properly. The fsleyes can be be resintalled  with conda and [fslpython](https://pypi.org/project/fslpy/).
+
+The following steps  are required:
+- Try to install [conda](https://docs.conda.io/projects/conda/en/latest/user-guide/install/) enviroment in  home  or project directory ( for CUBIC)
+
+- Remove previous installed FSLeyes
+
+   This only possible on  a personal desktop as administrative privilege is required:
+    ```sh
+   rm $FSLDIR/bin/fsleyes
+   rm -r $FSLDIR/bin/FSLeyes
+   ```
+
+- Install [fslpython](https://pypi.org/project/fslpy/) if not available.
+
+   with pip
+   ```bash
+    pip install fslpy
+    ```
+    or  with conda
+   ```sh
+   conda install -c conda-forge fslpy
+    ```
+
+- Install new FSLeyes with conda
+
+  ```sh
+  $FSLDIR/fslpython/bin/conda install -n fslpython -c conda-forge fsleyes
+  ```
+
+see [here](https://users.fmrib.ox.ac.uk/~paulmc/fsleyes/userdoc/latest/install.html) for more information

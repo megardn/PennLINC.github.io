@@ -21,14 +21,16 @@ This section gives an overview of how to get started on PMACS Limited Performanc
 Send your PI your Pennkey, full name, and Penn email, and have them forward this information to pmacs-sys-sci@lists.upenn.edu and request access for you. When access has been granted, you will receive an email with a temporary password through SecureShare. Log in via [this link](https://reset.pmacs.upenn.edu/) with your temporary password and set a new PMACS password. Your Pennkey and new PMACS password will be used to ssh into the LPC and to access the PMACS help desk/ticketing system.
 
 ## Logging in to PMACS LPC
-Once you've set up your login credentials for the PMACS LPC, you can SSH into the LPC from anywhere (even without Penn VPN). You can SSH into PMACS as follows:
+Once you've set up your login credentials for the PMACS LPC, you can SSH into the LPC from anywhere (even without Penn VPN). You can SSH into PMACS in two different ways, depending on what tasks you want to execute:
 
 ```bash
-$ ssh -Y [username]@scisub.pmacs.upenn.edu
+$ ssh -Y [username]@scisub.pmacs.upenn.edu #SSH only. No sftp. No outbound access. Can submit or check jobs.
+$ ssh -Y [username]@sciget.pmacs.upenn.edu #SSH, but has outbound access to use git, svn, wget, et cetera to download data. Can *not* submit or check jobs.
 ```
 
 Enter PMACS password when prompted.
-You can submit jobs on scisub.
+
+Again, you can submit jobs on scisub, you get interface with the outside world (e.g., using conda / pip install, wget) on sciget.
 
 In general, there is a set of software libraries and tools we expect you'll need, such as `R`, `conda`, and `FSL`; we've made these available for you in a module. To load this module, simply type the following:
 
@@ -219,3 +221,220 @@ Alternatively, or in addition, you can add the following line to your .bashrc.
 ```console
 $ echo LSB_JOB_REPORT_MAIL=N >> ~/.bashrc
 ```
+
+## Running MATLAB on PMACS
+
+To run a MATLAB script on PMACS, simply do the following:
+
+1. Compose your script, for example:
+```matlab
+addpath('/path/to/matlab/functions/')
+runALE # main command to be executed
+```
+and save it, for instance as `runexperimental1.m`
+
+2. Compose a bash script to launch MATLAB, like so:
+
+```bash
+  module load matlab/2018b # load matlab
+  matlab  -nodisplay -nosplash  -r /path/to/scripts/runexperimental1 # note, there's no file extension (.m)
+```
+and save it too: `experiment1.sh`
+
+3. Submit the bash script as a job with `bsub`
+
+  ```sh
+   bsub -q matlab_normal  /path/to/scripts/experiment1.sh
+  ```
+To  run an interactive session:
+
+1. Run `bsub -Is -XF -q matlab_interactive 'bash'` from the initial login node.
+
+2. Type `matlab` to open Matlab using X11, or `matlab -nodisplay` to run the session in the terminal.
+
+## Running RStudio on PMACS
+
+We have two ways of accessing RStudio on PMACS. It's not installed by default in
+`modules`, but there are ways to scratch that itch for R users.
+
+### X11
+
+This is how to access RStudio with the least setup, but it suffers from the same
+issues all other X11 solutions have -- poor graphic quality. Nevertheless, the
+process is simple:
+
+1. Temporarily source the central default modules if it is not in your bash profile
+     ```bash
+      $ source  /project/bbl_projects/apps/default_modules.sh
+     ```
+
+2. Activate rstudio enviroment
+   ```sh
+   $ conda activate rstudio
+   ```
+3. Get into interactive mode.
+   ```sh
+   $  xbash
+   ```
+4. Launch rstudio
+   ```
+   $ rstudio
+   ```
+5. Optional. if you want to use other version of R , for instance `R/3.6.3`.
+   Load the module of that R and set rstudio to use that R before lunching the rstudio.
+   ```sh
+   $  module load R/3.6.3
+   $  export RSTUDIO_WHICH_R=/appl/R-3.6.3/bin/R
+
+   ```
+
+### Port Forwarding with Singularity
+
+This method leverages the [rocker project's](https://hub.docker.com/r/rocker/rstudio) awesome method of running RStudio in
+a container and forwarding the graphics over SSH. The project is built in
+Docker, but most HPCs tend to avoid using Docker for security purposes, and
+instead vouch for Singularity, which works quite the same way. This setup is
+admittedly slightly complicated, but if you want a true RStudio experience when
+doing data science, the results can't be beat.
+
+Pros:
+
+- Real RStudio interface with no lag
+- Graphics load instantly
+- Computation is right where you need it
+
+Cons:
+
+- Complexity
+- We're still figuring out how to set memory limits and how this will work with parallelised processes
+
+Ok, let's get to the steps. The following sources helped me put together this
+workflow: [1](https://divingintogeneticsandgenomics.rbind.io/post/run-rstudio-server-with-singularity-on-hpc/), [2](https://www.rocker-project.org/use/singularity/), [3]()
+
+First, pick a port number. RStudio by default tries to set it at `8787`, so it's
+safe to assume whenever you're on the cluster that someone is already using it.
+Also, it's a good idea to use 3 separate terminals to supervise what you're doing. Let's call them `t1, t2, t3`.
+
+1. Log in to `sciget` on `t1`.
+
+```sh
+t1[localmachine]$ ssh -Y ttapera@sciget.pmacs.upenn.edu
+```
+
+2. From `sciget`, login to the Singularity node on PMACS.
+
+```sh
+t1[ttapera@sciget ~]$ ssh singularity01
+```
+
+3. On the Singularity node, fetch and set up the Singularity image.
+
+```sh
+# pull the docker image for tidyverse into singularity
+t1[ttapera@singularity01 ~]$ singularity pull --name rstudio.simg docker://rocker/tidyverse:latest
+
+# convert this to a "sandboxed" writable image; you can hit "y" at the prompt to overwrite or change the name in the call
+t1[ttapera@singularity01 ~]$ singularity build --sandbox rstudio.simg rstudio.simg
+```
+
+4. Launch the Singularity container and run RStudio (remember to specify a unique port).
+
+```sh
+# use the ampersand to run in the background, or else you won't be able to do anything on this terminal until you quit singularity
+
+# In this example I'm using 9999. DO NOT USE THIS. BIG SAD.
+t1[ttapera@singularity01 ~]$ singularity exec --writable rstudio.simg rserver --www-address=127.0.0.1 --www-port 9999 &
+
+# you can find out what ports are currently in use with this command
+t1[ttapera@singularity01 ~]$ netstat -tunlp
+
+# check for any rstudios
+t1[ttapera@singularity01 ~]$ netstat -tunlp | grep rserver
+```
+
+5. On `t2`, login to `sciget` and "listen" to the port from Singularity.
+
+```sh
+# I tend to just repeat the port numbers because I forget which is which
+t2[localmachine]$ ssh -Y ttapera@sciget.pmacs.upenn.edu
+t2[ttapera@sciget ~]$ ssh -NfL localhost:9999:localhost:9999 singularity01
+```
+
+6. On `t3`, "listen" to the port from `sciget`.
+
+```sh
+t3[localmachine ~]$ ssh -NfL localhost:9999:localhost:9999 singularity01
+```
+
+7. Open RStudio in your browser.
+
+Visit `localhost:9999` in Chrome or Firefox.
+
+You should now be in an RStudio GUI with access to any directory you want. The R
+installation is _within_ the folder called `rstudio.simg` (it's a Singularity
+image that we converted into a directory in step 3), so you are able to manage your
+own packages in there. If need be, you could do this setup multiple times and
+have RStudio images for each project directory on PMACS.
+
+8. Close each process you're running.
+
+When you're done, use RStudio to close this safely -- hit the orange button in
+the top right corner. This may shutdown the `rserver` process, but not the `singularity exec`
+you called in `t1`. Go to `t1` and `kill` this manually:
+
+```
+t1[ttapera@singularity01 projects]$ ps - x
+PID TTY      STAT   TIME COMMAND
+47110 ?        S      0:00 sshd: ttapera@pts/0
+47111 pts/0    Ss     0:00 -bash
+48226 pts/0    Sl     0:00 Singularity runtime parent
+48242 pts/0    Sl     0:01 rserver --www-address=127.0.0.1
+49089 pts/0    R+     0:00 ps -x
+t1[ttapera@singularity01 projects]$ kill 48242 && kill 48226
+```
+
+Likewise, make sure you `kill` your port forwarding commands in `t2` and `t3`.
+When you come back to continue working, loop back to step 4.
+
+## Running data processing pipelines on PMACS
+
+Data processing pipelines, such as [fmriprep](https://fmriprep.org/en/stable/) and [qsiprep](https://qsiprep.readthedocs.io/en/latest/), can be run easily by creating singularity images on PMACS. Below steps use qsiprep as an example, but they can be applied to other pipelines as well.
+
+### Creating singularity images from dockerhub on PMACS
+
+1. Log onto **sciget**
+   ```bash
+   $ ssh -Y <user>@sciget.pmacs.upenn.edu
+   ```
+2. Connect to singularity
+   ```bash
+   $ ssh singularity01
+   ```
+3. Pull the singularity image to PMACS and exit
+   ```bash
+   $ singularity pull docker://pennbbl/qsiprep:0.12.2
+   $ exit
+   ```
+4. Move the qsiprep image (in this case *qsiprep_0.12.2.sif*) to an *images* directory in your project directory
+
+### Running the container on PMACS
+
+Before running the qsiprep container on PMACS, first [get a freesurfer license](https://surfer.nmr.mgh.harvard.edu/registration.html). The license is necessary to run qsiprep without any error. Save the license also in the *images* directory and run the following command:
+
+```bash
+$ singularity run --cleanenv -B </path/to/project/directory>/data:/home/<user>/data,\
+$ </path/to/project/directory>/images/license.txt:/appl/freesurfer-6.0.0/license.txt,\
+$ </path/to/output/directory>:/home/<user>/<output directory name> \
+$ </path/to/project/directory>/images/qsiprep_0.12.2.sif \
+$ --fs-license-file /appl/freesurfer-6.0.0/license.txt \
+$ --work-dir </path/to/working/directory> \
+$ --output-resolution <value> \
+$ </path/to/project/directory>/data \
+$ </path/to/output/directory> \
+$ participant
+```
+There are several parts to this command:
+
+* *--cleanenv* option means that we don't want to pass the host environment to the container (visit [Environment and Metadata](https://singularity.lbl.gov/docs-environment-metadata) for more)
+* *-B* is an argument to bind paths; simply put, *</path/to/project/directory>/data* will be called as */home/<user>/data* in the container (visit [Bind Paths](https://singularity.lbl.gov/docs-mount#specifying-bind-paths) for more)
+* *--output-resolution* specifies the isotropic voxel size in mm the data will be resample to after preprocessing (for more information on the arguments [see qsiprep documentation](https://qsiprep.readthedocs.io/en/latest/usage.html#command-line-arguments))

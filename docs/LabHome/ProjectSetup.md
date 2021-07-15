@@ -5,7 +5,7 @@ parent: Lab Basics
 nav_order: 4
 ---
 
-# PennLINC project setup guide
+# PennLINC Project Setup Guide
 
 Each project at PennLINC has several key elements to facilitate collaboration and ensure reproducbility.  For clarity in naming, all elements should be named similarly-- often ```Lastname_ProjectName``` with CamelCasing, where "Lastname" is the last name of the first author / trainee leading the project.  Links to much of the relevant software can be found in the lab [Software and Environments](https://pennlinc.github.io/docs/Basics/basics/) page.
 
@@ -34,11 +34,16 @@ The main execption to this are documents (e.g., manuscripts) that need  review; 
 Trello is a simple webapp that we use for project tracking.  There is a "board" for each project (Ted will create); all boards are part of the [Trello PennLINC organization](https://trello.com/pennlinc). Get a trello username and send it to Ted so he can add you.
 
 
+### Google drive folder
+
+It is often useful to have a shared directory on google drive to share relevant articles and manuscript drafts. 
+
+
 ### Zotero library
 
 Right at the start of a project, when people on the team start sending you relevant papers, download zotero and create a reference library for the project.  Definately do this before you start doing a literature review.
 
 
-### Project folder on PMACS
+### Project folder 
 
-While some projects can be done locally on your laptop, many require more computing resources.  In general, we now reccomend projects use the PMACS LPC; see the [PMACS pages](https://pennlinc.github.io/docs/pmacs) for details.  Furthermore, each project on PMACS should use a common directory structure to ensure reproducability, see the [PMACS project setup guide](coming soon) for further details.
+While some projects can be done locally on your laptop, many require more computing resources.  In general, we now reccomend projects use the PMACS LPC; see the [PMACS pages](https://pennlinc.github.io/docs/pmacs) for details.  However, some projects may be best served by using the computational resources of CUBIC; see the [CUBIC pages](https://pennlinc.github.io/docs/cubic) for more details.   Regardless, each project should use a common directory structure to ensure reproducability.

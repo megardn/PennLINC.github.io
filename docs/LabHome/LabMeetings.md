@@ -10,9 +10,13 @@ nav_order: 2
 
 Lab meetings occur every Monday from 2P-3P, with exceptions for holiday and travel schedule.
 
-The current lab meeting schedule can be found [here](https://docs.google.com/spreadsheets/d/1BDtJWv49Z7BVIKIHcFms4NalxAnssX8Psl-PvlW6ZPM/edit#gid=1932655502).
+The current lab meeting schedule can be found [here](https://docs.google.com/spreadsheets/d/1BDtJWv49Z7BVIKIHcFms4NalxAnssX8Psl-PvlW6ZPM/edit#gid=1932655502).  Slides from past lab meetings can be found in [this repository](https://github.com/PennLINC/labSlides); please remember to post your slides there following a lab meeting presentation.
 
 All members of the image analysis team (regardless of faculty mentor) are welcome to attend, but trainees supervised by Satterthwaite are expected to attend-- and let me know directly if you cannot attend; also please make every effort to be promptly on time.  Clinical research coordinators are encouraged to attend as well, excepting conflicts with participant visits.  The meeting rotates among the following formats.    Note that if you sign up for a slot on the schedule please **mark it in your calendar clearly**-- we definitely want to avoid last second schedule conflicts / content vacancies.
+
+### Guest Speaker Series
+
+Starting in 2021, we are launching an (approximately) monthly PennLINC guest speaker series -- see the dedicated page here for further information.
 
 ### Work in progress
 

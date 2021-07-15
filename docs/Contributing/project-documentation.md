@@ -1,7 +1,7 @@
 ---
 layout: default
-title: Complete Project Documentation
-parent: Contributing to Docs
+title: Project Documentation with GitHub Pages
+parent: Documentation
 has_children: false
 has_toc: true
 nav_order: 2
@@ -12,6 +12,9 @@ nav_order: 2
 In the event that you've completed and/or published a large project with PennLINC, you may want to write documentation for replication and easy sharing. The recommended way of doing this is to create a website for the Github repository of the project, using Github Pages.
 
 To write documentation for a finished project using GitHub Pages, begin by going to this tutorial [here](https://www.thinkful.com/learn/a-guide-to-using-github-pages/). The steps outlined below will guide you through the same steps as in the link.
+
+Each project page should be organized according to the [Project Template](https://github.com/PennLINC/PennLINC.github.io/blob/master/docs/Contributing/ProjectTemplate.md).
+
 
 ## GitHub Pages tutorial
 
@@ -35,16 +38,17 @@ Now, if you want to go back to the branch of your original repository, you can u
 
 If you ever want to see what's going on with your GitHub Pages branch on GitHub, you can simply go to **github.com/PennLINC/YOUR_PROJECT_NAME_HERE/branches** to look at your **master** and **gh-pages** branch.
 
-### Themes
+## Themes
 
 Now, if you want a nice theme, do the following:
 1. Go to **Settings** in your GitHub repository.
 2. Go all the way down to the section **GitHub Pages**.
 3. Click `Change theme` and choose a theme.
 
-### Table of Contents
 
-If you'd like to include a table of contents in your project, doing so is simple!
+### Table of Contents Example
+
+Note that if you'd like to include a table of contents in your project page, doing so is simple!
 Just include the lines ```1. TOC
 {:toc}``` at the level you'd like your table to be. Every title and subtitle after those lines should be reflected in your table of contents. You can now jump to each section by clicking on it's respective title in the table! 
 
@@ -64,4 +68,3 @@ Bar2
 Foobar
 
 
-You're all set for a pretty project documentation page with GitHub Pages!
