@@ -76,59 +76,18 @@ You can copy the public key into the server's `authorized_keys` file with the�
 ```
 ssh-copy-id bertolem@cubic-login.uphs.upenn.edu
 ```
-This will take a long time. It should say:
+
+You will be prompted for your password, type it in:
 
 ```
 /usr/bin/ssh-copy-id: INFO: Source of key(s) to be installed: "/Users/maxwell/.ssh/id_ed25519.pub"
 /usr/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to filter out any that are already installed
 /usr/bin/ssh-copy-id: INFO: 1 key(s) remain to be installed -- if you are prompted now it is to install the new keys
+user@cubic-login.uphs.upenn.edu's password: 
 ```
-
-
-Once the command completes, you will be able to log into the server via SSH without being prompted for a password. However, if you set a passphrase when creating your SSH key, you will be asked to enter the passphrase at that time. This is your local `ssh` client asking you to decrypt the private key, it *is not* the remote server asking for a password.
-
-Step 5 --- Disabling Password-based SSH Authentication (Optional)
----------------------------------------------------------------
-
-Once you have copied your SSH keys onto the server, you may want to completely prohibit password logins by configuring the SSH server to disable password-based authentication.
-
-Warning: before you disable password-based authentication, be certain you can successfully log onto the server with your SSH key, and that there are no other users on the server using passwords to log in.
-
-In order to disable password-based SSH authentication, open up the SSH configuration file. It is typically found at the following location:
-
-```
-sudo nano /etc/ssh/sshd_config
-
-```
-
-Copy
-
-This command will open up the file within the `nano` text editor. Find the line in the file that includes `PasswordAuthentication` (or create the line if it doesn't exist), make sure it is not commented out with a `#` at the beginning of the line, and change it to `no`:
-
-/etc/ssh/sshd_config
-
-```
-PasswordAuthentication no
-```
-
-Copy
-
-Save and close the file when you are finished. In `nano`, use `CTRL+O` to save, hit `ENTER` to confirm the filename, then `CTRL+X` to exit.
-
-Reload the `sshd` service to put these changes into effect:
-
-```
-sudo systemctl reload sshd
-
-```
-
-Copy
-
-Before exiting your current SSH session, make a test connection in another terminal to verify you can still connect.
+For me, this hangs upon login, so you don't really get confirmation it works. After a minute or so, open a new terminal and ssh in. It should not prompt you for a password if it worked
 
 Conclusion
 ----------
 
-In this tutorial we created an SSH key pair, copied our public key to a server, and (optionally) disabled password-based authentication completely.
-
-For more information about SSH and the SSH service, including how to set up multifactor authentication, please read our related tutorials:
+In this tutorial we created an SSH key pair, copied our public key to a server, and (optionally) disabled password-based authentication completely. You can now use Visual Code Studio to handle your remote connections to CUBIC or PMACS.
