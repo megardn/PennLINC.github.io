@@ -84,8 +84,13 @@ You will be prompted for your password, type it in:
 /usr/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to filter out any that are already installed
 /usr/bin/ssh-copy-id: INFO: 1 key(s) remain to be installed -- if you are prompted now it is to install the new keys
 user@cubic-login.uphs.upenn.edu's password: 
+
+Number of key(s) added:        1
+
+Now try logging into the machine, with:   "ssh 'user@cubic-login.uphs.upenn.edu'"
+and check to make sure that only the key(s) you wanted were added.
 ```
-For me, this hangs upon login, so you don't really get confirmation it works. After a minute or so, open a new terminal and ssh in. It should not prompt you for a password if it worked
+For me, this hangs upon login, so you don't really get confirmation it works. After a minute or so, open a new terminal and ssh in. It should not prompt you for a password if it worked (also try typing in the ssh command with single quotes as above).
 
 Conclusion
 ----------
