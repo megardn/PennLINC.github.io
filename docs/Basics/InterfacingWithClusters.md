@@ -11,7 +11,7 @@ has_toc: true
 ## Prerequisite
 You will need ssh keys set up, a PMACS or CUBIC account (with VPN).
 
-https://pennlinc.github.io/docs/Basics/sshKeys/
+[sshKeys](https://pennlinc.github.io/docs/Basics/sshKeys/)
 
 ## General Principles & Motivation
 
@@ -35,7 +35,7 @@ This lets VS Code provide a local-quality development experience --- including
 
 To get started, you need to:
 
-0. You can find Visual Code Studio here: https://code.visualstudio.com
+0. You can find Visual Code Studio [here](https://code.visualstudio.com)
 
 1.  Install an [OpenSSH compatible SSH client](https://code.visualstudio.com/docs/remote/troubleshooting#_installing-a-supported-ssh-client) if one is not already present.
 
