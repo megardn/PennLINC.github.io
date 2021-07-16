@@ -21,10 +21,6 @@ https://pennlinc.github.io/docs/Basics/sshKeys/
 
 This means we are going to not use X11 at all. Why? Because running graphics on the cluster, and then having them sent to your local screen, is very laggy and not dependable.
 
-## Download/Install Visual Code Studio
-
-You can find it here: https://code.visualstudio.com
-
 ## Remote Development using SSH
 
 The Visual Studio Code Remote - SSH extension allows you to open a remote folder on any remote machine, virtual machine, or container with a running SSH server and take full advantage of VS Code's feature set. Once connected to a server, you can interact with files and folders anywhere on the remote filesystem.
@@ -35,12 +31,11 @@ No source code needs to be on your local machine to gain these benefits since th
 
 This lets VS Code provide a local-quality development experience --- including full IntelliSense (completions), code navigation, and debugging --- regardless of where your code is hosted.
 
-Getting started[#](https://code.visualstudio.com/docs/remote/ssh#_getting-started)
-----------------------------------------------------------------------------------
-
-### Installation[#](https://code.visualstudio.com/docs/remote/ssh#_installation)
+## Download/Install Visual Code Studio
 
 To get started, you need to:
+
+0. You can find Visual Code Studio here: https://code.visualstudio.com
 
 1.  Install an [OpenSSH compatible SSH client](https://code.visualstudio.com/docs/remote/troubleshooting#_installing-a-supported-ssh-client) if one is not already present.
 
