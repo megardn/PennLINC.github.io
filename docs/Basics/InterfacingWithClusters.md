@@ -8,7 +8,7 @@ has_toc: true
 
 # Interfacing with the clusters
 
-## General Principles & Motivation
+## Prerequisite
 You will need ssh keys set up, a PMACS or CUBIC account (with VPN).
 
 https://pennlinc.github.io/docs/Basics/sshKeys/
