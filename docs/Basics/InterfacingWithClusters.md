@@ -2,11 +2,18 @@
 layout: default
 title: Working on CUBIC/PMACS via Visual Code Studio
 parent: Computation Basics
-nav_order: 2
+nav_order: 3
 has_toc: true
 ---
 
+
+
 # Interfacing with the clusters
+
+## General Principles & Motivation
+You will need ssh keys set up, a PMACS or CUBIC account (with VPN).
+
+https://pennlinc.github.io/docs/Basics/sshKeys/
 
 ## General Principles & Motivation
 
@@ -16,10 +23,11 @@ has_toc: true
 
 This means we are going to not use X11 at all. Why? Because running graphics on the cluster, and then having them sent to your local screen, is very laggy and not dependable.
 
-## Download Visual Code Studio
+## Download/Install Visual Code Studio
+
+You can find it here: https://code.visualstudio.com
 
 
-## Writing Code Interactively in a Jupyter Notebook
 
 We want to login to the cluster such that we have a "port" to it.Now start a Jupyter kernel, and then find that kernel via a browser. This is actually pretty easy.
 
@@ -42,24 +50,3 @@ lsof -ti:$PORT | xargs kill -9
 ```
 You should be able to reconnect after this.
 
-## Viewing brains
-
-Whatever you use to look at brains, download it locally. I prefer wb_view, but this applies to any viewer. Once you have it set up, mount your local disk on the cluster. To do this, if you are using a Mac, first install [OSXFuse](https://github.com/osxfuse/osxfuse/releases/download/macfuse-4.0.5/macfuse-4.0.5.dmg) and [SSHFS](https://github.com/osxfuse/sshfs/releases/download/osxfuse-sshfs-2.5.0/sshfs-2.5.0.pkg).
-
-PMACS
-```bash
-#my username is mb3152
-#mount to your home directory on pmacs, using a local directory called "/Users/maxwell/upenn/"
-sshfs mb3152@sciget.pmacs.upenn.edu:/home/mb3152 /Users/maxwell/upenn/ -o follow_symlinks
-```
-CUBIC
-```bash
-#my username is bertolem
-#mount to your home directory on pmacs, using a local directory called "/Users/maxwell/CUBIC/"
-sshfs bertolem@cubic-login.uphs.upenn.edu://cbica/home/bertolem/ /Users/maxwell/CUBIC/ -o follow_symlinks
-```
-Now, you can use Finder, and you can just navigate to the brain you want to look at in whatever software you like.
-
-## Bonus for Pros: Jupyter Lab
-
-JupyterLab is an extension of Jupyter Notebooks (which itself is an extension of IPython). With JupyterLab, you can actually turn the Jupyter Notebooks environment currently sitting in your browser into a pretty powerful IDE, including panels and tabsets, Git and Github integration, linting, and more. Just like any IDE, it's up to you what you'd like set up in there. Visit [JupyterLab](https://jupyterlab.readthedocs.io/en/stable/) to get started, and read about a bunch of cool extensions [here](https://github.com/mauhai/awesome-jupyterlab).
