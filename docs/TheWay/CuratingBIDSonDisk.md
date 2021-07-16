@@ -235,7 +235,7 @@ appear as expected and are usable. This is an iterative process - fixing
 one error may introduce new errors. Expect this step to take a number of
 iterations and be sure to describe each step in your *Data Narrative*. In
 order to do this, we recommend running cubids-group and cubids-validate
-siumltaneously, via a qsub (if the dataset is large) after every change.
+simultaneously, via a qsub (if the dataset is large) after every change.
 Suppose you ran `cubids-validate` on your BIDS data. This will create
 a file containing all the errors present in your data. Add this file
 to your git repository and describe it in the *Data Narrative*:
