@@ -43,30 +43,15 @@ To get started, you need to:
 
 3.  Install the [Remote Development extension pack](https://aka.ms/vscode-remote/download/extension).
 
-### SSH host setup[#](https://code.visualstudio.com/docs/remote/ssh#_ssh-host-setup)
+## Connect to a remote host
 
-1.  If you do not have an SSH host set up, follow the directions for [Linux](https://code.visualstudio.com/docs/remote/troubleshooting#_installing-a-supported-ssh-server), [Windows 10 / Server (1803+)](https://docs.microsoft.com/windows-server/administration/openssh/openssh_install_firstuse), or [macOS](https://support.apple.com/guide/mac-help/allow-a-remote-computer-to-access-your-mac-mchlp1066/mac) SSH host or create a [VM on Azure](https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-portal?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+To connect to a remote host, CUBICS or PMACS for the first time, follow these steps:
 
-2.  [Optional] If your Linux or macOS SSH host will be accessed by multiple users at the same time, consider enabling Remote.SSH: Remote Server Listen On Socket in VS Code [User settings](https://code.visualstudio.com/docs/getstarted/settings) for improved security.
-
-    In the Settings editor:
-
-    ![Listen on socket VS Code setting](https://code.visualstudio.com/assets/docs/remote/ssh/ssh-listen-on-socket.png)
-
-    See the [Tips and Tricks](https://code.visualstudio.com/docs/remote/troubleshooting#_improving-security-on-multi-user-servers) article for details.
-
-3.  [Optional] While password-based authentication is supported, we recommend setting up key based authentication for your host. See the [Tips and Tricks](https://code.visualstudio.com/docs/remote/troubleshooting#_configuring-key-based-authentication) article for details.
-
-### Connect to a remote host[#](https://code.visualstudio.com/docs/remote/ssh#_connect-to-a-remote-host)
-
-To connect to a remote host for the first time, follow these steps:
-
-1.  Verify you can connect to the SSH host by running the following command from a terminal / PowerShell window replacing `user@hostname` as appropriate.
+1.  Verify you can connect to the SSH host by running the following command from a terminal window replacing `user@hostname` as appropriate.
 
     ```
     ssh user@hostname
-    # Or for Windows when using a domain / AAD account
-    ssh user@domain@hostname
+    # eg, for CUBIC: ssh user@cubic-login.uphs.upenn.edu
     ```
 
 2.  In VS Code, select Remote-SSH: Connect to Host... from the Command Palette (F1) and use the same `user@hostname` as in step 1.
