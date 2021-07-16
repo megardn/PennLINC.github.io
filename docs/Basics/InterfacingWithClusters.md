@@ -25,8 +25,7 @@ This means we are going to not use X11 at all. Why? Because running graphics on 
 
 You can find it here: https://code.visualstudio.com
 
-Remote Development using SSH
-============================
+## Remote Development using SSH
 
 The Visual Studio Code Remote - SSH extension allows you to open a remote folder on any remote machine, virtual machine, or container with a running SSH server and take full advantage of VS Code's feature set. Once connected to a server, you can interact with files and folders anywhere on the remote filesystem.
 
