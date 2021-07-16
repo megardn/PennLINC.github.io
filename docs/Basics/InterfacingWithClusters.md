@@ -1,8 +1,8 @@
 ---
 layout: default
-title: Interfacing with the clusters via Jupyter and MacFuse
+title: Working on CUBIC/PMACS via Visual Code Studio
 parent: Computation Basics
-nav_order: 3
+nav_order: 2
 has_toc: true
 ---
 
@@ -16,21 +16,8 @@ has_toc: true
 
 This means we are going to not use X11 at all. Why? Because running graphics on the cluster, and then having them sent to your local screen, is very laggy and not dependable.
 
-## Connecting to the Clusters
+## Download Visual Code Studio
 
-We actually, do use these commends, but just incase you need to search around, here are the basic login commands:
-
-
-CUBIC
-```bash
-#login (my username is bertolem)
-ssh -Y bertolem@cubic-login.uphs.upenn.edu
-```
-PMACS
-```bash
-#login (my username is mb3152)
-ssh -Y mb3152@scisub.pmacs.upenn.edu
-```
 
 ## Writing Code Interactively in a Jupyter Notebook
 
