@@ -3,7 +3,7 @@ layout: default
 title: SSH Keys
 parent: Computation Basics
 has_children: false
-nav_order: 5
+nav_order: 2
 has_toc: true
 ---
 
