@@ -92,6 +92,10 @@ and check to make sure that only the key(s) you wanted were added.
 ```
 For me, this hangs upon login, so you don't really get confirmation it works. After a minute or so, open a new terminal and ssh in. It should not prompt you for a password if it worked (also try typing in the ssh command with single quotes as above).
 
+Important limitations!!! 
+----------
+Never run `chmod -R` type commands on your home directory, as the key will no longer work.
+
 Conclusion
 ----------
 
