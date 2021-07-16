@@ -35,7 +35,7 @@ This lets VS Code provide a local-quality development experience --- including
 
 To get started, you need to:
 
-1.  Install [Visual Studio Code](https://code.visualstudio.com/) or [Visual Studio Code Insiders](https://code.visualstudio.com/insiders/).
+1.  Install [Visual Studio Code](https://code.visualstudio.com/)
 
 2.  Install the [Remote Development extension pack](https://aka.ms/vscode-remote/download/extension).
 
