@@ -43,7 +43,7 @@ To get started, you need to:
 
 3.  Install the [Remote Development extension pack](https://aka.ms/vscode-remote/download/extension).
 
-## Connect to a remote host
+## Connect to a remote host (CUBIC/PMACS)
 
 To connect to a remote host, CUBICS or PMACS for the first time, follow these steps:
 
@@ -84,11 +84,11 @@ From here, [install any extensions](https://code.visualstudio.com/docs/remote/s
 
 > Note: On ARMv7l / ARMv8l `glibc` SSH hosts, some extensions may not work due to x86 compiled native code inside the extension.
 
-### Disconnect from a remote host[#](https://code.visualstudio.com/docs/remote/ssh#_disconnect-from-a-remote-host)
+## Disconnect from a remote host
 
 To close the connection when you finish editing files on the remote host, choose File > Close Remote Connection to disconnect from the host. The default configuration does not include a keyboard shortcut for this command. You can also simply exit VS Code to close the remote connection.
 
-### Remember hosts and advanced settings[#](https://code.visualstudio.com/docs/remote/ssh#_remember-hosts-and-advanced-settings)
+## Remember hosts and advanced settings
 
 If you have a set of hosts you use frequently or you need to connect to a host using some additional options, you can add them to a local file that follows the [SSH config file format](https://man7.org/linux/man-pages/man5/ssh_config.5.html).
 
@@ -128,8 +128,16 @@ The Remote Explorer allows you to both open a new empty window on the remote h
 
 ![Remote Explorer open folder](https://code.visualstudio.com/assets/docs/remote/ssh/ssh-explorer-open-folder.png)
 
-Managing extensions[#](https://code.visualstudio.com/docs/remote/ssh#_managing-extensions)
-------------------------------------------------------------------------------------------
+## Opening a terminal on a remote host
+
+Opening a terminal on the remote host from VS Code is simple. Once connected, any terminal windowyou open in VS Code (Terminal > New Terminal) will automatically run on the remote host rather than locally.
+
+You can also use the `code` command line from this same terminal window to perform a number of operations such as opening a new file or folder on the remote host. Type `code --help` to see all the options available from the command line.
+
+![Using the code CLI](https://code.visualstudio.com/assets/docs/remote/ssh/code-command-in-terminal.png)
+
+
+## Managing extensions
 
 VS Code runs extensions in one of two places: locally on the UI / client side, or remotely on the SSH host. While extensions that affect the VS Code UI, like themes and snippets, are installed locally, most extensions will reside on the SSH host. This ensures you have smooth experience and allows you to install any needed extensions for a given workspace on an SSH host from your local machine. This way, you can pick up exactly where you left off, from a different machine complete with your extensions.
 
@@ -143,13 +151,13 @@ And also a Local - Installed category:
 
 ![Local Extension Category](https://code.visualstudio.com/assets/docs/remote/common/local-installed-extensions.png)
 
-> Note: If you are an extension author and find that your extension is not working properly or installs in the wrong place, see [Supporting Remote Development](https://code.visualstudio.com/api/advanced-topics/remote-extensions) for details.
+To install all the ones we use, run the following command in the Visual Code Studio terminal:
 
-Local extensions that actually need to run remotely will appear dimmed and disabled in the Local - Installed category. Select Install to install an extension on your remote host.
-
-![Disabled Extensions w/Install Button](https://code.visualstudio.com/assets/docs/remote/ssh/ssh-disabled-extensions.png)
-
-You can also install all locally installed extensions on the SSH host by going to the Extensions view and selecting Install Local Extensions in SSH: [Hostname] using the cloud button at the right of the Local - Installed title bar. This will display a dropdown where you can select which locally installed extensions to install on your SSH host.
+```sh
+which code && for extension in $(curl -s https://raw.githubusercontent.com/PennLINC/PennLINC.github.io/master/docs/Basics/vs-code-extension-list_mb.txt); do
+code --install-extension $extension
+done || echo "in the vscode command pallet (command + shift + p) search for \"Install code command in 'PATH'\""
+```
 
 ### "Always installed" extensions[#](https://code.visualstudio.com/docs/remote/ssh#_always-installed-extensions)
 
@@ -161,76 +169,6 @@ If there are extensions that you would like to always have installed on any SSH 
     "mutantdino.resourcemonitor"
 ]
 ```
-
-### Advanced: Forcing an extension to run locally / remotely[#](https://code.visualstudio.com/docs/remote/ssh#_advanced-forcing-an-extension-to-run-locally-remotely)
-
-Extensions are typically designed and tested to either run locally or remotely, not both. However, if an extension supports it, you can force it to run in a particular location in your `settings.json` file.
-
-For example, the setting below will force the Docker extension to run locally and Debugger for Chrome extension to run remotely instead of their defaults:
-
-```
-"remote.extensionKind": {
-    "ms-azuretools.vscode-docker": [ "ui" ],
-    "msjsdiag.debugger-for-chrome": [ "workspace" ]
-}
-```
-
-A value of `"ui"` instead of `"workspace"` will force the extension to run on the local UI/client side instead. Typically, this should only be used for testing unless otherwise noted in the extension's documentation since it can break extensions. See the article on [Supporting Remote Development](https://code.visualstudio.com/api/advanced-topics/remote-extensions) for details.
-
-Forwarding a port / creating SSH tunnel[#](https://code.visualstudio.com/docs/remote/ssh#_forwarding-a-port-creating-ssh-tunnel)
---------------------------------------------------------------------------------------------------------------------------------
-
-Sometimes when developing, you may need to access a port on a remote machine that is not publicly exposed. There are two ways to do this using an [SSH tunnel](https://www.ssh.com/ssh/tunneling/example) that "forwards" the desired remote port to your local machine.
-
-### Temporarily forwarding a port[#](https://code.visualstudio.com/docs/remote/ssh#_temporarily-forwarding-a-port)
-
-Once you are connected to a host, if you want to temporarily forward a new port for the duration of the session, select Forward a Port from the Command Palette (F1) or click on the Forward New Port icon in the Remote Explorer after selecting it from the Activity Bar.
-
-![Remote Explorer forward port button](https://code.visualstudio.com/assets/docs/remote/ssh/ssh-explorer-forward-port.png)
-
-You'll be asked to enter the port you would like to forward and you can give it a name.
-
-![Forward port input](https://code.visualstudio.com/assets/docs/remote/ssh/forward-port-ssh.png)
-
-A notification will tell you the localhost port you should use to access the remote port. For example, if you forwarded an HTTP server listening on port 3000, the notification may tell you that it was mapped to port 4123 on localhost since 3000 was already in use. You can then connect to this remote HTTP server using `http://localhost:4123`.
-
-This same information is available in the Forwarded Ports section of the Remote Explorer if you need to access it later.
-
-If you would like VS Code to remember any ports you have forwarded, check Remote: Restore Forwarded Ports in the Settings editor (⌘,) or set `"remote.restoreForwardedPorts": true` in `settings.json`.
-
-![Restore forwarded ports setting](https://code.visualstudio.com/assets/docs/remote/common/restore-forwarded-ports.png)
-
-#### CHANGE LOCAL PORT ON TUNNEL
-
-If you would like the local port of the tunnel to be different than the remote server's, you can change this via the Forwarded Ports panel.
-
-Right-click the tunnel you want to modify, and select Change Local Port in the context menu.
-
-![Change Local Port](https://code.visualstudio.com/assets/docs/remote/ssh/ssh-tunnel-different-local-port.png)
-
-### Always forwarding a port[#](https://code.visualstudio.com/docs/remote/ssh#_always-forwarding-a-port)
-
-If you have ports that you always want to forward, you can use the `LocalForward` directive in the same SSH config file you use to [remember hosts and advanced settings](https://code.visualstudio.com/docs/remote/ssh#_remember-hosts-and-advanced-settings).
-
-For example, if you wanted to forward ports 3000 and 27017, you could update the file as follows:
-
-```
-Host remote-linux-machine
-    User myuser
-    HostName remote-linux-machine.mydomain
-    LocalForward 127.0.0.1:3000 127.0.0.1:3000
-    LocalForward 127.0.0.1:27017 127.0.0.1:27017
-
-```
-
-Opening a terminal on a remote host[#](https://code.visualstudio.com/docs/remote/ssh#_opening-a-terminal-on-a-remote-host)
---------------------------------------------------------------------------------------------------------------------------
-
-Opening a terminal on the remote host from VS Code is simple. Once connected, any terminal windowyou open in VS Code (Terminal > New Terminal) will automatically run on the remote host rather than locally.
-
-You can also use the `code` command line from this same terminal window to perform a number of operations such as opening a new file or folder on the remote host. Type `code --help` to see all the options available from the command line.
-
-![Using the code CLI](https://code.visualstudio.com/assets/docs/remote/ssh/code-command-in-terminal.png)
 
 Debugging on the SSH host[#](https://code.visualstudio.com/docs/remote/ssh#_debugging-on-the-ssh-host)
 ------------------------------------------------------------------------------------------------------
