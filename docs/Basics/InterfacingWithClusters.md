@@ -88,6 +88,62 @@ From here, [install any extensions](https://code.visualstudio.com/docs/remote/s
 
 To close the connection when you finish editing files on the remote host, choose File > Close Remote Connection to disconnect from the host. The default configuration does not include a keyboard shortcut for this command. You can also simply exit VS Code to close the remote connection.
 
+## Opening a terminal on a remote host
+
+Opening a terminal on the remote host from VS Code is simple. Once connected, any terminal windowyou open in VS Code (Terminal > New Terminal) will automatically run on the remote host rather than locally.
+
+You can also use the `code` command line from this same terminal window to perform a number of operations such as opening a new file or folder on the remote host. Type `code --help` to see all the options available from the command line.
+
+![Using the code CLI](https://code.visualstudio.com/assets/docs/remote/ssh/code-command-in-terminal.png)
+
+
+## Basic extensions
+
+To install all the ones we use, run the following command in the Visual Code Studio terminal:
+```sh
+which code && for extension in $(curl -s https://raw.githubusercontent.com/PennLINC/PennLINC.github.io/master/docs/Basics/vs-code-extension-list_mb.txt); do
+code --install-extension $extension
+done || echo "in the vscode command pallet (command + shift + p) search for \"Install code command in 'PATH'\""
+```
+
+## Managing other extensions
+
+VS Code runs extensions in one of two places: locally on the UI / client side, or remotely on the SSH host. While extensions that affect the VS Code UI, like themes and snippets, are installed locally, most extensions will reside on the SSH host. This ensures you have smooth experience and allows you to install any needed extensions for a given workspace on an SSH host from your local machine. This way, you can pick up exactly where you left off, from a different machine complete with your extensions.
+
+If you install an extension from the Extensions view, it will automatically be installed in the correct location. Once installed, you can tell where an extension is installed based on the category grouping.
+
+There will be a category for your remote SSH host:
+
+![Workspace Extension Category](https://code.visualstudio.com/assets/docs/remote/ssh/ssh-installed-remote-indicator.png)
+
+And also a Local - Installed category:
+
+![Local Extension Category](https://code.visualstudio.com/assets/docs/remote/common/local-installed-extensions.png)
+
+
+## "Always installed" extensions
+
+If there are extensions that you would like to always have installed on any SSH host, you can specify which ones using the `remote.SSH.defaultExtensions` property in `settings.json`. For example, if you wanted to install the [GitLens](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens) and [Resource Monitor](https://marketplace.visualstudio.com/items?itemName=mutantdino.resourcemonitor) extensions, specify their extension IDs as follows:
+
+```
+"remote.SSH.defaultExtensions": [
+    "eamodio.gitlens",
+    "mutantdino.resourcemonitor"
+]
+```
+
+## Debugging on the SSH host
+
+Once you are connected to a remote host, you can use VS Code's debugger in the same way you would when running the application locally. For example, if you select a launch configuration in `launch.json`and start debugging (F5), the application will start on remote host and attach the debugger to it.
+
+See the [debugging](https://code.visualstudio.com/docs/editor/debugging) documentation for details on configuring VS Code's debugging features in `.vscode/launch.json`.
+
+## SSH host-specific settings
+
+VS Code's local User settings are also reused when you are connected to an SSH host. While this keeps your user experience consistent, you may want to vary some of these settings between your local machine and each host. Fortunately, once you have connected to a host, you can also set host-specific settings by running the Preferences: Open Remote Settings command from the Command Palette (F1) or by selecting on the Remote tab in the Settings editor. These will override any User settings you have in place whenever you connect to the host. And Workspace settings will override Remote and User settings.
+
+![Host-specific settings tab](https://code.visualstudio.com/assets/docs/remote/ssh/ssh-settings.png)
+
 ## Remember hosts and advanced settings
 
 If you have a set of hosts you use frequently or you need to connect to a host using some additional options, you can add them to a local file that follows the [SSH config file format](https://man7.org/linux/man-pages/man5/ssh_config.5.html).
@@ -127,57 +183,3 @@ From this point forward, the host will appear in the list of hosts when you sele
 The Remote Explorer allows you to both open a new empty window on the remote host or directly open a folder you previously opened. Expand the host and click on the Open Folder icon next to the folder you want to open on the host.
 
 ![Remote Explorer open folder](https://code.visualstudio.com/assets/docs/remote/ssh/ssh-explorer-open-folder.png)
-
-## Opening a terminal on a remote host
-
-Opening a terminal on the remote host from VS Code is simple. Once connected, any terminal windowyou open in VS Code (Terminal > New Terminal) will automatically run on the remote host rather than locally.
-
-You can also use the `code` command line from this same terminal window to perform a number of operations such as opening a new file or folder on the remote host. Type `code --help` to see all the options available from the command line.
-
-![Using the code CLI](https://code.visualstudio.com/assets/docs/remote/ssh/code-command-in-terminal.png)
-
-
-## Managing extensions
-
-VS Code runs extensions in one of two places: locally on the UI / client side, or remotely on the SSH host. While extensions that affect the VS Code UI, like themes and snippets, are installed locally, most extensions will reside on the SSH host. This ensures you have smooth experience and allows you to install any needed extensions for a given workspace on an SSH host from your local machine. This way, you can pick up exactly where you left off, from a different machine complete with your extensions.
-
-If you install an extension from the Extensions view, it will automatically be installed in the correct location. Once installed, you can tell where an extension is installed based on the category grouping.
-
-There will be a category for your remote SSH host:
-
-![Workspace Extension Category](https://code.visualstudio.com/assets/docs/remote/ssh/ssh-installed-remote-indicator.png)
-
-And also a Local - Installed category:
-
-![Local Extension Category](https://code.visualstudio.com/assets/docs/remote/common/local-installed-extensions.png)
-
-To install all the ones we use, run the following command in the Visual Code Studio terminal:
-
-```sh
-which code && for extension in $(curl -s https://raw.githubusercontent.com/PennLINC/PennLINC.github.io/master/docs/Basics/vs-code-extension-list_mb.txt); do
-code --install-extension $extension
-done || echo "in the vscode command pallet (command + shift + p) search for \"Install code command in 'PATH'\""
-```
-
-## "Always installed" extensions
-
-If there are extensions that you would like to always have installed on any SSH host, you can specify which ones using the `remote.SSH.defaultExtensions` property in `settings.json`. For example, if you wanted to install the [GitLens](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens) and [Resource Monitor](https://marketplace.visualstudio.com/items?itemName=mutantdino.resourcemonitor) extensions, specify their extension IDs as follows:
-
-```
-"remote.SSH.defaultExtensions": [
-    "eamodio.gitlens",
-    "mutantdino.resourcemonitor"
-]
-```
-
-## Debugging on the SSH host
-
-Once you are connected to a remote host, you can use VS Code's debugger in the same way you would when running the application locally. For example, if you select a launch configuration in `launch.json`and start debugging (F5), the application will start on remote host and attach the debugger to it.
-
-See the [debugging](https://code.visualstudio.com/docs/editor/debugging) documentation for details on configuring VS Code's debugging features in `.vscode/launch.json`.
-
-## SSH host-specific settings
-
-VS Code's local User settings are also reused when you are connected to an SSH host. While this keeps your user experience consistent, you may want to vary some of these settings between your local machine and each host. Fortunately, once you have connected to a host, you can also set host-specific settings by running the Preferences: Open Remote Settings command from the Command Palette (F1) or by selecting on the Remote tab in the Settings editor. These will override any User settings you have in place whenever you connect to the host. And Workspace settings will override Remote and User settings.
-
-![Host-specific settings tab](https://code.visualstudio.com/assets/docs/remote/ssh/ssh-settings.png)
