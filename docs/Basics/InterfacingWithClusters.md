@@ -38,24 +38,6 @@ This lets VS Code provide a local-quality development experience --- including
 Getting started[#](https://code.visualstudio.com/docs/remote/ssh#_getting-started)
 ----------------------------------------------------------------------------------
 
-Note: After reviewing this topic, you can get started with the introductory [SSH tutorial](https://code.visualstudio.com/docs/remote/ssh-tutorial).
-
-### System requirements[#](https://code.visualstudio.com/docs/remote/ssh#_system-requirements)
-
-Local: A supported [OpenSSH compatible SSH client](https://code.visualstudio.com/docs/remote/troubleshooting#_installing-a-supported-ssh-client) must also be installed.
-
-Remote SSH host: A running [SSH server](https://code.visualstudio.com/docs/remote/troubleshooting#_installing-a-supported-ssh-server) on:
-
--   x86_64 Debian 8+, Ubuntu 16.04+, CentOS / RHEL 7+.
--   ARMv7l (AArch32) Raspbian Stretch/9+ (32-bit).
--   ARMv8l (AArch64) Ubuntu 18.04+ (64-bit).
--   Windows 10 / Server 2016/2019 (1803+) using the [official OpenSSH Server](https://docs.microsoft.com/windows-server/administration/openssh/openssh_install_firstuse).
--   macOS 10.14+ (Mojave) SSH hosts with [Remote Login enabled](https://support.apple.com/guide/mac-help/allow-a-remote-computer-to-access-your-mac-mchlp1066/mac).
-
-Other `glibc` based Linux distributions for x86_64, ARMv7l (AArch32), and ARMv8l (AArch64) should work if they have the needed prerequisites. See the [Remote Development with Linux](https://code.visualstudio.com/docs/remote/linux) article for information prerequisites and tips for getting community supported distributions up and running.
-
-While ARMv7l (AArch32) and ARMv8l (AArch64) support is available, some extensions installed on these devices may not work due to the use of x86 native code in the extension.
-
 ### Installation[#](https://code.visualstudio.com/docs/remote/ssh#_installation)
 
 To get started, you need to:
