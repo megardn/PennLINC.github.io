@@ -159,7 +159,7 @@ code --install-extension $extension
 done || echo "in the vscode command pallet (command + shift + p) search for \"Install code command in 'PATH'\""
 ```
 
-### "Always installed" extensions[#](https://code.visualstudio.com/docs/remote/ssh#_always-installed-extensions)
+## "Always installed" extensions
 
 If there are extensions that you would like to always have installed on any SSH host, you can specify which ones using the `remote.SSH.defaultExtensions` property in `settings.json`. For example, if you wanted to install the [GitLens](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens) and [Resource Monitor](https://marketplace.visualstudio.com/items?itemName=mutantdino.resourcemonitor) extensions, specify their extension IDs as follows:
 
@@ -170,15 +170,13 @@ If there are extensions that you would like to always have installed on any SSH 
 ]
 ```
 
-Debugging on the SSH host[#](https://code.visualstudio.com/docs/remote/ssh#_debugging-on-the-ssh-host)
-------------------------------------------------------------------------------------------------------
+## Debugging on the SSH host
 
 Once you are connected to a remote host, you can use VS Code's debugger in the same way you would when running the application locally. For example, if you select a launch configuration in `launch.json`and start debugging (F5), the application will start on remote host and attach the debugger to it.
 
 See the [debugging](https://code.visualstudio.com/docs/editor/debugging) documentation for details on configuring VS Code's debugging features in `.vscode/launch.json`.
 
-SSH host-specific settings[#](https://code.visualstudio.com/docs/remote/ssh#_ssh-hostspecific-settings)
--------------------------------------------------------------------------------------------------------
+## SSH host-specific settings
 
 VS Code's local User settings are also reused when you are connected to an SSH host. While this keeps your user experience consistent, you may want to vary some of these settings between your local machine and each host. Fortunately, once you have connected to a host, you can also set host-specific settings by running the Preferences: Open Remote Settings command from the Command Palette (F1) or by selecting on the Remote tab in the Settings editor. These will override any User settings you have in place whenever you connect to the host. And Workspace settings will override Remote and User settings.
 
