@@ -318,7 +318,8 @@ Also, it's a good idea to use 3 separate terminals to supervise what you're doin
 1. Log in to `sciget` on `t1`.
 
 ```sh
-t1[localmachine]$ ssh -Y ttapera@sciget.pmacs.upenn.edu
+# In this example I'm using 9999. DO NOT USE THIS. BIG SAD.
+t1[localmachine]$ ssh -Y -L localhost:9999:localhost:9999 ttapera@sciget.pmacs.upenn.edu
 ```
 
 2. From `sciget`, login to the Singularity node on PMACS.
@@ -342,7 +343,7 @@ t1[ttapera@singularity01 ~]$ singularity build --sandbox rstudio.simg rstudio.si
 ```sh
 # use the ampersand to run in the background, or else you won't be able to do anything on this terminal until you quit singularity
 
-# In this example I'm using 9999. DO NOT USE THIS. BIG SAD.
+
 t1[ttapera@singularity01 ~]$ singularity exec --writable rstudio.simg rserver --www-address=127.0.0.1 --www-port 9999 &
 
 # you can find out what ports are currently in use with this command
