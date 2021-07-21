@@ -25,7 +25,7 @@ To get login credentials for CUBIC, you must have already a Penn Medicine accoun
 Once inside the Penn network, the login to CUBIC looks like this:
 
 ```python
-$ ssh -Y username@cbica-cluster.uphs.upenn.edu
+$ ssh -Y username@cubic-login.uphs.upenn.edu
 ```
 You use your UPHS password to login. On success you will be greeted with their message and any news:
 
