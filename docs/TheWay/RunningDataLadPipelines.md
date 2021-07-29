@@ -17,6 +17,10 @@ fmriprep, qsiprep, CPAC and aslprep. In this section we show how to create an
 *analysis dataset* that contains the prep containers, the provenance of the
 prep runs, and the prep outputs.
 
+⚠️ ⚠️ WARNING ⚠️ ⚠️
+DO NOT rename or change the path to any directory you want to be an input 
+to a bootstrap. This includes container datasets, bids datasets, and bootstrap
+directories! 
 
 
 * TOC
