@@ -17,11 +17,6 @@ fmriprep, qsiprep, CPAC and aslprep. In this section we show how to create an
 *analysis dataset* that contains the prep containers, the provenance of the
 prep runs, and the prep outputs.
 
-⚠️ ⚠️ WARNING ⚠️ ⚠️
-DO NOT rename or change the path to any directory you want to be an input 
-to a bootstrap. This includes container datasets, bids datasets, and bootstrap
-directories! 
-
 
 * TOC
 {:toc}
@@ -60,7 +55,7 @@ You can [download](https://github.com/PennLINC/TheWay/tree/main/scripts/cubic) a
 working directory for the running of your pipeline. Set the `BIDSAPP` variable
 to the lowercase version of the pipeline you'd like to run.
 
-The only argument for the boostrap script is the location of the BIDS input
+The only argument for the boostrap script is the location of the input
 data. This can be any datalad-accepted clone source (e.g. ria+ssh://,
 ria+file://, https://) or a path to a local directory containing BIDS data.
 If a local path, it should be the directory that containse the `sub-`
@@ -74,7 +69,12 @@ $ bash boostrap-${BIDSAPP}.sh ${BIDSINPUT}
 ```
 
 This will create a `${BIDSAPP}` directory that contains numerous other
-directories needed to run the app at scale. Most relevant for you is the
+directories needed to run the app at scale. ⚠️ ⚠️ WARNING ⚠️ ⚠️ Once you have aleady
+run the commands above and created your `${BIDSAPP}` directory, DO NOT rename or 
+change the path to any of the directories that were inputs to your bootstrap script!!
+
+
+Most relevant for you is the
 `${BIDSAPP}/analysis` directory. This is a regular datalad dataset that
 contains the code, input data, and remote configuration needed to run the
 jobs on the cluster.
