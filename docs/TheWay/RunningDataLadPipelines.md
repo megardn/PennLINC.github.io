@@ -68,17 +68,21 @@ $ wget https://raw.githubusercontent.com/PennLINC/TheWay/main/scripts/cubic/boot
 $ bash boostrap-${BIDSAPP}.sh ${BIDSINPUT}
 ```
 
+
+This will create a `${BIDSAPP}` directory that contains numerous other
+directories needed to run the app at scale. 
+
+
 ⚠️ ⚠️ WARNING ⚠️ ⚠️ 
 
 Once you have aleady run the commands above and created your `${BIDSAPP}` directory, 
 DO NOT rename or change the path to any of the directories that were inputs to your 
 bootstrap script!!
 
+⚠️ ⚠️ ⚠️ ⚠️
 
-This will create a `${BIDSAPP}` directory that contains numerous other
-directories needed to run the app at scale. 
 
-Most relevant for you is the
+Inside the `${BIDSAPP}` directory, the subdirectory most relevant for you is the
 `${BIDSAPP}/analysis` directory. This is a regular datalad dataset that
 contains the code, input data, and remote configuration needed to run the
 jobs on the cluster.
