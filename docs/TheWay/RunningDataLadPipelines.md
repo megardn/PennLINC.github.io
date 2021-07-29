@@ -72,10 +72,13 @@ $ bash boostrap-${BIDSAPP}.sh ${BIDSINPUT}
 This will create a `${BIDSAPP}` directory that contains numerous other
 directories needed to run the app at scale. 
 
+---
+**NOTE**
 
-⚠️ ⚠️ WARNING ⚠️ ⚠️ Once you have aleady run the commands above and created your `${BIDSAPP}` directory, 
+⚠️ ⚠️ WARNING ⚠️ ⚠️ Once you have run the command to create your `${BIDSAPP}` directory, 
 DO NOT rename or change the path to any of the directories that were inputs to your 
 bootstrap script!!
+---
 
 Inside the `${BIDSAPP}` directory, the subdirectory most relevant for you is the
 `${BIDSAPP}/analysis` directory. This is a regular datalad dataset that
