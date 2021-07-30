@@ -6,7 +6,7 @@ has_toc: true
 nav_order: 11
 ---
 
-:wave: If you need to download some data from the [NIMH Data Arhive](https://nda.nih.gov/) but do not have access to it, you've come to the right place!
+👋 If you need to download some data from the [NIMH Data Arhive](https://nda.nih.gov/) but do not have access to it, you've come to the right place!
 
 
 
@@ -131,4 +131,4 @@ Select **No** for the question and you can click on **submit**.
 
 ## Step 8: Wait for approval from the Office of Research Services
 
-Just relax and wait for a final approval email to pop up in your inbox. Email the completed data use agreement to the [NDA Help Desk](NDAHelp@mail.nih.gov) and you will soon be able to feast on the data :tada:
+Just relax and wait for a final approval email to pop up in your inbox. Email the completed data use agreement to the [NDA Help Desk](NDAHelp@mail.nih.gov) and you will soon be able to feast on the data 🎉
