@@ -6,7 +6,7 @@ has_toc: true
 nav_order: 1
 ---
 
-🌟If you need to access some data from the [NIMH Data Arhive](https://nda.nih.gov/) but do not have access to it, you've come to the right place!
+:wave: If you need to download some data from the [NIMH Data Arhive](https://nda.nih.gov/) but do not have access to it, you've come to the right place!
 
 
 
@@ -22,14 +22,14 @@ You can access the most recent version [here](https://nda.nih.gov/about/forms.ht
 
 <img width="638" alt="zero-step" src="https://user-images.githubusercontent.com/53891017/127577597-6a126d78-a706-4c61-a1a5-735e2eab46ca.png">
 
-Next you need to fill out the form (don't forget to add yourself as a recipient) and have Ted sign it.
+Next, you need to fill out the form (don't forget to add yourself as a recipient), and have Ted sign it.
 
  
 ## Step 1 : Enter the RIS 
 
 [Research Inventory System](https://researchinventory.apps.upenn.edu/researchInventory/jsp/fast2.do?bhcp=1) is the web-based application for requesting, routing, and issuing various research related agreements.
 
-Start by clicking on the system and providing your PennKey login, and you should see the following:
+Start by clicking on the system and providing your PennKey login. You should then see the following:
 
 <img width="841" alt="first-step" src="https://user-images.githubusercontent.com/53891017/127496253-2a1c4978-9f42-49e6-9ce5-204150536a6a.png">
 
@@ -46,7 +46,7 @@ Since we are requesting data access, we select _receiving_.
 
 > Type of data
 
-In the case of [PING](https://nda.nih.gov/edit_collection.html?id=2607), the type of data is de-identified health information.
+In the case of [PING](https://nda.nih.gov/edit_collection.html?id=2607), the type of data is "de-identified health information".
 
 > Please provide brief description of data
 
@@ -65,14 +65,14 @@ Just select **No**.
 ## Step 3 : Select faculty member, business administrator and department
 <img width="638" alt="sixth-step" src="https://user-images.githubusercontent.com/53891017/127528655-0d26b3e9-26f6-45bc-b658-7014418698e3.png">
 
-Faculty member is Ted and the department is correspondingly Neuropsychiatry.
+In our case, faculty member is Theodore Satterthwaite, and the department is Neuropsychiatry.
 <img width="912" alt="sixth-step-filled-out" src="https://user-images.githubusercontent.com/53891017/127531608-6c2717bb-1925-4ac5-bdff-950027b0f3da.png">
 
 Consult the team for business administrator.
 
 ## Step 4 : Upload research plan 
 
-You should be provided with a research plan which you can either upload or copy into the blank field.
+Consult the team to come up with a research plan. This should be a short paragraph. You can either enter that plan in the blank field or upload it as an attachment.
 
 <img width="638" alt="seventh-step" src="https://user-images.githubusercontent.com/53891017/127531769-3cb47b34-8834-469e-888f-9206c974fcef.png">
 
@@ -83,13 +83,13 @@ You should be provided with a research plan which you can either upload or copy 
 > +	_Other corporate sponsored research_
 > +	_Other_
 
-In the case of [PING](https://nda.nih.gov/edit_collection.html?id=2607), it is funded by the National Institute of Mental Health (NIMH) which is a federal agency. Hence we select **Federally sponsored/federal flow through research**
+[PING](https://nda.nih.gov/edit_collection.html?id=2607) is funded by the National Institute of Mental Health (NIMH) which is a federal agency. Hence we select **Federally sponsored/federal flow through research**
 	
 > _Are your requests (materials, data, equipment, confidential information , services and/or collaboration) related or connected to a sponsored research agreement (SRA), a clinical trial agreement (CTA), a government or grant funded project, or will it be charged to a fund?_
 > + _Yes_
 > + _No_
 	
-In the case of [PING](https://nda.nih.gov/edit_collection.html?id=2607), the data request is for the purpose of scientific research that is not related or connected to a sponsored research agreement (SRA), a clinical trial agreement (CTA), a government or grant funded project. Hence we select **no**
+In the case of [PING](https://nda.nih.gov/edit_collection.html?id=2607), the data request is for the purpose of scientific research. The research is neither related nor connected to a sponsored research agreement (SRA), a clinical trial agreement (CTA), a government or grant funded project. Hence we select **No**
 
 
 > _What is the likelihood of an invention resulting from the research?_
