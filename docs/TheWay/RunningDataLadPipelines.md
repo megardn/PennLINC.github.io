@@ -204,6 +204,21 @@ in the terminal. Note: if you have other jobs running and want to cancel all
 the jobs you launched, you might unintentionally kill non-pipeline jobs if
 you delete all your jobs.
 
+
+### When jobs are stuck in the "r" state
+
+Sometimes, your qsub jobs will get stuck due to cluster/node issues. This will
+require you to rerun those stuck jobs. In order to do this, you can use our
+`qstat_to_qsub_calls_rerun.sh` script. This script takes in the path to the
+analysis directory of the pipeline you ran, runs `qstat` under the hood, cross
+references the job IDs with the logs directory to get the subject IDs of all
+stuck subjects, and writes out a `qsub_calls_rerun.sh` file to the
+`analysis/code directory.` This file contains a truncated version of
+`qsub_calls.sh` and includes the qsub calls to the pipeline for only the
+subjects who were stuck. Lastly, you will need to kill the stuck jobs and `bash
+code/qsub_calls_rerun.sh` from the analysis directory. Repeat this process if
+another rerun is required.
+
 # After the pipeline runs
 
 At the end of your pipeline runs, each subject/job will exist as a branch in
