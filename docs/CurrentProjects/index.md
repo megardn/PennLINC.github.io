@@ -8,7 +8,7 @@ nav_order: 10
 
 # Current Projects in the Lab
 
-Below is a list of the current projects completed/close to completion in the lab:
+Below is a list of the current projects in the lab:
 
 | Project Title |    Name    |               Link                |
 | ------------- | ---------- | --------------------------------- |
