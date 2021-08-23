@@ -33,7 +33,7 @@ We use Github Pages to reproducibly document how we arrived at a scientific find
 ## Project Page Entry
 
 Lastly, you'll need to add your project to the list below.
-To add a project to this list, please first read the [documentation guide](/docs/Contributing/documentation_guidelines) to familiarize yourself with the process of adding content to this website. When it comes time to add your project, simply add a Pull Request with your entry in the table:
+To add a project to this list, please first read the [documentation guide](/docs/Contributing/documentation_guidelines) to familiarize yourself with the process of adding content to this website. When it comes time to add your project, simply add a Pull Request with your entry in the raw text of this table:
 
 ```
 | Project Title |    Name    |               Link                |
