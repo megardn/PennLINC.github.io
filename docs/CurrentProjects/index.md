@@ -17,6 +17,7 @@ Below is a list of the current projects in the lab:
 | N-back Adversity: Association between Neighborhood Socioeconomic Status and Executive System Activation in Youth | Kristin Murtha | [https://pennlinc.github.io/Murtha_Nback_Adversity/](https://pennlinc.github.io/Murtha_Nback_Adversity/){:target="_blank"} |
 | Mobile Footprinting: Linking Individual Distinctiveness in Mobility Patterns to Mood, Sleep, and Brain Functional Connectivity | Cedric Huchuan Xia | [https://pennlinc.github.io/footprinting/](https://pennlinc.github.io/footprinting/){:target="_blank"} |
 | Developmental coupling of cerebral blood flow and fMRI fluctuations in youth |  Erica Baller | [https://pennlinc.github.io/IntermodalCoupling/]( https://pennlinc.github.io/IntermodalCoupling/){:target= "blank"} |
+| A Developmental Reduction of the Excitation:Inhibition Ratio in Association Cortex during Adolescence | Bart Larsen \ [https://pennlinc.github.io/Larsen_EI_Development/](https://pennlinc.github.io/Larsen_EI_Development/)
 
 ---------------------------------------------------------------------------------
 
