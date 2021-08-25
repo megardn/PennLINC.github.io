@@ -83,7 +83,7 @@ data. From the same directory as your `original_data/` directory, you can setup 
 datalad bids curation dataset like so
 
 ```bash
-$ datalad create -c yoda curation
+$ datalad create -c yoda -c text2git curation
 ```
 
 If there is potentially sensitive metadata in your `original_data
