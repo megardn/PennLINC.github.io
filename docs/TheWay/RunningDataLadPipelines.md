@@ -13,7 +13,7 @@ In general, we will need to apply an image processing workflow to the raw
 data we've
 [curated in BIDS](/docs/TheWay/CuratingBIDSonDisk#curating-bids-datasets).
 This workflow is essentially the same for any of the preps, including
-fmriprep, qsiprep, CPAC and aslprep. In this section we show how to create an
+fMRIPrep, QSIPrep, c-PAC and ASLPrep. In this section we show how to create an
 *analysis dataset* that contains the prep containers, the provenance of the
 prep runs, and the prep outputs.
 
@@ -37,7 +37,7 @@ singularity build qsiprep-0.14.2.sif docker://pennbbl/qsiprep:0.14.2
 ```
 
 This image needs to be added to a datalad "containers dataset". Be sure you've installed
-the datalad containers plugin via `pip install datalad_containers`. Now create the
+the datalad containers plugin via `pip install datalad-container`. Now create the
 dataset:
 
 ```bash
