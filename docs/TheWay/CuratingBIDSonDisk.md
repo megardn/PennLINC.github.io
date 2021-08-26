@@ -534,7 +534,7 @@ $ cubids-copy-exemplars \
     code/iterations/iter1_AcqGrouping.csv
 ```
 
-this will create `exemplars_dir`, which is a new BIDS-valid dataset containing one
+This will create `exemplars_dir`, which is a new BIDS-valid dataset containing one
 subject per acquisition group. You will want to test each of these subjects with
 each pipeline to ensure that they are processed correctly.
 
@@ -548,33 +548,4 @@ $ datalad save -m "add input data"
 $ cd ..
 ```
 
-Now you can bootstrap a pipeline run with these as your inputs. Supposing fmriprep
-is the pipeline we want to test:
-
-```bash
-$ mkdir exemplar_test && cd exemplar_test
-$ wget https://raw.githubusercontent.com/PennLINC/TheWay/cubic/cubic-bootstrap-fmriprep.sh
-$ bash cubic-bootstrap-fmriprep.sh ../exemplars_dir
-$ bash fmriprep/anaysis/code/qsub_calls.sh
-```
-
-This will link the exemplars BIDS dataset into an fmriprep analysis dataset and
-launch jobs for each exemplar subject. Follow the instructions in
-[here](/docs/TheWay/RunningDataLadPipelines#preparing-the-analysis-dataset)
-for aggregating and checking the results. Note that a nearly identical
-workflow will be used for running the entire BIDS dataset through pipelines.
-
-
-### Checking outputs from your exemplar subjects
-
-The `fmriprep` or `qsiprep` directory in your `working/testing` directory
-will have branches for each of your test subjects. To see if pipelines worked
-as you anticipated, run a completeness check on the derivatives from
-`working/`:
-
-```shell
-$ cubids-derivatives-check testing code/iterations
-```
-
-If you found that some Acquisition groups need to have their BIDS data
-changed to work properly in the pipelines, return to [Stage 2](#stage-2-bids-optimization)
+Now you can bootstrap a pipeline run with these as your inputs. Go to the next section [here](/docs/TheWay/RunningDataLadPipelines/) to learn more.
