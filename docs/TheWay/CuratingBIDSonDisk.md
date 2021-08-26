@@ -430,7 +430,7 @@ can be found on the [CuBIDS documentation](https://bids-bond.readthedocs.io/en/l
 
 `CuBIDS` reads and writes CSV files during the grouping process. You should create an
 `iterations/` directory in `working/code` to store these CSVs and so they can be
-tracked in git. Your project should look like
+tracked in git. Your project should look like:
 
 ```
 project
@@ -524,8 +524,8 @@ BIDS dataset, we extract a single subject from each acquisition group
 into a smaller, representative BIDS dataset. This directory then serves as input to
 [the pipeline](/docs/TheWay/RunningDataLadPipelines#preparing-the-analysis-dataset).
 
-To create a testing directory of only exemplar subjects into its BIDS
-subdataset, use the CuBIDS program `cubids-copy-exemplars`
+Create a testing directory in your project, and within that directory, create a BIDS directory of only exemplar subjects into its BIDS
+subdataset. Use the CuBIDS program `cubids-copy-exemplars`:
 
 ```bash
 $ cubids-copy-exemplars \
@@ -546,6 +546,41 @@ $ cd exemplars_dir
 $ datalad create -d . --force -D "Exemplars BIDS dataset"
 $ datalad save -m "add input data"
 $ cd ..
+```
+
+At this point, your project will look like this:
+
+```
+project
+├── original_data
+│   ├── sub-1
+│   ├── sub-2
+│   ├── ...
+│   └── sub-N
+├── curation
+│   ├── code
+│   |   ├── sandbox
+│   │   └── ProjectGithub
+│   |       ├── validator_outputs
+│   |       ├── notebooks
+│   |       ├── Fix1.sh
+│   |       └── DataNarrative.md
+│   └── BIDS                      
+│       ├── dataset_description.json
+│       ├── README.txt
+│       ├── sub-1
+│       ├── sub-2
+│       ├── ...
+│       └── sub-N
+└── testing                     # new testing directory
+    ├── exemplars_dir           # BIDS directory of exemplars you'll be testing with
+    |   ├── dataset_description.json
+    │   ├── README.txt
+    │   ├── sub-1
+    │   ├── sub-2
+    │   ├── ...
+    │   └── sub-N
+    └── exemplar_test           # directory for testing scripts
 ```
 
 Now you can bootstrap a pipeline run with these as your inputs. Go to the next section [here](/docs/TheWay/RunningDataLadPipelines/) to learn more.
