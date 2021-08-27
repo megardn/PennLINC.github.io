@@ -524,7 +524,7 @@ BIDS dataset, we extract a single subject from each acquisition group
 into a smaller, representative BIDS dataset. This directory then serves as input to
 [the pipeline](/docs/TheWay/RunningDataLadPipelines#preparing-the-analysis-dataset).
 
-Create a testing directory in your project, and within that directory, create a BIDS directory of only exemplar subjects into its BIDS
+Create a testing directory from the root of your project, and within that directory, create a BIDS directory of only exemplar subjects into its BIDS
 subdataset. Use the CuBIDS program `cubids-copy-exemplars`:
 
 ```bash
@@ -548,7 +548,7 @@ $ datalad save -m "add input data"
 $ cd ..
 ```
 
-At this point, your project will look like this:
+At this point, your project should look like this:
 
 ```
 project
@@ -573,7 +573,7 @@ project
 │       ├── ...
 │       └── sub-N
 └── testing                     # new testing directory
-    ├── exemplars_dir           # BIDS directory of exemplars you'll be testing with
+    ├── exemplars_dir           # BIDS directory of exemplars you'll be testing
     |   ├── dataset_description.json
     │   ├── README.txt
     │   ├── sub-1
@@ -584,3 +584,5 @@ project
 ```
 
 Now you can bootstrap a pipeline run with these as your inputs. Go to the next section [here](/docs/TheWay/RunningDataLadPipelines/) to learn more.
+
+If you have any trouble with your exemplar testing, such as needing to adjust your exemplars, simply remove the testing `exemplars_dir` and begin again from there.

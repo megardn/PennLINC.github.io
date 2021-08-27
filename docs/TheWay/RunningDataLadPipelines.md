@@ -41,7 +41,7 @@ the datalad containers plugin via `pip install datalad-container`. Now create th
 dataset:
 
 ```bash
-$ datalad create -D "Note about the container" qsiprep-container
+$ datalad create -D "Note about the container" qsiprep-container-directory
 $ cd qsiprep-container
 $ datalad containers-add --url /full/path/to/qsiprep-0.14.2.sif qsiprep-0-14-2
 ```
@@ -82,7 +82,7 @@ Here we "bash the bootstrap" to create a `qsiprep` directory:
 ```bash
 $ BIDSAPP=qsiprep
 $ wget https://raw.githubusercontent.com/PennLINC/TheWay/main/scripts/cubic/bootstrap-${BIDSAPP}.sh
-$ bash boostrap-${BIDSAPP}.sh /full/path/to/BIDS /full/path/to/qsiprep-container
+$ bash bootstrap-${BIDSAPP}.sh /full/path/to/testing/BIDS /full/path/to/testing/qsiprep-container
 ```
 
 This will create a `qsiprep` directory that contains numerous other
@@ -135,6 +135,24 @@ $ datalad push --to input
 $ datalad push --to output
 ```
 
+One important check is to make sure your conda environment is correct at runtime.
+Usually, this is set right at the top of `analysis/code/participant_job.sh`:
+
+```shell
+#!/bin/bash
+#$ -S /bin/bash
+#$ -l h_vmem=18G
+#$ -l s_vmem=23.5G
+#$ -l tmpfree=200G
+# Set up the correct conda environment
+export CONDA_PREFIX=/PATH/TO/YOUR/CONDA/       # eg /cbica/projects/RewardProject/miniconda3
+source ${CONDA_PREFIX}/bin/activate MY_PROJECT_ENVIRONMENT # ${CONDA_PREFIX}/bin/activate reward
+echo I\'m in $PWD using `which python` and `which git`, `git --version`
+
+```
+
+You can use `echo` to do all sorts of checks; in this example we make sure that the correct python and git are selected.
+
 ### Keeping files from an example run
 
 If you want to have your job persist somewhere accessible, you should edit
@@ -182,9 +200,15 @@ the image.
 
 After editing the scripts in `analysis/code`, saving them and pushing them
 to input and output ria stores, it's time to test.
-You never know if your scripts will work until you do a test run. To
-submit a single subject, you can execute the last line of `code/qsub_calls.sh`
-and see how it goes. From the `analysis` directory run
+You never know if your scripts will work until you do a test run. 
+
+Before you run a pipeline, make sure to check in the script if your conda 
+environment is activated, and your flags/arguments are set to your needs. 
+Open `exemplar_test/${BIDSAPP}/analysis/code/participant_job.sh
+and find the first line `source ${CONDA_PREFIX}/bin/activate base` and change `base` to the environment you set up for this project.
+
+To submit a single subject, you can execute the last line of `code/qsub_calls.sh`
+and see how it goes. From the `analysis` directory run:
 
 ```bash
 $ $(tail -n 1 code/qsub_calls.sh)
