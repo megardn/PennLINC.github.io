@@ -36,7 +36,7 @@ $ wget https://raw.githubusercontent.com/PennLINC/TheWay/main/scripts/cubic/cubi
 $ bash cubic-setup-project-user.sh ${HOME}
 ```
 
-Finally, [download and install CuBIDS](linktocubids.html). Note that
+Finally, [download and install CuBIDS](https://bids-bond.readthedocs.io/en/latest/index.html). Note that
 this environment must be activated for the rest of the steps.
 
 
@@ -45,7 +45,7 @@ this environment must be activated for the rest of the steps.
 The process begins when data arrives on one of our servers. While it may not
 be possible to document everything that has happened to the data prior to its
 arrival to our server, the goal of the organization step is to document as
-much as we can about the process of receiving the data and any initial
+much as we can about the process of receiving the data, and any initial
 changes we might make to it. The person in charge of organizing a data set
 should document any changes they make in a *Data Narrative* along with any
 relevant scripts used to a git-tracked repository.
@@ -53,7 +53,35 @@ relevant scripts used to a git-tracked repository.
 Create a project root directory. Initially we suggest keeping one copy of your
 initial data that will remain untouched as a backup during early stages of
 the workflow. This is not necessary if your data is archived elsewhere online.
-In the project root consider something like
+In the project root create a directory structure similar to this:
+
+```
+# the actual directory structure can
+# vary depending on the needs of your project
+
+project
+├── original_data
+│   ├── sub-1
+│   ├── sub-2
+│   ├── ...
+│   └── sub-N
+└── curation
+    ├── code
+    |   ├── sandbox                # a place for untracked files
+    │   └── ProjectGithub          # the home for all your scripts, tracked by github
+    |       └── DataNarrative.md   # the data narrative file
+    └── BIDS
+```
+
+The `original_data` directory should be an unchanged copy of the original data. You can
+get a template Data Narrative file with:
+
+```shell
+$ wget https://raw.githubusercontent.com/PennLINC/RBC/master/Data_Narrative_Template.md
+```
+
+Next, add tracking to your project for scripts to be shared and tracked. 
+data:
 
 ```
 project
@@ -64,10 +92,86 @@ project
 │   └── sub-N
 └── curation
     ├── code
-    │   ├── DataNarrative.md
-    │   ├── Fix1.sh
-    │   └── Fix2.sh
+    |   ├── sandbox
+    │   └── ProjectGithub         # add git here
+    |       └── DataNarrative.md
     └── BIDS
+```
+
+You can add git like so:
+
+```bash
+$ git init
+```
+
+And remember, if you explicitly want to ignore something from tracking (with either `git` or `datalad`), add that path to a `.gitnignore` file ([see here](https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files) and [here](https://handbook.datalad.org/en/latest/beyond_basics/101-179-gitignore.html)).
+
+### Add NIfTI information to the sidecars
+
+Image files (NIfTI) are large binary files that contain information about
+the spatial coverage of MRI images. We want to be able to detect variability
+in this, but don't necessarily want to always be reading it from NIfTI files.
+For example, the nifti files may be checked in to git annex or stored on
+a remote server. These are somewhat common use cases, so we recommend
+adding the information you would normally get from NIfTI files directly
+to the JSON files. CuBIDS comes with a NIfTI metadata extractor, which
+can be run with
+
+```bash
+$ cubids-add-nifti-info ~/project/original_data
+```
+
+Once run, you will find volume, dimension, and obliquity information in the JSON sidecars.
+
+### Removing sensitive metadata
+
+> ⚠️ NOTE: This step must occur **BEFORE** any imaging data is checked in to datalad.
+
+Sometimes the DICOM-to-NIfTI conversion process results in unwanted information
+in the JSON sidecars. You can use `cubids-remove-metadata-fields` to purge these
+from all .json files in your data. All unique metadata fields can be listed
+using `cubids-print-metadata-fields`.Be sure to note the fields you removed in
+your *Data Narrative*.
+
+```markdown
+Sensitive fields, included in: AccessionNumber, PatientBirthDate, PatientID,
+PatientName, PatientSex, AcquisitionDateTime, SeriesInstanceUID,
+DeviceSerialNumber, InstitutionAddress, AcquisitionTime, StationName,
+ReferringPhysicianName, InstitutionName, InstitutionalDepartmentName,
+AccessionNumber were removed from all metadata files using
+`cubids-remove-metadata-fields`.
+```
+### Copying your Imaging Data
+
+Now you can begin a datalad tracked dataset for your working BIDS data.
+
+```bash
+$ datalad create -c yoda -c text2git BIDS
+```
+
+Finally, copy your data from `original_data` to the working BIDS dataset 
+**only once you are certain `original_data/` is anonymized**:
+
+```bash
+$ cp -r original_data/* curation/BIDS
+$ datalad save -m "add initial data" curation
+```
+
+This could take some time depending on how big your input data is. The result will look like this:
+
+```
+project
+├── original_data
+│   ├── sub-1
+│   ├── sub-2
+│   ├── ...
+│   └── sub-N
+└── curation
+    ├── code
+    |   ├── sandbox
+    │   └── ProjectGithub
+    |       └── DataNarrative.md
+    └── BIDS                      # BIDS data added
         ├── dataset_description.json
         ├── README.txt
         ├── sub-1
@@ -76,28 +180,7 @@ project
         └── sub-N
 ```
 
-The `original_data` directory should be an unchanged copy of the original data.
-
-Next, create a curation dataset that will track the changes made to your original
-data. From the same directory as your `original_data/` directory, you can setup a
-datalad bids curation dataset like so
-
-```bash
-$ datalad create -c yoda curation
-```
-
-If there is potentially sensitive metadata in your `original_data
-is impossible, you can [remove sensitive metadata](#removing-sensitive-metadata)
-before copying the contents of your `original_data/` directory into your
-`curation/BIDS/` directory. **Once you are certain `original_data/` is anonymized**
-you can copy it into `curation/BIDS/` and save it as a datalad dataset.
-
-```bash
-$ cp -r original_data/* curation/BIDS
-$ datalad save -m "add initial data" curation
-```
-
-This could take some time depending on how big your input data is.
+Admittedly, `cp` can be a time consuming process for very large BIDS datasets — we have a solution (currently available on PMACS) for a much quicker copy using bootstrapped `datalad` [here](https://github.com/PennLINC/TheWay/blob/main/scripts/pmacs/bootstrap-bids-dataladdening.sh).
 
 ### OPTIONAL: set up a remote backup
 
@@ -146,99 +229,100 @@ $ git annex dead here
 
 And `/tmp/curation` will have all files on demand from the original repository.
 
-
 ### Documenting data provenance
 
-The *Data Narrative* should begin with a section describing where the data
-came from.
+As mentioned, we document the process of curating and preprocessing a dataset with a Data Narrative.
+
+Here's a template data narrative; you'll fill out the fields as necessary for your project:
 
 ```markdown
-# Transfer Process
+# Data Narrative for [INSERT DATASET NAME HERE]
 
-The data were acquired at [SITE] as part of [STUDY] study. Access was given
-to PennLINC as part of the [COLLABORATION/GRANT] project. The data was
-transferred from [SITE] to [PennLINC CLUSTER] using [TOOLS & SOFTWARE +
-VERSIONS]. The approximate date of transfer was [DATE RANGE]. In sum,
-PennLINC received [APPROX VOLUME OF DATA] comprising of [N] subjects with a
-range of [N] sessions. The imaging data consisted of [MODALITIES].
-Additionally, [ANY ADDITIONAL CLINICAL OR COHORT DATA]. The imaging data was
-organised [IN BIDS/NOT IN BIDS] and [ANONYMIZED/NOT ANONYMIZED] at the time
-of transfer, and the raw data was stored in [DIRECTORY ON THE CLUSTER] and
-tracked on [GITHUB].
+## Important Links (should all be on GitHub):
+* Data Processing Flow Diagram:
+   * Flow diagram that describes the lifecycle of this dataset 
+* DSR GitHub Project Page(Curation/Validation and Processing Queue Status):
+   * Cards for tracking the curation and validation portion of the dataset. This page should be updated every time you perform an action on the data. 
+   * Cards for tracking the progress of containerized pipeline runs on the data. 
+   
+## Plan for the Data 
+
+* Why does PennLINC need this data?
+* For which project(s) is it intended? Please link to project pages below:
+* What is our goal data format?
+   * i.e. in what form do we want the data by the end of the "Curation" step? BIDS? Something else? 
+
+## Data Acquisition
+
+* Who is responsible for acquiring this data?
+* Do you have a DUA? Who is allowed to access the data?
+* Where was the data acquired? 
+* Describe the data. What type of information do we have? Things to specify include:
+   * number of subjects
+   * types of images
+   * demographic data
+   * clinical/cognitive data
+   * any canned QC data
+   * any preprocessed or derived data
+
+## Download and Storage 
+
+* Who is responsible for downloading this data?
+* From where was the data downloaded?
+* Where is it currently being stored?
+* What form is the data in upon intial download (DICOMS, NIFTIS, something else?)
+* Are you using Datalad? 
+* Is the data backed up in a second location? If so, please provide the path to the backup location:
+
+## Curation Process
+
+* Who is responsible for curating this data?
+* GitHub Link to curation scripts/heurstics: 
+* GitHub Link to final CuBIDS csvs: 
+* Describe the Validation Process. Include a list of the initial and final errors and warnings.
+* Describe additions, deletions, and metadata changes (if any).
+
+## Preprocessing Pipelines 
+* For each pipeline (e.g. QSIPrep, fMRIPrep, XCP, C-PAC), please fill out the following information:
+   * Pipeline Name: 
+   * Who is responsible for running preprocessing pipelines/audits on this data?
+   * Where are you running these pipelines? CUBIC? PMACS? Somewhere else?
+   * Did you implement exemplar testing? If so, please fill out the information below:
+      * Path to exemplar dataset:
+      * Path to exemplar outputs:
+      * GitHub Link to exemplar audit:
+    * For production testing, please fill out the information below:
+      * Path to production inputs:
+      * GitHub Link to production outputs:
+      * GitHub Link to production audit: 
+
+## Post Processing 
+
+* Who is using the data/for which projects are people in the lab using this data?
+   * Link to project page(s) here  
+* For each post-processing analysis that has been run on this data, fill out the following
+   * Who performed the analysis?
+   * Where it was performed (CUBIC, PMACS, somewhere else)?
+   * GitHub Link(s) to result(s)
+   * Did you use pennlinckit?  
+      * https://github.com/PennLINC/PennLINC-Kit/tree/main/pennlinckit  
 ```
-
-Where the fields in brackets are replaced by your specific information.
-
-### Documenting initial steps taken
-
-Files with clearly non-BIDS-compliant names, unnecessary data and any sensitive
-information should be removed as soon as possible. Each of these steps should be
-documented in the *Data Narrative* like so:
-
-```markdown
-# Initial Steps
-
-The initial data contained localizer scans that will not be used. These files
-were removed using [curation_code/delete_localizers.sh](link_to_script_on_github).
-```
-
-Any other scripts applied at this stage should be noted here, including both
-their path in the git repository and a description of the action they
-implement.
-
-### Removing sensitive metadata
-
-> ⚠️ NOTE: This step must occur **BEFORE** data is checked in to datalad.
-
-Sometimes the DICOM-to-NIfTI conversion process results in unwanted information
-in the JSON sidecars. You can use `cubids-remove-metadata-fields` to purge these
-from all .json files in your data. All unique metadata fields can be listed
-using `cubids-print-metadata-fields`.Be sure to note the fields you removed in
-your *Data Narrative*.
-
-```markdown
-Sensitive fields, included in: AccessionNumber, PatientBirthDate, PatientID,
-PatientName, PatientSex, AcquisitionDateTime, SeriesInstanceUID,
-DeviceSerialNumber, InstitutionAddress, AcquisitionTime, StationName,
-ReferringPhysicianName, InstitutionName, InstitutionalDepartmentName,
-AccessionNumber were removed from all metadata files using
-`cubids-remove-metadata-fields`.
-```
-
-You can check your data into datalad any time after you've removed all
-sensitive metadata fields.
-
-### Add NIfTI information to the sidecars
-
-Image files (NIfTI) are large binary files that contain information about
-the spatial coverage of MRI images. We want to be able to detect variability
-in this, but don't necessarily want to always be reading it from NIfTI files.
-For example, the nifti files may be checked in to git annex or stored on
-a remote server. These are somewhat common use cases, so we recommend
-adding the information you would normally get from NIfTI files directly
-to the JSON files. CuBIDS comes with a NIfTI metadata extractor, which
-can be run with
-
-```bash
-$ cubids-add-nifti-info dataset_path
-```
-
-Once run, you will find volume, dimension, and obliquity information in the JSON sidecars.
-
 
 ## Stage 1: BIDS Validation
 
 At the end of Step 0 you should have a BIDS-like data set containing NIfTI
-and JSON files. The goal of this stage is to get your data passing the
+and JSON files, tracked by datalad, and a regular git repository tracking the
+scripts you create to curate it. 
+The goal of this stage is to get your data passing the
 BIDS Validator without any errors and to ensure all scans in your dataset
 appear as expected and are usable. This is an iterative process - fixing
 one error may introduce new errors. Expect this step to take a number of
-iterations and be sure to describe each step in your *Data Narrative*. In
-order to do this, we recommend running cubids-group and cubids-validate
-simultaneously, via a qsub (if the dataset is large) after every change.
+iterations and be sure to describe each step in your Data Narrative. In
+order to do this, we recommend running `cubids-group` and `cubids-validate`
+simultaneously, via a `qsub` (if the dataset is large) after every change.
 Suppose you ran `cubids-validate` on your BIDS data. This will create
 a file containing all the errors present in your data. Add this file
-to your git repository and describe it in the *Data Narrative*:
+to your git repository and describe it in the Data Narrative (you can simply add the content below to the bottom of DataNarrative.md):
 
 ```markdown
 # BIDS Validation
@@ -265,7 +349,35 @@ CODEn].
 
 ```
 
-After re-running cubids-group and cubids-validate, you may find new errors. In this case, write more scripts
+If there is no restriction on sharing subject/session IDs with Github, the validator
+outputs and scripts for changes can be stored in the Github tracked directory;
+otherwise they can be placed in a `.gitignore` file or in the `sandbox`:
+
+```
+project
+├── original_data
+│   ├── sub-1
+│   ├── sub-2
+│   ├── ...
+│   └── sub-N
+└── curation
+    ├── code
+    |   ├── sandbox
+    │   └── ProjectGithub
+    |       ├── validator_outputs  # Put validator outputs here
+    |       ├── notebooks          # e.g. ipython notebooks that investigate BIDS data
+    |       ├── Fix1.sh            # e.g. a script that renamed some BIDS data
+    |       └── DataNarrative.md
+    └── BIDS                      
+        ├── dataset_description.json
+        ├── README.txt
+        ├── sub-1
+        ├── sub-2
+        ├── ...
+        └── sub-N
+```
+
+After re-running `cubids-group` and `cubids-validate`, you may find new errors. In this case, write more scripts
 that fix the errors and describe them in the *Data Narrative*
 
 ```markdown
@@ -310,7 +422,7 @@ signal will be very different. Without changes to the heuristic,
 both acquisitions would result in `sub-X_task-1_bold` as the
 BIDS name.
 
-CuBIDS provides a utility that finds variations in important imaging
+`CuBIDS` provides a utility that finds variations in important imaging
 parameters within each BIDS *key group*. In our example there might
 be two unique *parameter groups* that map to the same *key group* of
 `sub-X_task-1_bold`: one with `MultibandAccelerationFactor` 1 and
@@ -320,20 +432,32 @@ can be found on the [CuBIDS documentation](https://bids-bond.readthedocs.io/en/l
 
 ### Find unique acquisition groups
 
-CuBIDS reads and writes CSV files during the grouping process. You should create an
+`CuBIDS` reads and writes CSV files during the grouping process. You should create an
 `iterations/` directory in `working/code` to store these CSVs and so they can be
-tracked in git. Your project should look like
+tracked in git. Your project should look like:
 
 ```
 project
 ├── original_data
-└── working
+│   ├── sub-1
+│   ├── sub-2
+│   ├── ...
+│   └── sub-N
+└── curation
     ├── code
-    │   ├── DataNarrative.md
-    │   ├── iterations
-    │   ├── Fix1.sh
-    │   └── Fix2.sh
-    └── BIDS
+    |   ├── sandbox
+    │   └── ProjectGithub
+    |       ├── validator_outputs  # Put validator outputs here
+    |       ├── notebooks          # e.g. ipython notebooks that investigate BIDS data
+    |       ├── Fix1.sh            # e.g. a script that renamed some BIDS data
+    |       └── DataNarrative.md
+    └── BIDS                      
+        ├── dataset_description.json
+        ├── README.txt
+        ├── sub-1
+        ├── sub-2
+        ├── ...
+        └── sub-N
 ```
 
 To detect acquisition groups in your data set, change into `working/` and run
@@ -404,8 +528,8 @@ BIDS dataset, we extract a single subject from each acquisition group
 into a smaller, representative BIDS dataset. This directory then serves as input to
 [the pipeline](/docs/TheWay/RunningDataLadPipelines#preparing-the-analysis-dataset).
 
-To create a testing directory of only exemplar subjects into its BIDS
-subdataset, use the CuBIDS program `cubids-copy-exemplars`
+Create a testing directory from the root of your project, and within that directory, create a BIDS directory of only exemplar subjects into its BIDS
+subdataset. Use the CuBIDS program `cubids-copy-exemplars`:
 
 ```bash
 $ cubids-copy-exemplars \
@@ -414,7 +538,7 @@ $ cubids-copy-exemplars \
     code/iterations/iter1_AcqGrouping.csv
 ```
 
-this will create `exemplars_dir`, which is a new BIDS-valid dataset containing one
+This will create `exemplars_dir`, which is a new BIDS-valid dataset containing one
 subject per acquisition group. You will want to test each of these subjects with
 each pipeline to ensure that they are processed correctly.
 
@@ -428,33 +552,41 @@ $ datalad save -m "add input data"
 $ cd ..
 ```
 
-Now you can bootstrap a pipeline run with these as your inputs. Supposing fmriprep
-is the pipeline we want to test:
+At this point, your project should look like this:
 
-```bash
-$ mkdir exemplar_test && cd exemplar_test
-$ wget https://raw.githubusercontent.com/PennLINC/TheWay/cubic/cubic-bootstrap-fmriprep.sh
-$ bash cubic-bootstrap-fmriprep.sh ../exemplars_dir
-$ bash fmriprep/anaysis/code/qsub_calls.sh
+```
+project
+├── original_data
+│   ├── sub-1
+│   ├── sub-2
+│   ├── ...
+│   └── sub-N
+├── curation
+│   ├── code
+│   |   ├── sandbox
+│   │   └── ProjectGithub
+│   |       ├── validator_outputs
+│   |       ├── notebooks
+│   |       ├── Fix1.sh
+│   |       └── DataNarrative.md
+│   └── BIDS                      
+│       ├── dataset_description.json
+│       ├── README.txt
+│       ├── sub-1
+│       ├── sub-2
+│       ├── ...
+│       └── sub-N
+└── testing                     # new testing directory
+    ├── exemplars_dir           # BIDS directory of exemplars you'll be testing
+    |   ├── dataset_description.json
+    │   ├── README.txt
+    │   ├── sub-1
+    │   ├── sub-2
+    │   ├── ...
+    │   └── sub-N
+    └── exemplar_test           # directory for testing scripts
 ```
 
-This will link the exemplars BIDS dataset into an fmriprep analysis dataset and
-launch jobs for each exemplar subject. Follow the instructions in
-[here](/docs/TheWay/RunningDataLadPipelines#preparing-the-analysis-dataset)
-for aggregating and checking the results. Note that a nearly identical
-workflow will be used for running the entire BIDS dataset through pipelines.
+Now you can bootstrap a pipeline run with these as your inputs. Go to the next section [here](/docs/TheWay/RunningDataLadPipelines/) to learn more.
 
-
-### Checking outputs from your exemplar subjects
-
-The `fmriprep` or `qsiprep` directory in your `working/testing` directory
-will have branches for each of your test subjects. To see if pipelines worked
-as you anticipated, run a completeness check on the derivatives from
-`working/`:
-
-```shell
-$ cubids-derivatives-check testing code/iterations
-```
-
-If you found that some Acquisition groups need to have their BIDS data
-changed to work properly in the pipelines, return to [Stage 2](#stage-2-bids-optimization)
+If you have any trouble with your exemplar testing, such as needing to adjust your exemplars, simply remove the testing `exemplars_dir` and begin again from there.
