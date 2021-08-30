@@ -104,6 +104,8 @@ You can add git like so:
 $ git init
 ```
 
+And remember, if you explicitly want to ignore something from tracking (with either `git` or `datalad`), add that path to a `.gitnignore` file ([see here](https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files) and [here](https://handbook.datalad.org/en/latest/beyond_basics/101-179-gitignore.html)).
+
 ### Add NIfTI information to the sidecars
 
 Image files (NIfTI) are large binary files that contain information about
@@ -177,6 +179,8 @@ project
         ├── ...
         └── sub-N
 ```
+
+Admittedly, `cp` can be a time consuming process for very large BIDS datasets — we have a solution (currently available on PMACS) for a much quicker copy using bootstrapped `datalad` [here](https://github.com/PennLINC/TheWay/blob/main/scripts/pmacs/bootstrap-bids-dataladdening.sh).
 
 ### OPTIONAL: set up a remote backup
 
