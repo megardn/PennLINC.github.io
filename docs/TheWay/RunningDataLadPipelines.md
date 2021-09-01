@@ -15,7 +15,8 @@ data we've
 This workflow is essentially the same for any of the preps, including
 fmriprep, qsiprep, CPAC and aslprep. In this section we show how to create an
 *analysis dataset* that contains the prep containers, the provenance of the
-prep runs, and the prep outputs.
+prep runs, and the prep outputs. Then, we'll demonstrate how to run pipelines on
+your exemplars (and eventually the full dataset) using the "bootstrap" method.
 
 
 * TOC
@@ -215,11 +216,11 @@ The command above will write out a `qsub_calls_rerun.sh` file to the `/cbica/pro
 
 # After the pipeline runs
 
-At the end of your pipeline runs, each subject/job will exist as a branch in
+At the end of your pipeline runs, each subject/job will exist as a datalad branch in
 the `output` special remote set up by the bootstrap script. These branches will
 need to be merged into a single branch to create a complete results dataset.
 
-A script to do this was created during the bootstrapping, to run the merge:
+A script to do this was created during the bootstrapping. To run the merge:
 
 ```bash
 $ bash code/merge_outputs.sh
@@ -254,6 +255,13 @@ $ unzip sub-1_qsiprep-0.14.2.zip
 
 this will unzip sub-1's qsiprep results. You'll notice that it is inefficient
 and cumbersome to `get` and `unlock` the files you created.
+
+# Auditing Your Runs
+
+It's impractical of course to check every single subject for successful
+run output. Instead, we recommend taking this bootstrap approach and using it
+to assess the data in what we call a _bootstrap audit_. This stage simply
+uses datalad to dive into the outputs of each subject's datalad branch
 
 # Running a bootstrap on the outputs of another bootstrap
 
