@@ -425,7 +425,7 @@ Next, run `merge_outputs.sh` (again from the `analysis` directory):
 $ bash code/merge_outputs.sh
 ```
 
-The difference now, is that you'll have CSV files in your `merge_ds` directory:
+The difference is that you'll have CSV files in the merge_ds/csvs directory:
 
 ```
 fmriprep-audit/
@@ -454,14 +454,13 @@ fmriprep-audit/
 ```
 
 These are the audit results, tracked in datalad. Again, don't tamper with these.
-Instead, concatenate these CSVs into one file using a small Python script — it's
-also been bootstrapped!
+Instead, concatenate these single row CSVs into a table, which will contain one row per subject, by running the following command, also from the analysis directory:
 
 ```shell
 $ bash code/concat_outputs.sh
 ```
 
-The output is available in the root of the audit directory:
+Once you see `SUCCESS`, the output will be available in the root of the audit directory:
 
 ```
 fmriprep-audit
