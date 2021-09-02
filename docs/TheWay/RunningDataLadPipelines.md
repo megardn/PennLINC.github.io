@@ -307,7 +307,7 @@ testing
 
 ```
 
-A quick way to assess of your jobs ran successfully is to see if an output branch was created for each subject. The output branches are located in the `output_ria`, which has a hashed string as a directory name. Simply descend into that directory like:
+A quick way to assess if your jobs ran successfully is to see if an output branch was created for each subject. The output branches are located in the `output_ria`, which has a hashed string as a directory name. Simply descend into that directory like:
 
 ```shell
 $ cd fmriprep/output_ria/553/6b78d-a143-45e9-9fc4-684fad48fd29
