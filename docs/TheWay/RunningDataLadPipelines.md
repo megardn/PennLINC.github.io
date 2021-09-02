@@ -38,11 +38,11 @@ singularity build qsiprep-0.14.2.sif docker://pennbbl/qsiprep:0.14.2
 ```
 
 This image needs to be added to a datalad "containers dataset". Be sure you've installed
-the datalad containers plugin via `pip install datalad-container`. Now create the
+the datalad containers plugin via `pip install datalad_containers`. Now create the
 dataset:
 
 ```bash
-$ datalad create -D "Note about the container" qsiprep-container-directory
+$ datalad create -D "Note about the container" qsiprep-container
 $ cd qsiprep-container
 $ datalad containers-add --url /full/path/to/qsiprep-0.14.2.sif qsiprep-0-14-2
 ```
@@ -61,9 +61,15 @@ $ rm /full/path/to/qsiprep-0.14.2.sif
 ## Preparing the analysis dataset
 
 We assume your BIDS data is curated and available either on your local file system
-or a remote datalad source.
+or a remote datalad source. We're going to "bootstrap" the process of both
+creating the analysis dataset, and running a pipeline on each subject. The 
+word “bootstrap” can be thought of as a term for "set up a pipeline to
+datalad-clone each participant to a temporary working space, process 
+each participant with a reproducible/tracked datalad-run command,
+and safely merge the outputs together in the user’s project”.
 
-You can [download](https://github.com/PennLINC/TheWay/tree/main/scripts/cubic) and run one or more of our "bootstrap" scripts that sets up a
+
+You can [download](https://github.com/PennLINC/TheWay/tree/main/scripts/cubic) and run one or more of our "bootstrap setup" scripts that sets up a
 working directory for the running of your pipeline. Set the `BIDSAPP` variable
 to the lowercase version of the pipeline you'd like to run.
 
@@ -83,7 +89,7 @@ Here we "bash the bootstrap" to create a `qsiprep` directory:
 ```bash
 $ BIDSAPP=qsiprep
 $ wget https://raw.githubusercontent.com/PennLINC/TheWay/main/scripts/cubic/bootstrap-${BIDSAPP}.sh
-$ bash bootstrap-${BIDSAPP}.sh /full/path/to/testing/BIDS /full/path/to/testing/qsiprep-container
+$ bash boostrap-${BIDSAPP}.sh /full/path/to/BIDS /full/path/to/qsiprep-container
 ```
 
 This will create a `qsiprep` directory that contains numerous other
@@ -136,24 +142,6 @@ $ datalad push --to input
 $ datalad push --to output
 ```
 
-One important check is to make sure your conda environment is correct at runtime.
-Usually, this is set right at the top of `analysis/code/participant_job.sh`:
-
-```shell
-#!/bin/bash
-#$ -S /bin/bash
-#$ -l h_vmem=18G
-#$ -l s_vmem=23.5G
-#$ -l tmpfree=200G
-# Set up the correct conda environment
-export CONDA_PREFIX=/PATH/TO/YOUR/CONDA/       # eg /cbica/projects/RewardProject/miniconda3
-source ${CONDA_PREFIX}/bin/activate MY_PROJECT_ENVIRONMENT # ${CONDA_PREFIX}/bin/activate reward
-echo I\'m in $PWD using `which python` and `which git`, `git --version`
-
-```
-
-You can use `echo` to do all sorts of checks; in this example we make sure that the correct python and git are selected.
-
 ### Keeping files from an example run
 
 If you want to have your job persist somewhere accessible, you should edit
@@ -201,15 +189,9 @@ the image.
 
 After editing the scripts in `analysis/code`, saving them and pushing them
 to input and output ria stores, it's time to test.
-You never know if your scripts will work until you do a test run. 
-
-Before you run a pipeline, make sure to check in the script if your conda 
-environment is activated, and your flags/arguments are set to your needs. 
-Open `exemplar_test/${BIDSAPP}/analysis/code/participant_job.sh
-and find the first line `source ${CONDA_PREFIX}/bin/activate base` and change `base` to the environment you set up for this project.
-
-To submit a single subject, you can execute the last line of `code/qsub_calls.sh`
-and see how it goes. From the `analysis` directory run:
+You never know if your scripts will work until you do a test run. To
+submit a single subject, you can execute the last line of `code/qsub_calls.sh`
+and see how it goes. From the `analysis` directory run
 
 ```bash
 $ $(tail -n 1 code/qsub_calls.sh)
@@ -280,12 +262,215 @@ $ unzip sub-1_qsiprep-0.14.2.zip
 this will unzip sub-1's qsiprep results. You'll notice that it is inefficient
 and cumbersome to `get` and `unlock` the files you created.
 
-# Auditing Your Runs
+## Auditing Your Runs
 
 It's impractical of course to check every single subject for successful
 run output. Instead, we recommend taking this bootstrap approach and using it
 to assess the data in what we call a _bootstrap audit_. This stage simply
-uses datalad to dive into the outputs of each subject's datalad branch
+uses bootstrapping to dive into the outputs of each subject's datalad branch
+and collect some information from it. Note that audit scripts are in
+development, and more will be added for other pipelines as we go
+along — below is an example using an fMRIPrep exemplar test.
+
+After you're run fMRIPrep exemplars, your `testing` directory may look like this:
+
+```
+testing
+├── exemplars_dir
+└── exemplar_test
+    ├── bootstrap-fmriprep.sh
+    ├── fmriprep                 # your analysis lives here           
+    │   ├── analysis               # datalad tracked scripts and logs
+    │   │   ├── CHANGELOG.md
+    │   │   ├── code
+    │   │   ├── inputs
+    │   │   ├── logs
+    │   │   ├── pennlinc-containers
+    │   │   └── README.md
+    │   ├── input_ria             # datalad dataset of input data (points to exemplars dir)
+    │   │   ├── 553               # don't worry about this notation, it's expected
+    │   │   ├── error_logs
+    │   │   └── ria-layout-version
+    │   ├── merge_ds              # a temp space for merging outputs; do not modify
+    │   │   ├── CHANGELOG.md
+    │   │   ├── code
+    │   │   ├── inputs
+    │   │   ├── pennlinc-containers
+    │   │   └── README.md
+    │   ├── output_ria            # datalad dataset of analysis outputs
+    │   │   ├── 553
+    │   │   ├── alias
+    │   │   ├── error_logs
+    │   │   └── ria-layout-version
+    │   └── pennlinc-containers
+    └── fmriprep-container
+
+```
+
+A quick way to assess of your jobs ran successfully is to see if an output branch was created for each subject. The output branches are located in the `output_ria`, which has a hashed string as a directory name. Simply descend into that directory like:
+
+```shell
+$ cd fmriprep/output_ria/553/6b78d-a143-45e9-9fc4-684fad48fd29
+```
+
+Then, check the branches with `git branch -a`:
+
+```shell
+$ git branch -a
+  git-annex
+  job-9650320-sub-16809
+  job-9650321-sub-15688
+  job-9650322-sub-11399
+  job-9650323-sub-15428
+  job-9650324-sub-17096
+  job-9650325-sub-12202
+  job-9650327-sub-17028
+  job-9650328-sub-15685
+  job-9650329-sub-11419
+  job-9650330-sub-15546
+  job-9650331-sub-17196
+* master
+```
+
+That should be the only thing you should do in this directory -- it's a special git directory that is fragile and shouldn't be tampered with.
+
+Instead of tampering with these branches, we have an fMRIPrep audit bootstrap available [here](https://github.com/PennLINC/TheWay/blob/main/scripts/cubic/bootstrap-freesurfer-audit.sh). Running it is very similar to running the pipeline.
+
+First, download the script in the same place that you started your fMRIPrep pipeline:
+
+```
+wget https://raw.githubusercontent.com/PennLINC/TheWay/main/scripts/cubic/bootstrap-fmriprep-audit.sh
+```
+
+Then, bash the script, providing the full path to the `fmriprep` directory:
+
+```shell
+$ tree -L 2 .
+.
+├── bootstrap-fmriprep-audit.sh      # run this
+├── bootstrap-fmriprep.sh
+├── fmriprep                         # with this as input
+│   ├── analysis
+│   ├── input_ria
+│   ├── merge_ds
+│   ├── output_ria
+│   └── pennlinc-containers
+└── fmriprep-container
+```
+
+Like so:
+
+```shell
+$ bash bootstrap-fmriprep-audit.sh /cbica/projects/wolf_satterthwaite_reward/Testing/fndm2/exemplar_test/fmriprep
+```
+
+The contents of the resulting `fmriprep-audit` directory are analogous to the 
+`fmriprep` directory. Hence, you should make sure to edit `analysis/code/participant_job.sh`
+to suit your needs — particularly, you should set the correct conda environment:
+
+```
+#participant_job.sh
+
+#!/bin/bash
+#$ -S /bin/bash
+#$ -l h_vmem=5G
+#$ -l s_vmem=3.5G
+# Set up the correct conda environment
+source ${CONDA_PREFIX}/bin/activate reward         ## you will need to edit this
+echo I\'m in $PWD using `which python`
+
+# fail whenever something is fishy, use -x to get verbose logfiles
+set -e -u -x
+```
+
+As always, don't forget to `datalad save`!
+
+```
+$ datalad save -m "edited participant_job.sh" code/participant_job.sh
+$ datalad push --to input
+$ datalad push --to output
+```
+
+Now, you're ready to run the audit (from the `analysis` directory):
+
+```bash
+$ bash code/qsub_calls.sh
+```
+
+This is a very quick program — once it's complete, you can check if a branch was 
+created successfully as before:
+
+```bash
+$ cd ../output_ria/9c4/d63ba-c4d7-4066-a385-cbc895fb9dbe/
+$ git branch -a
+  git-annex
+  job-9654895-sub-16809
+  job-9654896-sub-15688
+  job-9654897-sub-11399
+  job-9654898-sub-15428
+  job-9654899-sub-17096
+  job-9654900-sub-12202
+  job-9654901-sub-15561
+  job-9654902-sub-17028
+  job-9654903-sub-15685
+  job-9654904-sub-11419
+  job-9654905-sub-15546
+  job-9654906-sub-17196
+* master
+```
+
+Next, run `merge_outputs.sh` (again from the `analysis` directory):
+
+```bash
+$ bash code/merge_outputs.sh
+```
+
+The difference is that you'll have CSV files in the merge_ds/csvs directory:
+
+```
+fmriprep-audit/
+├── analysis
+├── fmriprep_logs
+├── input_ria
+├── merge_ds
+│   ├── CHANGELOG.md
+│   ├── code
+│   ├── csvs
+│   │   ├── sub-11399_fmriprep_audit.csv -> ../.git/annex/objects/Fq/KK/MD5E-s438--a54abe84d4358d32e9890f31159e1856.csv/MD5E-s438--a54abe84d4358d32e9890f31159e1856.csv
+│   │   ├── sub-11419_fmriprep_audit.csv -> ../.git/annex/objects/M2/0M/MD5E-s438--8aedcadb5dca8000482b5d85285ab1ee.csv/MD5E-s438--8aedcadb5dca8000482b5d85285ab1ee.csv
+│   │   ├── sub-12202_fmriprep_audit.csv -> ../.git/annex/objects/Xw/Wg/MD5E-s438--69ecb85a526ad82e5d576765f7122193.csv/MD5E-s438--69ecb85a526ad82e5d576765f7122193.csv
+│   │   ├── sub-15428_fmriprep_audit.csv -> ../.git/annex/objects/34/p1/MD5E-s438--2405e9984f82eefe68bf1fbaa31c0a03.csv/MD5E-s438--2405e9984f82eefe68bf1fbaa31c0a03.csv
+│   │   ├── sub-15546_fmriprep_audit.csv -> ../.git/annex/objects/W4/qq/MD5E-s438--d7fac36464daa5d4a058c8990f96588b.csv/MD5E-s438--d7fac36464daa5d4a058c8990f96588b.csv
+│   │   ├── sub-15561_fmriprep_audit.csv -> ../.git/annex/objects/px/6x/MD5E-s687--31fb3d57f20d867bb69bba3d77cc93f1.csv/MD5E-s687--31fb3d57f20d867bb69bba3d77cc93f1.csv
+│   │   ├── sub-15685_fmriprep_audit.csv -> ../.git/annex/objects/fp/xG/MD5E-s438--83300886d60d830d39d4b654f62599f8.csv/MD5E-s438--83300886d60d830d39d4b654f62599f8.csv
+│   │   ├── sub-15688_fmriprep_audit.csv -> ../.git/annex/objects/kX/Fz/MD5E-s438--7cc964e74969fbfa94422bdc057ffb34.csv/MD5E-s438--7cc964e74969fbfa94422bdc057ffb34.csv
+│   │   ├── sub-16809_fmriprep_audit.csv -> ../.git/annex/objects/6w/f4/MD5E-s438--0fdf942a1e56de372038162e2721922b.csv/MD5E-s438--0fdf942a1e56de372038162e2721922b.csv
+│   │   ├── sub-17028_fmriprep_audit.csv -> ../.git/annex/objects/fF/K9/MD5E-s438--fb10874c8acd455fb2bc816950d4aae8.csv/MD5E-s438--fb10874c8acd455fb2bc816950d4aae8.csv
+│   │   ├── sub-17096_fmriprep_audit.csv -> ../.git/annex/objects/f6/k2/MD5E-s438--3f606b7b6309c1ad88b0eb4a1678a5bc.csv/MD5E-s438--3f606b7b6309c1ad88b0eb4a1678a5bc.csv
+│   │   └── sub-17196_fmriprep_audit.csv -> ../.git/annex/objects/xQ/K1/MD5E-s438--cc3ba3bf880ed13d29b9af868dbd6133.csv/MD5E-s438--cc3ba3bf880ed13d29b9af868dbd6133.csv
+│   ├── inputs
+│   └── README.md
+└── output_ria
+```
+
+These are the audit results, tracked in datalad. Again, don't tamper with these.
+Instead, concatenate these single row CSVs into a table, which will contain one row per subject, by running the following command, also from the analysis directory:
+
+```shell
+$ bash code/concat_outputs.sh
+```
+
+Once you see `SUCCESS`, the output will be available in the root of the audit directory:
+
+```
+fmriprep-audit
+├── analysis
+├── FMRIPREP_AUDIT.csv     #HERE IT IS!
+├── fmriprep_logs
+├── input_ria
+├── merge_ds
+└── output_ria
+```
 
 # Running a bootstrap on the outputs of another bootstrap
 
