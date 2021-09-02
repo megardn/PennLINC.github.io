@@ -472,6 +472,7 @@ fmriprep-audit
 ├── merge_ds
 └── output_ria
 ```
+
 # Running a bootstrap on the outputs of another bootstrap
 
 Suppose you want to extract a specific file from each subject's output
