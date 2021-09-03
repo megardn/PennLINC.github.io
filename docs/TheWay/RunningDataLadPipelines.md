@@ -272,7 +272,7 @@ and collect some information from it. Note that audit scripts are in
 development, and more will be added for other pipelines as we go
 along — below is an example using an fMRIPrep exemplar test.
 
-After you're run fMRIPrep exemplars, your `testing` directory may look like this:
+After you've run fMRIPrep exemplars, your `testing` directory may look like this:
 
 ```
 testing
