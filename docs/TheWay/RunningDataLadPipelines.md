@@ -76,7 +76,7 @@ to the lowercase version of the pipeline you'd like to run.
 Different bootstrap scripts require different argmuents. For BIDSApps, the arguments are
 
   1. The datalad-interpretable path to your BIDS dataset. Examples may be ria+ssh://, ria+file://,
-     https:// or a path to a local datalad-enabled directory containing BIDS data. If a local path, it should be the directory that contains the `sub-`directories and **must** be a datalad dataset.
+     https:// or a path to a local datalad-enabled directory containing BIDS data. If a local path, `/full/path/to/BIDS` should be the directory that contains the `sub-` directories as children (one level of depth) and **must** be a datalad dataset.
   2. The path to the container dataset you created in the previous step.
 
 ---
