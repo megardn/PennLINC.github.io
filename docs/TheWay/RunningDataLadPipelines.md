@@ -38,7 +38,7 @@ singularity build qsiprep-0.14.2.sif docker://pennbbl/qsiprep:0.14.2
 ```
 
 This image needs to be added to a datalad "containers dataset". Be sure you've installed
-the datalad containers plugin via `pip install datalad_containers`. Now create the
+the datalad containers plugin via `pip install datalad_container`. Now create the
 dataset:
 
 ```bash
@@ -111,7 +111,7 @@ jobs on the cluster.
 ```bash
 $ cd ${BIDSAPP}
 $ ls
-analysis	input_ria	output_ria
+analysis	input_ria	output_ria	pennlinc-containers
 $ cd analysis
 $ datalad siblings
 .: here(+) [git]
