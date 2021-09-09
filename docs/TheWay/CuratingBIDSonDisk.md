@@ -146,7 +146,7 @@ AccessionNumber were removed from all metadata files using
 Now you can begin a datalad tracked dataset for your working BIDS data.
 
 ```bash
-$ datalad create -c yoda -c text2git BIDS
+$ datalad create -c text2git BIDS
 ```
 
 Finally, copy your data from `original_data` to the working BIDS dataset 
