@@ -14,6 +14,7 @@ Below is a list of the current studies in the lab:
 | ------------- | --------------- | --------------------------------- |
 | Reward    | Tinashe Tapera | [https://pennlinc.github.io/Reward/index](https://pennlinc.github.io/Reward/index){:target="_blank"} |
 | GRMPY    | Kristin Murtha, Diego Davila | [https://pennlinc.github.io/grmpy/](https://pennlinc.github.io/grmpy/){:target="_blank"} |
+| cros-map | Jacob Vogel | [https://pennlinc.github.io/cros-map/](https://pennlinc.github.io/cros-map/){:target="_blank"} |
 
 ---------------------------------------------------------------------------------
 
