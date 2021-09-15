@@ -27,8 +27,11 @@ on each clustess [instructions for CUBIC]() and
 for the rest of the steps in this workflow. To do so, create a conda
 environment.
 
-The easiest way to get your CUBIC project user started is to download
-the project initialization script. Immediately upon getting access to
+If you've already got `conda` setup for environment management, please skip this
+step and instead directly download `CuBIDS` [here](https://bids-bond.readthedocs.io/en/latest/). After that, you can head over to _Stage 0_.
+
+Otherwise, the easiest way to get your CUBIC project user started is to download
+the project initialization script.  Immediately upon getting access to
 your project, log in as the project user and run:
 
 ```shell
