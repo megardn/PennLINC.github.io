@@ -36,9 +36,16 @@ $ wget https://raw.githubusercontent.com/PennLINC/TheWay/main/scripts/cubic/cubi
 $ bash cubic-setup-project-user.sh ${HOME}
 ```
 
-Finally, [download and install CuBIDS](https://bids-bond.readthedocs.io/en/latest/index.html). Note that
+[Download and install CuBIDS](https://bids-bond.readthedocs.io/en/latest/index.html). Note that
 this environment must be activated for the rest of the steps.
 
+You'll also need to install BIDS Validator:
+
+```shell
+$ conda install nodejs
+$ npm install -g bids-validator
+$ which bids-validator #to make sure it installed
+```
 
 ## Stage 0: Organization
 
