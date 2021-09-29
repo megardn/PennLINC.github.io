@@ -327,9 +327,14 @@ one error may introduce new errors. Expect this step to take a number of
 iterations and be sure to describe each step in your Data Narrative. In
 order to do this, we recommend running `cubids-group` and `cubids-validate`
 simultaneously, via a `qsub` (if the dataset is large) after every change.
-Suppose you ran `cubids-validate` on your BIDS data. This will create
-a file containing all the errors present in your data. Add this file
-to your git repository and describe it in the Data Narrative (you can simply add the content below to the bottom of DataNarrative.md):
+Suppose you ran `cubids-validate` on your BIDS data: 
+
+```shell
+$ cubids-validate BIDS DATE_TIME
+```
+
+This will create a file containing all the errors present in your data. Add this file
+to your git repository (see Stage 2 below for info on storing `cubids-group`outputs) and describe it in the Data Narrative (you can simply add the content below to the bottom of DataNarrative.md):
 
 ```markdown
 # BIDS Validation
@@ -453,6 +458,7 @@ project
 └── curation
     ├── code
     |   ├── sandbox
+    |   ├── iterations #Put grouping outputs here
     │   └── ProjectGithub
     |       ├── validator_outputs  # Put validator outputs here
     |       ├── notebooks          # e.g. ipython notebooks that investigate BIDS data
@@ -571,6 +577,7 @@ project
 ├── curation
 │   ├── code
 │   |   ├── sandbox
+|   |   ├── iterations #Put grouping outputs here
 │   │   └── ProjectGithub
 │   |       ├── validator_outputs
 │   |       ├── notebooks
