@@ -75,8 +75,8 @@ Navigate to the [CONCUR website](https://cms.business-services.upenn.edu/penntra
 -  If a concur report is returned, you can find the business administrator's feedback by you can click into the report where you see the listed expenses --> click “details” --> “comments” – this is where approvers will comment if they need additional information or documentation
     - <img src="/assets/images/Comments.png" alt="comments">
 - Helpful websites for filing for reimbursements at UPenn:
-    - http://cms.business-services.upenn.edu/penntravel/about/faqs-and-helpful-information/expense-faqs.html
-    - https://www.concursolutions.com/home.asp
+    - [http://cms.business-services.upenn.edu/penntravel/about/faqs-and-helpful-information/expense-faqs.html](http://cms.business-services.upenn.edu/penntravel/about/faqs-and-helpful-information/expense-faqs.html)
+    - [https://www.concursolutions.com/home.asp](https://www.concursolutions.com/home.asp)
 - For further help contact:
     - Sophia Linguiti - sophia.linguiti@pennmedicine.upenn.edu
     - John Hyon (expenditure justification related) - hyon1@pennmedicine.upenn.edu
