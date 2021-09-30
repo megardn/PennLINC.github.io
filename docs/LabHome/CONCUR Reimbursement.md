@@ -15,7 +15,7 @@ For all lab-related expenses that you wish to have reimbursed via the CONCUR sys
 {:toc}
 
 ## Prepping the Expenditure Justification reports
-For each expenditure you must first prepare the standardized Expenditure Justification report which can be found ____. Examples of these reports can be found ____. You can copy and paste exact wording from previously approved documents.
+For each expenditure you must first prepare the standardized Expenditure Justification report and previously approved justification report examples can be found XXXXX. You can copy and paste exact wording from previously approved documents.
 
 ### Step 1: Fill out necessary information on expenditure form
 _Project Title_: Fill in the name of the study the expense will be billed to
