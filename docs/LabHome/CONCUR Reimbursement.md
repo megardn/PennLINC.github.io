@@ -17,7 +17,7 @@ For all lab-related expenses that you wish to have reimbursed via the CONCUR sys
 ## Prepping the Expenditure Justification reports
 For each expenditure you must first prepare the standardized Expenditure Justification report and previously approved justification report examples can be found XXXXX. You can copy and paste exact wording from previously approved documents.
 
-### Step 1: Fill out necessary information on expenditure form
+### Fill out Expenditure Form
 _Project Title_: Fill in the name of the study the expense will be billed to
 _Principle Investigator_: Dr. Theodore Satterthwaite
 _Project/Grant Number_: Nickname for project/Sponsor
@@ -33,12 +33,13 @@ _Date of Expense_: Date that the transaction occurred
 _Explanation or Cost Allocation and Justification of Expense_: Fill out why the expense was necessary. See examples.
 _Signature_: Obtain Ted's signature and other necessary approvals (if not being reimbursed back to Ted)
 
-### Step 2: Approval from Business Administrator, John Hyon
+### Approval from Business Administrator, John Hyon
 Send the prepared Expenditure Justification in word document form to John Hyon (Hyon1@pennmedicine.upenn.edu) for approval.
 
 Make sure to also send the receipt for all expenses. The receipt _must include_ the confirmation of payment (not just the invoice), how the payment was made (typically last 4 digits of the card listed on receipt), each expense itemized, the total amount paid, and the date the payment was completed.
 
 John may give you edits, but once the form has been approved you can convert the document to PDF to be uploaded to CONCUR.
+
 
 ## Submitting report via CONCUR
 Navigate to the [CONCUR website](https://cms.business-services.upenn.edu/penntravel/expense-report.html), click on the "CONCUR" icon, and sign in with your PennKey
@@ -60,13 +61,15 @@ Navigate to the [CONCUR website](https://cms.business-services.upenn.edu/penntra
 ### CONCUR Report Main Page
 - Select "New Expense" and select the category that best matches your expense
   - Note: each receipt must have it's own expense entry, each item on the receipt must be itemized below it's entry.
-  - For Ex. If you are creating a report for a conference where you took a flight that had taxes and paid for conference registration, these would be two expenses under the same report. One expense will be “flight” which you will itemize for cost of flight and then taxes. The other expense will be listed as “conference fees” This can be tricky but Sharon Lui and Sophia Linguiti can be resources if you need help.
+  - For Ex. If you are creating a report for a conference where you took a flight that had taxes and paid for conference registration, these would be two expenses under the same report. One expense will be “flight” which you will itemize for cost of flight and then taxes (see example below). The other expense will be listed as “conference fees” This can be tricky but Sharon Lui and Sophia Linguiti can be resources if you need help.
   - Note: Alcohol can never be reimbursed via University/Grant Funds and Taxes are not reimbursed. Can mark those items as "non-reimbursable" under the itemization
 - Enter the vendor, transaction date, city, total amount, and a business justification similar to that listed on the report header.
 - Click "attach receipt" on the bottom right where you will attach both the _receipt_ for the expense and the _expenditure justification form_
 - Click _SUBMIT_ when you are done
 
   - You will get a notification within a few days if the concur report has been approved or if it has been sent back with  edits.
+<img src="/assets/images/example concur report.png" alt="examplereport">
+
 
 ## CONCUR troubleshooting
 -  If a concur report is returned, you can find the business administrator's feedback by you can click into the report where you see the listed expenses --> click “details” --> “comments” – this is where approvers will comment if they need additional information or documentation
@@ -80,10 +83,12 @@ Navigate to the [CONCUR website](https://cms.business-services.upenn.edu/penntra
     - Sharon Lui (concur related) - xgliu@pennmedicine.upenn.edu
 - If you need help and would like another person to be able to view your concur, you can add them as a delegate following the instructions below
 
-## Assign a delegate
+
+### Assign a delegate
 - Click “Profile” on top right corner --> “Profile Settings” --> “Expense Delegates” --> “add” --> Search by email/name --> make sure to check all the boxes next to the new name (Can prepare, can view receipts, receives emails) --> Click “Save”
 
-## Purchase Orders (PO)
+
+### Purchase Orders (PO)
 - To order supplies that are within our Penn system, you need to complete a series of trainings. This will be for when Ted needs to order certain supplies that can be found in the Penn marketplace. You will be responsible for preparing the purchase order and putting into place for the next step of approvals.
 - You will need to complete the following trainings in KnowledgeLink:
     - BEN Buys - Requisitioner - FTD
