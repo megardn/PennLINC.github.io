@@ -329,7 +329,7 @@ appear as expected and are usable. This is an iterative process - fixing
 one error may introduce new errors. Expect this step to take a number of
 iterations and be sure to describe each step in your Data Narrative. In
 order to do this, we recommend running `cubids-group` and `cubids-validate`
-simultaneously, via a `qsub` (if the dataset is large) after every change.
+simultaneously, via a `qsub` (if the dataset is large) after every change. *Note: always use absolute paths (rather than relative) when running cubids commands.*
 Suppose you ran `cubids-validate` on your BIDS data. This will create
 a file containing all the errors present in your data. Add this file
 to your git repository and describe it in the Data Narrative (you can simply add the content below to the bottom of DataNarrative.md):
@@ -473,7 +473,7 @@ project
 To detect acquisition groups in your data set, change into `working/` and run
 
 ```shell
-$ cubids-group BIDS code/iterations/iter0
+$ cubids-group project/curation/BIDS project/curation/code/iterations/iter0
 ```
 
 This command will write four CuBIDS files delineating key/param groups and
@@ -498,10 +498,10 @@ datalad at this point, run
 
 ```shell
 $ cubids-apply \
-    BIDS \
-    code/iterations/iter0_summary.csv \
-    code/iterations/iter0_files.csv \
-    code/iterations/apply1
+    project/curation/BIDS \
+    project/curation/code/iterations/iter0_summary.csv \
+    project/curation/code/iterations/iter0_files.csv \
+    project/curation/code/iterations/apply1
 ```
 
 If using datalad, be sure to include `--use-datalad` as the first argument to
@@ -543,9 +543,9 @@ subdataset. Use the CuBIDS program `cubids-copy-exemplars`:
 
 ```bash
 $ cubids-copy-exemplars \
-    BIDS \
+    project/curation/BIDS \
     exemplars_dir \
-    code/iterations/iter1_AcqGrouping.csv
+    project/curation/code/iterations/iter1_AcqGrouping.csv
 ```
 
 This will create `exemplars_dir`, which is a new BIDS-valid dataset containing one
